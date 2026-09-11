@@ -1,41 +1,41 @@
 /* 考研408计算机网络带学 - 公共样式（侧边栏布局版） */
 :root {
-  --blue: #2563eb;
-  --blue-deep: #1d4ed8;
-  --blue-dark: #1e40af;
-  --sidebar-bg: #1b2347;
-  --sidebar-bg2: #151c3a;
-  --sidebar-text: #c7d2e8;
-  --sidebar-dim: #8ea0c9;
+  --blue: #8b5cf6;
+  --blue-deep: #7c3aed;
+  --blue-dark: #6d28d9;
+  --sidebar-bg: #32265e;
+  --sidebar-bg2: #281d4e;
+  --sidebar-text: #ddd3f2;
+  --sidebar-dim: #a99ccf;
   --topbar-h: 58px;
-  --bg: #eef2f9;
+  --bg: #f6f4fc;
   --card: #ffffff;
-  --text: #1f2937;
-  --text-light: #64748b;
-  --border: #e2e8f0;
-  --primary: #1d4ed8;
-  --primary-light: #eff6ff;
+  --text: #2a2438;
+  --text-light: #6f6a80;
+  --border: #e6e1f2;
+  --primary: #7c3aed;
+  --primary-light: #f5f3ff;
   --accent: #dc2626;
   --green: #059669;
   --green-light: #ecfdf5;
   --amber: #d97706;
   --amber-light: #fffbeb;
   --radius: 14px;
-  --shadow: 0 1px 3px rgba(15, 23, 42, .06), 0 4px 14px rgba(15, 23, 42, .05);
+  --shadow: 0 1px 3px rgba(60, 40, 100, .06), 0 4px 14px rgba(60, 40, 100, .05);
 }
 html[data-theme="dark"] {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #e2e8f0;
-  --text-light: #94a3b8;
-  --border: #334155;
-  --primary: #60a5fa;
-  --primary-light: #1e3a5f;
+  --bg: #161226;
+  --card: #241d3d;
+  --text: #ece7f8;
+  --text-light: #a89ec4;
+  --border: #3d3459;
+  --primary: #c4b5fd;
+  --primary-light: #3b2a63;
   --green: #34d399;
   --green-light: #064e3b33;
   --amber-light: #78350f33;
-  --sidebar-bg: #0b1120;
-  --sidebar-bg2: #0f172a;
+  --sidebar-bg: #1a1430;
+  --sidebar-bg2: #201838;
   --shadow: 0 1px 3px rgba(0, 0, 0, .4);
 }
 * { box-sizing: border-box; }
@@ -53,11 +53,11 @@ body {
 .topbar {
   position: sticky; top: 0; z-index: 200;
   height: var(--topbar-h);
-  background: linear-gradient(90deg, #1e40af 0%, #1d4ed8 45%, #3b82f6 100%);
+  background: linear-gradient(90deg, #6d28d9 0%, #7c3aed 45%, #a78bfa 100%);
   color: #fff;
   display: flex; align-items: center; gap: 14px;
   padding: 0 16px;
-  box-shadow: 0 2px 8px rgba(29, 78, 216, .35);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, .35);
 }
 .topbar .burger {
   display: none;
@@ -117,12 +117,12 @@ body {
   height: calc(100vh - var(--topbar-h));
   overflow-y: auto;
   padding: 14px 12px 40px;
-  scrollbar-width: thin; scrollbar-color: #33406e transparent;
+  scrollbar-width: thin; scrollbar-color: #4c3a7d transparent;
 }
 .sidebar::-webkit-scrollbar { width: 6px; }
-.sidebar::-webkit-scrollbar-thumb { background: #33406e; border-radius: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: #4c3a7d; border-radius: 3px; }
 .side-brand {
-  border: 1.5px solid #3a4a86; border-radius: 12px;
+  border: 1.5px solid #5847a0; border-radius: 12px;
   text-align: center; padding: 14px 10px 12px; margin: 2px 4px 16px;
   background: rgba(255,255,255,.04);
 }
@@ -231,7 +231,7 @@ table.tbl {
 }
 table.tbl th, table.tbl td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
 table.tbl th { background: var(--primary-light); color: var(--primary); font-weight: 700; }
-html[data-theme="dark"] table.tbl th { color: #bfdbfe; }
+html[data-theme="dark"] table.tbl th { color: #ddd3fe; }
 
 /* 公式 */
 .formula {
@@ -281,7 +281,7 @@ details.ans .ans-key { font-weight: 700; color: var(--accent); }
 }
 .hero::before {
   content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
-  background: linear-gradient(90deg, #1d4ed8, #3b82f6, #60a5fa);
+  background: linear-gradient(90deg, #7c3aed, #a78bfa, #c4b5fd);
 }
 .hero h1 { margin: 2px 0 8px; font-size: 1.72rem; line-height: 1.4; color: var(--text); }
 .hero .hero-desc { color: var(--text-light); font-size: .95rem; margin: 6px 0; }
@@ -302,10 +302,10 @@ details.ans .ans-key { font-weight: 700; color: var(--accent); }
   background: var(--card);
 }
 .btn-checkin {
-  background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff;
   border: none; border-radius: 999px; padding: 10px 26px;
   font-size: .95rem; font-weight: 700; cursor: pointer;
-  box-shadow: 0 4px 12px rgba(29, 78, 216, .35);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, .35);
 }
 .btn-checkin:disabled { opacity: .55; cursor: default; box-shadow: none; }
 .checkin-row .ci-stat { font-size: .92rem; color: var(--text); }
@@ -329,7 +329,7 @@ details.ans .ans-key { font-weight: 700; color: var(--accent); }
   flex-direction: column; gap: 6px; transition: box-shadow .15s, transform .15s;
   box-shadow: var(--shadow); position: relative;
 }
-.card:hover { box-shadow: 0 10px 26px rgba(29, 78, 216, .16); transform: translateY(-3px); }
+.card:hover { box-shadow: 0 10px 26px rgba(124, 58, 237, .16); transform: translateY(-3px); }
 .card .card-ico { font-size: 1.7rem; }
 .card .card-stat { position: absolute; top: 16px; right: 18px; font-size: .76rem; color: var(--amber); font-weight: 600; }
 .card .card-title { font-weight: 800; color: var(--text); font-size: 1.08rem; margin-top: 4px; }
