@@ -1,0 +1,11 @@
+[
+  {"page": 134, "rect": [26, 41, 78, 59], "out": "quiz-6.2-q20.png", "caption": "第20题配图", "book": "choice", "src": "做题本P134"},
+  {"page": 140, "rect": [28, 16, 75, 25], "out": "quiz-6.4-q42.png", "caption": "第42题配图", "book": "choice", "src": "做题本P140"},
+  {"page": 144, "rect": [28, 20, 74, 40], "out": "quiz-6.5-q61.png", "caption": "第61题配图：NAT转换表", "book": "choice", "src": "做题本P144"},
+  {"page": 145, "rect": [36, 10, 66, 26], "out": "quiz-6.5-q63.png", "caption": "第63题配图：HTTP请求报文", "book": "choice", "src": "做题本P145"},
+  {"page": 51, "rect": [26, 15, 74, 25], "out": "quiz-6.3-c6.png", "caption": "综合题6配图", "book": "comp", "src": "综合题做题本P51"},
+  {"page": 53, "rect": [18, 12, 84, 29], "out": "quiz-6.4-c9.png", "caption": "综合题9配图：截获的TCP报文段", "book": "comp", "src": "综合题做题本P53"},
+  {"page": 55, "rect": [24, 12, 86, 37], "out": "quiz-6.5-c12a.png", "caption": "综合题12配图一：网络拓扑与以太网数据帧", "book": "comp", "src": "综合题做题本P55"},
+  {"page": 55, "rect": [10, 48, 62, 80], "out": "quiz-6.5-c12b.png", "caption": "综合题12配图二：以太网帧结构与IP分组头结构", "book": "comp", "src": "综合题做题本P55"},
+  {"page": 56, "rect": [28, 13, 77, 47], "out": "quiz-6.5-c13.png", "caption": "综合题13配图", "book": "comp", "src": "综合题做题本P56"}
+]

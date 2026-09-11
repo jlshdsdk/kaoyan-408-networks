@@ -1,0 +1,6 @@
+[
+  { "page": 140, "rect": [18, 53, 82, 79], "out": "fig-4-1.png", "caption": "图4.1 IP 网络的概念", "src": "教材P128", "book": "textbook" },
+  { "page": 141, "rect": [20, 45, 82, 86], "out": "fig-4-2.png", "caption": "图4.2 虚电路方式的工作原理", "src": "教材P129", "book": "textbook" },
+  { "page": 142, "rect": [14, 36, 86, 62], "out": "fig-4-3.png", "caption": "图4.3 数据报方式转发分组", "src": "教材P130", "book": "textbook" },
+  { "page": 143, "rect": [20, 61, 85, 91], "out": "fig-4-4.png", "caption": "图4.4 SDN 结构", "src": "教材P131", "book": "textbook" }
+]

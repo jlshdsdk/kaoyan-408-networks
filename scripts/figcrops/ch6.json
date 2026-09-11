@@ -1,0 +1,16 @@
+[
+  { "page": 280, "rect": [4, 29, 50, 57], "out": "fig-6-1.png", "caption": "图6.1 C/S 模型", "src": "教材P268", "book": "textbook" },
+  { "page": 280, "rect": [51, 29, 98, 57], "out": "fig-6-2.png", "caption": "图6.2 P2P 模型", "src": "教材P268", "book": "textbook" },
+  { "page": 282, "rect": [22, 56, 78, 71.5], "out": "fig-6-3.png", "caption": "图6.3 一个域名的例子", "src": "教材P270", "book": "textbook" },
+  { "page": 283, "rect": [18, 17, 82, 46], "out": "fig-6-4.png", "caption": "图6.4 域名空间的树状结构", "src": "教材P271", "book": "textbook" },
+  { "page": 284, "rect": [20, 29, 82, 59], "out": "fig-6-5.png", "caption": "图6.5 DNS 的层次结构", "src": "教材P272", "book": "textbook" },
+  { "page": 285, "rect": [6, 16, 94, 45.5], "out": "fig-6-6.png", "caption": "图6.6 两种域名解析方式工作原理", "src": "教材P273", "book": "textbook" },
+  { "page": 290, "rect": [14, 11, 86, 35], "out": "fig-6-7.png", "caption": "图6.7 控制连接和数据连接", "src": "教材P278", "book": "textbook" },
+  { "page": 295, "rect": [13, 41, 87, 58.5], "out": "fig-6-8.png", "caption": "图6.8 电子邮件系统的主要组成部分", "src": "教材P283", "book": "textbook" },
+  { "page": 296, "rect": [16, 10, 84, 31], "out": "fig-6-9.png", "caption": "图6.9 电子邮件的发送、接收过程", "src": "教材P284", "book": "textbook" },
+  { "page": 297, "rect": [26, 25, 74, 46], "out": "fig-6-10.png", "caption": "图6.10 SMTP 与 MIME 的关系", "src": "教材P285", "book": "textbook" },
+  { "page": 302, "rect": [26, 64, 77, 93.5], "out": "fig-6-11.png", "caption": "图6.11 万维网的工作过程", "src": "教材P290", "book": "textbook" },
+  { "page": 304, "rect": [4, 16, 49, 51], "out": "fig-6-12.png", "caption": "图6.12 请求一个万维网文档所需的时间", "src": "教材P292", "book": "textbook" },
+  { "page": 304, "rect": [49, 16, 98, 51], "out": "fig-6-13.png", "caption": "图6.13 使用持续连接（非流水线）", "src": "教材P292", "book": "textbook" },
+  { "page": 305, "rect": [14, 11, 86, 33], "out": "fig-6-14.png", "caption": "图6.14 HTTP 的报文结构", "src": "教材P293", "book": "textbook" }
+]

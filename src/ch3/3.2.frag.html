@@ -1,0 +1,56 @@
+<h1 class="page-title">3.2 组帧</h1>
+<p class="subtitle">对应王道教材 3.2 节（教材 P54–P55）· 本节属于 408 考纲范围</p>
+
+<p>发送方依据特定规则，将网络层递交的分组封装成帧（也称<strong>组帧</strong>）。数据链路层以帧为单位传输数据，其主要目的是：<strong>一旦出错，只需重传出错的帧，而不必重传全部数据</strong>，从而提高传输效率。组帧需解决帧定界、帧同步和透明传输等问题。常见的组帧方法主要有以下四种。</p>
+<div class="box warn"><div class="box-title">⚠️ 注意：首部尾部通常都要加</div>
+<p>组帧时通常<strong>既要添加首部，也要添加尾部</strong>。原因在于：网络中信息以帧为最小传输单位，接收方必须能准确识别一帧在比特流中的<strong>起始与结束位置</strong>，否则无法正确解析帧内容。</p>
+</div>
+
+<h2 class="sec" id="sec-3-2-1">3.2.1 字符计数法 <span class="badge kao">考点</span></h2>
+<p>字符计数法在帧首部设置一个<strong>计数字段</strong>，用于记录该帧包含的<strong>总字节数（包括计数字段自身占用的 1B）</strong>，如图 3.5 所示。接收方读取该计数值后，即可确定后续数据的长度，从而定位帧的结束位置；由于帧是连续传输的，下一帧的起始位置也随之确定。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-5.png" alt="图3.5 字符计数的过程示例" loading="lazy"><figcaption>图 3.5 字符计数的过程示例（王道教材 P54）</figcaption></figure>
+<div class="box warn"><div class="box-title">⚠️ 主要缺陷：计数字段出错则满盘皆输</div>
+<p>当计数字段在传输过程中出错时，接收方将无法正确识别帧的边界，导致<strong>收发双方失去同步</strong>，可能引发灾难性后果（后续所有帧的边界全部错位）。这也是字符计数法在实际中很少使用的原因。</p>
+</div>
+
+<h2 class="sec" id="sec-3-2-2">3.2.2 字节填充法 <span class="badge kao">考点</span></h2>
+<p>字节填充法通过特定<strong>控制字符</strong>实现帧定界。在图 3.6 中，控制字符 <strong>SOH</strong> 表示帧的起始，<strong>EOT</strong> 表示帧的结束。为避免数据中出现的 SOH 或 EOT 被误判为帧的定界符，发送方会在这些特殊字符前<strong>插入一个 ESC 字符</strong>（注意，ESC 是 ASCII 码中的一个单字节控制字符），以实现<strong>透明传输</strong>。若数据中原本就包含 ESC，则同样在其前再插入一个 ESC。接收方收到 ESC 后，会将其丢弃，并将紧随其后的字符视为普通数据（而非控制字符），从而<strong>还原出原始数据</strong>。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-6.png" alt="图3.6 字节填充的过程示例" loading="lazy"><figcaption>图 3.6 字节填充的过程示例（王道教材 P54）</figcaption></figure>
+<p>当帧的数据部分中出现 ESC、EOT 或 SOH 时［见图 3.6(a)］，发送方在每个 ESC、EOT 或 SOH 之前插入一个 ESC 字符［见图 3.6(b)］，接收方处理后恢复原数据［见图 3.6(c)］。</p>
+
+<h2 class="sec" id="sec-3-2-3">3.2.3 零比特填充法 <span class="badge kao">考点</span></h2>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：HDLC 的比特填充规则（2013 统考）</div></div>
+<p>零比特填充法允许数据帧包含<strong>任意数量</strong>的比特，并用固定比特串 <strong>01111110</strong> 作为帧的起始和结束标志，如图 3.7 所示。为防止数据字段中出现与标志相同的比特序列，规则是：</p>
+<ul>
+  <li><strong>发送方</strong>：扫描数据时，每遇到 <strong>5 个连续的"1"，就在其后自动插入一个"0"</strong>，确保数据字段中不会出现 6 个连续的"1"，避免与帧标志混淆；</li>
+  <li><strong>接收方</strong>：执行逆操作——每收到 5 个连续的"1"，就自动<strong>删除其后的"0"</strong>，以恢复原始数据。</li>
+</ul>
+<p>早期的 HDLC 协议正是采用这种方法来实现透明传输。零比特填充法<strong>易于硬件实现，性能优于字节填充法</strong>。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-7.png" alt="图3.7 比特填充过程示例" loading="lazy"><figcaption>图 3.7 比特填充过程示例（王道教材 P55）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考法：2013 统考真题·逐步复算</div>
+<p><strong>题目</strong>：HDLC 协议对 <code>01111100 01111110</code> 组帧后，对应的比特串为？</p>
+<p><strong>逐步计算</strong>（发送方每遇 5 个连续"1"即在其后填一个"0"）：</p>
+<ol>
+  <li>第一段 <code>01111100</code>：扫描得 <code>0 11111 00</code>——出现 5 个连续"1"，先输出 <code>011111</code>，紧随其后填充一个"0"，再输出余下的 <code>00</code>，得到 <code>011111<b>0</b>00</code>；</li>
+  <li>第二段 <code>01111110</code>：扫描得 <code>0 11111 1 0</code>——前 5 个连续"1"后填充一个"0"，再输出余下的 <code>10</code>，得到 <code>011111<b>0</b>10</code>（数据中本有 6 个连续"1"，填充后被拆开，不再构成标志模式）；</li>
+  <li>首尾再加上标志 F（01111110），组帧后的数据部分为 <code>011111000 011111010</code>。</li>
+</ol>
+<p>对照选项，正确答案为 A（<code>011111000 011111010</code>，填充的"0"已用粗体标出）。</p>
+</div>
+
+<h2 class="sec" id="sec-3-2-4">3.2.4 违规编码法 <span class="badge ext"></span></h2>
+<div class="box warn"><div class="box-title">📚 课外拓展：利用编码冗余定界</div>
+<p>违规编码法利用<strong>物理层编码的冗余特性</strong>实现帧定界。例如，在曼彻斯特编码中：比特"1"编码为"高-低"电平对，比特"0"编码为"低-高"电平对。而"高-高"或"低-低"电平对在数据比特中是<strong>违规的（未被采用）</strong>，因此可借用这些违规编码序列来标识帧的起始或终止。局域网 IEEE 802 标准采用了这种方法（更多介绍见 3.6 节）。</p>
+<p>违规编码法<strong>无须任何填充技术即可实现透明传输</strong>，但仅适用于采用<strong>冗余编码</strong>的特殊编码环境。</p>
+</div>
+<div class="box tip"><div class="box-title">📌 小结：四种组帧方法的现状</div>
+<p>由于字符计数法对计数字段错误极为敏感，而字节填充法在实现上较为复杂且存在兼容性问题，因此目前更常用的组帧方法是<strong>零比特填充法</strong>和<strong>违规编码法</strong>。</p>
+<table class="tbl">
+  <caption>表 3.1 四种组帧方法对比</caption>
+  <tr><th>方法</th><th>定界手段</th><th>透明传输实现</th><th>主要问题/特点</th></tr>
+  <tr><td>字符计数法</td><td>首部计数字段（含自身总字节数）</td><td>无特殊处理</td><td>计数出错即失去同步，很少使用</td></tr>
+  <tr><td>字节填充法</td><td>控制字符 SOH/EOT</td><td>特殊字符前插入 ESC 转义</td><td>实现复杂、存在兼容性问题</td></tr>
+  <tr><td>零比特填充法</td><td>标志比特串 01111110</td><td>5 个连续"1"后填"0"/删"0"</td><td>易于硬件实现，HDLC 采用</td></tr>
+  <tr><td>违规编码法</td><td>违规电平对（如"高-高"）</td><td>无须填充</td><td>仅适用于冗余编码环境，IEEE 802 采用</td></tr>
+</table>
+</div>

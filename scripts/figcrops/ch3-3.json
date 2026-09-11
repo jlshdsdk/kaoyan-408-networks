@@ -1,0 +1,17 @@
+[
+  {"page":100,"rect":[30,14,78,35],"out":"fig-3-21.png","caption":"图3.21 IEEE 802协议层与OSI参考模型的比较","src":"教材P88","book":"textbook"},
+  {"page":102,"rect":[12,8,88,38],"out":"fig-3-22.png","caption":"图3.22 传播时延对载波监听的影响","src":"教材P90","book":"textbook"},
+  {"page":103,"rect":[12,43,82,68],"out":"fig-3-23.png","caption":"图3.23 以太网V2标准的MAC帧格式","src":"教材P91","book":"textbook"},
+  {"page":105,"rect":[18,51,87,71],"out":"fig-3-24.png","caption":"图3.24 基本服务集和扩展服务集","src":"教材P93","book":"textbook"},
+  {"page":106,"rect":[22,8,82,28],"out":"fig-3-25.png","caption":"图3.25 由若干处于平等地位的移动站临时组成的对等网络","src":"教材P94","book":"textbook"},
+  {"page":106,"rect":[35,47,68,64],"out":"fig-3-26.png","caption":"图3.26 A站和B站同时向AP发送数据，发生冲突","src":"教材P94","book":"textbook"},
+  {"page":108,"rect":[12,37,88,63],"out":"fig-3-27.png","caption":"图3.27 使用RTS和CTS帧的冲突避免","src":"教材P96","book":"textbook"},
+  {"page":109,"rect":[15,31,87,60],"out":"fig-3-28.png","caption":"图3.28 数据帧以及三种常用的控制帧（RTS帧、CTS帧和ACK帧）的格式","src":"教材P97","book":"textbook"},
+  {"page":110,"rect":[15,31,87,48],"out":"fig-3-29.png","caption":"图3.29 链路上的802.11帧和802.3帧","src":"教材P98","book":"textbook"},
+  {"page":111,"rect":[12,54,88,74],"out":"fig-3-30.png","caption":"图3.30 插入VLAN标签后变成了802.1Q帧","src":"教材P99","book":"textbook"},
+  {"page":112,"rect":[18,8,87,26],"out":"fig-3-31.png","caption":"图3.31 利用以太网交换机构成虚拟局域网","src":"教材P100","book":"textbook"},
+  {"page":125,"rect":[10,41,90,65],"out":"fig-3-32.png","caption":"图3.32 由相距较远的局域网通过路由器与广域网相连而成的互联网","src":"教材P113","book":"textbook"},
+  {"page":126,"rect":[18,43,82,61],"out":"fig-3-33.png","caption":"图3.33 PPP帧的格式","src":"教材P114","book":"textbook"},
+  {"page":127,"rect":[22,9,82,34],"out":"fig-3-34.png","caption":"图3.34 PPP的状态图","src":"教材P115","book":"textbook"},
+  {"page":131,"rect":[10,7,90,31],"out":"fig-3-35.png","caption":"图3.35 以太网交换机中的交换表","src":"教材P119","book":"textbook"}
+]

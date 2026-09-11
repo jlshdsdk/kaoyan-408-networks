@@ -1,0 +1,18 @@
+[
+  {"page": 82, "rect": [26, 16, 80, 33], "out": "quiz-4.2-q66.png", "caption": "第66题配图", "book": "choice", "src": "选择题做题本P82"},
+  {"page": 84, "rect": [22, 31, 82, 51], "out": "quiz-4.2-q74.png", "caption": "第74题配图", "book": "choice", "src": "选择题做题本P84"},
+  {"page": 86, "rect": [20, 15, 86, 46], "out": "quiz-4.2-q79.png", "caption": "第79题配图", "book": "choice", "src": "选择题做题本P86"},
+  {"page": 87, "rect": [30, 42, 75, 63], "out": "quiz-4.2-q84.png", "caption": "第84题配图", "book": "choice", "src": "选择题做题本P87"},
+  {"page": 88, "rect": [28, 60, 78, 78], "out": "quiz-4.2-q89.png", "caption": "第89题配图", "book": "choice", "src": "选择题做题本P88"},
+  {"page": 89, "rect": [28, 11, 78, 23], "out": "quiz-4.2-q90.png", "caption": "第90题配图", "book": "choice", "src": "选择题做题本P89"},
+  {"page": 89, "rect": [14, 52, 88, 77], "out": "quiz-4.2-q92.png", "caption": "第92题配图", "book": "choice", "src": "选择题做题本P89"},
+  {"page": 19, "rect": [10, 46, 62, 64], "out": "quiz-4.2-comp8.png", "caption": "综合题8配图", "book": "comp", "src": "综合题做题本P19"},
+  {"page": 21, "rect": [14, 15, 62, 46], "out": "quiz-4.2-comp10.png", "caption": "综合题10配图：IP分组首部格式", "book": "comp", "src": "综合题做题本P21"},
+  {"page": 23, "rect": [24, 12, 80, 34], "out": "quiz-4.2-comp12.png", "caption": "综合题12配图", "book": "comp", "src": "综合题做题本P23"},
+  {"page": 24, "rect": [26, 16, 82, 31], "out": "quiz-4.2-comp13.png", "caption": "综合题13配图", "book": "comp", "src": "综合题做题本P24"},
+  {"page": 25, "rect": [26, 13, 82, 34], "out": "quiz-4.2-comp14.png", "caption": "综合题14配图", "book": "comp", "src": "综合题做题本P25"},
+  {"page": 26, "rect": [15, 11, 88, 27], "out": "quiz-4.2-comp15.png", "caption": "综合题15配图", "book": "comp", "src": "综合题做题本P26"},
+  {"page": 27, "rect": [24, 11, 78, 35], "out": "quiz-4.2-comp16.png", "caption": "综合题16配图", "book": "comp", "src": "综合题做题本P27"},
+  {"page": 28, "rect": [26, 14, 80, 41], "out": "quiz-4.2-comp17.png", "caption": "综合题17配图", "book": "comp", "src": "综合题做题本P28"},
+  {"page": 29, "rect": [13, 14, 90, 33], "out": "quiz-4.2-comp18.png", "caption": "综合题18配图", "book": "comp", "src": "综合题做题本P29"}
+]

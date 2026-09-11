@@ -1,0 +1,93 @@
+[
+ {
+  "page": 149,
+  "rect": [
+   18,
+   61,
+   84,
+   89
+  ],
+  "out": "fig-4-5.png",
+  "caption": "图4.5 IP数据报的格式",
+  "src": "教材P137",
+  "book": "textbook"
+ },
+ {
+  "page": 151,
+  "rect": [
+   12,
+   47.4,
+   82,
+   65.6
+  ],
+  "out": "fig-4-6.png",
+  "caption": "图4.6 IP分片的例子",
+  "src": "教材P139",
+  "book": "textbook"
+ },
+ {
+  "page": 152,
+  "rect": [
+   18,
+   8,
+   84,
+   28.5
+  ],
+  "out": "fig-4-7.png",
+  "caption": "图4.7 分类的IP地址",
+  "src": "教材P140",
+  "book": "textbook"
+ },
+ {
+  "page": 155,
+  "rect": [
+   24,
+   26,
+   80,
+   41
+  ],
+  "out": "fig-4-8.png",
+  "caption": "图4.8 路由聚合的例子",
+  "src": "教材P143",
+  "book": "textbook"
+ },
+ {
+  "page": 157,
+  "rect": [
+   14,
+   41,
+   88,
+   68
+  ],
+  "out": "fig-4-9.png",
+  "caption": "图4.9 NAT路由器的工作原理",
+  "src": "教材P145",
+  "book": "textbook"
+ },
+ {
+  "page": 160,
+  "rect": [
+   10,
+   18,
+   92,
+   44
+  ],
+  "out": "fig-4-10.png",
+  "caption": "图4.10 ARP的工作原理",
+  "src": "教材P148",
+  "book": "textbook"
+ },
+ {
+  "page": 160,
+  "rect": [
+   12,
+   77.5,
+   90,
+   91
+  ],
+  "out": "fig-4-11.png",
+  "caption": "图4.11 使用ARP的4种典型情况",
+  "src": "教材P148",
+  "book": "textbook"
+ }
+]

@@ -1,0 +1,132 @@
+[
+ {
+  "page": 43,
+  "rect": [
+   15,
+   18.5,
+   85,
+   29.2
+  ],
+  "out": "fig-2-1.png",
+  "caption": "图2.1 一个单向通信系统的模型",
+  "src": "教材P31",
+  "book": "textbook"
+ },
+ {
+  "page": 45,
+  "rect": [
+   18,
+   29.5,
+   82,
+   61.5
+  ],
+  "out": "fig-2-2.png",
+  "caption": "图2.2 常用的数字数据编码",
+  "src": "教材P33",
+  "book": "textbook"
+ },
+ {
+  "page": 46,
+  "rect": [
+   18,
+   45.5,
+   85,
+   77
+  ],
+  "out": "fig-2-3.png",
+  "caption": "图2.3 数字调制的三种方式",
+  "src": "教材P34",
+  "book": "textbook"
+ },
+ {
+  "page": 47,
+  "rect": [
+   18,
+   38.7,
+   85,
+   60
+  ],
+  "out": "fig-2-4.png",
+  "caption": "图2.4 QAM-16 和 QAM-64 的星座图",
+  "src": "教材P35",
+  "book": "textbook"
+ },
+ {
+  "page": 54,
+  "rect": [
+   20,
+   53.5,
+   80,
+   65.3
+  ],
+  "out": "fig-2-5.png",
+  "caption": "图2.5 双绞线的结构",
+  "src": "教材P42",
+  "book": "textbook"
+ },
+ {
+  "page": 54,
+  "rect": [
+   20,
+   78,
+   80,
+   88
+  ],
+  "out": "fig-2-6.png",
+  "caption": "图2.6 同轴电缆的结构",
+  "src": "教材P42",
+  "book": "textbook"
+ },
+ {
+  "page": 55,
+  "rect": [
+   15,
+   18.5,
+   85,
+   30
+  ],
+  "out": "fig-2-7.png",
+  "caption": "图2.7 光波在纤芯中的传播",
+  "src": "教材P43",
+  "book": "textbook"
+ },
+ {
+  "page": 55,
+  "rect": [
+   15,
+   35.3,
+   88,
+   45.2
+  ],
+  "out": "fig-2-8.png",
+  "caption": "图2.8 多模光纤",
+  "src": "教材P43",
+  "book": "textbook"
+ },
+ {
+  "page": 55,
+  "rect": [
+   15,
+   52.4,
+   88,
+   60.8
+  ],
+  "out": "fig-2-9.png",
+  "caption": "图2.9 单模光纤",
+  "src": "教材P43",
+  "book": "textbook"
+ },
+ {
+  "page": 61,
+  "rect": [
+   18,
+   19,
+   82,
+   31
+  ],
+  "out": "fig-2-10.png",
+  "caption": "图2.10 传输介质与物理层",
+  "src": "教材P49",
+  "book": "textbook"
+ }
+]

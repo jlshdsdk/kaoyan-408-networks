@@ -1,0 +1,202 @@
+/* 考研408计算机网络带学网站 - 公共样式 */
+:root {
+  --primary: #1d4ed8;
+  --primary-light: #eff6ff;
+  --accent: #dc2626;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --green: #059669;
+  --amber: #d97706;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.85;
+  font-size: 16px;
+}
+/* 顶部导航 */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+}
+.topnav .inner {
+  max-width: 1080px; margin: 0 auto; padding: 0 16px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  min-height: 52px;
+}
+.topnav .brand {
+  font-weight: 700; color: var(--primary); text-decoration: none;
+  font-size: 17px; margin-right: 12px; white-space: nowrap;
+}
+.topnav a.chlink {
+  color: var(--text); text-decoration: none; font-size: 14.5px;
+  padding: 4px 10px; border-radius: 6px; white-space: nowrap;
+}
+.topnav a.chlink:hover, .topnav a.chlink.active { background: var(--primary-light); color: var(--primary); }
+
+/* 主体 */
+main { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px; }
+.crumbs { font-size: 13.5px; color: var(--text-light); margin-bottom: 18px; }
+.crumbs a { color: var(--text-light); text-decoration: none; }
+.crumbs a:hover { color: var(--primary); }
+
+h1.page-title {
+  font-size: 30px; line-height: 1.3; margin: 6px 0 4px; color: #111827;
+  padding-bottom: 12px; border-bottom: 3px solid var(--primary);
+}
+.subtitle { color: var(--text-light); font-size: 14.5px; margin-bottom: 26px; }
+h2.sec {
+  font-size: 24px; margin: 44px 0 14px; color: var(--primary);
+  border-left: 5px solid var(--primary); padding-left: 12px; line-height: 1.4;
+}
+h3.sub { font-size: 19.5px; margin: 32px 0 10px; color: #111827; }
+h4 { font-size: 17px; margin: 22px 0 8px; }
+p { margin: 10px 0; }
+a { color: var(--primary); }
+strong { color: #111827; }
+
+/* 卡片与提示框 */
+.box {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 18px; margin: 16px 0;
+}
+.box .box-title { font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.box.concept { border-left: 4px solid var(--primary); background: var(--primary-light); }
+.box.tip { border-left: 4px solid var(--green); background: #ecfdf5; }
+.box.warn { border-left: 4px solid var(--amber); background: #fffbeb; }
+.box.exam { border-left: 4px solid var(--accent); background: #fef2f2; }
+
+/* 徽标 */
+.badge {
+  display: inline-block; font-size: 12px; font-weight: 700; line-height: 1;
+  padding: 4px 8px; border-radius: 999px; vertical-align: 2px; white-space: nowrap;
+}
+.badge.kao { background: var(--accent); color: #fff; }
+.badge.ext { background: #7c3aed; color: #fff; }
+.badge.imp { background: var(--amber); color: #fff; }
+
+/* 插图 */
+.figure, figure.fig {
+  margin: 22px auto; text-align: center;
+}
+.figure img, figure.fig img {
+  max-width: 100%; height: auto; border: 1px solid var(--border);
+  border-radius: 8px; background: #fff; padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.figure figcaption, figure.fig figcaption {
+  font-size: 14px; color: var(--text-light); margin-top: 8px;
+}
+/* 教材原图引用说明 */
+.src-note { font-size: 12.5px; color: #9ca3af; }
+
+/* 表格 */
+table.tbl {
+  border-collapse: collapse; width: 100%; margin: 16px 0; background: #fff;
+  font-size: 14.5px;
+}
+table.tbl th, table.tbl td {
+  border: 1px solid var(--border); padding: 8px 12px; text-align: left;
+}
+table.tbl th { background: var(--primary-light); color: #1e3a8a; font-weight: 700; }
+table.tbl tr:nth-child(even) td { background: #fafbfc; }
+
+/* 公式 */
+.formula {
+  background: #fff; border: 1px dashed var(--border); border-radius: 8px;
+  padding: 10px 16px; margin: 14px 0; overflow-x: auto; text-align: center;
+}
+
+/* 习题区 */
+.quiz-item {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 20px; margin: 18px 0;
+}
+.quiz-item .q-no { font-weight: 700; color: var(--primary); }
+.quiz-item .q-src { font-size: 12.5px; color: #9ca3af; margin-left: 8px; }
+.choices { margin: 8px 0 4px; padding-left: 8px; list-style: none; }
+.choices li { margin: 3px 0; }
+details.ans {
+  margin-top: 10px; border: 1px solid var(--border); border-radius: 8px;
+  background: #f0fdf4; overflow: hidden;
+}
+details.ans summary {
+  cursor: pointer; font-weight: 700; color: var(--green);
+  padding: 9px 14px; user-select: none; list-style: none;
+}
+details.ans summary::before { content: "▸ "; }
+details.ans[open] summary::before { content: "▾ "; }
+details.ans .ans-body { padding: 4px 16px 14px; border-top: 1px dashed #bbf7d0; }
+details.ans .ans-key { font-weight: 700; color: var(--accent); }
+
+/* 上/下一页 */
+.pager {
+  display: flex; justify-content: space-between; gap: 12px; margin-top: 48px;
+}
+.pager a {
+  flex: 1; text-decoration: none; border: 1px solid var(--border);
+  background: #fff; border-radius: var(--radius); padding: 12px 16px;
+  color: var(--text);
+}
+.pager a:hover { border-color: var(--primary); color: var(--primary); }
+.pager .prev { text-align: left; }
+.pager .next { text-align: right; }
+.pager .label { font-size: 12.5px; color: var(--text-light); display: block; }
+
+/* 首页 */
+.hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #3b82f6 100%);
+  color: #fff; border-radius: 16px; padding: 40px 32px; margin-bottom: 30px;
+}
+.hero h1 { margin: 0 0 10px; font-size: 32px; }
+.hero p { margin: 4px 0; opacity: .92; font-size: 15.5px; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card {
+  background: #fff; border: 1px solid var(--border); border-radius: 12px;
+  padding: 18px 20px; text-decoration: none; color: var(--text); display: block;
+  transition: box-shadow .15s, transform .15s;
+}
+.card:hover { box-shadow: 0 6px 20px rgba(29,78,216,.12); transform: translateY(-2px); }
+.card .card-title { font-weight: 700; color: var(--primary); font-size: 17px; margin-bottom: 6px; }
+.card .card-desc { font-size: 13.5px; color: var(--text-light); }
+.toc-line { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border); padding: 5px 2px; font-size: 14.5px; }
+.toc-line a { text-decoration: none; }
+.toc-line .pg { color: #9ca3af; font-size: 13px; white-space: nowrap; }
+
+footer.site-footer {
+  border-top: 1px solid var(--border); margin-top: 40px; padding: 20px 16px 34px;
+  text-align: center; color: #9ca3af; font-size: 13px;
+}
+
+/* 章节地图（导学页） */
+.map-flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0; }
+.map-node {
+  background: var(--primary-light); border: 1.5px solid var(--primary);
+  color: var(--primary); font-weight: 600; border-radius: 8px; padding: 6px 12px;
+  font-size: 14px; text-decoration: none;
+}
+.map-node:hover { background: var(--primary); color: #fff; }
+.map-arrow { color: #9ca3af; font-weight: 700; }
+
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  h1.page-title { font-size: 24px; }
+  h2.sec { font-size: 20px; }
+  .pager { flex-direction: column; }
+  .pager .next { text-align: left; }
+}
+@media print {
+  .topnav, .pager, details.ans summary { display: none; }
+  details.ans { display: block; }
+}

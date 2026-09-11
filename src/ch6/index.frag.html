@@ -1,0 +1,63 @@
+<h1 class="page-title">第6章 应用层 · 导学</h1>
+<p class="subtitle">依据王道教材章首【考纲内容】【复习提示】整理（教材 P267）· 本章属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-kaogang">考纲要求</h2>
+<p>408 考试大纲对本章的要求分为五块：</p>
+<ol>
+  <li><strong>网络应用模型</strong>
+    <ul>
+      <li>客户/服务器模型；P2P 模型。</li>
+    </ul>
+  </li>
+  <li><strong>域名系统（DNS）</strong>
+    <ul>
+      <li>层次域名空间；域名服务器；域名解析过程。</li>
+    </ul>
+  </li>
+  <li><strong>文件传输协议（FTP）</strong>
+    <ul>
+      <li>FTP 的工作原理；控制连接与数据连接。</li>
+    </ul>
+  </li>
+  <li><strong>电子邮件（E-mail）</strong>
+    <ul>
+      <li>电子邮件系统的组成结构；电子邮件格式与 MIME；SMTP 与 POP3。</li>
+    </ul>
+  </li>
+  <li><strong>万维网（WWW）</strong>
+    <ul>
+      <li>WWW 的概念与组成结构；HTTP。</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 class="sec" id="sec-tips">复习提示</h2>
+<p>本章内容既可按<strong>选择题</strong>的形式考查，又可结合其他章节的内容出<strong>综合题</strong>。因此，牢固掌握本章的几个典型应用层协议是关键。我们生活中的很多网络应用都建立在这些协议的基础上，学习时注意联系实际，提高学习兴趣，才会获得更好的学习效果。</p>
+
+<h2 class="sec" id="sec-analysis">考点分布与备考建议</h2>
+<div class="box tip"><div class="box-title">📌 备考建议</div>
+<ul>
+  <li>本章是<strong>"协议记忆 + 流程理解"</strong>并重的章节：各协议使用的传输层协议与端口号（DNS/53 UDP、FTP 21/20、SMTP/25、POP3/110、HTTP/80）是选择题的送分点，务必记牢成表。</li>
+  <li>DNS 的<strong>递归查询与迭代查询</strong>区分（2010、2016、2020、2021 统考）、FTP 的<strong>控制连接与数据连接</strong>（2009、2017、2023）、HTTP 的<strong>持久连接与非持久连接时延分析</strong>（2011、2020、2022、2024）都是反复考查的高频考点，要练到熟练。</li>
+  <li>HTTP 的"无连接、无状态"表述、Cookie 工作原理（2015）、常用请求方法的功能辨析，几乎每隔几年就考一次。</li>
+  <li>综合题方面，HTTP 页面加载时延可与第 3 章 TCP 拥塞控制、第 4 章 IP/DNS 联动出题，建议结合 6.6 节疑难难点中的"以太网主机开机访问 Web 站点全过程"建立跨层视角。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="sec-map">章节地图</h2>
+<div class="map-flow">
+  <a class="map-node" href="6.1.html">6.1 网络应用模型</a><span class="map-arrow">→</span>
+  <a class="map-node" href="6.2.html">6.2 域名系统 DNS</a><span class="map-arrow">→</span>
+  <a class="map-node" href="6.3.html">6.3 文件传输协议 FTP</a><span class="map-arrow">→</span>
+  <a class="map-node" href="6.4.html">6.4 电子邮件</a><span class="map-arrow">→</span>
+  <a class="map-node" href="6.5.html">6.5 万维网 WWW</a><span class="map-arrow">→</span>
+  <a class="map-node" href="6.6.html">6.6 小结及疑难点</a>
+</div>
+
+<h2 class="sec" id="sec-toc">本章目录</h2>
+<div class="toc-line"><a href="6.1.html">6.1 网络应用模型</a>（<a href="6.1.html#sec-6-1-1">6.1.1 客户/服务器模型</a> · <a href="6.1.html#sec-6-1-2">6.1.2 P2P 模型</a>）</div>
+<div class="toc-line"><a href="6.2.html">6.2 域名系统 DNS</a>（<a href="6.2.html#sec-6-2-1">6.2.1 层次域名空间</a> · <a href="6.2.html#sec-6-2-2">6.2.2 域名服务器</a> · <a href="6.2.html#sec-6-2-3">6.2.3 域名解析过程</a>）</div>
+<div class="toc-line"><a href="6.3.html">6.3 文件传输协议 FTP</a>（<a href="6.3.html#sec-6-3-1">6.3.1 FTP 的工作原理</a> · <a href="6.3.html#sec-6-3-2">6.3.2 控制连接与数据连接</a>）</div>
+<div class="toc-line"><a href="6.4.html">6.4 电子邮件</a>（<a href="6.4.html#sec-6-4-1">6.4.1 电子邮件系统的组成结构</a> · <a href="6.4.html#sec-6-4-2">6.4.2 电子邮件格式与 MIME</a> · <a href="6.4.html#sec-6-4-3">6.4.3 SMTP 和 POP3</a>）</div>
+<div class="toc-line"><a href="6.5.html">6.5 万维网 WWW</a>（<a href="6.5.html#sec-6-5-1">6.5.1 万维网的概念与组成结构</a> · <a href="6.5.html#sec-6-5-2">6.5.2 超文本传输协议 HTTP</a>）</div>
+<div class="toc-line"><a href="6.6.html">6.6 本章小结及疑难点</a></div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.9 本章小结及疑难点 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第3章 数据链路层</a> › <span>3.9 本章小结及疑难点</span></div>
+<h1 class="page-title">3.9 本章小结及疑难点</h1>
+<p class="subtitle">对应王道教材 3.9 节（教材 P126）· 本章要点回顾与疑难辨析</p>
+
+<h2 class="sec" id="sec-3-9-0">本章要点回顾</h2>
+<ul>
+  <li><strong>组帧</strong>：解决帧定界问题，主要方法包括字符计数法、字节填充法（首尾定界符 + 转义）、零比特填充法（01111110 定界 + 每 5 个连续 1 后补 0）、违规编码法。</li>
+  <li><strong>差错控制</strong>：检错编码（奇偶校验、循环冗余校验 CRC——模 2 除法求冗余码）与纠错编码（海明码，海明距离与检错/纠错能力的关系）。</li>
+  <li><strong>流量控制与可靠传输</strong>：停止-等待协议、后退 N 帧（GBN）协议、选择重传（SR）协议；窗口大小的约束——接收窗口为 1、用 \(n\) 比特编号时发送窗口 \(\le 2^n-1\)；GBN 接收窗口为 1，SR 接收窗口 \(>1\)。</li>
+  <li><strong>介质访问控制</strong>：信道划分（FDM/TDM/WDM/CDMA——码片序列正交规格化内积）；随机访问（ALOHA、CSMA、CSMA/CD——争用期 \(2\tau\)、最小帧长 = 2 × 单向传播时延 × 传输速率、截断二进制指数退避、16 次重传失败放弃）；CSMA/CA——应用于 802.11 无线网，帧间间隔 SIFS &lt; PIFS &lt; DIFS、NAV 虚拟载波监听、RTS/CTS 信道预约；轮询访问（令牌传递协议，适用于环形/总线形局域网）。</li>
+  <li><strong>局域网</strong>：IEEE 802 参考模型拆分为 LLC 与 MAC 子层；以太网（逻辑总线、物理星形）采用无连接尽最大努力交付 + 曼彻斯特编码；MAC 帧格式（目的/源地址各 6B、类型 2B、数据 46～1500B、FCS 4B，最短帧长 64B 不含 8B 前导码）；高速以太网中仅 10 吉比特以太网只支持全双工；802.11 无线局域网的 BSS/ESS/Ad hoc 组成、CSMA/CA、802.11 帧的四地址字段（由"去往 AP/来自 AP"决定）；VLAN——802.1Q 帧在源地址与类型字段间插入 4B 标签，12 位 VID 支持最多 4096 个 VLAN，隔离广播域。</li>
+  <li><strong>广域网与 PPP</strong>：广域网由节点交换机（工作在单个网络内）与点对点高速链路组成，不等于互联网；PPP 面向字节、由 LCP + NCP + 封装方法三部分组成，帧格式 F(0x7E)/A(0xFF)/C(0x03)/协议(2B)/信息(0～1500B)/FCS(2B)，异步链路字节填充、同步链路零比特填充，数据传输阶段不使用编号与确认（不可靠服务）。</li>
+  <li><strong>数据链路层设备</strong>：集线器（物理层，不隔离冲突域和广播域）；网桥/以太网交换机（数据链路层，隔离冲突域、不隔离广播域）；交换机是多端口网桥，自学习算法——收帧记 {源 MAC, 入端口}，单播查表精准转发或未知泛洪，广播/组播泛洪，表项有老化时间；直通交换（时延小、不检错）与存储转发（可靠、支持速率匹配）两种模式；冗余链路用生成树协议 STP 消除环路。</li>
+</ul>
+
+<h2 class="sec" id="sec-3-9-1">疑难点 1：为何连续 ARQ 在接收窗口为 1、用 \(n\) 比特编号时，发送窗口最多只能是 \(2^n-1\)？</h2>
+<p>在连续 ARQ 协议中，若接收窗口大小为 1，则发送窗口大小不得超过 \(2^n-1\)，否则将导致<strong>新帧与重传帧无法区分</strong>，造成数据错误。假设用 3 比特进行编号，可表示 0～7 共 8 个不同序号。</p>
+<p>具体来看：设发送窗口为 8，发送方一次性发出 0～7 号帧后暂停。</p>
+<ul>
+  <li>若所有确认都成功返回，发送方将接着发送下一轮序号为 0～7 的新帧；</li>
+  <li>若所有确认都丢失，发送方超时后会重传原来的 0～7 号旧帧。</li>
+</ul>
+<p>由于接收窗口为 1，接收方只根据序号判断是否接收，<strong>无法区分收到的 0～7 是新帧还是重传帧</strong>。若把重传帧误认为是新数据，就会造成重复或错误。因此，发送窗口不能等于 8。只要将其限制为 7，就能保证已发送未确认的帧和未来新帧的序号不会完全重叠，从而避免歧义。</p>
+
+<h2 class="sec" id="sec-3-9-2">疑难点 2：为什么 PPP 不采用帧编号和确认机制来实现可靠传输？</h2>
+<p>PPP 不使用帧序号和确认机制主要有两方面原因：</p>
+<p>首先，在因特网中，PPP 承载的是 IP 数据报。即使链路层实现可靠传输，数据在路由器的网络层仍可能因拥塞被丢弃，因此<strong>链路层的可靠性无法保证端到端的可靠交付</strong>。</p>
+<p>其次，现代物理链路误码率很低，若引入重传和确认机制，只会增加开销和时延，得不偿失。实际上，PPP 通过 FCS 字段对每帧做 CRC 校验：发现差错立即丢弃，绝不向上层传递错误数据；而真正的差错恢复由高层协议（如 TCP）在端到端基础上完成。</p>
+<div class="box concept"><div class="box-title">📌 结论</div>
+<p>PPP 采用"有错即弃、可靠由上层负责"的设计，既轻量高效，又符合端到端原则。</p>
+</div>
+
+<h2 class="sec" id="sec-3-9-3">疑难点 3：在以太网中，为什么说"若一个帧在冲突窗口内未发生冲突，则后续不会再发生冲突"？</h2>
+<p>在 CSMA/CD 协议机制下，节点发送前先侦听信道，仅在空闲时开始发送。<strong>冲突窗口是检测冲突的最晚时限</strong>：若存在冲突，最迟会在该时间内被发送方感知。具体而言，假设节点 A 开始发送帧。若在帧的前 \(2\tau\)（\(r\) 为信号从 A 到最远节点的传播时延）内未检测到冲突，说明：</p>
+<ul>
+  <li>此时帧的首部已到达所有其他节点；</li>
+  <li>其他节点在侦听到信道忙后，不会启动新发送。</li>
+</ul>
+<p>因此，只要在冲突窗口内未发生冲突，此后信道已被该帧"占据"，其他节点将持续侦听到载波而保持沉默，<strong>不可能再产生新冲突</strong>。</p>
+
+<h2 class="sec" id="sec-3-9-4">疑难点 4：将以太网速率从 10Mb/s 提升到 100Mb/s 时，为满足 CSMA/CD 协议的冲突检测要求，需做哪些调整？</h2>
+<p>由于 CSMA/CD 协议要求最短帧的发送时间不小于冲突窗口（\(2\tau\)），当速率提高 10 倍后，若网段长度不变，信号传播时延 \(r\) 不变，但发送同样长度帧的时间缩短为原来的 1/10，则无法保证在冲突窗口内完成发送，导致冲突无法被检测。为此，100Base-T 以太网做了两项关键调整：</p>
+<ul>
+  <li>将网段最大长度从 500m 减小到 100m，以缩短传播时延 \(r\)；</li>
+  <li>将帧间最小间隔从 9.6μs 缩减为 0.96μs，以匹配更高传输速率。</li>
+</ul>
+<p>这两项调整使最短帧（64B）的发送时间不小于冲突窗口，以维持 CSMA/CD 协议正常工作。</p>
+
+<div class="pager">
+      <a class="prev" href="3.8.html"><span class="label">上一篇</span>3.8 数据链路层设备</a>
+      <a class="next" href="quiz.html"><span class="label">下一篇</span>第3章 习题</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

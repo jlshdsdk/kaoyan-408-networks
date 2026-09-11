@@ -1,0 +1,54 @@
+<h1 class="page-title">6.1 网络应用模型</h1>
+<p class="subtitle">对应王道教材 6.1 节（教材 P267–P269）· 本节属于 408 考纲范围</p>
+
+<p><strong>网络应用模型</strong>是计算机网络中用于描述应用程序之间通信方式和结构的框架，主要包括<strong>客户/服务器模型（C/S）</strong>和<strong>对等模型（P2P）</strong>两种。</p>
+
+<h2 class="sec" id="sec-6-1-1">6.1.1 客户/服务器模型 <span class="badge kao">考点</span></h2>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：C/S 模型和 P2P 模型的特点（2019 统考）</div></div>
+<p>在<strong>客户/服务器</strong>（Client/Server，C/S）模型中，存在一个<strong>始终处于开启状态</strong>的主机，称为<strong>服务器</strong>，它负责响应来自多个称为<strong>客户</strong>的主机的服务请求，如图 6.1 所示。其工作流程如下：</p>
+<ol>
+  <li>服务器持续处于接收请求的状态；</li>
+  <li>客户<strong>主动</strong>发起服务请求，并等待接收处理结果；</li>
+  <li>服务器收到请求后，解析并处理该请求，将结果返回给客户。</li>
+</ol>
+<figure class="fig"><img src="../assets/ch6/fig-6-1.png" alt="图6.1 C/S模型" loading="lazy"><figcaption>图 6.1 C/S 模型（王道教材 P268）</figcaption></figure>
+<p>服务器上运行着专门提供某种服务的程序，能够同时处理多个来自远程或本地客户程序的请求。<strong>客户程序必须事先知道服务器程序的地址</strong>；而服务器程序启动后便一直不断运行着，被动等待并接收来自各地客户程序的请求，因此<strong>服务器程序无须知道客户程序的地址</strong>。</p>
+<p>客户/服务器模型的主要<strong>特征</strong>：客户是服务请求方，服务器是服务提供方。例如在 Web 应用中，始终运行的 Web 服务器响应运行在客户上的浏览器所发出的请求。采用 C/S 模型的常见应用包括 <strong>Web、文件传输协议（FTP）和电子邮件（SMTP/POP3/IMAP）</strong>等。</p>
+<div class="box tip"><div class="box-title">📌 客户/服务器模型的主要特点</div>
+<ol>
+  <li><strong>网络中各计算机的地位不平等</strong>：服务器可通过用户权限控制来管理客户，整个网络的管理工作由少数服务器集中承担，因此管理更加集中和便捷；</li>
+  <li><strong>客户之间通常不直接通信</strong>：例如在 Web 应用中，两个浏览器不会直接交换数据；</li>
+  <li><strong>可扩展性不佳</strong>：受服务器性能和网络带宽的制约，单个服务器支持的客户数量有限。</li>
+</ol>
+</div>
+
+<h2 class="sec" id="sec-6-1-2">6.1.2 P2P 模型 <span class="badge kao">考点</span></h2>
+<p>在 C/S 模型中，服务器的性能决定了整个系统的吞吐能力，当面临大量用户请求时，服务器极易成为系统瓶颈。<strong>对等</strong>（Peer-to-Peer，P2P）模型的<strong>思想</strong>是：网络中的内容不再集中存储于中心服务器，<strong>每个节点同时具备下载和上传的能力</strong>，其权利与义务大体是对等的，如图 6.2 所示。</p>
+<figure class="fig"><img src="../assets/ch6/fig-6-2.png" alt="图6.2 P2P模型" loading="lazy"><figcaption>图 6.2 P2P 模型（王道教材 P268）</figcaption></figure>
+<p>在 P2P 模型中，各计算机没有固定的客户和服务器角色划分。任意两台计算机——称为<strong>对等方</strong>（Peer），均可直接相互通信。从实现机制上看，P2P 模型本质上仍基于客户/服务器模式：每个节点访问其他节点资源时扮演客户角色，为其他节点提供资源时又充当服务器角色。</p>
+<div class="box tip"><div class="box-title">📌 与 C/S 模型相比，P2P 模型的优点</div>
+<ol>
+  <li><strong>减轻了中心服务器的计算和带宽压力</strong>，消除了对单一服务器的依赖，可将任务分散到众多节点上，从而大幅提升系统的整体效率和资源利用率；</li>
+  <li><strong>多个节点之间可直接通信</strong>，无须通过中心服务器中转；</li>
+  <li><strong>可扩展性好</strong>：传统服务器受限于处理能力和带宽，只能响应有限数量的并发请求，而 P2P 网络的容量随节点数量的增加而自然增长；</li>
+  <li><strong>网络健壮性强</strong>：单个节点的失效通常不会影响其他节点的正常运行。</li>
+</ol>
+</div>
+<div class="box warn"><div class="box-title">⚠️ P2P 模型的缺点</div>
+<p>节点在获取服务的同时，还需为其他节点提供服务，这会占用较多的系统资源（如 CPU、内存和磁盘 I/O），可能影响本机性能，例如频繁进行 P2P 下载会对硬盘造成较大负担。据某些互联网调研机构统计，在某些年份，P2P 应用曾占互联网流量的 50%～90%，导致网络严重拥塞。因此，各互联网服务提供商（ISP）通常对 P2P 应用持限制或反对态度。</p>
+</div>
+
+<h3 class="sub">C/S 模型与 P2P 模型对比</h3>
+<table class="tbl">
+  <caption>表 6.a C/S 模型与 P2P 模型的特性对比（依据教材 P267–P268 归纳）</caption>
+  <tr><th>特性</th><th>客户/服务器（C/S）模型</th><th>P2P 模型</th></tr>
+  <tr><td>角色划分</td><td>固定：客户是请求方，服务器是提供方</td><td>不固定：每个节点兼具客户与服务器角色</td></tr>
+  <tr><td>节点间关系</td><td>客户之间通常不直接通信</td><td>任意对等方可直接通信</td></tr>
+  <tr><td>地位</td><td>各计算机地位不平等，管理集中</td><td>权利与义务对等</td></tr>
+  <tr><td>可扩展性</td><td>差，受服务器性能与带宽制约</td><td>好，容量随节点数增加而自然增长</td></tr>
+  <tr><td>健壮性</td><td>服务器失效则服务中断</td><td>单节点失效通常不影响其他节点</td></tr>
+  <tr><td>典型应用</td><td>Web、FTP、电子邮件（SMTP/POP3/IMAP）</td><td>文件分发、P2P 下载等</td></tr>
+</table>
+<div class="box exam"><div class="box-title">🎯 考法：网络应用模型的辨析（2019 统考真题视角）</div>
+<p>易错点有三：<strong>①</strong> 在 C/S 模型中，客户与客户之间<strong>不能</strong>直接通信（如 Web 应用中的两个浏览器之间）；<strong>②</strong> 在 C/S 模型中，主动发起通信的是客户，被动通信的是服务器；<strong>③</strong> 在向多用户分发一个文件时，P2P 模型通过将文件分发任务分散到多个节点、允许用户从多个对等方并行下载，通常比 C/S 模型所需的时间更短。</p>
+</div>

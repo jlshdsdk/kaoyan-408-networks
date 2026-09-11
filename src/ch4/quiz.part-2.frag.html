@@ -1,0 +1,1152 @@
+<h2 class="sec" id="q-4-3">选择题 · 4.3 IPv6（第 94～100 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 94 题</span><span class="q-src">单选</span></p>
+  <p>下一代因特网核心协议 IPv6 的地址长度是（　）</p>
+  <ul class="choices">
+    <li>A. 32 比特</li>
+    <li>B. 48 比特</li>
+    <li>C. 64 比特</li>
+    <li>D. 128 比特</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>IPv6 的地址用 16B（128 比特）表示，比 IPv4 长得多，地址空间是 IPv4 的 \(2^{96}\) 倍。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 95 题</span><span class="q-src">单选</span></p>
+  <p>与 IPv4 相比，IPv6（　）</p>
+  <ul class="choices">
+    <li>A. 采用 32 位 IP 地址</li>
+    <li>B. 增加了首部字段数量</li>
+    <li>C. 不提供 QoS 保障</li>
+    <li>D. 没有提供检验和字段</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>IPv6 采用 128 位地址；它减少了首部字段数量，仅包含 8 个字段；IPv6 支持 QoS（指在有限的带宽资源下，为业务提供端到端的服务质量保证），以满足实时、多媒体通信的需要。因为目前网络传输介质的可靠性较高，出现比特错误的可能性很低，且数据链路层和传输层有自己的校验，为了效率，IPv6 没有检验和字段。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 96 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 IPv6 地址 1A22:120D:0000:0000:72A2:0000:0000:00C0 的表示中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 1A22:120D::72A2:0000:0000:00C0</li>
+    <li>B. 1A22:120D::72A2:0:0:C0</li>
+    <li>C. 1A22::120D::72A2::00C0</li>
+    <li>D. 1A22:120D:0:0:72A2::C0</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>使用零压缩法时，双冒号"::"（表示零压缩）在一个地址中只能出现一次。也就是说，当有多处不相邻的 0 时，只能用"::"代表其中的一处。选项 C 中出现了两次"::"，是错误的表示。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 97 题</span><span class="q-src">单选</span></p>
+  <p>一个 IPv6 地址的简化写法为 8::D0:123:CDEF:89A，则其完整地址应该是（　）</p>
+  <ul class="choices">
+    <li>A. 8000:0000:0000:0000:00D0:1230:CDEF:89A0</li>
+    <li>B. 0008:0000:0000:0000:00D0:0123:CDEF:89A0</li>
+    <li>C. 8000:0000:0000:0000:D000:1230:CDEF:89A0</li>
+    <li>D. 0008:0000:0000:0000:00D0:0123:CDEF:089A</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>冒号十六进制记法表示 IPv6 地址的规则：① 多个连续区域为 0，可进行零压缩，但一个地址仅可出现一次零压缩；② 每个区域开头的 0 可省略，结尾的 0 不可省略。按照规则先将题中零压缩的部分展开，得到 8:0000:0000:0000:D0:123:CDEF:89A；每个区域应该有 4 位十六进制数，不足 4 位表示开头的 0 被省略，补充后得到 0008:0000:0000:0000:00D0:0123:CDEF:089A。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 98 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 IPv6 的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. IPv6 的首部长度是不可变的</li>
+    <li>B. IPv6 不允许在中间路由器进行分片</li>
+    <li>C. IPv6 采用了 16B 的地址，在可预见的将来不会用完</li>
+    <li>D. IPv6 使用了首部检验和来保证传输的正确性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>IPv6 的首部长度是固定的，因此不需要首部长度字段；IPv6 取消了检验和字段，这样就加快了路由器处理数据报的速度——数据链路层会丢弃检测出差错的帧，传输层也有相应的差错处理机制，因此网络层的差错检测可以精简掉。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 99 题</span><span class="q-src">单选</span></p>
+  <p>若一个路由器收到的 IPv6 数据报因太大而不能转发到链路上，则路由器将把该数据报（　）</p>
+  <ul class="choices">
+    <li>A. 丢弃</li>
+    <li>B. 暂存</li>
+    <li>C. 分片</li>
+    <li>D. 转发至能支持该数据报的链路上</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>IPv6 中不允许在中间路由器进行分片。因此，若路由器发现到来的数据报太大而不能转发到输出链路上，则直接丢弃该数据报，并向源点发送一个"分组太大"的 ICMPv6 报文，由源点自行进行分片后重发。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 100 题</span><span class="q-src">单选 · 2023 统考真题</span></p>
+  <p>下列关于 IPv4 和 IPv6 的叙述中，正确的是（　）</p>
+  <p class="choices-note">I. IPv6 地址空间是 IPv4 地址空间的 96 倍<br>II. IPv4 首部和 IPv6 基本首部的长度均可变<br>III. IPv4 向 IPv6 过渡可以采用双协议栈和隧道技术<br>IV. IPv6 首部的 Hop Limit 字段等价于 IPv4 首部的 TTL 字段</p>
+  <ul class="choices">
+    <li>A. 仅 I、II</li>
+    <li>B. 仅 I、IV</li>
+    <li>C. 仅 II、III</li>
+    <li>D. 仅 III、IV</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>IPv6 地址 128 位，IPv4 地址 32 位，IPv6 地址空间是 IPv4 的 \(2^{96}\) 倍，I 错误。IPv4 首部长度可变（20～60B），但 IPv6 基本首部长度固定为 40B，II 错误。IPv4 向 IPv6 过渡采用双协议栈和隧道技术，III 正确。IPv6 的 Hop Limit 与 IPv4 的 TTL 一样，每经过一个路由器减 1，减为 0 则丢弃，IV 正确。故选 D。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-4-4">选择题 · 4.4 路由算法与路由协议（第 101～127 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 101 题</span><span class="q-src">单选</span></p>
+  <p>下列关于动态路由选择和静态路由选择的主要区别的描述中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 动态路由选择需要维护整个网络的拓扑结构信息，而静态路由选择只需要维护部分拓扑结构信息</li>
+    <li>B. 动态路由选择可随网络的通信量或拓扑变化而自适应地调整，而静态路由选择则需要手工去调整相关的路由信息</li>
+    <li>C. 动态路由选择简单且开销小，静态路由选择复杂且开销大</li>
+    <li>D. 动态路由选择使用路由表，静态路由选择不使用路由表</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>静态路由选择使用手动配置的路由信息，实现简单且开销小，但不能及时适应网络状态的变化。动态路由选择通过路由选择协议，自动发现并维护路由信息，能及时适应网络状态的变化，实现复杂且开销大。动态路由选择和静态路由选择都使用路由表。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 102 题</span><span class="q-src">单选</span></p>
+  <p>下列关于路由算法的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 静态路由有时也被称为非自适应算法</li>
+    <li>B. 静态路由所使用的路由选择一旦启动就不能修改</li>
+    <li>C. 动态路由也称自适应算法，会根据网络的拓扑变化和流量变化改变路由决策</li>
+    <li>D. 动态路由算法需要实时获得网络的状态</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>静态路由也称非自适应算法，它不会估计流量和结构来调整其路由决策。但是，这并不说明路由选择是不能改变的，事实上用户可以随时配置路由表，B 错误。动态路由也称自适应算法，需要实时获取网络的状态，并根据网络的状态适时地改变路由决策。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 103 题</span><span class="q-src">单选</span></p>
+  <p>下列关于链路状态协议的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 仅相邻路由器需要交换各自的路由表</li>
+    <li>B. 全网路由器的拓扑数据库是一致的</li>
+    <li>C. 采用洪泛技术更新链路变化信息</li>
+    <li>D. 具有快速收敛的优点</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>在链路状态算法中，每个路由器在自己的链路状态变化时，将链路状态信息用洪泛法发送给网络中的其他路由器，发送的链路状态信息包括该路由器的相邻路由器及所有相邻链路的状态（并非交换各自的路由表，那是距离向量算法的做法）。链路状态算法具有快速收敛的优点，它能在网络拓扑发生变化时立即进行路由的重新计算，并及时向其他路由器发送最新的链路状态信息，使得各路由器的链路状态表能够尽量保持一致。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 104 题</span><span class="q-src">单选</span></p>
+  <p>在链路状态路由算法中，每个路由器都得到网络的完整拓扑结构后，使用（　）算法来找出它到其他路由器的路径长度。</p>
+  <ul class="choices">
+    <li>A. Prim 最小生成树算法</li>
+    <li>B. Dijkstra 最短路径算法</li>
+    <li>C. Kruskal 最小生成树算法</li>
+    <li>D. 拓扑排序</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在链路状态算法中，路由器通过交换每个节点到邻居节点的代价来构建一个完整的网络拓扑结构。然后，路由器使用 Dijkstra 最短路径算法来计算到所有节点的最短路径。最小生成树算法求得的是连通所有节点的总代价最小的树，并不能给出任意两点间的最短路径。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 105 题</span><span class="q-src">单选</span></p>
+  <p>下列关于分层路由的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 采用分层路由后，路由器被划分成区域</li>
+    <li>B. 每个路由器不仅知道如何将分组路由到自己区域的目标地址，还知道如何路由到其他区域</li>
+    <li>C. 采用分层路由后，可以将不同的网络连接起来</li>
+    <li>D. 对于大型网络，可能需要多级的分层路由来管理</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>采用分层路由后，路由器被划分为区域，每个路由器知道如何将分组路由到自己所在区域内的目标地址，但对于其他区域内的结构毫不知情。当不同的网络相互连接时，可将每个网络当作一个独立的区域，这样做的好处是一个网络中的路由器不必知道其他网络的拓扑结构。对于大型网络，可能需要多级的分层路由来管理。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 106 题</span><span class="q-src">单选</span></p>
+  <p>以下关于自治系统的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 自治系统划分区域的好处是，将利用洪泛法交换链路状态信息的范围局限在每个区域内，而不是整个自治系统</li>
+    <li>B. 采用分层划分区域的方法使交换信息的种类增多，同时也使 OSPF 协议更加简单</li>
+    <li>C. OSPF 协议将一个自治系统再划分为若干更小的范围，称为区域</li>
+    <li>D. 在一个区域内部的路由器只知道本区域的网络拓扑，而不知道其他区域的网络拓扑的情况</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>划分区域的好处是，将利用洪泛法交换链路状态信息的范围局限在每个区域内，而不是整个自治系统。因此，在一个区域内部的路由器只知道本区域的网络拓扑情况，而不知道其他区域的网络拓扑情况。采用分层划分区域的方法虽然使交换信息的种类增多了，同时也使 OSPF 协议更加复杂了，但是这样做却能使每个区域内部交换路由信息的通信量大大减少，进而使 OSPF 协议能够用于规模很大的自治系统中，B 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 107 题</span><span class="q-src">单选</span></p>
+  <p>在计算机网络中，路由选择协议的功能不包括（　）</p>
+  <ul class="choices">
+    <li>A. 交换网络状态或通路信息</li>
+    <li>B. 选择到达目的地的最佳路径</li>
+    <li>C. 更新路由表</li>
+    <li>D. 发现下一跳的物理地址</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>路由选择协议的功能通常包括：获取网络拓扑信息、构建路由表、在网络中更新路由信息、选择到达每个目的网络的最优路径、识别一个网络的无环通路等。发现下一跳的物理地址一般是通过其他方式（如 ARP）来实现的，不属于路由选择协议的功能。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 108 题</span><span class="q-src">单选</span></p>
+  <p>用于域间路由的协议是（　）</p>
+  <ul class="choices">
+    <li>A. RIP</li>
+    <li>B. BGP</li>
+    <li>C. OSPF</li>
+    <li>D. ARP</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>BGP（边界网关协议）是域间路由协议（外部网关协议）。RIP 和 OSPF 是域内路由协议（内部网关协议），ARP 不是路由协议。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 109 题</span><span class="q-src">单选</span></p>
+  <p>在 RIP 中，到某个网络的距离值为 16，其意义是（　）</p>
+  <ul class="choices">
+    <li>A. 该网络不可达</li>
+    <li>B. 存在循环路由</li>
+    <li>C. 该网络为直接连接网络</li>
+    <li>D. 到达该网络要经过 15 次转发</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>RIP 规定的最大跳数为 15，16 表示网络不可达。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 110 题</span><span class="q-src">单选</span></p>
+  <p>在 RIP 中，假设路由器 X 和路由器 K 是两个相邻的路由器，X 向 K 说："我到目的网络 Y 的距离为 \(N\)"，则收到此信息的 K 就知道："若将到网络 Y 的下一个路由器选为 X，则我到网络 Y 的距离为（　）"（假设 \(N\) 小于 15）</p>
+  <ul class="choices">
+    <li>A. \(N\)</li>
+    <li>B. \(N-1\)</li>
+    <li>C. 1</li>
+    <li>D. \(N+1\)</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>RIP 规定，每经过一个路由器，距离（跳数）加 1。X 到 Y 的距离为 \(N\)，K 若经 X 到达 Y，还需加上 K 到 X 的一跳，故距离为 \(N+1\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 111 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 RIP 的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. RIP 是基于距离-向量路由选择算法的</li>
+    <li>B. RIP 要求内部路由器将它关于整个 AS 的路由信息发布出去</li>
+    <li>C. RIP 要求内部路由器向整个 AS 的路由器发布路由信息</li>
+    <li>D. RIP 要求内部路由器按照一定的时间间隔发布路由信息</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>RIP 是基于距离-向量路由选择算法的，它要求内部路由器将它关于整个 AS 的路由信息（整个路由表）发布出去，但只向相邻的路由器发布，而不像 OSPF 那样向整个域洪泛，并按照一定的时间间隔（如每 30s）周期性地发布。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 112 题</span><span class="q-src">单选</span></p>
+  <p>在 RIP 中，当路由器收到相邻路由器发来的路由更新信息时，若发现有更优的路由，则（　）</p>
+  <ul class="choices">
+    <li>A. 直接更新自己的路由表</li>
+    <li>B. 向相邻路由器发送确认信息后再更新自己的路由表</li>
+    <li>C. 向所有相邻路由器发送确认信息后再更新自己的路由表</li>
+    <li>D. 不更新自己的路由表</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>在 RIP 中，当路由器收到相邻路由器发来的路由更新信息时，若发现有更优的路由（跳数更小的路由），则直接更新自己的路由表，并向其他相邻路由器广播自己的新路由。RIP 使用 UDP 传送，无需专门确认。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 113 题</span><span class="q-src">单选</span></p>
+  <p>对路由选择协议的一个要求是必须能够快速收敛，所谓"路由收敛"是指（　）</p>
+  <ul class="choices">
+    <li>A. 路由器能把分组发送到预定的目标</li>
+    <li>B. 路由器处理分组的速度足够快</li>
+    <li>C. 网络设备的路由表与网络拓扑结构保持一致</li>
+    <li>D. 能把多个子网聚合成一个超网</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>所谓收敛，是指当路由环境发生变化后，各路由器调整自己的路由表以适应网络拓扑结构的变化，最终达到稳定状态（路由表与网络拓扑状态保持一致）。收敛越快，路由器就能越快适应网络拓扑结构的变化。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 114 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 RIP 和 OSPF 协议的叙述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. RIP 和 OSPF 协议都是网络层协议</li>
+    <li>B. 在进行路由信息交换时，RIP 中的路由器仅向自己相邻的路由器发送信息，OSPF 协议中的路由器向本自治系统中的所有路由器发送信息</li>
+    <li>C. 在进行路由信息交换时，RIP 中的路由器发送的信息是整个路由表，OSPF 协议中的路由器发送的信息只是路由表的一部分</li>
+    <li>D. RIP 的路由器不知道全网的拓扑结构，OSPF 协议的任何一个路由器都知道自己所在区域的拓扑结构</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>RIP 是应用层协议，它使用 UDP 传送数据，OSPF 才是网络层协议，选项 A 错误。B、C、D 均为 RIP 与 OSPF 的正确区别：RIP 仅与相邻路由器交换整个路由表，OSPF 向本自治系统（区域）内所有路由器洪泛链路状态信息（只传送受影响的部分）；RIP 路由器不了解全网拓扑，OSPF 路由器通过链路状态数据库掌握所在区域的完整拓扑。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 115 题</span><span class="q-src">单选</span></p>
+  <p>OSPF 协议使用（　）分组来保持与其邻居的连接。</p>
+  <ul class="choices">
+    <li>A. Hello</li>
+    <li>B. Keepalive</li>
+    <li>C. SPF（最短路径优先）</li>
+    <li>D. LSU（链路状态更新）</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>此题属于记忆性题目，OSPF 协议使用 Hello 分组来保持与其邻居的连接（并用于发现邻居、选举指定路由器）。Keepalive 是 BGP/TCP 层面的保活机制。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 116 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 OSPF 协议的描述中，最准确的是（　）</p>
+  <ul class="choices">
+    <li>A. OSPF 协议根据链路状态法计算最佳路由</li>
+    <li>B. OSPF 协议是用于自治系统之间的外部网关协议</li>
+    <li>C. OSPF 协议不能根据网络通信情况动态地改变路由</li>
+    <li>D. OSPF 协议只适用于小型网络</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>OSPF 协议是一种用于自治系统内部的路由协议（内部网关协议），选项 B 错误。它是一种基于链路状态路由选择算法的协议，能适用大型全局 IP 网络的扩展，支持可变长子网掩码，所以 OSPF 协议可用于管理一个受限地域的中大型网络，选项 D 错误。OSPF 协议维护一张它所连接的所有链路状态信息的邻接表和拓扑数据库，使用多播链路状态更新报文实现路由更新，并且只有当网络发生变化时才传送链路状态更新报文，可根据网络通信情况动态地改变路由，选项 C 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 117 题</span><span class="q-src">单选</span></p>
+  <p>在 OSPF 协议中，划分区域的最主要目的是（　）</p>
+  <ul class="choices">
+    <li>A. 减少路由表的大小</li>
+    <li>B. 减少洪泛法交换的通信量</li>
+    <li>C. 增加路由选择的灵活性</li>
+    <li>D. 增加网络的安全性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>链路状态算法让每个路由器都知道整个自治系统的完整拓扑，从而计算最短路径。若不划分区域，则会导致链路状态数据包的个数和占用空间非常大，占用大量的网络带宽资源，影响网络效率和稳定性。划分区域后，每个路由器只需要知道自己所在区域内的完整拓扑，把交换链路状态信息的范围局限在每个区域，这样就大大减少了链路状态数据包的数量和大小，即减少了洪泛法交换的通信量。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 118 题</span><span class="q-src">单选</span></p>
+  <p>下列关于 OSPF 协议特征的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. OSPF 协议将一个自治域分成若干区域，有一种特殊的域称为主干区域</li>
+    <li>B. 区域之间通过区域边界路由器互连</li>
+    <li>C. 在自治系统中有 4 类路由器：区域内部路由器、主干路由器、区域边界路由器和自治域边界路由器</li>
+    <li>D. 主干路由器不能兼作区域边界路由器</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>主干区域中，用于连接主干区域和其他下层区域的路由器称为区域边界路由器。只要是在主干区域中的路由器，就都称为主干路由器，因此主干路由器可以兼作区域边界路由器，D 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 119 题</span><span class="q-src">单选</span></p>
+  <p>BGP 交换的网络可达性信息是（　）</p>
+  <ul class="choices">
+    <li>A. 到达某个网络所经过的路径</li>
+    <li>B. 到达某个网络的下一跳路由器</li>
+    <li>C. 到达某个网络的链路状态摘要信息</li>
+    <li>D. 到达某个网络的最短距离及下一跳路由器</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>因为 BGP 仅力求寻找一条能够到达目的网络且较好的路由（不能兜圈子），而并非寻找一条最佳路由，所以选项 D 错误。BGP 交换的路由信息是到达某个目的网络所要经过的各个自治系统序列（AS 路径），而不仅仅是下一跳，因此选项 A 正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 120 题</span><span class="q-src">单选</span></p>
+  <p>RIP、OSPF 协议、BGP 的路由选择过程分别使用（　）</p>
+  <ul class="choices">
+    <li>A. 路径向量协议、链路状态协议、距离向量协议</li>
+    <li>B. 距离向量协议、路径向量协议、链路状态协议</li>
+    <li>C. 路径向量协议、距离向量协议、链路状态协议</li>
+    <li>D. 距离向量协议、链路状态协议、路径向量协议</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>RIP 是一种分布式的基于距离向量的路由选择协议，它使用跳数来度量距离，RIP 选择的路径不一定是时间最短的，但一定是具有最小距离（最少跳数）的路径。OSPF 协议使用分布式的链路状态协议，通过与相邻路由器频繁交流链路状态信息来建立全网的拓扑结构图，然后使用 Dijkstra 算法计算最优路径。因为 BGP 仅力求寻找一条能够到达目的网络且较好的路由（不能兜圈子），而并非寻找一条最佳路由，所以它采用的是路径向量路由选择协议：每个自治系统选出一个 BGP 发言人，这些发言人通过相互交换自己的路径向量（网络可达性信息）后，就可找出到达各自治系统的较好路由。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 121 题</span><span class="q-src">单选</span></p>
+  <p>从数据封装的角度看，下列（　）协议属于 TCP/IP 参考模型的应用层。</p>
+  <p class="choices-note">I. OSPF　　II. RIP　　III. BGP　　IV. ICMP</p>
+  <ul class="choices">
+    <li>A. I、II</li>
+    <li>B. II、III</li>
+    <li>C. I、IV</li>
+    <li>D. I、II、III、IV</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>从封装角度看，RIP 和 BGP 属于应用层（分别封装在 UDP 报文和 TCP 报文中传送），OSPF 和 ICMP 属于网络层（直接封装在 IP 数据报中）。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 122 题</span><span class="q-src">单选</span></p>
+  <p>考虑如下图所示的子网，该子网使用了距离向量算法，下面的向量刚刚到达路由器 C：来自 B 的向量为 (5, 0, 8, 12, 6, 2)；来自 D 的向量为 (16, 12, 6, 0, 9, 10)；来自 E 的向量为 (7, 6, 3, 9, 0, 4)。经过测量，C 到 B、D 和 E 的延迟分别为 6、3 和 5，那么 C 到达所有节点的最短路径是（　）</p>
+  <img src="../assets/ch4/quiz-4.4-q22.png" alt="第122题配图" loading="lazy">
+  <ul class="choices">
+    <li>A. (5, 6, 0, 9, 6, 2)</li>
+    <li>B. (11, 6, 0, 3, 5, 8)</li>
+    <li>C. (5, 11, 0, 12, 8, 9)</li>
+    <li>D. (11, 8, 0, 7, 4, 9)</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>距离-向量算法要求每个路由器维护一张路由表，该表给出了到达每个目的地址的已知最佳距离（最小代价）和下一步的转发地址。算法要求每个路由器定期与所有相邻路由器交换整个路由表，并更新自己的路由表。注意，从邻接节点接收到路由表不能直接进行比较，而要加上相邻节点传输消耗后再进行计算。C 到 B 的距离是 6，于是从 C 开始通过 B 到达各节点的最短距离向量是 (11, 6, 14, 18, 12, 8)。同理，通过 D 和 E 的最短距离向量分别是 (19, 15, 9, 3, 12, 13) 和 (12, 11, 8, 14, 5, 9)。于是，C 到所有节点的最短路径应该是 (11, 6, 0, 3, 5, 8)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 123 题</span><span class="q-src">单选</span></p>
+  <p>某分组交换网络的拓扑如下图所示，各路由器使用 OSPF 协议且均已收敛，各链路的度量已在图中标注。假设各段链路的带宽均为 100Mb/s，分组长度为 1000B，其中分组的首部长度为 20B。若主机 A 向主机 B 发送一个大小为 980000B 的文件，忽略分组的传播时延和封装/解封时间，从 A 发送开始到 B 接收完毕为止，需要的时间是（　）</p>
+  <img src="../assets/ch4/quiz-4.4-q23.png" alt="第123题配图" loading="lazy">
+  <ul class="choices">
+    <li>A. 80.08ms</li>
+    <li>B. 80.16ms</li>
+    <li>C. 80.32ms</li>
+    <li>D. 80.64ms</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>根据 OSPF 算法，从 A 到 B 转发经过的链路代价依次为 2、3、1、1、2，一共经过 4 个路由器。分组长度为 1000B，首部长度为 20B，数据长度为 980B，所以共有 \(980000/980 = 1000\) 个分组，每次存储转发时延为 \(1000\text{B} \div 100\text{Mb/s} = 0.08\text{ms}\)。第一个分组从 A 到 B 的时间为 \(0.08 \times 5 = 0.4\text{ms}\)，剩下的 999 个分组每经过 0.08ms 就到达一个，所以总时间为 \(0.4 + 0.08 \times 999 = 80.32\text{ms}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 124 题</span><span class="q-src">单选 · 2010 统考真题</span></p>
+  <p>某自治系统内采用 RIP，若该自治系统内的路由器 R1 收到其邻居路由器 R2 的距离向量，距离向量中包含信息 &lt;Net1, 16&gt;，则能得出的结论是（　）</p>
+  <ul class="choices">
+    <li>A. R2 可以经过 R1 到达 Net1，跳数为 17</li>
+    <li>B. R2 可以到达 Net1，跳数为 16</li>
+    <li>C. R1 可以经过 R2 到达 Net1，跳数为 17</li>
+    <li>D. R1 不能经过 R2 到达 Net1</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>RIP 规定最大跳数为 15，距离 16 表示不可达。R1 在收到信息并更新路由表后，若需要经过 R2 到达 Net1，则其跳数为 17，因为距离为 16 表示不可达，所以 R1 不能经过 R2 到达 Net1，R2 也不可能到达 Net1。选项 B、C 错误，选项 D 正确。而题目中并未给出 R1 向 R2 发送的信息，因此选项 A 也不正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 125 题</span><span class="q-src">单选 · 2016 统考真题</span></p>
+  <p>假设下图中的 R1、R2、R3 采用 RIP 交换路由信息，且均已收敛。若 R3 检测到网络 201.1.2.0/25 不可达，并向 R2 通告一次新的距离向量，则 R2 更新后，其到达该网络的距离是（　）</p>
+  <img src="../assets/ch4/quiz-4.4-q25.png" alt="第125题配图" loading="lazy">
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 3</li>
+    <li>C. 16</li>
+    <li>D. 17</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>初始收敛时，R3 到网络（201.1.2.0/25）的距离为 1，R2 到网络的距离为 2，R1 到网络的距离为 2。当 R3 检测到网络不可达时，因为 R3 存有其他邻居到网络的路由信息，所以它利用所有邻居的距离向量，用 Bellman-Ford 公式更新自己的距离向量（易错点：误以为 R3 检测到网络不可达时，就把其到网络的距离设置为 16），R3 重新计算到网络的距离 \(= \min\{16,\ \text{R1 到网络的距离}+1,\ \text{R2 到网络的距离}+1\} = \{16,\ 2+1,\ 2+1\} = 3\)。然后，R3 向其所有邻居发送更新报文，"告诉它到网络的距离为 3"。R2（及 R1）收到 R3 发来的更新报文后，会利用它保存的所有邻居的距离向量，重新计算自己到网络的距离 \(= \min\{\text{R1 到网络的距离}+1,\ \text{R3 到网络的距离}+1\} = \{2+1,\ 3+1\} = 3\)，因此答案为 3。与此同时，R1 也重新计算自己到网络的距离 \(= \min\{\text{R2 到网络的距离}+1,\ \text{R3 到网络的距离}+1\} = \{2+1,\ 3+1\} = 3\)。如此反复，直至重新收敛。因为 RIP 的特点"坏消息传得慢"，所以一旦网络出现故障，就要经过较长时间才能将故障消息传送到所有路由器。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 126 题</span><span class="q-src">单选 · 2017 统考真题</span></p>
+  <p>直接封装 RIP、OSPF、BGP 报文的协议分别是（　）</p>
+  <ul class="choices">
+    <li>A. TCP、UDP、IP</li>
+    <li>B. TCP、IP、UDP</li>
+    <li>C. UDP、TCP、IP</li>
+    <li>D. UDP、IP、TCP</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>RIP 是一种分布式的基于距离向量的路由选择协议，它通过广播 UDP 报文来交换路由信息。OSPF 是一个内部网关协议，要交换的信息量较大，应使报文的长度尽量短，所以不使用传输层协议（如 UDP 或 TCP），而直接采用 IP。BGP 是一个外部网关协议，在不同的自治系统之间交换路由信息，因为网络环境复杂，需要保证可靠传输，所以采用 TCP。因此，答案为选项 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 127 题</span><span class="q-src">单选 · 2021 统考真题</span></p>
+  <p>某网络中的所有路由器均采用距离向量路由算法计算路由。若路由器 E 与邻居路由器 A、B、C 和 D 之间的直接链路距离分别是 8, 10, 12 和 6，且 E 收到邻居路由器的距离向量如下表所示，则路由器 E 更新后的到达目的网络 Net1~Net4 的距离分别是（　）</p>
+  <table class="tbl">
+    <tr><th>目的网络</th><th>A 的距离向量</th><th>B 的距离向量</th><th>C 的距离向量</th><th>D 的距离向量</th></tr>
+    <tr><td>Net1</td><td>1</td><td>23</td><td>20</td><td>22</td></tr>
+    <tr><td>Net2</td><td>12</td><td>35</td><td>30</td><td>28</td></tr>
+    <tr><td>Net3</td><td>24</td><td>18</td><td>16</td><td>36</td></tr>
+    <tr><td>Net4</td><td>36</td><td>30</td><td>8</td><td>24</td></tr>
+  </table>
+  <ul class="choices">
+    <li>A. 9, 10, 12, 6</li>
+    <li>B. 9, 10, 28, 20</li>
+    <li>C. 9, 20, 12, 20</li>
+    <li>D. 9, 20, 28, 20</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>根据距离-向量算法，E 收到相邻路由器的距离向量后，更新它的路由表：① 当原路由表中没有目的网络时，把该项目添加到路由表中；② 发来的路由信息中有一条到达某个目的网络的路由，该路由与当前使用的路由相比，有较短的距离，就用经过发送路由信息的节点的新路由替换。分析题意可知，E 与邻居路由器 A、B、C 和 D 之间的直接链路距离分别是 8、10、12 和 6。到达 Net1～Net4 没有直接链路，需要通过邻居路由器。E 到达目的网络一定是经过 A、B、C 和 D 中距离最小的。计算 E 经过邻居路由器到达目的网络 Net1～Net4 的距离，如下表所示，选择到达每个目的网络距离的最短值。</p>
+  <table class="tbl">
+    <tr><th>目的网络</th><th>经过 A 需要的距离</th><th>经过 B 需要的距离</th><th>经过 C 需要的距离</th><th>经过 D 需要的距离</th></tr>
+    <tr><td>Net1</td><td><strong><u>9</u></strong></td><td>33</td><td>32</td><td>28</td></tr>
+    <tr><td>Net2</td><td><strong><u>20</u></strong></td><td>45</td><td>42</td><td>34</td></tr>
+    <tr><td>Net3</td><td>32</td><td><strong><u>28</u></strong></td><td><strong><u>28</u></strong></td><td>42</td></tr>
+    <tr><td>Net4</td><td>44</td><td>40</td><td><strong><u>20</u></strong></td><td>30</td></tr>
+  </table>
+    <p>所以距离分别是 9、20、28、20。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-4-5">选择题 · 4.5 IP 多播（第 128～131 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 128 题</span><span class="q-src">单选</span></p>
+  <p>下列关于多播概念的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 在单播路由选择中，路由器只能从它的一个接口转发收到的分组</li>
+    <li>B. 在多播路由选择中，路由器可以从它的多个接口转发收到的分组</li>
+    <li>C. 用多个单播仿真一个多播时需要更多的带宽</li>
+    <li>D. 用多个单播仿真一个多播时，时延基本上是相同的</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>多个单播可以仿真多播，但是一个多播所需的带宽要小于多个单播带宽之和；用多个单播仿真一个多播时，路由器的时延将很大，而处理一个多播分组的时延是很小的，D 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 129 题</span><span class="q-src">单选</span></p>
+  <p>在设计多播路由时，为了避免路由环路，（　）</p>
+  <ul class="choices">
+    <li>A. 采用了水平分割技术</li>
+    <li>B. 构造多播转发树</li>
+    <li>C. 采用了 IGMP</li>
+    <li>D. 通过生存时间 (TTL) 字段</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>因为树具有不存在环路的特性，所以构造一个多播转发树，通过该转发树，既能将多播分组传送到组内的每台主机，又能避免环路。水平分割用于避免距离-向量算法中的无穷计数问题；TTL 字段用于防止 IP 分组因为环路而在网络中无限循环；IGMP 是网际组管理协议，用于管理多播组成员，均不是设计多播路由时避免路由环路的手段。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 130 题</span><span class="q-src">单选</span></p>
+  <p>以太网多播 IP 地址 224.215.145.230 应该映射到的多播 MAC 地址是（　）</p>
+  <ul class="choices">
+    <li>A. 01-00-5E-57-91-E6</li>
+    <li>B. 01-00-5E-D7-91-E6</li>
+    <li>C. 01-00-5E-5B-91-E6</li>
+    <li>D. 01-00-5E-55-91-E6</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>以太网多播地址块的范围是 01-00-5E-00-00-00 ～ 01-00-5E-7F-FF-FF，而且在每个地址中，只有后 23 位可用作多播。这样，只能和 D 类 IP 地址中的后 23 位有一一对应关系。D 类 IP 地址可供分配的有 28 位，可见这 28 位中的前 5 位不能用来构成以太网硬件地址。215 的二进制为 11010111，其中在映射过程中最高位（第 24 位）置为 0，因此 215.145.230 映射的二进制为 01010111.10010001.11100110，对应的十六进制数是 57-91-E6。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 131 题</span><span class="q-src">单选</span></p>
+  <p>在下列 4 个地址中，（　）只能用于 IP 数据报的目的地址而不能用于源地址。</p>
+  <ul class="choices">
+    <li>A. 11.255.255.100</li>
+    <li>B. 192.168.1.100</li>
+    <li>C. 228.1.1.100</li>
+    <li>D. 0.0.0.0</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>选项 A 是一个 A 类地址，既可用于目的地址，又可用于源地址。选项 B 是一个私有地址，既可用于目的地址，又可用于源地址。选项 D 表示本网络上的本主机，只能用于源地址。选项 C 是一个多播地址，多播地址的范围是 224.0.0.0～239.255.255.255，只能用于目的地址。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-4-6">选择题 · 4.6 移动 IP（第 132～134 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 132 题</span><span class="q-src">单选</span></p>
+  <p>下列关于移动 IP 工作原理的描述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 移动 IP 的基本工作过程可以分为代理发现、注册、分组路由与注销 4 个阶段</li>
+    <li>B. 节点在使用移动 IP 进行通信时，归属代理和外部代理之间需要建立一条隧道</li>
+    <li>C. 移动节点到达新的网络后，通过注册过程把自己新的可达信息通知外部代理</li>
+    <li>D. 移动 IP 的分组路由可以分为单播、广播与多播</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>选项 C 应为向归属代理通知移动节点的新可达信息（转交地址）。这样，归属代理就可将发往移动节点的分组通过隧道转到转交地址（外部代理），再由外部代理交付给移动节点。移动 IP 的基本工作过程分为代理发现、注册、分组路由与注销 4 个阶段；归属代理截获发往移动站的分组后，构建一条通往转交地址的 IP 隧道，将原始分组封装在新 IP 包中转发给外部代理；分组路由可分为单播、广播与多播。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 133 题</span><span class="q-src">单选</span></p>
+  <p>移动 IP 为移动主机设置了两个 IP 地址：归属地址和转交地址，（　）</p>
+  <ul class="choices">
+    <li>A. 这两个地址都是固定的</li>
+    <li>B. 这两个地址随主机的移动而动态改变</li>
+    <li>C. 归属地址固定，转交地址动态改变</li>
+    <li>D. 归属地址动态改变，转交地址固定</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>移动 IP 为移动主机设置的归属地址（永久地址）是固定不变的，用于标识该主机，其他主机始终用它与移动主机通信；转交地址则随移动主机所在的外部网络的变化而动态改变，是归属代理转发分组时的隧道终点。注意：转交地址仅用于移动站、归属代理和外地代理之间的通信，应用程序不会使用该地址。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 134 题</span><span class="q-src">单选</span></p>
+  <p>若一台主机的 IP 地址为 160.80.40.20/16，则当它移动到了另一个不属于 160.80/16 子网的网络时，它将（　）（能否通过被访网络的路由器直接发送/接收数据报）</p>
+  <ul class="choices">
+    <li>A. 可以直接接收和直接发送数据报，没有任何影响</li>
+    <li>B. 既不可以直接接收数据报，又不可以直接发送数据报</li>
+    <li>C. 不可以直接发送数据报，但可以直接接收数据报</li>
+    <li>D. 可以直接发送数据报，但不可以直接接收数据报</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>该主机的归属网络是 160.80.0.0/16，当它移动到其他网络后，其 IP 地址仍为 160.80.40.20。被访网络的路由器检查目的网络时会发现该主机"不在本网"：当主机发送数据报时，源地址仍用其永久地址，可直接通过被访网络的路由器向外发送；但由于被访网络路由器的路由表中，属于 160.80.0.0/16 的分组不会被转发到本网络，外部发往 160.80.40.20 的分组也不会到达被访网络，因此该主机不能直接接收数据报，必须借助移动 IP 的归属代理/隧道机制才能接收。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-4-7">选择题 · 4.7 网络层设备（第 135～155 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 135 题</span><span class="q-src">单选</span></p>
+  <p>要控制网络上的广播风暴，可以采用的方法是（　）</p>
+  <ul class="choices">
+    <li>A. 用交换机将网络分段</li>
+    <li>B. 用路由器将网络分段</li>
+    <li>C. 将网络转接成 10Base-T</li>
+    <li>D. 用网络分析仪跟踪正在发送广播信息的计算机</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>网桥和交换机是第二层设备，能够分割冲突域，但不能分割广播域。路由器是第三层设备，不转发全网广播（目的地址 255.255.255.255），因此可以用路由器将网络分段来控制广播风暴。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 136 题</span><span class="q-src">单选</span></p>
+  <p>下列关于冲突域的叙述中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 能接收到同一广播帧的所有设备的集合</li>
+    <li>B. 能发送同一广播帧的所有设备的集合</li>
+    <li>C. 能产生冲突的所有设备的集合</li>
+    <li>D. 能隔离冲突的所有设备的集合</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>冲突域是指能产生冲突的所有设备的集合，也就是说，若这些设备同时发送数据，则会发生信号干扰和冲突。冲突域的大小取决于网络拓扑和设备类型。"能接收到同一广播帧的所有设备的集合"描述的是广播域。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 137 题</span><span class="q-src">单选</span></p>
+  <p>下列设备中，能够分隔广播域的是（　）</p>
+  <ul class="choices">
+    <li>A. 集线器</li>
+    <li>B. 交换机</li>
+    <li>C. 路由器</li>
+    <li>D. 中继器</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由器工作在网络层，不转发广播包（目的地址为 255.255.255.255 的 IP 包），因此能够分隔广播域，抑制网络风暴。交换机工作在数据链路层，能够分隔冲突域，但不能分隔广播域。集线器和中继器是物理层设备，既不能分隔广播域，又不能分隔冲突域。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 138 题</span><span class="q-src">单选</span></p>
+  <p>一个局域网与在远处的另一个局域网互联，则需要用到（　）</p>
+  <ul class="choices">
+    <li>A. 物理通信介质和集线器</li>
+    <li>B. 网间连接器和集线器</li>
+    <li>C. 路由器和广域网技术</li>
+    <li>D. 广域网技术</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>局域网的互联需要路由器作为连接设备，同时是远程的局域网，因此要用到广域网技术。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 139 题</span><span class="q-src">单选</span></p>
+  <p>路由器主要实现（　）的功能。</p>
+  <ul class="choices">
+    <li>A. 数据链路层、网络层与应用层</li>
+    <li>B. 网络层与传输层</li>
+    <li>C. 物理层、数据链路层与网络层</li>
+    <li>D. 物理层与网络层</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由器是网络层设备，所以它也必须处理网络层以下的功能，即物理层和数据链路层。而传输层和应用层是网络层之上的，它们使用网络层的接口，路由器不实现它们的功能。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 140 题</span><span class="q-src">单选</span></p>
+  <p>下列关于路由器和路由表的说法中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 路由器处理的信息量比交换机少，因而转发速度比交换机快</li>
+    <li>B. 对于同一目标，路由器只提供延迟最小的最佳路由</li>
+    <li>C. 当路由表中的所有表项都不匹配时，按照默认路由进行转发</li>
+    <li>D. 路由器不但能够根据 IP 地址进行转发，而且可以根据物理地址进行转发</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由器是第三层设备，要处理的内容比第二层设备交换机更多，因而转发速度比交换机慢，选项 A 错误。虽然一些路由协议也将延迟等指标作为参数进行路由选择，但路由协议使用得最多的参数是传输距离，此外还有一些其他参数，选项 B 错误。默认路由的匹配优先级最低，只要目的网络不在转发表中，就一律选择默认路由转发，选项 C 正确。路由器只能根据 IP 地址进行转发，选项 D 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 141 题</span><span class="q-src">单选</span></p>
+  <p>（未使用 CIDR）当一个 IP 分组进行直接交付时，要求发送方和目的站具有相同的（　）</p>
+  <ul class="choices">
+    <li>A. IP 地址</li>
+    <li>B. 主机号</li>
+    <li>C. 端口号</li>
+    <li>D. 子网地址</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>判断一个 IP 分组的交付方式是直接交付还是间接交付，路由器需要根据分组的源 IP 地址和该路由器接收端口的 IP 地址是否属于同一个子网来判断。具体来说，将分组的源 IP 地址和目的 IP 地址分别与子网掩码进行"与"操作，若得到的子网地址相同，则该分组就采用直接交付方式，否则采用间接交付方式。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 142 题</span><span class="q-src">单选</span></p>
+  <p>一个路由器的路由表通常包含（　）</p>
+  <ul class="choices">
+    <li>A. 需要包含到达所有主机的完整路径信息</li>
+    <li>B. 需要包含所有到达目的网络的完整路径信息</li>
+    <li>C. 需要包含到达目的网络的下一跳路径信息</li>
+    <li>D. 需要包含到达所有主机的下一跳路径信息</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由表中包含到达目的网络的下一跳路径信息。路由表也不可能包含到达所有主机的下一跳信息，否则路由转发将是不可想象的。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 143 题</span><span class="q-src">单选</span></p>
+  <p>决定路由器的转发表中的内容的算法是（　）</p>
+  <ul class="choices">
+    <li>A. 指数回退算法</li>
+    <li>B. 分组调度算法</li>
+    <li>C. 路由算法</li>
+    <li>D. 拥塞控制算法</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>转发表是根据路由表生成的，而路由表又是由路由算法得到的，因此路由算法决定了转发表中的内容。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 144 题</span><span class="q-src">单选</span></p>
+  <p>路由器中计算路由信息的是（　）</p>
+  <ul class="choices">
+    <li>A. 输入队列</li>
+    <li>B. 输出队列</li>
+    <li>C. 交换结构</li>
+    <li>D. 路由选择处理机</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>路由选择处理机的任务是根据所选定的路由选择协议构造路由表，同时经常或定期地与相邻路由器交换路由信息而不断地更新和维护路由表。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 145 题</span><span class="q-src">单选</span></p>
+  <p>路由表的分组转发部分由（　）组成。</p>
+  <ul class="choices">
+    <li>A. 交换结构</li>
+    <li>B. 输入端口</li>
+    <li>C. 输出端口</li>
+    <li>D. 以上都是</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>分组转发部分包括 3 部分：① 交换结构，根据转发表对分组进行处理，将某个输入端口进入的分组从一个合适的输出端口转发出去；② 输入端口，包括物理层、数据链路层和网络层的处理模块；③ 输出端口，负责从交换结构接收分组，再将其发送到路由器外面的线路上。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 146 题</span><span class="q-src">单选</span></p>
+  <p>路由器转发分组时，需要进行（　）</p>
+  <ul class="choices">
+    <li>A. 网络层处理和数据链路层处理</li>
+    <li>B. 网络层处理和物理层处理</li>
+    <li>C. 数据链路层处理和物理层处理</li>
+    <li>D. 网络层处理、数据链路层处理和物理层处理</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>路由器的端口中有物理层、数据链路层和网络层的处理模块。输入端口在物理层接收比特流，在数据链路层提取出帧，剥去帧的首部和尾部后，分组就被送入网络层的处理模块；输出端口执行相反的操作。网络层处理模块根据分组的目的地址，查找转发表，决定输出端口。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 147 题</span><span class="q-src">单选</span></p>
+  <p>路由器的路由选择部分包括（　）</p>
+  <ul class="choices">
+    <li>A. 路由选择处理机</li>
+    <li>B. 路由选择协议</li>
+    <li>C. 路由表</li>
+    <li>D. 以上都是</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>路由器的路由选择部分包括 3 部分：① 路由选择处理机，它根据所选定的路由选择协议构造路由表，同时和相邻路由器交换路由信息；② 路由选择协议，用来更新路由表的算法；③ 路由表，它是根据路由算法得出的，一般包括从目的网络到下一跳的映射。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 148 题</span><span class="q-src">单选</span></p>
+  <p>不同网络设备传输数据的延迟时间是不同的，下列设备中传输时延最大的是（　）</p>
+  <ul class="choices">
+    <li>A. 局域网交换机</li>
+    <li>B. 网桥</li>
+    <li>C. 路由器</li>
+    <li>D. 集线器</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由器具有较大的传输时延，因为它需要根据所接收的每个分组首部中的 IP 地址决定是否转发分组，处理分组首部的任务一般由软件完成，将带来较长的处理时间。因为局域网交换机由硬件进行帧的转发，而且不关心数据链路层以上的数据，所以具有比路由器要小得多的传输时延。从数量级上看，若局域网交换机的传输时延为几十微秒，则路由器的传输时延为几千微秒。集线器的每个接口都具有收发功能，当某个接口收到信号时，立即向所有其他接口转发，因此其传输时延最小。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 149 题</span><span class="q-src">单选</span></p>
+  <p>在路由表中设置一条默认路由，则其目的地址和子网掩码应分别置为（　）</p>
+  <ul class="choices">
+    <li>A. 192.168.1.1、255.255.255.0</li>
+    <li>B. 127.0.0.0、255.0.0.0</li>
+    <li>C. 0.0.0.0、0.0.0.0</li>
+    <li>D. 0.0.0.0、255.255.255.255</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>路由表中默认路由的目的地址和子网掩码都是 0.0.0.0，表示与任何目的地址都匹配，且匹配优先级最低。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 150 题</span><span class="q-src">单选</span></p>
+  <p>路由器转发分组（在路由表中已找到匹配的条目）时，会根据路由表中的（　）字段来确定输出端口。</p>
+  <ul class="choices">
+    <li>A. 目的网络地址</li>
+    <li>B. 下一跳地址</li>
+    <li>C. 距离度量值</li>
+    <li>D. 接口标识符</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>输出端口就是路由器的接口，每个接口都有一个标识符，如 G0/0 等。路由表中的每个条目都会指定一个接口标识符，路由器转发分组时，根据路由表中的接口标识符来确定输出端口。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 151 题</span><span class="q-src">单选</span></p>
+  <p>路由器能够分割广播域的原因是（　）</p>
+  <ul class="choices">
+    <li>A. 路由器工作在网络层，不转发广播帧</li>
+    <li>B. 路由器工作在数据链路层，不转发广播帧</li>
+    <li>C. 路由器工作在物理层，不转发广播帧</li>
+    <li>D. 路由器工作在传输层，不转发广播帧</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>交换机会转发广播帧，所以同一台交换机下的所有设备都在一个广播域中。路由器不会转发广播帧，因为路由器工作在网络层，它只关心 IP 地址，而不关心 MAC 地址。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 152 题</span><span class="q-src">单选</span></p>
+  <p>如下图所示，用 7 个相同的路由器与 8 台主机相连。链路带宽分为三种，最上层的最快、最下层的最慢，都是全双工方式，图中标注了各层链路带宽的数值。所有路由器的处理速度都很快，远超链路带宽。下列关于网络拥塞分析的说法中，正确的是（　）</p>
+  <img src="../assets/ch4/quiz-4.7-q18.png" alt="第152题配图" loading="lazy">
+  <ul class="choices">
+    <li>A. R1-R2 链路和 R2-R4 链路都不可能发生拥塞</li>
+    <li>B. R1-R2 链路可能发生拥塞，R2-R4 链路不可能发生拥塞</li>
+    <li>C. R1-R2 链路不可能发生拥塞，R2-R4 链路可能发生拥塞</li>
+    <li>D. R1-R2 链路和 R2-R4 链路都可能发生拥塞</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>R1-R2 链路上的数据率在任何时候都不可能超过 4Mb/s，因此不可能发生拥塞。对于 R2-R4 链路，考虑这种情况：H5 和 H6 同时以 1Mb/s 的速率向 H1 发送数据，H7 和 H8 同时以 1Mb/s 的速率向 H2 发送数据。此时，R1 右边的所有链路都正常工作，R1-R2 链路也正常工作，都没有超过这些链路的带宽。但是，若这些数据全部都通过 R2 转发，再通过带宽为 2Mb/s 的 R2-R4 链路分别发送给主机 H1 和 H2，则显然是不可能的，于是在 R2 的输入缓存中，进来的数据比出去的要多，数据堆积得越来越多，发送不出去，产生拥塞。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 153 题</span><span class="q-src">单选 · 2010 统考真题</span></p>
+  <p>下列网络设备中，能够抑制广播风暴的是（　）</p>
+  <p class="choices-note">I. 中继器　　II. 集线器　　III. 网桥　　IV. 路由器</p>
+  <ul class="choices">
+    <li>A. 仅 I 和 II</li>
+    <li>B. 仅 III</li>
+    <li>C. 仅 III 和 IV</li>
+    <li>D. 仅 IV</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>中继器和集线器工作在物理层，既不隔离冲突域也不隔离广播域。为了解决冲突域的问题，人们利用网桥和交换机来分隔各个网段中的通信量，建立多个分离的冲突域，但当网桥和交换机接收到一个未知转发信息的数据帧时，为了保证该帧能被目的节点正确接收，将该帧从所有的端口广播出去，可以看出网桥和交换机的冲突域等于端口个数，广播域为 1。路由器可以隔离广播域和冲突域，要屏蔽数据链路层的广播帧，当然应该是网络层设备路由器。在此题的选项中，路由器是其中最高层的网络设备，其他设备能隔离的，路由器一定能隔离。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 154 题</span><span class="q-src">单选 · 2012 统考真题</span></p>
+  <p>下列关于 IP 路由器功能的描述中，正确的是（　）</p>
+  <p class="choices-note">I. 运行路由协议，设备路由表<br>II. 监测到拥塞时，合理丢弃 IP 分组<br>III. 对收到的 IP 分组头进行差错检验，确保传输的 IP 分组不丢失<br>IV. 根据收到的 IP 分组的目的 IP 地址，将其转发到合适的输出线路上</p>
+  <ul class="choices">
+    <li>A. 仅 III、IV</li>
+    <li>B. 仅 I、II、III</li>
+    <li>C. 仅 I、II、IV</li>
+    <li>D. I、II、III、IV</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>说法 I 和 IV 显然是路由器的功能。对于说法 II，当路由器监测到拥塞时，可合理丢弃 IP 分组，并向发出该 IP 分组的源主机发送一个源点抑制的 ICMP 报文（最新标准已不再使用）。对于说法 III，路由器对收到的 IP 分组首部进行差错检验，丢弃有差错首部的报文，但不保证 IP 分组不丢失。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 155 题</span><span class="q-src">单选 · 2020 统考真题</span></p>
+  <p>下图所示的网络中，冲突域和广播域的个数分别是（　）</p>
+  <img src="../assets/ch4/quiz-4.7-q21.png" alt="第155题配图" loading="lazy">
+  <ul class="choices">
+    <li>A. 2, 2</li>
+    <li>B. 2, 4</li>
+    <li>C. 4, 2</li>
+    <li>D. 4, 4</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>网络层设备路由器可以隔离广播域和冲突域；数据链路层设备交换机只能隔离冲突域；物理层设备集线器、中继器既不隔离冲突域也不隔离广播域。路由器把网络分隔为左、右两个广播域。冲突域方面：4 台集线器各自构成 1 个冲突域；交换机的各端口之间相互隔离，交换机与路由器之间为点对点链路（收发双方独占，不会产生冲突），不再计为新的冲突域。因此共有 2 个广播域，4 个冲突域。故选 C。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-comp-2">二、综合题（综合题 19～28 · 接续第 4 章前半部分）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 19</span><span class="q-src">4.4 路由算法与路由协议</span></p>
+  <p>RIP 使用 UDP，OSPF 使用 IP，而 BGP 使用 TCP。这样做有何优点？为什么 RIP 周期性地和邻站交换路由信息而 BGP 却不这样做？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>RIP 处于 UDP 的上层，RIP 所接收的路由信息都封装在 UDP 的数据报中；OSPF 的位置位于网络层，因为要交换的信息量较大，所以应使报文的长度尽量短，因此采用 IP；BGP 要在不同的自治系统之间交换路由信息，因为网络环境复杂，需要保证可靠的传输，所以选择 TCP。</p>
+    <p>内部网关协议主要设法使数据报在一个自治系统中尽可能有效地从源站传送到目的站，在一个自治系统内部并不需要考虑其他方面的策略，然而 BGP 使用的环境却不同。主要有以下三个原因：第一，互联网规模太大，使得自治系统之间的路由选择非常困难；第二，对于自治系统之间的路由选择，要寻找最佳路由是不现实的；第三，自治系统之间的路由选择必须考虑有关策略。因为上述情况，BGP 只能力求寻找一条能够到达目的网络且较好的路由，而并非寻找一条最佳路由，所以 BGP 不需要像 RIP 那样周期性地和邻站交换路由信息。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 20</span><span class="q-src">4.4 路由算法与路由协议</span></p>
+  <p>在某个使用 RIP 的网络中，B 和 C 互为相邻路由器，其中表 1 为 B 的原路由表，表 2 为 C 广播的距离向量报文 &lt;目的网络，距离&gt;。</p>
+  <table class="tbl">
+    <tr><th colspan="3">表 1（B 的原路由表）</th><th colspan="2">表 2（C 的距离向量）</th></tr>
+    <tr><th>目的网络</th><th>距离</th><th>下一跳</th><th>目的网络</th><th>距离</th></tr>
+    <tr><td>N1</td><td>7</td><td>A</td><td>N2</td><td>15</td></tr>
+    <tr><td>N2</td><td>2</td><td>C</td><td>N3</td><td>2</td></tr>
+    <tr><td>N6</td><td>8</td><td>F</td><td>N4</td><td>8</td></tr>
+    <tr><td>N8</td><td>4</td><td>E</td><td>N8</td><td>2</td></tr>
+    <tr><td>N9</td><td>4</td><td>D</td><td>N7</td><td>4</td></tr>
+  </table>
+  <p>(1) 试求路由器 B 更新后的路由表并说明主要步骤。<br>(2) 当路由器 B 收到发往网络 N2 的 IP 分组时，应该做何处理？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）根据 RIP 算法，首先将从 C 收到的路由信息的下一跳改为 C，并且将每个距离都加 1，得到下表：</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>距离</th><th>下一跳</th></tr>
+      <tr><td>N2</td><td>16</td><td>C</td></tr>
+      <tr><td>N3</td><td>3</td><td>C</td></tr>
+      <tr><td>N4</td><td>9</td><td>C</td></tr>
+      <tr><td>N8</td><td>3</td><td>C</td></tr>
+      <tr><td>N7</td><td>5</td><td>C</td></tr>
+    </table>
+    <p>将上表与原路由表项进行比较，根据以下规则更新路由表项：① 若目的网络相同，且下一跳路由器相同，则直接更新；② 若是新的目的网络地址，则增加表项；③ 若目的网络相同，且下一跳路由器不同，而距离更短，则更新；④ 否则，无操作。更新后的路由表如下表：</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>距离</th><th>下一跳路由器</th><th>目的网络</th><th>距离</th><th>下一跳路由器</th></tr>
+      <tr><td>N1</td><td>7</td><td>A</td><td>N6</td><td>8</td><td>F</td></tr>
+      <tr><td>N2</td><td>16</td><td>C</td><td>N7</td><td>5</td><td>C</td></tr>
+      <tr><td>N3</td><td>3</td><td>C</td><td>N8</td><td>3</td><td>C</td></tr>
+      <tr><td>N4</td><td>9</td><td>C</td><td>N9</td><td>4</td><td>D</td></tr>
+    </table>
+    <p>2）在更新后的路由表中，路由器 B 到 N2 的距离为 16（网络拓扑结构变化导致），这意味着 N2 网络不可达，这时路由器 B 应该丢弃该 IP 分组并向源主机报告目的不可达。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 21</span><span class="q-src">4.4 路由算法与路由协议</span></p>
+  <p>互联网中的一个自治系统的内部结构如下图所示。路由选择协议采用 OSPF 协议时，计算 R6 的关于网络 N1、N2、N3、N4 的路由表（注：端口处的数字指该路由器向该链路转发分组的代价）</p>
+  <img src="../assets/ch4/quiz-comp-12.png" alt="综合题21配图" loading="lazy">
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>首先，要明白路由器端口旁的数字的含义——路由器向该链路转发分组的代价，即便是同一段链路的两个不同端点的路由器，转发分组的代价也可能不同。其次，要明白一个网络所连接的几个路由器之间转发分组并不需要经过任何其他中间路由器。例如，R6 到网络 N1 经过的路径和代价计算如下：R6 到 R3 经过的代价是 6，R3 到 R1 经过的代价是 1，R1 到网络 N1 经过的代价是 3，所以 R6 到网络 N1 经过的代价是 10。根据 Dijkstra 最短路径算法，加入节点的次序之一为 (R6, R5, R3, N3, R4, R1, R2, N4, N1, N2)，可以得到 R6 的路由表如下表所示。</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>距离</th><th>下一跳路由器</th><th>目的网络</th><th>距离</th><th>下一跳路由器</th></tr>
+      <tr><td>N1</td><td>10</td><td>R3</td><td>N3</td><td>7</td><td>R3</td></tr>
+      <tr><td>N2</td><td>10</td><td>R3</td><td>N4</td><td>8</td><td>R3</td></tr>
+    </table>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 22</span><span class="q-src">4.4 路由算法与路由协议 · 2013 统考真题</span></p>
+  <p>假设 Internet 的两个自治系统构成的网络如下图所示，自治系统 AS1 由路由器 R1 连接两个子网构成；自治系统 AS2 由路由器 R2、R3 互连并连接 3 个子网构成。各子网地址、R2 的接口名、R1 与 R3 的部分接口 IP 地址如下图所示。请回答下列问题：</p>
+  <img src="../assets/ch4/quiz-comp-13.png" alt="综合题22配图" loading="lazy">
+  <p>(1) 假设路由表结构为「目的网络 | 下一跳 | 接口」。利用路由聚合技术，给出 R2 的路由表，要求包括到达图中所有子网的路由，且路由表中的路由项尽可能少。<br>(2) 若 R2 收到一个目的 IP 地址为 194.17.20.200 的 IP 分组，R2 会通过哪个接口转发该 IP 分组？<br>(3) R1 与 R2 之间利用哪个路由协议交换路由信息？该路由协议的报文被封装到哪个协议的分组中进行传输？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）要求 R2 的路由表能到达图中的所有子网，且路由项尽可能少，则应对每个路由接口的子网进行聚合。在 AS1 中，子网 153.14.5.0/25 和子网 153.14.5.128/25 可聚合为子网 153.14.5.0/24；在 AS2 中，子网 194.17.20.0/25 和子网 194.17.21.0/24 可聚合为子网 194.17.20.0/23；子网 194.17.20.128/25 单独连接到 R2 的接口 E0。于是可以得到 R2 的路由表如下：</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>下一跳</th><th>接口</th></tr>
+      <tr><td>153.14.5.0/24</td><td>153.14.3.2</td><td>S0</td></tr>
+      <tr><td>194.17.20.0/23</td><td>194.17.24.2</td><td>S1</td></tr>
+      <tr><td>194.17.20.128/25</td><td>—</td><td>E0</td></tr>
+    </table>
+    <p>2）该 IP 分组的目的 IP 地址 194.17.20.200 与路由表中 194.17.20.0/23 和 194.17.20.128/25 两个路由表项均匹配，根据最长匹配原则，R2 将通过 E0 接口转发该 IP 分组。</p>
+    <p>3）R1 和 R2 属于不同的自治系统，因此应使用边界网关协议（BGP 或 BGP4）交换路由信息；BGP 是应用层协议，它的报文被封装到 TCP 段中进行传输。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 23</span><span class="q-src">4.4 路由算法与路由协议 · 2014 统考真题</span></p>
+  <p>某网络中的路由器运行 OSPF 路由协议，下表是路由器 R1 维护的主要链路状态信息 (LSI)，下图是根据该表及 R1 的接口名构造的网络拓扑。请回答下列问题：</p>
+  <table class="tbl">
+    <tr><th colspan="2"></th><th>R1 的 LSI</th><th>R2 的 LSI</th><th>R3 的 LSI</th><th>R4 的 LSI</th><th>备注</th></tr>
+    <tr><td colspan="2">Router ID</td><td>10.1.1.1</td><td>10.1.1.2</td><td>10.1.1.5</td><td>10.1.1.6</td><td>标识路由器的IP地址</td></tr>
+    <tr><td rowspan="3">Link1</td><td>ID</td><td>10.1.1.2</td><td>10.1.1.1</td><td>10.1.1.6</td><td>10.1.1.5</td><td>所连路由器的Router ID</td></tr>
+    <tr><td>IP</td><td>10.1.1.1</td><td>10.1.1.2</td><td>10.1.1.5</td><td>10.1.1.6</td><td>Link1的本地IP地址</td></tr>
+    <tr><td>Metric</td><td>3</td><td>3</td><td>6</td><td>6</td><td>Link1的费用</td></tr>
+    <tr><td rowspan="3">Link2</td><td>ID</td><td>10.1.1.5</td><td>10.1.1.6</td><td>10.1.1.1</td><td>10.1.1.2</td><td>所连路由器的Router ID</td></tr>
+    <tr><td>IP</td><td>10.1.1.9</td><td>10.1.1.13</td><td>10.1.1.10</td><td>10.1.1.14</td><td>Link2的本地IP地址</td></tr>
+    <tr><td>Metric</td><td>2</td><td>4</td><td>2</td><td>4</td><td>Link2的费用</td></tr>
+    <tr><td rowspan="2">Net1</td><td>Prefix</td><td>192.1.1.0/24</td><td>192.1.6.0/24</td><td>192.1.5.0/24</td><td>192.1.7.0/24</td><td>直连网络Net1的网络前缀</td></tr>
+    <tr><td>Metric</td><td>1</td><td>1</td><td>1</td><td>1</td><td>到达直连网络Net1的费用</td></tr>
+  </table>
+  <img src="../assets/ch4/quiz-comp-14.png" alt="综合题23配图" loading="lazy">
+  <p>(1) 设路由表结构为「目的网络 | 下一跳 | 接口」，给出图中 R1 的路由表，要求包括到达图中子网 192.1.x.x 的路由，且路由表中的路由项尽可能少。<br>(2) 当主机 192.1.1.130 向主机 192.1.7.211 发送一个 TTL = 64 的 IP 分组时，R1 通过哪个接口转发该 IP 分组？主机 192.1.7.211 收到的 IP 分组的 TTL 是多少？<br>(3) 若 R1 增加一条 Metric 为 10 的链路连接 Internet，则表中 R1 的 LSI 需要增加哪些信息？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）因为题目要求路由表中的路由项尽可能少，所以对从同一接口转发的目的网络进行路由聚合，可以求出子网 192.1.6.0/24 和 192.1.7.0/24 都是通过接口 L0 转发，因此可将这两个子网聚合为子网 192.1.6.0/23，其他子网照常，可得路由表如下：</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>下一跳</th><th>接口</th></tr>
+      <tr><td>192.1.1.0/24</td><td>—</td><td>E0</td></tr>
+      <tr><td>192.1.6.0/23</td><td>10.1.1.2</td><td>L0</td></tr>
+      <tr><td>192.1.5.0/24</td><td>10.1.1.10</td><td>L1</td></tr>
+    </table>
+    <p>2）通过查路由表可知：R1 通过 L0 接口转发该 IP 分组。因为该分组要经过 3 个路由器（R1、R2、R4），所以主机 192.1.7.211 收到的 IP 分组的 TTL = 64 − 3 = 61。</p>
+    <p>3）互联网（Internet）包括无数的网络集合，不可能在路由表项中一一列出，因此 R1 到互联网的路由只能采用默认路由的方式，默认路由的网络前缀为 0.0.0.0/0。因此，R1 的 LSI 需要增加一条特殊的直连网络，网络前缀 Prefix 为 "0.0.0.0/0"，Metric 为 10。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 24</span><span class="q-src">4.4 路由算法与路由协议 · 2024 统考真题</span></p>
+  <p>网络空间是继陆海空天之后的"第五疆域"，网络技术是网络疆域建设与治理的基础。路由算法与协议是网络核心技术之一，对其准确认知、合理选择与应用，对于网络建设十分重要。假设现有互联网中的 4 个自治系统互连拓扑示意图如下图所示。其中，AS1 运行内部网关协议 RIP；AS3 规模较小，自治系统内任意两个主机间通信，经过路由器数量不超过 15 个；AS4 规模较大，自治系统内任意两个主机间通信，经过路由器数量可能超过 20 个。请回答下列问题。</p>
+  <img src="../assets/ch4/quiz-comp-15.png" alt="综合题24配图" loading="lazy">
+  <p>(1) 若仅有 RIP 和 OSPF 内部网关协议供选择，则 AS4 应该选择哪个协议？<br>(2) 若 AS3 中的某主机向本自治系统内另一主机发送 1 个 IP 分组，为确保该 IP 分组能够被正常接收，则该 IP 分组的初始 TTL 值应该至少设置为多少？<br>(3) 假设 AS1 中的路由器同一时刻启动，启动后立即构建并交换初始距离向量，之后每隔 30s 交换一次最新的距离向量，则从交换初始距离向量时刻算起，R11~R16 路由器均获得到达网络 210.2.3.0/24 的正确路由，至少需要多长时间？均获得到达网络 210.2.4.0/24 的正确路由，至少需要多长时间？<br>(4) R44 向 R13 通告到达网络 136.5.16.0/20 路由时，由 BGP 协议哪类会话完成？通过哪个 BGP 报文通告？R13 通过 BGP 协议的哪类会话将该网络可达性信息通告给 R14 和 R15？<br>(5) 若 R14 和 R15 均收到分别由 R11、R12、R13 通告的到达网络 136.5.16.0/20 的可达性信息如下：<br>　　目的网络：136.5.16.0/20　AS 路径：AS2 AS8 AS19　　下一跳：R11<br>　　目的网络：136.5.16.0/20　AS 路径：AS3 AS7 AS11 AS19　下一跳：R12<br>　　目的网络：136.5.16.0/20　AS 路径：AS4 AS10 AS19　　下一跳：R13<br>则在无策略约束情况下，R14 和 R15 更新路由表后，各自路由表中到达网络 136.5.16.0/20 路由的下一跳分别是什么（用路由器名称表示）？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）RIP 限制了网络规模，其最大跳数为 15；且 RIP 路由器周期性交换完整的路由表，随着网络规模扩大，开销会显著增大。AS4 中任意两主机间通信经过路由器数量可能超过 20 个，RIP 无法胜任，因此 AS4 应该选择 OSPF 协议。</p>
+    <p>2）IP 分组每经过一个路由器，TTL 值减 1，当 TTL 减为 0 时被丢弃。依题意，AS3 中任意两主机间通信最多经过 15 个路由器，为确保分组能被正常接收，初始 TTL 值至少应设为 16，这样在经过第 15 个路由器后，TTL 值变为 1，可成功交付。</p>
+    <p>3）拓扑中 R11-R12-R13 位于上行，R14-R15-R16 位于下行，R11-R14、R12-R15、R13-R16 纵向相连，R14-R15、R15-R16 横向相连。210.2.3.0/24 直连 R14，210.2.4.0/24 直连 R16。距离向量每交换一次，路由信息向外扩散一跳：以 210.2.3.0/24 为例，交换初始向量后（第 1 次交换，30s 时），R11、R15 获得距离 1 的正确路由；第 2 次交换（60s 时），R12、R16 获得正确路由；第 3 次交换（90s 时），距 R14 跳数最多的 R13（经 R16-R15-R14 或 R12-R11-R14 共 3 跳）获得正确路由。故 R11~R16 均获得到达 210.2.3.0/24 的正确路由至少需要 \(3 \times 30\text{s} = 90\text{s}\)。同理，R11 距 210.2.4.0/24（直连 R16）最远为 3 跳，均获得正确路由也至少需要 90s。</p>
+    <p>4）R44 属于 AS4，R13 属于 AS1，二者分属不同自治系统，因此由 BGP 的 eBGP（外部 BGP）会话完成，通过 UPDATE 报文通告；R13 与 R14、R15 同属 AS1，通过 iBGP（内部 BGP）会话将该网络可达性信息通告给 R14 和 R15。</p>
+    <p>5）BGP 选路时优先选择 AS 路径最短的路径。经 R11 通告的 AS 路径 AS2 AS8 AS19 与经 R13 通告的 AS 路径 AS4 AS10 AS19 均包含 3 个 AS，最短；经 R12 的 AS 路径含 4 个 AS，较长。因此 R14 和 R15 更新路由表后，到达网络 136.5.16.0/20 的下一跳分别是 R11 和 R13。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 25</span><span class="q-src">4.5 IP 多播</span></p>
+  <p>互联网的多播是怎样实现的？为什么因特网上的多播比以太网上的多播复杂得多？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>互联网的多播是靠路由器来实现的，这些路由器必须增加一些能够识别多播的软件。能够运行多播协议的路由器可以是一个单独的路由器，也可以是运行多播软件的普通路由器。互联网上的多播比以太网上的多播复杂得多，因为以太网本身支持广播和多播，而互联网上当前的路由器和许多物理网络都不支持广播和多播。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 26</span><span class="q-src">4.7 网络层设备</span></p>
+  <p>某个单位的网点由 4 个子网组成，结构如下图所示，其中主机 H1、H2、H3 和 H4 的 IP 地址和子网掩码见下表。</p>
+  <table class="tbl">
+    <tr><th>主机</th><th>IP 地址</th><th>子网掩码</th></tr>
+    <tr><td>H1</td><td>202.99.98.18</td><td>255.255.255.240</td></tr>
+    <tr><td>H2</td><td>202.99.98.35</td><td>255.255.255.240</td></tr>
+    <tr><td>H3</td><td>202.99.98.51</td><td>255.255.255.240</td></tr>
+    <tr><td>H4</td><td>202.99.98.66</td><td>255.255.255.240</td></tr>
+  </table>
+  <img src="../assets/ch4/quiz-comp-17.png" alt="综合题26配图" loading="lazy">
+  <p>(1) 请写出路由器 R1 到 4 个子网的路由表。<br>(2) 试描述主机 H1 发送一个 IP 数据报到主机 H2 的过程（包括物理地址解析过程）</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）将 H1、H2、H3、H4 的 IP 地址分别与它们的子网掩码进行"与"操作，可得到 4 个子网的网络地址，分别为 202.99.98.16、202.99.98.32、202.99.98.48、202.99.98.64，因此路由器 R1 到 4 个子网的路由表见下表。</p>
+    <table class="tbl">
+      <tr><th>目的网络</th><th>子网掩码</th><th>下一跳</th></tr>
+      <tr><td>202.99.98.16</td><td>255.255.255.240</td><td>直接</td></tr>
+      <tr><td>202.99.98.32</td><td>255.255.255.240</td><td>直接</td></tr>
+      <tr><td>202.99.98.48</td><td>255.255.255.240</td><td>202.99.98.33</td></tr>
+      <tr><td>202.99.98.64</td><td>255.255.255.240</td><td>202.99.98.33</td></tr>
+    </table>
+    <p>2）主机 H1 向主机 H2 发送一个 IP 数据报的过程如下：</p>
+    <p>① 主机 H1 首先构造一个源 IP 地址为 202.99.98.18、目的 IP 地址为 202.99.98.35 的 IP 数据报，主机 H1 先把本子网的子网掩码与 H2 的 IP 地址逐位"与"，所得结果不等于 H1 的网络地址，因此 H1 与 H2 不在同一子网，无法直接交付，然后将该数据报传送给数据链路层。</p>
+    <p>② 主机 H1 通过 ARP 获得路由器 R1（202.99.98.17）对应的 MAC 地址，并将其作为目的 MAC 地址，将 H1 的 MAC 地址作为源 MAC 地址填入封装有 IP 数据报的帧，然后将该帧发送出去。</p>
+    <p>③ 路由器 R1 收到该帧后，去掉帧头与帧尾，得到 IP 数据报，然后根据 IP 数据报中的目的 IP 地址（202.99.98.35）去查找路由表，得到下一跳地址为直接相连。</p>
+    <p>④ 路由器 R1 通过 ARP 得到主机 H2 的 MAC 地址，并将其作为目的 MAC 地址，将 R1 的 MAC 地址作为源 MAC 地址填入封装有 IP 数据报的帧，然后将该帧发送到子网 Net2 上。</p>
+    <p>⑤ 主机 H2 将收到的帧，去除帧头与帧尾，并最终得到从主机 H1 发来的 IP 数据报。</p>
+    <p><strong>注意：</strong>在②（发出的帧）中，帧的目的 MAC 地址为默认网关的 MAC 地址；在④（接收的帧）中，帧的源 MAC 地址为默认网关的 MAC 地址。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 27</span><span class="q-src">4.7 网络层设备</span></p>
+  <p>试简述路由器的路由功能和转发功能。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>转发即当一个分组到达时所采取的动作。在路由器中，每个分组到达时对它进行处理，它在路由表中查找分组所对应的输出线路。通过查得的结果，将分组发送到正确的线路上。</p>
+    <p>路由算法是网络层软件的一部分，它负责确定一个进来的分组应该被传送到哪条输出线路上。路由算法负责填充和更新路由表，转发功能则根据路由表的内容来确定当每个分组到来时应该采取什么动作（如从哪个端口转发出去）。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 28</span><span class="q-src">4.7 网络层设备 · 2019 统考真题</span></p>
+  <p>某网络拓扑如下图所示，其中 R 为路由器，主机 H1~H4 的 IP 地址配置以及 R 的各接口 IP 地址配置如图中所示。现有若干以太网交换机（无 VLAN 功能）和路由器两类网络互连设备可供选择。请回答下列问题。</p>
+  <img src="../assets/ch4/quiz-comp-19.png" alt="综合题28配图" loading="lazy">
+  <p>(1) 设备 1、设备 2 和设备 3 分别应选择什么类型的网络设备？<br>(2) 设备 1、设备 2 和设备 3 中，哪几个设备的接口需要配置 IP 地址？为对应的接口配置正确的 IP 地址。<br>(3) 为确保主机 H1~H4 能够访问 Internet，R 需要提供什么服务？<br>(4) 若主机 H3 发送一个目的地址为 192.168.1.127 的 IP 数据报，网络中哪几个主机会接收该数据报？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>1）以太网交换机（无 VLAN 功能）连接的若干 LAN 仍然是一个网络（同一个广播域），路由器可以连接不同的 LAN、不同的 WAN 或把 WAN 和 LAN 互连起来，隔离了广播域。IP 地址 192.168.1.2/26 与 192.168.1.3/26 的网络前缀均为 192.168.1.0，视为 LAN1；IP 地址 192.168.1.66/26 与 192.168.1.67/26 的网络前缀均为 192.168.1.64，视为 LAN2。所以设备 1 为路由器，设备 2、3 为以太网交换机。</p>
+    <p>2）设备 1 为路由器，其接口应配置 IP 地址。IF1 接口与路由器 R 相连，R 相连接口的 IP 地址为 192.168.1.253/30，253 的二进制表示形式为 11111101，因此 IF1 接口的网络前缀也应为 192.168.1.111111，已分配 192.168.1.253，去除全 0 和全 1，IF1 接口的 IP 地址应为 192.168.1.254。LAN1 的默认网关为 192.168.1.1，LAN2 的默认网关为 192.168.1.65，网关的 IP 地址是具有路由功能的设备的 IP 地址，通常默认网关地址就是路由器中的 LAN 端口地址，设备 1 的 IF2、IF3 接口的 IP 地址分别设置为 192.168.1.1 和 192.168.1.65。</p>
+    <p>3）私有地址段：C 类 192.168.0.0～192.168.255.255，即 H1～H4 均为私有 IP 地址，若要能够访问 Internet，R 需要提供 NAT 服务，即网络地址转换服务。</p>
+    <p>4）主机 H3 发送一个目的地址为 192.168.1.127 的 IP 数据报，主机号全为 1，为本网络的广播地址，因为路由器可以隔离广播域，所以只有主机 H4 会接收到数据报。</p>
+  </div></details>
+</div>

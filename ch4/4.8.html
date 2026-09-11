@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.8 本章小结及疑难点 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第4章 网络层</a> › <span>4.8 本章小结及疑难点</span></div>
+<h1 class="page-title">4.8 本章小结及疑难点</h1>
+<p class="subtitle">对应王道教材 4.8 节（教材 P223）· 本章要点回顾与疑难辨析</p>
+
+<h2 class="sec" id="sec-4-8-0">本章要点回顾</h2>
+<ul>
+  <li><strong>IPv4 基础</strong>：IP 数据报 = 首部 + 数据；首部关键字段包括版本、首部长度、总长度、TTL、协议、首部检验和、源/目的 IP 地址；"尽最大努力交付"是 IP 层的基本服务模型。</li>
+  <li><strong>IP 地址与子网</strong>：分类地址 → 子网划分（借用主机号）→ CIDR 无分类编址（前缀 + 掩码）；子网掩码与目的地址按位与可判断是否在同一网络；路由聚合（超网）可缩小路由表。</li>
+  <li><strong>ARP / DHCP / ICMP</strong>：ARP 完成"同网段 IP 地址 → MAC 地址"的解析；DHCP 自动配置主机 IP 参数（应用层、基于 UDP）；ICMP 提供差错报告与询问（ICMP 差错报文、回送请求/回答），是 traceroute、ping 的基础。</li>
+  <li><strong>IPv6</strong>：128 位地址，首部固定 40B、仅 8 个字段、取消首部检验和、只有源主机能分片；地址类型为单播/多播/任播；缩写规则=省略前导零 + 双冒号零压缩（只能用一次）；过渡策略=双协议栈 + 隧道技术。</li>
+  <li><strong>路由算法</strong>：静态（手工配置，简单小网）vs 动态；距离-向量算法基于 Bellman-Ford（只知邻居的距离向量，报文大小与节点数成正比）；链路状态算法基于 Dijkstra（洪泛局部链路状态，全网各自算最短路）。</li>
+  <li><strong>三大路由协议</strong>：RIP（内部、距离向量、UDP 520、跳数上限 15、坏消息传播得慢）；OSPF（内部、链路状态、直接封装于 IP 协议号 89、五种分组、划分区域、收敛快）；BGP（外部、路径向量、TCP 179、寻求"较好"而非"最佳"路由、四种报文）。</li>
+  <li><strong>IP 多播</strong>：一对多通信，目的地址为 D 类地址（224.0.0.0～239.255.255.255）；仅适用于 UDP；D 类地址低 23 位映射为以太网多播 MAC 地址（多对一，主机需在 IP 层过滤）；IGMP 管理本地组成员，多播路由协议构造多播转发树。</li>
+  <li><strong>移动 IP</strong>：移动中保持永久地址不变；三大实体（移动节点、归属代理、外地代理）+ 转交地址；通信核心是"归属代理截获 → 隧道 → 外地代理解封 → 交付"。</li>
+  <li><strong>网络层设备</strong>：集线器/中继器隔离不了任何域；交换机/网桥隔离冲突域；路由器既隔离冲突域又隔离广播域；路由器 = 路由选择（控制平面）+ 分组转发（数据平面）；路由表四字段（目的网络、子网掩码、下一跳、接口），无匹配时走默认路由 0.0.0.0/0.0.0.0。</li>
+</ul>
+
+<h2 class="sec" id="sec-4-8-1">疑难点 1："尽最大努力交付"有哪些含义？</h2>
+<p>"尽最大努力交付"（best effort）并不意味着"保证交付"，其确切含义是：</p>
+<ol>
+  <li>不保证 IP 数据报无差错地到达目的主机；</li>
+  <li>不保证在规定时间内交付；</li>
+  <li>不保证按发送顺序交付；</li>
+  <li>不保证不重复交付；</li>
+  <li>不主动丢弃数据报——仅在以下情况丢弃：首部检验和出错，或因缓存满而无法处理。</li>
+</ol>
+<div class="box concept"><div class="box-title">📌 首部检验和能保证什么？</div>
+<p>IP 首部包含"首部检验和"字段。凡交付给目的主机的 IP 数据报，其首部均未检验出差错（有错即被丢弃）。因此，<strong>IP 层可确保首部完整性，但不保证数据部分正确性或传输可靠性</strong>。目前互联网绝大多数流量基于此模型。若应用需要可靠传输，则由高层协议（如 TCP）实现。</p>
+</div>
+
+<h2 class="sec" id="sec-4-8-2">疑难点 2：局域网中 A 广播 ARP 请求获取 B 的硬件地址时，由谁发送 ARP 响应？返回的是谁的硬件地址？</h2>
+<ul>
+  <li><strong>若 A 与 B 在同一局域网</strong>：计算机 B 收到 ARP 请求后，直接向 A 单播 ARP 响应，返回 <strong>B 自身</strong>的硬件地址；</li>
+  <li><strong>若 B 不在 A 所在局域网</strong>：A 的 ARP 请求无法到达 B。此时，连接该局域网的路由器（A 的默认网关）会<strong>代理响应</strong>，向 A 返回<strong>路由器在该局域网接口</strong>的硬件地址。</li>
+</ul>
+
+<h2 class="sec" id="sec-4-8-3">疑难点 3：数据报首部只有源和目的的 IP 地址，未指明下一跳路由器，如何确定转发路径？</h2>
+<p>路由器收到数据报后，根据路由表查出<strong>下一跳的 IP 地址</strong>，但不会修改 IP 数据报内容。该 IP 地址随后交由数据链路层处理：通过 <strong>ARP 将下一跳 IP 地址解析为对应的 MAC 地址</strong>，并填入 MAC 帧首部，从而在物理网络中正确送达下一跳。此过程对每个数据报重复执行。</p>
+<div class="box warn"><div class="box-title">⚠️ 能否在路由表中直接使用硬件地址以避免 ARP 查询？</div>
+<p>答案是<strong>不能</strong>。IP 地址的抽象性屏蔽了底层网络差异，是互联网可扩展性的基础。若路由表直接使用平面化的硬件地址，将导致表项数量剧增、管理复杂，反而得不偿失。</p>
+</div>
+
+<h2 class="sec" id="sec-4-8-4">疑难点 4："路由器实现了物理层、数据链路层、网络层"的含义是什么？</h2>
+<p>这句话是指：路由器具备处理物理层、数据链路层和网络层协议的能力。具体而言：</p>
+<ul>
+  <li>在<strong>物理层</strong>，路由器能接收和发送比特流；</li>
+  <li>在<strong>数据链路层</strong>，它能识别帧结构、解析 MAC 地址，并完成帧的解封装与重新封装；</li>
+  <li>在<strong>网络层</strong>，它能读取 IP 数据报首部，根据目的 IP 地址查询路由表，做出转发决策。</li>
+</ul>
+<div class="box concept"><div class="box-title">📌 结论</div>
+<p>当路由器转发数据时，会先解封装输入帧，提取出 IP 数据报，再根据下一跳接口<strong>重新封装成适合输出链路的新帧</strong>。正是这种能力，使路由器可以互连底层技术不同的网络（例如以太网与 PPP 链路）。这与仅工作在物理层的中继器或仅工作在数据链路层的交换机有本质区别。</p>
+</div>
+
+<div class="pager">
+      <a class="prev" href="4.7.html"><span class="label">上一篇</span>4.7 网络层设备</a>
+      <a class="next" href="quiz.html"><span class="label">下一篇</span>第4章 习题</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

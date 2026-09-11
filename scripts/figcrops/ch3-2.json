@@ -1,0 +1,158 @@
+[
+ {
+  "page": 74,
+  "rect": [
+   15,
+   42,
+   87,
+   74
+  ],
+  "out": "fig-3-9.png",
+  "caption": "图3.9 发送窗口的工作原理",
+  "src": "教材P62",
+  "book": "textbook"
+ },
+ {
+  "page": 75,
+  "rect": [
+   12,
+   10,
+   88,
+   39
+  ],
+  "out": "fig-3-10.png",
+  "caption": "图3.10 接收窗口的工作原理",
+  "src": "教材P63",
+  "book": "textbook"
+ },
+ {
+  "page": 77,
+  "rect": [
+   12,
+   9,
+   88,
+   30
+  ],
+  "out": "fig-3-11.png",
+  "caption": "图3.11 GBN协议的工作原理：对出错数据帧的处理",
+  "src": "教材P65",
+  "book": "textbook"
+ },
+ {
+  "page": 77,
+  "rect": [
+   12,
+   74,
+   88,
+   94
+  ],
+  "out": "fig-3-12.png",
+  "caption": "图3.12 SR协议的工作原理：对超时和出错数据帧的处理",
+  "src": "教材P65",
+  "book": "textbook"
+ },
+ {
+  "page": 78,
+  "rect": [
+   13,
+   49.65,
+   88,
+   61.6
+  ],
+  "out": "fig-3-13.png",
+  "caption": "图3.13 停止-等待协议中数据帧和确认帧的发送时间关系",
+  "src": "教材P66",
+  "book": "textbook"
+ },
+ {
+  "page": 79,
+  "rect": [
+   12,
+   8,
+   88,
+   21
+  ],
+  "out": "fig-3-14.png",
+  "caption": "图3.14 连续ARQ协议的流水线传输可提高信道利用率",
+  "src": "教材P67",
+  "book": "textbook"
+ },
+ {
+  "page": 90,
+  "rect": [
+   30,
+   16,
+   70,
+   30
+  ],
+  "out": "fig-3-15.png",
+  "caption": "图3.15 广播信道的通信方式",
+  "src": "教材P78",
+  "book": "textbook"
+ },
+ {
+  "page": 90,
+  "rect": [
+   25,
+   38,
+   75,
+   53
+  ],
+  "out": "fig-3-16.png",
+  "caption": "图3.16 复用原理示意图",
+  "src": "教材P78",
+  "book": "textbook"
+ },
+ {
+  "page": 90,
+  "rect": [
+   12,
+   68,
+   88,
+   86
+  ],
+  "out": "fig-3-17.png",
+  "caption": "图3.17 时分复用的原理示意图",
+  "src": "教材P78",
+  "book": "textbook"
+ },
+ {
+  "page": 91,
+  "rect": [
+   18,
+   35,
+   84,
+   48.5
+  ],
+  "out": "fig-3-18.png",
+  "caption": "图3.18 频分复用的原理示意图",
+  "src": "教材P79",
+  "book": "textbook"
+ },
+ {
+  "page": 93,
+  "rect": [
+   15,
+   30,
+   85,
+   53
+  ],
+  "out": "fig-3-19.png",
+  "caption": "图3.19 一个纯ALOHA协议的工作原理",
+  "src": "教材P81",
+  "book": "textbook"
+ },
+ {
+  "page": 93,
+  "rect": [
+   12,
+   74,
+   88,
+   95
+  ],
+  "out": "fig-3-20.png",
+  "caption": "图3.20 两个站的时隙ALOHA协议的工作原理",
+  "src": "教材P81",
+  "book": "textbook"
+ }
+]

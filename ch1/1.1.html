@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1.1 计算机网络概述 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第1章 计算机网络体系结构</a> › <span>1.1 计算机网络概述</span></div>
+<h1 class="page-title">1.1 计算机网络概述</h1>
+<p class="subtitle">对应王道教材 1.1 节（教材 P1–P9）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-1-1-1">1.1.1 计算机网络的概念 <span class="badge kao">考点</span></h2>
+<p>一般认为，<strong>计算机网络</strong>是将众多分散的、自治的计算机系统，通过通信设备与线路连接起来，并由功能完善的软件实现资源共享和信息传递的系统。</p>
+<p>计算机网络（简称网络）由若干<strong>节点</strong>（Node，或译为结点）和连接这些节点的<strong>链路</strong>（Link）组成。节点可以是计算机、集线器、交换机或路由器等。多个网络还可以通过路由器互联，构成覆盖范围更广的网络，称为<strong>互连网</strong>（internet）。由此可理解：<strong>网络把多台计算机连接在一起，而互连网把多个网络通过路由器连接在一起</strong>。</p>
+<div class="box concept"><div class="box-title">📌 核心概念：internet 与 Internet</div>
+<p>这两个词含义相差很大，是经典辨析点：</p>
+<ul>
+  <li><strong>internet（互连网）</strong>：通用名词，泛指由多个计算机网络互连而成的网络，网络之间可使用任意通信协议，并不要求必须采用 TCP/IP。</li>
+  <li><strong>Internet（互联网或因特网）</strong>：专用名词，特指当前全球最大的、开放的、由众多网络和路由器互连而成的特定计算机网络，它<strong>必须采用 TCP/IP 协议族</strong>作为通信规则。</li>
+</ul>
+</div>
+<p>网络的最终用户通过<strong>互联网服务提供商</strong>（ISP）接入互联网，例如中国电信、中国移动等。所谓上网，是指通过某 ISP 分配的 IP 地址接入互联网。ISP 从互联网管理机构申请大量 IP 地址，并拥有通信线路及路由器等连网设备；任何机构或个人只要向 ISP 缴纳费用，就可获得所需 IP 地址的使用权，并通过该 ISP 接入互联网。</p>
+
+<h2 class="sec" id="sec-1-1-2">1.1.2 计算机网络的组成</h2>
+<p>从不同角度看，计算机网络的组成可分为以下几类：</p>
+<h3 class="sub">1）从组成部分看</h3>
+<p>计算机网络主要由<strong>硬件、软件、协议</strong>三大部分组成：</p>
+<ul>
+  <li><strong>硬件</strong>：主机（台式机、笔记本、平板、智能手机等）、通信链路（双绞线、光纤等）以及交换设备（路由器、交换机等）；</li>
+  <li><strong>软件</strong>：实现资源共享的系统软件和便于用户使用的应用工具（如 E-mail 程序、FTP 程序、聊天程序等）；</li>
+  <li><strong>协议</strong>：计算机网络的核心，如同交通规则规范车辆行驶一样，规定了数据在网络中传输时必须遵循的规则。</li>
+</ul>
+<h3 class="sub">2）从工作方式看</h3>
+<p>以互联网为例，可分为<strong>边缘部分</strong>和<strong>核心部分</strong>：边缘部分由所有连接到互联网、供用户直接使用的主机组成，用于通信（数据传输）和资源共享；核心部分由大量网络及互连这些网络的路由器组成，为边缘部分提供连通性与交换服务。</p>
+<h3 class="sub">3）从功能组成看</h3>
+<p>计算机网络由<strong>通信子网</strong>和<strong>资源子网</strong>组成。通信子网由传输介质、通信设备及相关网络协议组成，负责数据的传输、交换、控制与存储，实现联网计算机之间的通信；资源子网是实现资源共享功能的设备及软件的集合，向用户提供共享其他计算机上的硬件、软件和数据资源的服务。</p>
+
+<h2 class="sec" id="sec-1-1-3">1.1.3 计算机网络的功能</h2>
+<p>计算机网络主要有以下五大功能：</p>
+<ol>
+  <li><strong>数据通信</strong>：最基本且最重要的功能，实现联网计算机之间各种信息的传输，如文件传输、电子邮件等。</li>
+  <li><strong>资源共享</strong>：可以是软件、数据或硬件的共享，使网络中的资源互通有无、分工协作，提高硬件资源、软件资源和数据资源的利用率。</li>
+  <li><strong>分布式处理</strong>：当网络中某个计算机系统负荷过重时，可将其处理的复杂任务分配给网络中其他计算机系统，利用空闲资源提高整个系统的利用率。</li>
+  <li><strong>提高可靠性</strong>：网络中的各台计算机可以通过网络互为备份。</li>
+  <li><strong>负载均衡</strong>：将工作任务均衡地分配给网络中的各台计算机，避免某些计算机过载而其他计算机闲置。</li>
+</ol>
+<p>此外，计算机网络还支持电子办公与服务、远程教育、娱乐等功能。</p>
+
+<h2 class="sec" id="sec-1-1-4">1.1.4 电路交换、报文交换与分组交换 <span class="badge kao">考点</span></h2>
+<p>在网络核心部分起关键作用的是<strong>路由器</strong>（Router），其通过对接收到的分组进行<strong>存储转发</strong>来实现分组交换。</p>
+
+<h3 class="sub">1．电路交换</h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：电路交换的时延分析（2025 统考）</div></div>
+<p>最典型的电路交换网络是传统电话网。从通信资源分配的角度看，交换是按照某种方式动态分配传输线路资源。电路交换分为三个阶段：<strong>建立连接</strong>（占用通信资源）、<strong>传输数据</strong>（持续占用通信资源）和<strong>释放连接</strong>（归还通信资源）。在数据传输前，通信双方必须先建立一条专用的<strong>端到端物理通路</strong>，该通路由沿途的交换设备和链路段连接而成；通信过程中这条通路始终被双方<strong>独占</strong>，直至通信结束才释放。</p>
+<figure class="fig"><img src="../assets/ch1/fig-1-2.png" alt="图1.2 电路交换示意图" loading="lazy"><figcaption>图 1.2 电路交换示意图（王道教材 P3）</figcaption></figure>
+<p>电路建立后，除源节点和目的节点外，中间节点仅提供端到端物理通路，比特流连续地从源端直达目的端，如同通过管道传输。因此<strong>电路交换适用于低频次、连续且大量的数据传输</strong>。</p>
+<div class="box tip"><div class="box-title">📌 电路交换的优点</div>
+<ol>
+  <li><strong>通信时延小</strong>：通信线路为双方专用，数据直达，传输效率高；</li>
+  <li><strong>有序传输</strong>：数据按发送顺序传送，不存在失序问题；</li>
+  <li><strong>没有冲突</strong>：不同通信对使用独立信道，不会争用物理信道；</li>
+  <li><strong>实时性强</strong>：物理通路一旦建立，双方即可随时通信。</li>
+</ol>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 电路交换的缺点</div>
+<ol>
+  <li><strong>建立连接时间长</strong>：平均建立连接的时间对计算机通信而言过长；</li>
+  <li><strong>线路利用率低</strong>：物理通路被双方独占，即使空闲也无法供其他用户使用；</li>
+  <li><strong>灵活性差</strong>：通路中任一节点或链路发生故障，都需重新建立新连接；</li>
+  <li><strong>难以实现差错控制</strong>：中间节点不具备存储和检错能力，无法发现或纠正传输错误。</li>
+</ol>
+</div>
+<p>计算机之间的通信通常是<strong>突发式</strong>（高频、少量）的，若采用电路交换，已占用的通信线路在大部分时间内处于空闲状态，其利用率往往不足 10%，甚至低于 1%。</p>
+
+<h3 class="sub">2．报文交换</h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：报文交换的时延分析（2013、2025 统考）</div></div>
+<p>用户数据附加源地址、目的地址等控制信息后，被封装成<strong>报文</strong>（Message）。报文交换采用存储转发技术：整个报文先传送到相邻节点，被完整接收并存储后，节点根据转发表将其转发至下一跳，如此<strong>逐跳转发</strong>，直到到达目的端。每个报文可<strong>独立选择</strong>通往目的端的路径。</p>
+<div class="box tip"><div class="box-title">📌 报文交换的优点</div>
+<ol>
+  <li><strong>无建立和释放连接的时延</strong>：通信前无须建立连接，用户可随时发送报文；</li>
+  <li><strong>线路分配灵活</strong>：节点存储完整报文后，可选择当前最优空闲链路转发；若某条路径故障，可动态切换到其他路径；</li>
+  <li><strong>线路利用率高</strong>：报文仅在一段链路上传输时才占用这段链路的资源；</li>
+  <li><strong>支持差错控制</strong>：交换节点可对缓存中的报文进行差错检验。</li>
+</ol>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 报文交换的缺点</div>
+<ol>
+  <li><strong>存储转发时延高</strong>：节点必须完整接收整个报文后才能开始转发；</li>
+  <li><strong>缓存开销大</strong>：报文大小没有限制，要求交换节点配备大容量缓存；</li>
+  <li><strong>错误处理低效</strong>：报文越长出错概率相对更大，重传整个报文的代价较大。</li>
+</ol>
+</div>
+
+<h3 class="sub">3．分组交换</h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：分组交换的时延分析（2010、2013、2023、2025 统考）</div></div>
+<p>分组交换同样采用存储转发技术，但有效解决了报文交换中因报文过长带来的问题。源主机在发送前，先将较长的报文划分为若干<strong>较小的等长数据段</strong>，并在每个数据段前面添加由必要控制信息（如源地址、目的地址、分组编号等）组成的<strong>首部</strong>，构成<strong>分组</strong>（Packet）。</p>
+<figure class="fig"><img src="../assets/ch1/fig-1-3.png" alt="图1.3 构成分组的过程" loading="lazy"><figcaption>图 1.3 构成分组的过程（王道教材 P4）</figcaption></figure>
+<p>源主机将分组发送到分组交换网，网络中的<strong>分组交换机</strong>（如路由器）收到一个分组后，先将其缓存，然后从首部提取目的地址，据此查找转发表，并将分组转发给下一个分组交换机。经过多个分组交换机的存储转发，分组最终到达目的主机。</p>
+<div class="box tip"><div class="box-title">📌 分组交换的优势（继承了报文交换的优点之外）</div>
+<ol>
+  <li><strong>便于存储管理，转发开销小</strong>：分组长度固定，缓冲区大小可预设，管理更高效；</li>
+  <li><strong>传输效率高</strong>：分组可逐个发送，实现流水线操作，后一个分组的接收可与前一个分组的转发并行，减少整体传输时间；</li>
+  <li><strong>降低出错概率与重传代价</strong>：分组较短，出错概率必然减小，重传数据量大幅减少，既提高可靠性又降低传输时延。</li>
+</ol>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 分组交换的缺点</div>
+<ol>
+  <li><strong>存在存储转发时延</strong>：虽比报文交换的传输时延小，但相比于电路交换仍存在存储转发时延，且要求节点交换机具备更强的处理能力；</li>
+  <li><strong>需要传输额外的信息量</strong>：每个数据段都需附加控制信息以构成分组，使传送的信息量增大约 5%～10%，增加了控制复杂度，降低了通信效率；</li>
+  <li><strong>分组可能失序、丢失或重复</strong>：当采用<strong>数据报服务</strong>时，分组可能经不同路径到达，需在目的主机按编号重新排序，处理较为复杂；若采用<strong>虚电路服务</strong>，虽可避免失序，但需经历建立连接、数据传输和释放连接三个阶段（数据报与虚电路的完整讨论见教材第 4 章）。</li>
+</ol>
+</div>
+
+<h3 class="sub">三种交换方式的比较</h3>
+<p>当需连续传输大量数据、且传输时间远大于连接建立时间时，采用电路交换更为合适。但从提升网络整体信道利用率角度看，报文交换和分组交换优于电路交换。其中，<strong>分组交换时延更小、更灵活，尤其适合突发式数据通信</strong>。</p>
+<figure class="fig"><img src="../assets/ch1/fig-1-4.png" alt="图1.4 三种交换方式的比较" loading="lazy"><figcaption>图 1.4 三种交换方式的比较（王道教材 P5）</figcaption></figure>
+<table class="tbl">
+  <caption>表 1.1 三种交换方式的特性对比（王道教材 P5）</caption>
+  <tr><th>特性</th><th>电路交换</th><th>报文交换</th><th>分组交换</th></tr>
+  <tr><td>完成传输所需的时间</td><td>最少</td><td>最多</td><td>较少</td></tr>
+  <tr><td>存储转发时延</td><td>无</td><td>高</td><td>较低</td></tr>
+  <tr><td>通信前是否需要建立连接？</td><td>是</td><td>否</td><td>否</td></tr>
+  <tr><td>节点的缓存开销</td><td>无</td><td>高</td><td>低</td></tr>
+  <tr><td>是否支持差错控制？</td><td>不支持</td><td>支持</td><td>支持</td></tr>
+  <tr><td>数据是否有序到达？</td><td>是</td><td>是</td><td>否</td></tr>
+  <tr><td>是否需要额外的控制信息？</td><td>否</td><td>是</td><td>是（且占比较大）</td></tr>
+  <tr><td>线路分配的灵活性</td><td>不灵活</td><td>灵活</td><td>非常灵活</td></tr>
+  <tr><td>线路利用率</td><td>低</td><td>高</td><td>非常高</td></tr>
+</table>
+
+<h2 class="sec" id="sec-1-1-5">1.1.5 计算机网络的分类</h2>
+<h3 class="sub">1．按分布范围分类</h3>
+<ul>
+  <li><strong>广域网（WAN）</strong>：用于长距离通信，覆盖范围通常为几十至几千千米，常用于构建互联网的骨干部分，其节点交换机间通过高速链路互联，通信容量大。</li>
+  <li><strong>城域网（MAN）</strong>：覆盖范围可跨越几个街区乃至整个城市，直径约 5～50km。目前城域网大多采用以太网技术，因此有时也被归入局域网的讨论范畴。</li>
+  <li><strong>局域网（LAN）</strong>：通常将主机通过高速线路互联，覆盖范围较小，一般为几十米到几千米。传统上，局域网采用广播技术，而广域网采用交换技术。</li>
+  <li><strong>个人区域网（PAN）</strong>：在个人工作或活动区域内，利用无线技术将消费电子设备（如平板电脑、智能手机等）互联而成的网络，也称无线个人区域网（WPAN）。</li>
+</ul>
+<h3 class="sub">2．按传输技术分类</h3>
+<ul>
+  <li><strong>广播式网络</strong>：所有联网计算机共享一个公共通信信道。一台计算机通过该信道发送报文分组时，所有其他计算机都能"收听"到该分组，并通过检查目的地址决定是否接收。局域网普遍采用广播式通信；广域网中的无线和卫星通信网络也属于广播式网络。</li>
+  <li><strong>点对点网络</strong>：每条物理线路连接一对计算机。若两台主机之间无直接连接，则分组需通过中间节点进行存储转发，直至到达目的主机。</li>
+</ul>
+<h3 class="sub">3．按拓扑结构分类</h3>
+<p>网络拓扑结构是指网络中节点（如路由器、主机等）与通信线路之间的几何排列关系，主要描述通信子网的结构。总线形、星形和环形多用于局域网，网状结构则多用于广域网。</p>
+<figure class="fig"><img src="../assets/ch1/fig-1-5.png" alt="图1.5 几种不同的网络拓扑结构" loading="lazy"><figcaption>图 1.5 几种不同的网络拓扑结构（王道教材 P6）</figcaption></figure>
+<ul>
+  <li><strong>总线形网络</strong>：使用单根传输线连接所有计算机。优点是建网容易、增减节点方便、节省线路；缺点是重负载下通信效率低，且总线任意一处故障都会影响全网。</li>
+  <li><strong>星形网络</strong>：各终端或计算机通过独立线路连接到中央设备（通常为交换机或路由器）。优点是便于集中控制与管理；缺点是成本较高，且中央设备对故障敏感。</li>
+  <li><strong>环形网络</strong>：所有计算机接口设备连接成一个闭合环路，信号沿环路单向传输。典型的例子是令牌环局域网。环可以是单环或双环，以提高可靠性。</li>
+  <li><strong>网状网络</strong>：一般情况下，每个节点至少有两条路径与其他节点相连，广泛应用于广域网。优点是可靠性高、容错能力强；缺点是控制复杂、线路成本高。</li>
+</ul>
+<p>上述四种基本拓扑结构可相互组合，构成更复杂的混合网络。</p>
+<h3 class="sub">4．按使用者分类</h3>
+<ul>
+  <li><strong>公用网（Public Network）</strong>：由电信运营商出资建设，面向公众开放，任何愿意遵守规定并缴纳费用的用户均可接入使用。</li>
+  <li><strong>专用网（Private Network）</strong>：由特定单位为满足自身业务需求而建设，仅限内部使用，不对外提供服务，例如铁路、电力、军队等部门的专用网络。</li>
+</ul>
+<h3 class="sub">5．按传输介质分类</h3>
+<p>传输介质分为有线和无线两大类，相应地网络可分为有线网络和无线网络。有线网络包括双绞线网络、同轴电缆网络、光纤网络等；无线网络包括蓝牙、Wi-Fi、微波、无线电等类型。</p>
+
+<h2 class="sec" id="sec-1-1-6">1.1.6 计算机网络的性能指标 <span class="badge kao">考点</span></h2>
+<h3 class="sub">1）速率（Speed）</h3>
+<p>连接到网络上的节点在数字信道上传送数据的速率，也称<strong>数据传输速率、数据率或比特率</strong>，单位为 bit/s（比特/秒）或 b/s（有时也写作 bps）。数据率较高时，常用 kb/s（\(k=10^3\)）、Mb/s（\(M=10^6\)）或 Gb/s（\(G=10^9\)）表示。</p>
+<div class="box warn"><div class="box-title">⚠️ 注意：K、M、G 与 k、M、G 的口径</div>
+<p>在描述<strong>数据量</strong>时，K、M、G 常用 2 的幂次表示，如 \(1\text{Kb}=2^{10}\text{b}\)；在描述<strong>速率</strong>时，k、M、G 常用 10 的幂次表示，如 \(1\text{kb/s}=10^3\text{b/s}\)。通常前者使用大写 K，后者使用小写 k，但其他前缀均为大写。</p>
+</div>
+<h3 class="sub">2）带宽（Bandwidth）</h3>
+<p>在通信领域，带宽指通信线路允许通过的信号频率范围，单位是赫兹（Hz）。但在计算机网络中，带宽表示网络通信线路所能传送数据的能力，指<strong>数字信道所能支持的最高数据传输速率</strong>，单位为 b/s。注意，节点间的实际可用带宽由双方网卡的性能、各段链路的带宽以及交换设备速率中的<strong>最小值</strong>决定。</p>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：分组交换的吞吐量分析（2024 统考）</div></div>
+<h3 class="sub">3）吞吐量（Throughput）</h3>
+<p>指单位时间内通过某个网络（或信道、接口）的<strong>实际数据量</strong>。吞吐量常用于对实际网络进行测量，以评估真实可达到的数据传输能力。</p>
+<h3 class="sub">4）时延（Delay） <span class="badge kao">考点</span></h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：网络时延的分析（2010、2013、2023、2025 统考）</div></div>
+<p>时延指数据（一个报文或分组）从网络（或链路）的一端传送到另一端所需的<strong>总时间</strong>，由四部分构成：</p>
+<ul>
+  <li><strong>发送时延</strong>（也称传输时延）：节点将分组的所有比特推入链路所需的时间，即从发送分组的第一个比特开始，到最后一个比特发送完毕为止的时间。</li>
+</ul>
+<div class="formula">$$\text{发送时延}=\frac{\text{分组长度}}{\text{发送速率}}$$</div>
+<ul>
+  <li><strong>传播时延</strong>：电磁波在信道（传输介质）中传播一定距离所需的时间，即一个比特从链路一端传播到另一端所需的时间。</li>
+</ul>
+<div class="formula">$$\text{传播时延}=\frac{\text{信道长度}}{\text{电磁波在信道上的传播速率}}$$</div>
+<ul>
+  <li><strong>处理时延</strong>：分组在交换节点中为存储转发而进行必要处理所花费的时间，例如解析分组的首部、进行差错检验或查找路由等。</li>
+  <li><strong>排队时延</strong>：分组在路由器的输入队列或输出队列中等待处理或转发所花费的时间。</li>
+</ul>
+<div class="formula">$$\text{总时延}=\text{发送时延}+\text{传播时延}+\text{处理时延}+\text{排队时延}$$</div>
+<div class="box warn"><div class="box-title">⚠️ 注意：区分发送时延与传播时延</div>
+<p>发送时延取决于<strong>分组长度和发送速率</strong>；传播时延取决于<strong>链路距离和传输介质</strong>。二者不可混为一谈。</p>
+</div>
+<p>以图 1.6 所示的分组交换网为例，该网络包含两段链路，假设主机 A 向主机 B 发送一个长度为 1000B 的分组，总时延在三种典型场景下的分析如下：</p>
+<figure class="fig"><img src="../assets/ch1/fig-1-6.png" alt="图1.6 一个简单的分组交换网" loading="lazy"><figcaption>图 1.6 一个简单的分组交换网（王道教材 P7）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考法：三种典型场景下的总时延计算（教材例析）</div>
+<ol>
+  <li><strong>若忽略传播时延、处理时延和排队时延</strong>：则"A → 链路1"的分组发送时延 \(=1000\text{B} \div 100\text{Mb/s}=0.08\text{ms}\)；"路由器 → 链路 2"的分组发送时延 \(=1000\text{B} \div 80\text{Mb/s}=0.1\text{ms}\)；总时延 \(=0.08\text{ms}+0.1\text{ms}=0.18\text{ms}\)。</li>
+  <li><strong>若需考虑传播时延</strong>：假设链路 1 和链路 2 的传播时延分别为 0.01ms 和 0.05ms，则总时延 \(=0.01\text{ms}+0.08\text{ms}+0.05\text{ms}+0.1\text{ms}=0.24\text{ms}\)。</li>
+  <li><strong>若还需考虑路由器的处理时延和排队时延</strong>：假设这两项时延合计为 0.04ms，则总时延 \(=0.01\text{ms}+0.08\text{ms}+0.04\text{ms}+0.05\text{ms}+0.1\text{ms}=0.28\text{ms}\)。</li>
+</ol>
+<p>在考试中，通常无须考虑处理时延和排队时延（除非题目另有说明）。</p>
+</div>
+<figure class="fig"><img src="../assets/ch1/fig-1-7.png" alt="图1.7 三种典型场景下总时延的分析" loading="lazy"><figcaption>图 1.7 三种典型场景下总时延的分析（王道教材 P8）</figcaption></figure>
+<h3 class="sub">5）时延带宽积</h3>
+<p>指发送端发送的第一个比特即将到达接收端时，发送端已发出的比特总数，即<strong>已发出但尚未到达接收端的最大比特数</strong>，也称<strong>以比特为单位的链路长度</strong>。</p>
+<div class="formula">$$\text{时延带宽积}=\text{传播时延}\times\text{信道带宽}$$</div>
+<p>可将链路想象成一条圆柱形管道：其长度表示传播时延，横截面积表示链路带宽，则时延带宽积表示该管道可容纳的比特数量。</p>
+<h3 class="sub">6）往返时延（Round-Trip Time，RTT）</h3>
+<p>指从发送端发出一个短分组，到收到接收端返回的确认信号所经历的<strong>总时间</strong>。往返时延包括：发送端与接收端之间的往返传播时延、接收端的处理时延；在互联网环境中，还包括各中间节点的处理时延和排队时延。注意，<strong>往返时延不包括数据分组本身的发送时延</strong>。</p>
+<h3 class="sub">7）信道利用率</h3>
+<p>指信道有数据通过的时间占总时间的百分比。</p>
+<div class="formula">$$\text{信道利用率}=\frac{\text{有数据通过的时间}}{\text{有数据通过的时间}+\text{无数据通过的时间}}$$</div>
+<div class="box warn"><div class="box-title">⚠️ 注意：信道利用率并非越高越好</div>
+<p>利用率过低会浪费网络资源；过高则会导致排队时延显著增加，引发网络拥塞。就好比当公路上的车流量很大时，容易出现拥堵。</p>
+</div>
+
+<div class="pager">
+      <a class="prev" href="index.html"><span class="label">上一篇</span>第1章 导学</a>
+      <a class="next" href="1.2.html"><span class="label">下一篇</span>1.2 计算机网络体系结构与参考模型</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "chapter": "第5章 传输层 习题配图",
+    "note": "rect 为 [x0,y0,x1,y1] 页面百分比；严禁包进相邻题文字；输出到 src/assets/ch5/",
+    "source_pages": "choice=选择题做题本 pages/choice/，comp=综合题做题本 pages/comp/"
+  },
+  "crops": [
+    {
+      "page": 126,
+      "rect": [30, 31, 72, 56],
+      "out": "quiz-5.3-q77.png",
+      "caption": "第77题配图：客户与服务器TCP报文交互时序图",
+      "book": "choice",
+      "src": "做题本P126（5.3 第50题·2019统考真题）"
+    },
+    {
+      "page": 128,
+      "rect": [28, 15, 72, 29.5],
+      "out": "quiz-5.3-q83.png",
+      "caption": "第83题配图：甲乙TCP交互时序图",
+      "book": "choice",
+      "src": "做题本P128（5.3 第56题·2021统考真题）"
+    },
+    {
+      "page": 129,
+      "rect": [28, 34, 72, 54],
+      "out": "quiz-5.3-q87.png",
+      "caption": "第87题配图：甲乙TCP数据发送过程时序图",
+      "book": "choice",
+      "src": "做题本P129（5.3 第60题·2025统考真题）"
+    },
+    {
+      "page": 39,
+      "rect": [30, 42, 68, 57.5],
+      "out": "quiz-5.2-comp4.png",
+      "caption": "综合题4配图：UDP数据报首部格式",
+      "book": "comp",
+      "src": "综合题做题本P39（5.2 第4题）"
+    },
+    {
+      "page": 46,
+      "rect": [10, 18, 56, 34],
+      "out": "quiz-5.3-comp17.png",
+      "caption": "综合题17配图：TCP首部格式",
+      "book": "comp",
+      "src": "综合题做题本P46（5.3 第12题）"
+    },
+    {
+      "page": 47,
+      "rect": [20, 12.5, 84, 30],
+      "out": "quiz-5.3-comp18a.png",
+      "caption": "综合题18配图：捕获的5个IP分组（表1）",
+      "book": "comp",
+      "src": "综合题做题本P47（5.3 第13题·表1）"
+    },
+    {
+      "page": 47,
+      "rect": [20, 39.5, 84, 46],
+      "out": "quiz-5.3-comp18b.png",
+      "caption": "综合题18配图：来自S的分组前40B（表2）",
+      "book": "comp",
+      "src": "综合题做题本P47（5.3 第13题·表2）"
+    },
+    {
+      "page": 47,
+      "rect": [8, 47.5, 92, 68],
+      "out": "quiz-5.3-comp18c.png",
+      "caption": "综合题18配图：IP分组头结构（图1）与TCP段头结构（图2）",
+      "book": "comp",
+      "src": "综合题做题本P47（5.3 第13题·图1图2）"
+    },
+    {
+      "page": 48,
+      "rect": [20, 15.5, 86, 40],
+      "out": "quiz-5.3-comp19.png",
+      "caption": "综合题19配图：网络拓扑图",
+      "book": "comp",
+      "src": "综合题做题本P48（5.3 第14题·2016统考真题）"
+    }
+  ]
+}

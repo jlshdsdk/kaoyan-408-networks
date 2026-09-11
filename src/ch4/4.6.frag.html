@@ -1,0 +1,32 @@
+<h1 class="page-title">4.6 移动 IP</h1>
+<p class="subtitle">对应王道教材 4.6 节（教材 P212–P213）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-4-6-1">4.6.1 移动 IP 的概念</h2>
+<p><strong>移动 IP</strong> 是一种允许移动主机在切换网络接入点时，<strong>仍能保持其永久 IP 地址不变</strong>的网络协议机制。其目标是：无论移动主机当前位于哪个网络，都能确保发往该站的数据分组被自动、透明地正确投递。该机制对上层应用（如 TCP 连接）完全透明，从而保障了会话的连续性。</p>
+<p>移动 IP 定义了<strong>三种功能实体</strong>：</p>
+<ol>
+  <li><strong>移动节点</strong>：拥有永久 IP 地址、可在不同网络间移动的主机；</li>
+  <li><strong>归属代理</strong>（也称本地代理）：连接在<strong>归属网络</strong>（初始接入的网络）上的路由器，负责截获并转发发往移动节点的数据；</li>
+  <li><strong>外地代理</strong>：连接在<strong>被访网络</strong>（当前接入的网络）上的路由器，协助移动节点接收数据。</li>
+</ol>
+<div class="box warn"><div class="box-title">⚠️ 注意：DHCP 重新接入不属于移动 IP</div>
+<p>若用户将笔记本电脑关机后从家中移至办公室，并通过 DHCP 自动获取新的 IP 地址重新接入网络——尽管设备的物理位置和接入网络发生了变化，但由于其 IP 地址已改变，因此<strong>不属于移动 IP 的范畴</strong>。然而，若需在移动过程中维持 TCP 传输，则要确保该 TCP 连接在漫游期间持续有效；否则，TCP 连接将因地址变化而中断。由此可见，<strong>实现移动中 TCP 连接不中断的关键，在于保持移动节点的 IP 地址不变</strong>——这正是移动 IP 所要研究的问题。</p>
+</div>
+
+<h2 class="sec" id="sec-4-6-2">4.6.2 移动 IP 通信过程</h2>
+<p>在移动 IP 中，每个移动站都有一个初始 IP 地址称为<strong>永久地址</strong>（或归属地址），移动站初始所在的网络称为<strong>归属网络</strong>。永久地址和归属网络的关联是固定不变的。移动站离开归属网络后，所接入的外地网络也称<strong>被访网络</strong>，被访网络中的代理称为<strong>外地代理</strong>，它通常是连接在被访网络上的路由器。</p>
+<p>外地代理有两个重要功能：① 为移动站分配一个临时的<strong>转交地址</strong>，该地址属于被访网络，用于标识移动站的当前位置；② 将此转交地址及时通知给其归属代理，以便后者建立从归属网络到当前位置的转发路径。</p>
+<figure class="fig"><img src="../assets/ch4/fig-4-26.png" alt="图4.26 移动IP的基本通信过程" loading="lazy"><figcaption>图 4.26 移动 IP 的基本通信过程（王道教材 P212，图中移动站 A 的永久地址为 131.8.6.7/16，归属网络为 131.8.0.0/16，漫游到被访网络 15.0.0.0/8 后获得转交地址 15.5.6.7/8）</figcaption></figure>
+<div class="box concept"><div class="box-title">📌 移动 IP 的基本通信流程</div>
+<ol>
+  <li><strong>本地通信</strong>：移动站 A 位于其归属网络时，按传统的 TCP/IP 方式直接通信；</li>
+  <li><strong>漫游与注册</strong>：当移动站 A 漫游到被访网络时，先向该网络中的<strong>外地代理登记</strong>，并获得一个临时的<strong>转交地址</strong>。随后外地代理将该转交地址<strong>注册</strong>至 A 的归属代理，完成位置更新；</li>
+  <li><strong>移动站接收数据（B→A）</strong>：当通信者 B 希望与移动站 A 通信时，B 无须知晓 A 的当前位置，只需将 A 的永久地址作为发送的 IP 分组的目的地址即可。<strong>归属代理截获</strong>所有发往移动站 A 的 IP 分组后，构建一条<strong>通往转交地址的 IP 隧道</strong>，将原始分组封装在新的 IP 包中，并通过该隧道转发至外地代理。外地代理收到后，<strong>解封装并还原出原始分组</strong>，并直接交付给 A；</li>
+  <li><strong>移动站发送数据（A→B）</strong>：移动站 A 在被访网络向外发送 IP 分组时，仍使用其<strong>永久地址作为源地址</strong>。此时，可直接通过被访网络的外地代理转发，<strong>而无须通过归属代理</strong>；</li>
+  <li><strong>移动与返回</strong>：移动站 A 再次漫游至另一被访网络时，新外地代理会将其新的转交地址注册给 A 的归属代理。无论 A 如何移动，所有发往 A 的 IP 分组均由归属代理统一截获并转发。A 返回归属网络后，向归属代理注销转交地址，恢复本地直连通信。</li>
+</ol>
+</div>
+<div class="box tip"><div class="box-title">📌 两点注意与新增的网络层功能</div>
+<p>注意两点：转交地址<strong>仅用于</strong>移动站、归属代理和外地代理之间的通信，应用程序不会使用该地址；外地代理向被访网络中的移动站发送 IP 分组时，直接通过其 <strong>MAC 地址</strong>进行链路层交付。</p>
+<p>为支持移动 IP 机制，网络层需增加一些新功能：① 移动站到外地代理的<strong>登记协议</strong>；② 外地代理到归属代理的<strong>注册协议</strong>；③ 归属代理的<strong>隧道封装协议</strong>；④ 外地代理的<strong>隧道解封协议</strong>。</p>
+</div>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.3 IPv6 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第4章 网络层</a> › <span>4.3 IPv6</span></div>
+<h1 class="page-title">4.3 IPv6</h1>
+<p class="subtitle">对应王道教材 4.3 节（教材 P181–P185）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-4-3-1">4.3.1 IPv6 的特点 <span class="badge kao">考点</span></h2>
+<p>目前广泛使用的 IPv4 是在 20 世纪 70 年代设计的。互联网经过几十年的飞速发展，到 2011 年 2 月，IPv4 地址已经耗尽。为解决"IP 地址耗尽"问题，采取过三种措施：</p>
+<ol>
+  <li><strong>无类别编址 CIDR</strong>：使 IP 地址分配更加合理；</li>
+  <li><strong>网络地址转换（NAT）</strong>：节省全球唯一的公网 IP 地址；</li>
+  <li><strong>IPv6</strong>：采用更大地址空间的新版本 IP 协议。</li>
+</ol>
+<p>前两种方法只是延缓了 IPv4 的使用寿命，<strong>只有第三种方法能从根本上解决 IP 地址耗尽问题</strong>。</p>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：IPv6 的特点（2023 统考）</div>
+<p>IPv6 的主要特点如下：</p>
+<ol>
+  <li><strong>更大的地址空间</strong>：这是最重要的。IPv6 将地址长度从 IPv4 的 32 位增大到 128 位，地址空间是 IPv4 的 \(2^{128}/2^{32}=2^{96}\) 倍，从长远来看绝对够用；</li>
+  <li><strong>扩展的地址层次结构</strong>：地址空间很大，可以划分出更多的层次；</li>
+  <li><strong>灵活的首部格式</strong>：IPv6 定义了许多可选的扩展首部，不仅能提供比 IPv4 更多的功能，还能提高路由器的处理效率——因为路由器通常不对扩展首部进行处理；</li>
+  <li><strong>改进的选项</strong>：IPv6 首部长度是固定的，选项放在有效载荷中，可根据需要灵活配置；而 IPv4 预先定义好了一套标准选项，放在首部的可变部分；</li>
+  <li><strong>允许协议继续扩充</strong>：IPv6 允许不断扩充功能，而 IPv4 的功能是固定不变的；</li>
+  <li><strong>支持即插即用（自动配置 IPv6 地址）</strong>：通常不需要使用 DHCP，简化了网络管理；</li>
+  <li><strong>支持资源的预分配</strong>：支持实时音频/视频等要求保证一定带宽和时延的应用；</li>
+  <li><strong>只有源主机才能分片</strong>：只支持端到端的分片，<strong>不允许中间路由器进行分片</strong>；</li>
+  <li><strong>首部长度固定为 40B</strong>：而 IPv4 的首部长度是可变的（必须是 4B 的整数倍）；</li>
+  <li><strong>增大了安全性</strong>：身份鉴别和保密功能由 IPv6 的扩展首部提供。</li>
+</ol>
+<p>虽然 IPv6 与 IPv4 不兼容，但它与所有其他互联网协议（如 TCP、UDP、ICMP、IGMP 和 DNS 等）总体上是兼容的，仅在少数地方做了必要的修改，主要是为了处理更长的地址。</p>
+</div>
+
+<h2 class="sec" id="sec-4-3-2">4.3.2 IPv6 数据报的基本首部 <span class="badge kao">考点</span></h2>
+<p>IPv6 数据报由两部分组成：<strong>基本首部</strong>和<strong>有效载荷</strong>（也称净负荷）。有效载荷由零个或多个扩展首部（扩展首部不属于基本首部）及其后面的数据部分构成，有效载荷最长不超过 65535 字节。</p>
+<figure class="fig"><img src="../assets/ch4/fig-4-12.png" alt="图4.12 具有多个可选扩展首部的IPv6数据报的一般形式" loading="lazy"><figcaption>图 4.12 具有多个可选扩展首部的 IPv6 数据报的一般形式（王道教材 P182）</figcaption></figure>
+<p>与 IPv4 相比，IPv6 对首部中的某些字段进行了如下调整：</p>
+<ul>
+  <li>取消了<strong>首部长度</strong>字段，因为基本首部长度固定为 40B；</li>
+  <li>取消了<strong>服务类型</strong>字段，其功能由优先级和流标号字段实现；</li>
+  <li>取消了<strong>总长度</strong>字段，改用<strong>有效载荷长度</strong>字段；</li>
+  <li>取消了<strong>标识、标志和片偏移</strong>字段，相关功能已移至分片扩展首部；</li>
+  <li>把 <strong>TTL</strong> 字段更名为<strong>跳数限制</strong>字段，作用不变，但名称更贴合实际含义；</li>
+  <li>取消了<strong>协议</strong>字段，改用<strong>下一个首部</strong>字段；</li>
+  <li>取消了<strong>首部检验和</strong>字段，因传输层已提供差错检测，此举可加快路由器处理速度；</li>
+  <li>取消了<strong>选项</strong>字段，其功能由灵活的扩展首部实现。</li>
+</ul>
+<div class="box warn"><div class="box-title">⚠️ 注意：字段少了，首部反而变长了</div>
+<p>尽管取消了 IPv4 首部中的多项冗余功能，使 IPv6 基本首部的字段数减少至仅 <strong>8 个</strong>，但由于地址长度从 32 位扩展到 128 位，其基本首部长度反而增至 <strong>40B</strong>。</p>
+</div>
+<p>IPv6 数据报的基本首部格式如图 4.13 所示。</p>
+<figure class="fig"><img src="../assets/ch4/fig-4-13.png" alt="图4.13 IPv6数据报的基本首部的格式" loading="lazy"><figcaption>图 4.13 IPv6 数据报的基本首部的格式（王道教材 P182）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：IPv6 首部格式及字段含义（2023 统考）</div>
+<p>基本首部各字段的含义如下：</p>
+<ol>
+  <li><strong>版本</strong>：占 4 位，指明 IP 协议的版本。对于 IPv6，该字段的值为 6；</li>
+  <li><strong>通信量类</strong>：占 8 位，用于区分不同 IPv6 数据报的类别或优先级；</li>
+  <li><strong>流标号</strong>：占 20 位。IPv6 提出了"流"的抽象概念：流是指互联网上从特定源点到特定终点（单播或多播）的一系列数据报（如实时音频/视频传输），路径上的路由器可据此提供特定的服务质量保证。所有属于同一个流的数据报都具有相同的流标号；</li>
+  <li><strong>有效载荷长度</strong>：占 16 位，表示 IPv6 数据报中基本首部之后的字节数，包括所有扩展首部和上层数据，最大值为 65535（单位为字节）；</li>
+  <li><strong>下一个首部</strong>：占 8 位，功能类似于 IPv4 的协议字段。若无扩展首部，则标识上层协议类型；若存在扩展首部，则标识紧随其后的第一个扩展首部的类型；</li>
+  <li><strong>跳数限制</strong>：占 8 位，作用等同于 IPv4 的 TTL 字段。源主机在发送数据报时设定初始值（最大为 255），每经过一个路由器其值减 1，减至 0 时丢弃该数据报；</li>
+  <li><strong>源地址和目的地址</strong>：各占 128 位，分别表示数据报的发送方/接收方的 IPv6 地址。</li>
+</ol>
+</div>
+
+<h2 class="sec" id="sec-4-3-3">4.3.3 IPv6 地址 <span class="badge kao">考点</span></h2>
+<h3 class="sub">1．三种基本地址类型</h3>
+<p>IPv6 数据报的目的地址有以下三种基本类型：</p>
+<ul>
+  <li><strong>单播</strong>：即传统的点对点通信，数据报发送给唯一指定的接收方；</li>
+  <li><strong>多播</strong>：一点对多点的通信，数据报发送给所有加入该多播组的接口；</li>
+  <li><strong>任播</strong>：IPv6 新增的一种地址类型，特点可概括为"一名多用、就近交付"。任播地址标识一组接口，但网络会将数据报仅交付给其中路由距离最近的一个。</li>
+</ul>
+<h3 class="sub">2．冒号十六进制记法与缩写规则</h3>
+<p>IPv4 地址通常采用点分十进制表示法。若 IPv6 也沿用此方式，其 128 位地址将显得冗长。因此 IPv6 标准采用<strong>冒号十六进制记法</strong>：将地址划分为 8 组，每组 16 位（4 个十六进制数），各组之间用冒号分隔。例如：</p>
+<div class="formula">4BF5:AA12:0216:FEBC:BA5F:039A:BE9A:2170</div>
+<p>为了书写方便，还规定了如下两种缩写规则：</p>
+<div class="box concept"><div class="box-title">📌 IPv6 地址缩写的两条规则</div>
+<ol>
+  <li><strong>省略前导零</strong>：每组中前面连续的十六进制零可以省略，但至少要保留一个数字。例如，可以把地址 4BF5:0000:0000:0000:BA5F:039A:000A:2176 缩写为 4BF5:0:0:0:BA5F:39A:A:2176；</li>
+  <li><strong>双冒号替换连续全零组</strong>：当地址中出现一个或多个连续的全零组时，可用双冒号（::）替代。但 <strong>"::" 在一个地址中只能使用一次</strong>，否则无法确定省略了多少个全零组（因总组数需恢复为 8）。因此上述地址可被更紧凑地缩写为 4BF5:BA5F:39A:A:2176。</li>
+</ol>
+</div>
+<div class="box exam"><div class="box-title">🎯 考法：零压缩的展开与还原（教材例析）</div>
+<p>已知某 IPv6 地址的简化写法为 <strong>8::D0:123:CDEF:89A</strong>，求其完整地址。步骤如下：</p>
+<ol>
+  <li>先把零压缩的部分展开：8::D0:123:CDEF:89A 表示 "::" 替代了中间若干连续全零组，展开骨架得到 8:0000:0000:0000:D0:123:CDEF:89A（共 8 组）；</li>
+  <li>每个区域应该有 4 位十六进制数，不足 4 位表示开头的 0 被省略，须在前面补 0；</li>
+  <li>补齐后得到完整地址：<strong>0008:0000:0000:0000:00D0:0123:CDEF:089A</strong>。</li>
+</ol>
+<p>注意两条要点的配合：① 多个连续区域为 0 可进行零压缩，但一个地址仅可出现一次零压缩；② 每个区域<strong>开头</strong>的 0 可省略，<strong>结尾</strong>的 0 不可省略。当有多处不相邻的 0 时，只能用 "::" 代表其中一处。</p>
+</div>
+<h3 class="sub">3．IPv6 地址的分类</h3>
+<table class="tbl">
+  <caption>IPv6 地址的分类（王道教材 P183）</caption>
+  <tr><th>地址类型</th><th>二进制前缀</th><th>CIDR 记法</th></tr>
+  <tr><td>未指明地址</td><td>00…0（128 位）</td><td>::/128</td></tr>
+  <tr><td>环回地址</td><td>00…1（128 位）</td><td>::1/128</td></tr>
+  <tr><td>多播地址</td><td>11111111（8 位）</td><td>FF00::/8</td></tr>
+  <tr><td>本地链路单播地址</td><td>1111111010（10 位）</td><td>FE80::/10</td></tr>
+  <tr><td>全球单播地址</td><td colspan="2">见图 4.14 的几种划分方法</td></tr>
+</table>
+<p>对五类地址解释如下：</p>
+<ol>
+  <li><strong>未指明地址</strong>：不能用作目的地址，仅用于尚未配置 IPv6 地址的主机作为源地址；</li>
+  <li><strong>环回地址</strong>：作用与 IPv4 的环回地址相同，但 IPv6 中仅定义这一个环回地址；</li>
+  <li><strong>多播地址</strong>：作用与 IPv4 多播类似，这类地址占 IPv6 地址空间的 1/256；</li>
+  <li><strong>本地链路单播地址</strong>：仅用于本地链路内的通信，不能被路由器转发；</li>
+  <li><strong>全球单播地址</strong>：使用得最多的地址。其划分方法非常灵活，如图 4.14 所示：可以把整个 128 位都作为一个节点的地址；也可用 \(n\) 位作为子网前缀，剩下的 \((128-n)\) 位作为接口标识符（相当于 IPv4 的主机号）；还可以划分为三级：用 \(n\) 位作为全球路由选择前缀，用 \(m\) 位作为子网前缀，而剩下的 \(128-n-m\) 位则作为接口标识符。</li>
+</ol>
+<figure class="fig"><img src="../assets/ch4/fig-4-14.png" alt="图4.14 IPv6全球单播地址的几种划分方法" loading="lazy"><figcaption>图 4.14 IPv6 全球单播地址的几种划分方法（王道教材 P184）</figcaption></figure>
+
+<h2 class="sec" id="sec-4-3-4">4.3.4 从 IPv4 向 IPv6 过渡 <span class="badge kao">考点</span></h2>
+<p>IPv4 向 IPv6 的过渡只能采用<strong>逐步演进</strong>的办法，并确保新部署的 IPv6 系统具备向后兼容的能力：能够接收、转发 IPv4 数据报，并为其选择路由。</p>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：IPv4 向 IPv6 过渡的策略（2023 统考）</div>
+<p>目前主要采用以下两种过渡策略：</p>
+<ol>
+  <li><strong>双协议栈</strong>：指在一台主机上同时安装 IPv4 和 IPv6 两个协议栈，分别配置一个 IPv4 地址和一个 IPv6 地址，因此既能与 IPv4 网络通信，也能与 IPv6 网络通信。双协议栈主机通过应用层的域名系统（DNS）获知目的主机使用的地址类型：若 DNS 返回的是 IPv4 地址，则使用 IPv4；若返回的是 IPv6 地址，则使用 IPv6；</li>
+  <li><strong>隧道技术</strong>：指当 IPv6 数据报需要进入 IPv4 网络时，将其<strong>整个封装为 IPv4 数据报的数据部分</strong>，使原 IPv6 数据报如同在 IPv4 网络的隧道中传输；当该 IPv4 数据报离开 IPv4 网络后，再将其数据部分交由主机的 IPv6 协议处理。</li>
+</ol>
+</div>
+<div class="box tip"><div class="box-title">📌 IPv6 vs IPv4 高频对比速记</div>
+<table class="tbl">
+  <tr><th>对比项</th><th>IPv4</th><th>IPv6</th></tr>
+  <tr><td>地址长度</td><td>32 位</td><td>128 位（空间是 IPv4 的 \(2^{96}\) 倍）</td></tr>
+  <tr><td>首部长度</td><td>可变（4B 的整数倍）</td><td>固定 40B</td></tr>
+  <tr><td>首部字段数</td><td>较多（含选项、检验和等）</td><td>仅 8 个，取消首部检验和</td></tr>
+  <tr><td>分片</td><td>源主机和中间路由器都可分片</td><td>只有源主机才能分片（端到端分片）</td></tr>
+  <tr><td>TTL 对应字段</td><td>TTL</td><td>跳数限制（Hop Limit），作用等同</td></tr>
+  <tr><td>协议字段对应</td><td>协议字段</td><td>下一个首部字段</td></tr>
+  <tr><td>地址类型</td><td>单播、多播、广播</td><td>单播、多播、任播（无广播）</td></tr>
+  <tr><td>地址配置</td><td>通常需要 DHCP</td><td>支持即插即用（自动配置）</td></tr>
+</table>
+</div>
+
+<div class="pager">
+      <a class="prev" href="4.2.html"><span class="label">上一篇</span>4.2 IPv4</a>
+      <a class="next" href="4.4.html"><span class="label">下一篇</span>4.4 路由算法与路由协议</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

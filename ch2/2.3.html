@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2.3 物理层设备 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第2章 物理层</a> › <span>2.3 物理层设备</span></div>
+<h1 class="page-title">2.3 物理层设备</h1>
+<p class="subtitle">对应王道教材 2.3 节（教材 P46–P47）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-2-3-1">2.3.1 中继器</h2>
+<p><strong>中继器</strong>的主要功能是<strong>整形、放大并转发信号</strong>，以消除信号经过一长段电缆后产生的失真和衰减，使信号的波形和强度达到所需的要求，从而扩大网络的传输距离。其原理是<strong>信号再生</strong>（而非简单地放大衰减的信号）。中继器有两个端口，数据从一个端口输入，从另一个端口输出。</p>
+<p>中继器连接的两端属于<strong>同一局域网</strong>中的不同网段（而非不同子网），因此所连网段仍构成一个局域网。如果中继器发生故障，将影响相邻两个网段的正常工作。</p>
+<p>从理论上讲，中继器的使用数量是无限的，网络因而也可无限延长。但事实上这是不可能的，因为网络标准中对信号的传播延迟范围有明确规定，中继器只能在此范围内有效工作，否则会引起网络故障。例如，在采用粗同轴电缆的 10Base-5 以太网规范中，互相串联的中继器数量不能超过 4 个，而且由 4 个中继器串联的 5 段电缆中，仅有 3 段可挂接主机，其余 2 段只能用作扩展通信范围的链路段，不能挂接主机。这就是所谓的<strong>"5-4-3 规则"</strong>。</p>
+
+<h2 class="sec" id="sec-2-3-2">2.3.2 集线器</h2>
+<p><strong>集线器（Hub）</strong>实质上是一个<strong>多端口的中继器</strong>。当集线器工作时，一个端口接收到数据信号后，由于信号在传输过程中已有衰减，集线器便对该信号进行整形和放大，将其再生为接近原始发送时的信号，紧接着转发到其他所有（除输入端口外）处于工作状态的端口。若两个或多个端口所连节点同时发送信号，则会发生冲突，导致所有相关帧传输失败。由此可见，集线器在网络中只起信号放大和转发作用，目的是扩大网络的传输范围，而不具备信号的定向传送能力，即<strong>信息广播至所有端口，是标准的共享式设备</strong>。</p>
+<div class="box warn"><div class="box-title">⚠️ 注意：中继器和集线器不具备缓存能力</div>
+<p>中继器和集线器<strong>不具备缓存能力</strong>，当其连接两个不同链路层协议的网段时可能会出问题。若两个网段的速率分别为 10Mb/s 和 10/100Mb/s，采用集线器连接后，则整个网络只能以速率 10Mb/s 工作。</p>
+</div>
+<p>使用集线器组网灵活，它将所有节点的通信集中在以其为中心的节点上，由集线器组成的网络在<strong>物理上是星形网络，但逻辑上仍是总线形网络</strong>。集线器的每个端口连接的是同一网络的不同网段。此外，集线器<strong>只能工作在半双工模式</strong>，网络的吞吐率因而受到限制。</p>
+<div class="box warn"><div class="box-title">⚠️ 注意：集线器不能分割冲突域（2010、2020 统考）</div>
+<p><span class="badge kao">考点</span> 物理层设备对冲突域和广播域的影响。<strong>集线器不能分割冲突域，其所有端口都属于同一个冲突域</strong>。集线器在一个时钟周期内只能传输一组信息。当一台集线器连接的主机数量较多且多台主机频繁同时通信时，将导致大量冲突，使得集线器的工作效率很差。例如，一个带宽为 10Mb/s 的集线器上连接了 8 台计算机，当它们同时工作时，每台计算机平均可用的带宽仅为 \(10/8\text{Mb/s}=1.25\text{Mb/s}\)。</p>
+</div>
+<table class="tbl">
+  <caption>表 2.2 中继器与集线器的对比（依据教材 P46–P47 归纳）</caption>
+  <tr><th>特性</th><th>中继器</th><th>集线器</th></tr>
+  <tr><td>端口数</td><td>通常只有 2 个</td><td>多端口（4 个或更多）</td></tr>
+  <tr><td>工作层次</td><td>物理层</td><td>物理层</td></tr>
+  <tr><td>主要功能</td><td>整形、放大并转发信号（信号再生）</td><td>多端口中继器，信号再生后广播至除输入端口外的所有端口</td></tr>
+  <tr><td>有无缓存能力</td><td>无</td><td>无</td></tr>
+  <tr><td>工作模式</td><td>—</td><td>只能半双工</td></tr>
+  <tr><td>冲突域</td><td>不能分割冲突域</td><td>所有端口同属一个冲突域</td></tr>
+  <tr><td>串联限制</td><td>受信号传播延迟范围限制（如 10Base-5 的"5-4-3 规则"）</td><td>同样受网段数量限制</td></tr>
+</table>
+
+<div class="pager">
+      <a class="prev" href="2.2.html"><span class="label">上一篇</span>2.2 传输介质</a>
+      <a class="next" href="2.4.html"><span class="label">下一篇</span>2.4 本章小结及疑难点</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

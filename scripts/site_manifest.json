@@ -1,0 +1,882 @@
+{
+ "chapters": [
+  {
+   "num": 1,
+   "title": "计算机网络体系结构",
+   "page_start": 13,
+   "sections": [
+    {
+     "id": "1.1",
+     "title": "计算机网络概述",
+     "page_start": 13,
+     "subsections": [
+      {
+       "id": "1.1.1",
+       "title": "计算机网络的概念",
+       "page": 13,
+       "page_end": 13
+      },
+      {
+       "id": "1.1.2",
+       "title": "计算机网络的组成",
+       "page": 14,
+       "page_end": 14
+      },
+      {
+       "id": "1.1.3",
+       "title": "计算机网络的功能",
+       "page": 14,
+       "page_end": 14
+      },
+      {
+       "id": "1.1.4",
+       "title": "电路交换、报文交换与分组交换",
+       "page": 15,
+       "page_end": 15
+      },
+      {
+       "id": "1.1.5",
+       "title": "计算机网络的分类",
+       "page": 17,
+       "page_end": 17
+      },
+      {
+       "id": "1.1.6",
+       "title": "计算机网络的性能指标",
+       "page": 19,
+       "page_end": 20
+      }
+     ],
+     "page_end": 26
+    },
+    {
+     "id": "1.2",
+     "title": "计算机网络体系结构与参考模型",
+     "page_start": 27,
+     "subsections": [
+      {
+       "id": "1.2.1",
+       "title": "计算机网络分层结构",
+       "page": 27,
+       "page_end": 27
+      },
+      {
+       "id": "1.2.2",
+       "title": "计算机网络协议、服务、接口的概念",
+       "page": 28,
+       "page_end": 28
+      },
+      {
+       "id": "1.2.3",
+       "title": "OSI参考模型和TCP/IP模型",
+       "page": 29,
+       "page_end": 31
+      }
+     ],
+     "page_end": 39
+    },
+    {
+     "id": "1.3",
+     "title": "本章小结及疑难点",
+     "page_start": 40,
+     "subsections": [],
+     "page_end": 41
+    }
+   ],
+   "page_end": 41
+  },
+  {
+   "num": 2,
+   "title": "物理层",
+   "page_start": 42,
+   "sections": [
+    {
+     "id": "2.1",
+     "title": "通信基础",
+     "page_start": 42,
+     "subsections": [
+      {
+       "id": "2.1.1",
+       "title": "基本概念",
+       "page": 42,
+       "page_end": 42
+      },
+      {
+       "id": "2.1.2",
+       "title": "信道的极限容量",
+       "page": 43,
+       "page_end": 43
+      },
+      {
+       "id": "2.1.3",
+       "title": "编码与调制",
+       "page": 45,
+       "page_end": 45
+      }
+     ],
+     "page_end": 53
+    },
+    {
+     "id": "2.2",
+     "title": "传输介质",
+     "page_start": 54,
+     "subsections": [
+      {
+       "id": "2.2.1",
+       "title": "双绞线、同轴电缆、光纤与无线传输介质",
+       "page": 54,
+       "page_end": 54
+      },
+      {
+       "id": "2.2.2",
+       "title": "物理层接口的特性",
+       "page": 56,
+       "page_end": 56
+      }
+     ],
+     "page_end": 57
+    },
+    {
+     "id": "2.3",
+     "title": "物理层设备",
+     "page_start": 58,
+     "subsections": [
+      {
+       "id": "2.3.1",
+       "title": "中继器",
+       "page": 58,
+       "page_end": 58
+      },
+      {
+       "id": "2.3.2",
+       "title": "集线器",
+       "page": 58,
+       "page_end": 58
+      }
+     ],
+     "page_end": 59
+    },
+    {
+     "id": "2.4",
+     "title": "本章小结及疑难点",
+     "page_start": 60,
+     "subsections": [],
+     "page_end": 61
+    }
+   ],
+   "page_end": 61
+  },
+  {
+   "num": 3,
+   "title": "数据链路层",
+   "page_start": 62,
+   "sections": [
+    {
+     "id": "3.1",
+     "title": "数据链路层的功能",
+     "page_start": 62,
+     "subsections": [
+      {
+       "id": "3.1.1",
+       "title": "数据链路层所处的地位",
+       "page": 63,
+       "page_end": 63
+      },
+      {
+       "id": "3.1.2",
+       "title": "链路管理",
+       "page": 63,
+       "page_end": 63
+      },
+      {
+       "id": "3.1.3",
+       "title": "封装成帧与透明传输",
+       "page": 64,
+       "page_end": 64
+      },
+      {
+       "id": "3.1.4",
+       "title": "流量控制",
+       "page": 64,
+       "page_end": 64
+      },
+      {
+       "id": "3.1.5",
+       "title": "差错检测与可靠传输",
+       "page": 64,
+       "page_end": 64
+      }
+     ],
+     "page_end": 65
+    },
+    {
+     "id": "3.2",
+     "title": "组帧",
+     "page_start": 66,
+     "subsections": [
+      {
+       "id": "3.2.1",
+       "title": "字符计数法",
+       "page": 66,
+       "page_end": 66
+      },
+      {
+       "id": "3.2.2",
+       "title": "字节填充法",
+       "page": 66,
+       "page_end": 66
+      },
+      {
+       "id": "3.2.3",
+       "title": "零比特填充法",
+       "page": 67,
+       "page_end": 67
+      },
+      {
+       "id": "3.2.4",
+       "title": "违规编码法",
+       "page": 67,
+       "page_end": 67
+      }
+     ],
+     "page_end": 67
+    },
+    {
+     "id": "3.3",
+     "title": "差错控制",
+     "page_start": 68,
+     "subsections": [
+      {
+       "id": "3.3.1",
+       "title": "检错编码",
+       "page": 69,
+       "page_end": 69
+      },
+      {
+       "id": "3.3.2",
+       "title": "纠错编码",
+       "page": 70,
+       "page_end": 70
+      }
+     ],
+     "page_end": 72
+    },
+    {
+     "id": "3.4",
+     "title": "流量控制与可靠传输机制",
+     "page_start": 73,
+     "subsections": [
+      {
+       "id": "3.4.1",
+       "title": "流量控制与滑动窗口机制",
+       "page": 73,
+       "page_end": 73
+      },
+      {
+       "id": "3.4.2",
+       "title": "可靠传输机制",
+       "page": 75,
+       "page_end": 75
+      }
+     ],
+     "page_end": 88
+    },
+    {
+     "id": "3.5",
+     "title": "介质访问控制",
+     "page_start": 89,
+     "subsections": [
+      {
+       "id": "3.5.1",
+       "title": "信道划分介质访问控制",
+       "page": 90,
+       "page_end": 90
+      },
+      {
+       "id": "3.5.2",
+       "title": "随机访问介质访问控制",
+       "page": 92,
+       "page_end": 92
+      },
+      {
+       "id": "3.5.3",
+       "title": "轮询访问：令牌传递协议",
+       "page": 94,
+       "page_end": 94
+      }
+     ],
+     "page_end": 98
+    },
+    {
+     "id": "3.6",
+     "title": "局域网",
+     "page_start": 99,
+     "subsections": [
+      {
+       "id": "3.6.1",
+       "title": "局域网的基本概念和体系结构",
+       "page": 99,
+       "page_end": 99
+      },
+      {
+       "id": "3.6.2",
+       "title": "以太网与IEEE 802.3",
+       "page": 100,
+       "page_end": 100
+      },
+      {
+       "id": "3.6.3",
+       "title": "IEEE 802.11无线局域网",
+       "page": 105,
+       "page_end": 105
+      },
+      {
+       "id": "3.6.4",
+       "title": "VLAN基本概念与基本原理",
+       "page": 111,
+       "page_end": 111
+      }
+     ],
+     "page_end": 124
+    },
+    {
+     "id": "3.7",
+     "title": "广域网",
+     "page_start": 125,
+     "subsections": [
+      {
+       "id": "3.7.1",
+       "title": "广域网的基本概念",
+       "page": 125,
+       "page_end": 125
+      },
+      {
+       "id": "3.7.2",
+       "title": "点对点协议",
+       "page": 126,
+       "page_end": 126
+      }
+     ],
+     "page_end": 128
+    },
+    {
+     "id": "3.8",
+     "title": "数据链路层设备",
+     "page_start": 129,
+     "subsections": [
+      {
+       "id": "3.8.1",
+       "title": "网桥的基本概念",
+       "page": 129,
+       "page_end": 129
+      },
+      {
+       "id": "3.8.2",
+       "title": "以太网交换机",
+       "page": 130,
+       "page_end": 131
+      },
+      {
+       "id": "3.8.3",
+       "title": "共享式以太网",
+       "page": 132,
+       "page_end": 134
+      }
+     ],
+     "page_end": 137
+    },
+    {
+     "id": "3.9",
+     "title": "本章小结及疑难点",
+     "page_start": 138,
+     "subsections": [],
+     "page_end": 138
+    }
+   ],
+   "page_end": 138
+  },
+  {
+   "num": 4,
+   "title": "网络层",
+   "page_start": 139,
+   "sections": [
+    {
+     "id": "4.1",
+     "title": "网络层的功能",
+     "page_start": 139,
+     "subsections": [
+      {
+       "id": "4.1.1",
+       "title": "异构网络互连",
+       "page": 140,
+       "page_end": 140
+      },
+      {
+       "id": "4.1.2",
+       "title": "路由与转发",
+       "page": 140,
+       "page_end": 140
+      },
+      {
+       "id": "4.1.3",
+       "title": "网络层提供的两种服务",
+       "page": 141,
+       "page_end": 141
+      },
+      {
+       "id": "4.1.4",
+       "title": "SDN的基本概念",
+       "page": 143,
+       "page_end": 143
+      },
+      {
+       "id": "4.1.5",
+       "title": "拥塞控制",
+       "page": 144,
+       "page_end": 146
+      }
+     ],
+     "page_end": 148
+    },
+    {
+     "id": "4.2",
+     "title": "IPv4",
+     "page_start": 149,
+     "subsections": [
+      {
+       "id": "4.2.1",
+       "title": "IPv4分组",
+       "page": 149,
+       "page_end": 149
+      },
+      {
+       "id": "4.2.2",
+       "title": "IPv4地址",
+       "page": 151,
+       "page_end": 152
+      },
+      {
+       "id": "4.2.3",
+       "title": "网络地址转换NAT",
+       "page": 156,
+       "page_end": 157
+      },
+      {
+       "id": "4.2.4",
+       "title": "网络层转发分组的过程",
+       "page": 158,
+       "page_end": 158
+      },
+      {
+       "id": "4.2.5",
+       "title": "地址解析协议（ARP）",
+       "page": 159,
+       "page_end": 160
+      },
+      {
+       "id": "4.2.6",
+       "title": "动态主机配置协议DHCP",
+       "page": 161,
+       "page_end": 161
+      },
+      {
+       "id": "4.2.7",
+       "title": "网际控制报文协议ICMP",
+       "page": 162,
+       "page_end": 162
+      }
+     ],
+     "page_end": 192
+    },
+    {
+     "id": "4.3",
+     "title": "IPv6",
+     "page_start": 193,
+     "subsections": [
+      {
+       "id": "4.3.1",
+       "title": "IPv6的特点",
+       "page": 193,
+       "page_end": 193
+      },
+      {
+       "id": "4.3.2",
+       "title": "IPv6数据报的基本首部",
+       "page": 194,
+       "page_end": 194
+      },
+      {
+       "id": "4.3.3",
+       "title": "IPv6地址",
+       "page": 195,
+       "page_end": 195
+      },
+      {
+       "id": "4.3.4",
+       "title": "从IPv4向IPv6过渡",
+       "page": 196,
+       "page_end": 196
+      }
+     ],
+     "page_end": 197
+    },
+    {
+     "id": "4.4",
+     "title": "路由算法与路由协议",
+     "page_start": 198,
+     "subsections": [
+      {
+       "id": "4.4.1",
+       "title": "路由算法",
+       "page": 198,
+       "page_end": 198
+      },
+      {
+       "id": "4.4.2",
+       "title": "分层次的路由选择协议",
+       "page": 200,
+       "page_end": 200
+      },
+      {
+       "id": "4.4.3",
+       "title": "路由信息协议",
+       "page": 200,
+       "page_end": 200
+      },
+      {
+       "id": "4.4.4",
+       "title": "开放最短路径优先协议",
+       "page": 203,
+       "page_end": 203
+      },
+      {
+       "id": "4.4.5",
+       "title": "边界网关协议",
+       "page": 205,
+       "page_end": 205
+      }
+     ],
+     "page_end": 219
+    },
+    {
+     "id": "4.5",
+     "title": "IP多播",
+     "page_start": 220,
+     "subsections": [
+      {
+       "id": "4.5.1",
+       "title": "多播的概念",
+       "page": 220,
+       "page_end": 220
+      },
+      {
+       "id": "4.5.2",
+       "title": "IP多播地址",
+       "page": 221,
+       "page_end": 221
+      },
+      {
+       "id": "4.5.3",
+       "title": "在局域网上进行硬件多播",
+       "page": 221,
+       "page_end": 221
+      },
+      {
+       "id": "4.5.4",
+       "title": "IGMP与多播路由协议",
+       "page": 222,
+       "page_end": 222
+      }
+     ],
+     "page_end": 223
+    },
+    {
+     "id": "4.6",
+     "title": "移动IP",
+     "page_start": 224,
+     "subsections": [
+      {
+       "id": "4.6.1",
+       "title": "移动IP的概念",
+       "page": 224,
+       "page_end": 224
+      },
+      {
+       "id": "4.6.2",
+       "title": "移动IP通信过程",
+       "page": 224,
+       "page_end": 224
+      }
+     ],
+     "page_end": 225
+    },
+    {
+     "id": "4.7",
+     "title": "网络层设备",
+     "page_start": 226,
+     "subsections": [
+      {
+       "id": "4.7.1",
+       "title": "冲突域和广播域",
+       "page": 226,
+       "page_end": 226
+      },
+      {
+       "id": "4.7.2",
+       "title": "路由器的组成和功能",
+       "page": 226,
+       "page_end": 226
+      },
+      {
+       "id": "4.7.3",
+       "title": "路由表与分组转发",
+       "page": 227,
+       "page_end": 227
+      }
+     ],
+     "page_end": 234
+    },
+    {
+     "id": "4.8",
+     "title": "本章小结及疑难点",
+     "page_start": 235,
+     "subsections": [],
+     "page_end": 235
+    }
+   ],
+   "page_end": 235
+  },
+  {
+   "num": 5,
+   "title": "传输层",
+   "page_start": 236,
+   "sections": [
+    {
+     "id": "5.1",
+     "title": "传输层提供的服务",
+     "page_start": 236,
+     "subsections": [
+      {
+       "id": "5.1.1",
+       "title": "传输层的功能",
+       "page": 236,
+       "page_end": 236
+      },
+      {
+       "id": "5.1.2",
+       "title": "传输层的寻址与端口",
+       "page": 237,
+       "page_end": 237
+      },
+      {
+       "id": "5.1.3",
+       "title": "无连接服务与面向连接服务",
+       "page": 238,
+       "page_end": 238
+      }
+     ],
+     "page_end": 240
+    },
+    {
+     "id": "5.2",
+     "title": "UDP",
+     "page_start": 241,
+     "subsections": [
+      {
+       "id": "5.2.1",
+       "title": "UDP数据报",
+       "page": 241,
+       "page_end": 241
+      },
+      {
+       "id": "5.2.2",
+       "title": "UDP检验",
+       "page": 242,
+       "page_end": 242
+      }
+     ],
+     "page_end": 247
+    },
+    {
+     "id": "5.3",
+     "title": "TCP",
+     "page_start": 248,
+     "subsections": [
+      {
+       "id": "5.3.1",
+       "title": "TCP的特点",
+       "page": 248,
+       "page_end": 249
+      },
+      {
+       "id": "5.3.2",
+       "title": "TCP报文段",
+       "page": 248,
+       "page_end": 249
+      },
+      {
+       "id": "5.3.3",
+       "title": "TCP连接管理",
+       "page": 250,
+       "page_end": 250
+      },
+      {
+       "id": "5.3.4",
+       "title": "TCP可靠传输",
+       "page": 252,
+       "page_end": 252
+      },
+      {
+       "id": "5.3.5",
+       "title": "TCP流量控制",
+       "page": 254,
+       "page_end": 254
+      },
+      {
+       "id": "5.3.6",
+       "title": "TCP拥塞控制",
+       "page": 255,
+       "page_end": 256
+      }
+     ],
+     "page_end": 276
+    },
+    {
+     "id": "5.4",
+     "title": "本章小结及疑难点",
+     "page_start": 277,
+     "subsections": [],
+     "page_end": 278
+    }
+   ],
+   "page_end": 278
+  },
+  {
+   "num": 6,
+   "title": "应用层",
+   "page_start": 279,
+   "sections": [
+    {
+     "id": "6.1",
+     "title": "网络应用模型",
+     "page_start": 279,
+     "subsections": [
+      {
+       "id": "6.1.1",
+       "title": "客户/服务器模型",
+       "page": 279,
+       "page_end": 279
+      },
+      {
+       "id": "6.1.2",
+       "title": "P2P模型",
+       "page": 280,
+       "page_end": 280
+      }
+     ],
+     "page_end": 281
+    },
+    {
+     "id": "6.2",
+     "title": "域名系统",
+     "page_start": 282,
+     "subsections": [
+      {
+       "id": "6.2.1",
+       "title": "层次域名空间",
+       "page": 282,
+       "page_end": 282
+      },
+      {
+       "id": "6.2.2",
+       "title": "域名服务器",
+       "page": 283,
+       "page_end": 283
+      },
+      {
+       "id": "6.2.3",
+       "title": "域名解析过程",
+       "page": 284,
+       "page_end": 284
+      }
+     ],
+     "page_end": 288
+    },
+    {
+     "id": "6.3",
+     "title": "文件传输协议",
+     "page_start": 289,
+     "subsections": [
+      {
+       "id": "6.3.1",
+       "title": "FTP的工作原理",
+       "page": 289,
+       "page_end": 289
+      },
+      {
+       "id": "6.3.2",
+       "title": "控制连接与数据连接",
+       "page": 289,
+       "page_end": 289
+      }
+     ],
+     "page_end": 294
+    },
+    {
+     "id": "6.4",
+     "title": "电子邮件",
+     "page_start": 295,
+     "subsections": [
+      {
+       "id": "6.4.1",
+       "title": "电子邮件系统的组成结构",
+       "page": 295,
+       "page_end": 295
+      },
+      {
+       "id": "6.4.2",
+       "title": "电子邮件格式与MIME",
+       "page": 296,
+       "page_end": 296
+      },
+      {
+       "id": "6.4.3",
+       "title": "SMTP和POP3",
+       "page": 297,
+       "page_end": 297
+      }
+     ],
+     "page_end": 300
+    },
+    {
+     "id": "6.5",
+     "title": "万维网",
+     "page_start": 301,
+     "subsections": [
+      {
+       "id": "6.5.1",
+       "title": "万维网的概念与组成结构",
+       "page": 301,
+       "page_end": 301
+      },
+      {
+       "id": "6.5.2",
+       "title": "超文本传输协议",
+       "page": 302,
+       "page_end": 302
+      }
+     ],
+     "page_end": 314
+    },
+    {
+     "id": "6.6",
+     "title": "本章小结及疑难点",
+     "page_start": 315,
+     "subsections": [],
+     "page_end": 316
+    }
+   ],
+   "page_end": 316
+  }
+ ]
+}

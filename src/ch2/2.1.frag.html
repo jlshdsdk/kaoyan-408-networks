@@ -1,0 +1,135 @@
+<h1 class="page-title">2.1 通信基础</h1>
+<p class="subtitle">对应王道教材 2.1 节（教材 P30–P35）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-2-1-1">2.1.1 基本概念</h2>
+
+<h3 class="sub">1．数据、信号与码元</h3>
+<p>通信的目的是传输信息，如文字、图像和视频等。<strong>数据</strong>是信息的载体，即用于传送信息的实体。<strong>信号</strong>则是数据的电气或电磁表现，是数据在传输过程中的存在形式。数据和信号均可分为模拟和数字两类：<strong>模拟信号</strong>的取值是连续的；<strong>数字信号</strong>的取值是离散的。</p>
+<p>在通信系统中，通常用一个固定时长的信号波形表示一个 \(k\) 进制符号，该波形称为<strong>码元</strong>（也称 \(k\) 进制码元），而该时长称为<strong>码元宽度</strong>（或信号周期）。每个码元能够承载的信息量与其所表示的信号状态数量直接相关，<strong>1 码元可以携带若干比特的信息量</strong>。例如，若一个信号周期内可能出现 2 种信号，则每种信号可表示 1 位二进制数，意味着 1 码元可携带 1 比特信息；若可能出现 4 种信号，则每种信号可表示 2 位二进制数，意味着 1 码元携带 2 比特信息。</p>
+
+<h3 class="sub">2．信源、信道与信宿</h3>
+<p>数据通信系统主要划分为<strong>信源</strong>、<strong>信道</strong>和<strong>信宿</strong>三部分。信源是产生和发送数据的源头，信宿是接收数据的终点，它们通常都是计算机或其他数字终端装置。<strong>信道</strong>是信号的传输介质，一条双向通信的线路包含一个发送信道和一个接收信道。信源发出信息后，需经发送变换器转换为适合在信道传输的信号；该信号经信道传至接收端后，由接收变换器还原为原始信息，再交付给信宿。噪声源是信道上的噪声及分散在通信系统其他各处的噪声的集中表示。</p>
+<figure class="fig"><img src="../assets/ch2/fig-2-1.png" alt="图2.1 一个单向通信系统的模型" loading="lazy"><figcaption>图 2.1 一个单向通信系统的模型（王道教材 P31）</figcaption></figure>
+<p>按传输信号形式的不同，信道分为传送模拟信号的<strong>模拟信道</strong>和传送数字信号的<strong>数字信道</strong>；按传输介质的不同，分为<strong>无线信道</strong>和<strong>有线信道</strong>。</p>
+<p>信道上传送的信号有<strong>基带信号</strong>和<strong>宽带信号</strong>之分。基带信号是由信源发出的未经过调制的原始电信号，当在信道中直接传送基带信号时，称为<strong>基带传输</strong>；宽带信号是将基带信号调制到高频载波上形成的信号，然后其在信道上传输，这种方式称为<strong>宽带传输</strong>。</p>
+<p>数据传输方式分为<strong>串行传输</strong>和<strong>并行传输</strong>。串行传输是指逐比特地按序依次传输，并行传输是指若干比特通过多个通信信道同时传输。串行传输适用于长距离通信，如计算机网络；并行传输适用于短距离通信，常用于计算机内部，如 CPU 与主存之间。</p>
+<p>从通信双方信息的交互方式看，可分为三种基本方式：</p>
+<ol>
+  <li><strong>单向通信</strong>。只有一个方向的通信而没有反方向的交互，如无线电广播、电视广播等。</li>
+  <li><strong>半双工通信</strong>。通信双方都可发送或接收信息，但任何一方都不能同时发送和接收。</li>
+  <li><strong>全双工通信</strong>。通信双方可同时发送和接收信息。</li>
+</ol>
+<div class="box concept"><div class="box-title">📌 核心概念：三种方式所需的信道数</div>
+<p>单向通信只需<strong>一个信道</strong>；全双工通信需要<strong>两个独立信道</strong>（每个方向一个）；而半双工通信可在<strong>同一信道</strong>上分时双向传输，无须两个物理信道。</p>
+</div>
+
+<h3 class="sub">3．速率、波特与带宽 <span class="badge kao">考点</span></h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：比特率与波特率的关系（2011、2014、2022 统考）</div></div>
+<p><strong>速率</strong>是指数据传输速率，表示单位时间内传输的数据量，带有两种描述形式：</p>
+<ol>
+  <li><strong>码元传输速率</strong>。也称<strong>波特率</strong>或调制速率，表示数字通信系统每秒传输的码元数，单位是<strong>波特（Baud）</strong>。码元既可以是多进制的，也可以是二进制的，<strong>码元速率与进制无关</strong>。</li>
+  <li><strong>信息传输速率</strong>。也称<strong>比特率</strong>，表示数字通信系统每秒传输的比特数，单位是 b/s。</li>
+</ol>
+<div class="box warn"><div class="box-title">⚠️ 注意：波特率与比特率的关系</div>
+<p>波特和比特是两个不同的概念，但波特率与比特率在数量上又有一定的关系。若一个码元携带 \(n\) 比特的信息量，则波特率 \(M\) Baud 对应的比特率为 \(M\times n\) b/s。</p>
+</div>
+<p>在<strong>模拟通信</strong>中，带宽（也称频率带宽）表示信道所能传输信号的频率范围，即最高频率与最低频率之差，单位是赫兹（Hz）。而在<strong>数字通信</strong>或计算机网络中，带宽用来表示通信线路所能传输数据的能力，即最大数据传输速率，此时带宽的单位不再是 Hz，而是 b/s。</p>
+
+<h2 class="sec" id="sec-2-1-2">2.1.2 信道的极限容量 <span class="badge kao">考点</span></h2>
+<p>任何实际的信道都不是理想的，信号在信道上传输时会不可避免地产生失真。只要接收端能够从失真的信号波形中识别出原始信号，这种失真就对通信质量没有影响；然而，若信号失真严重，则接收端就无法正确识别每个码元。码元传输速率越高、传输距离越远、噪声干扰越大或传输介质质量越差，接收端波形的失真就越严重。</p>
+
+<h3 class="sub">1．奈奎斯特定理（奈氏准则） <span class="badge kao">考点</span></h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：奈氏准则的应用（2009、2014、2022、2023 统考）</div></div>
+<p>实际信道所能通过的频率范围总是有限的。信号中的许多高频分量往往无法通过信道，会在传输中衰减，导致接收端收到的信号波形失去码元之间的清晰界限，这种现象称为<strong>码间串扰</strong>。</p>
+<p>奈奎斯特定理指出：在<strong>理想低通信道</strong>（无噪声、带宽有限）中，为避免码间串扰，极限码元传输速率为 \(2W\) 波特，其中 \(W\) 是信道的频率带宽（单位为 Hz）。若用 \(V\) 表示每个码元的离散电平数量（不同码元的种类数；例如，若有 16 种不同的码元，则需用 4 个二进制位来表示，此时数据传输速率是码元传输速率的 4 倍），则有</p>
+<div class="formula">$$\text{理想低通信道的极限数据传输速率}=2W\log_2 V \quad(\text{单位为 b/s})$$</div>
+<div class="box tip"><div class="box-title">📌 奈氏准则的结论</div>
+<ol>
+  <li>在任何信道中，<strong>码元传输速率存在上限</strong>。若超过该上限，则会产生严重码间串扰，导致接收端无法正确识别码元。</li>
+  <li><strong>信道带宽越大，其传输码元的能力越强</strong>。</li>
+  <li>奈氏准则仅限制码元传输速率，<strong>并未限制每个码元所能承载的信息量（比特数）</strong>，因此信息传输速率仍可采用多元调制（如 QAM-16、QAM-64）来提升。</li>
+</ol>
+</div>
+
+<h3 class="sub">2．香农定理 <span class="badge kao">考点</span></h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：香农定理的应用（2014、2016 统考）</div></div>
+<p>实际信道中存在高斯白噪声。香农定理给出了带宽受限且有高斯噪声干扰的信道的极限数据传输速率。当速率不超过该极限值时，理论上可以实现任意低的误码率。香农定理定义为</p>
+<div class="formula">$$\text{信道的极限数据传输速率}=W\log_2(1+S/N) \quad(\text{单位为 b/s})$$</div>
+<p>式中，\(W\) 为信道的频率带宽（单位为 Hz），\(S\) 为信号的平均功率，\(N\) 为噪声功率。\(S/N\) 为<strong>信噪比</strong>，即信号的平均功率与噪声的平均功率之比。</p>
+<div class="box concept"><div class="box-title">📌 信噪比的两种表示形式</div>
+<p>信噪比有无单位记法和分贝（dB）记法两种。当采用无单位记法时，信噪比 \(=S/N\)；当采用分贝记法时，</p>
+<div class="formula">$$\text{信噪比}=10\log_{10}(S/N)\quad(\text{单位为 dB})$$</div>
+<p>例如，当 \(S/N=1000\) 时，信噪比为 30dB。<strong>使用香农定理计算信道的极限数据传输速率时，信噪比应采用无单位记法</strong>。</p>
+</div>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：信道带宽的影响因素（2014 统考）</div></div>
+<div class="box tip"><div class="box-title">📌 香农定理的结论</div>
+<ol>
+  <li><strong>信道带宽或信噪比越大，信息的极限传输速率越高</strong>。</li>
+  <li>对于给定的带宽和信噪比，<strong>信息传输速率的上限是确定的</strong>。</li>
+  <li>只要实际信息传输速率低于该极限值，就能找到某种方法实现近似无差错传输。</li>
+  <li>香农定理得出的是<strong>理论极限</strong>，实际信道能达到的传输速率要比它低不少。</li>
+</ol>
+</div>
+<div class="box concept"><div class="box-title">📌 奈氏准则与香农定理的对比（2017 统考）</div>
+<p>奈氏准则仅考虑带宽对码元速率的限制，适用于<strong>无噪声的理想信道</strong>；而香农定理同时考虑了带宽和信噪比，适用于<strong>有噪声的实际信道</strong>。香农定理表明，在给定带宽和信噪比下，信息传输速率存在上限，即每个码元所能可靠携带的比特数是有限的。</p>
+</div>
+
+<h2 class="sec" id="sec-2-1-3">2.1.3 编码与调制 <span class="badge kao">考点</span></h2>
+<p>信号是数据的具体表示形式，数据无论是数字的还是模拟的，为了传输的目的，都要转换成信号。将数据转换为<strong>数字信号</strong>的过程称为<strong>编码</strong>，将数据转换为<strong>模拟信号</strong>的过程称为<strong>调制</strong>。</p>
+<p>数字数据可以通过数字发送器转换为数字信号进行传输，也可以通过调制器转换为模拟信号进行传输；同样，模拟数据既可通过 PCM 编码器转换为数字信号进行传输，也可直接以模拟信号形式传输（例如传统电话中的语音信号）。由此形成了以下四种编码与调制方式。</p>
+
+<h3 class="sub">1．数字数据编码为数字信号</h3>
+<p>数字数据编码用于基带传输，即在基本不改变信号频率的情况下直接传输数字信号。编码的核心在于如何用电平或跳变来表示二进制数 0 和 1。常用编码方式如图 2.2 所示。</p>
+<figure class="fig"><img src="../assets/ch2/fig-2-2.png" alt="图2.2 常用的数字数据编码" loading="lazy"><figcaption>图 2.2 常用的数字数据编码（王道教材 P33）</figcaption></figure>
+<ol>
+  <li><strong>归零（RZ）编码</strong>。用高电平表示 1，低电平表示 0（或相反），<strong>每个码元中间都会跳变回零电平（"归零"）</strong>。接收方可利用这一跳变来调整自身的时钟基准，从而实现收发双方的自同步。但由于归零过程占用了一部分带宽，传输效率会受到一定影响。</li>
+  <li><strong>非归零（NRZ）编码</strong>。与 RZ 编码的区别是<strong>不进行归零</strong>，整个周期都可用于传输数据，因此编码效率最高。但由于缺乏内在的时钟信息，收发双方需额外时钟线来实现同步。</li>
+  <li><strong>反向非归零（NRZI）编码</strong>。以<strong>码元起始处是否有跳变</strong>来表示数据：无跳变表示 1（或依协议约定），有跳变表示 0。跳变本身可用于辅助时钟恢复，兼顾了 NRZ 的高效率与一定的自同步能力，并且避免了 RZ 的带宽浪费。USB 2.0 等标准采用此编码。</li>
+  <li><strong>曼彻斯特编码</strong>。<strong>每个码元中间都有一次电平跳变</strong>，该跳变同时承担<strong>时钟同步与数据表示</strong>功能。常用下降沿（高→低）表示 1，上升沿（低→高）表示 0，或采用相反的约定。</li>
+  <li><strong>差分曼彻斯特编码</strong>。同样，<strong>每个码元中间都有电平跳变</strong>，与曼彻斯特编码不同的是，该跳变仅用于时钟同步，而不表示数据。数据由<strong>码元起始处是否有跳变</strong>决定：无跳变表示 1，有跳变表示 0。这种方式具有更强的抗干扰能力。</li>
+</ol>
+<div class="box exam"><div class="box-title">🎯 考点跟踪（波形特性）</div>
+<p>NRZ 与 NRZI 编码的波形特性（2015 统考）；曼彻斯特编码的波形特性（2013、2015 统考）；差分曼彻斯特编码的波形特性（2021 统考）。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 应用场景辨析</div>
+<p><strong>传统以太网采用的就是曼彻斯特编码</strong>，而差分曼彻斯特编码常用于令牌环网等高速网络。</p>
+</div>
+<table class="tbl">
+  <caption>表 2.1 常见数字编码方式的特性对比（王道教材 P34）</caption>
+  <tr><th>特性</th><th>归零编码</th><th>非归零编码</th><th>反向非归零编码</th><th>曼彻斯特编码</th><th>差分曼彻斯特编码</th></tr>
+  <tr><td>自同步能力</td><td>有</td><td>无</td><td>需增加冗余位</td><td>有</td><td>有</td></tr>
+  <tr><td>浪费带宽</td><td>浪费</td><td>无</td><td>不太浪费</td><td>浪费</td><td>浪费</td></tr>
+  <tr><td>抗干扰能力</td><td>弱</td><td>弱</td><td>弱</td><td>强</td><td>强</td></tr>
+</table>
+
+<h3 class="sub">2．模拟数据编码为数字信号</h3>
+<p>该过程通常采用 <strong>PCM（脉冲编码调制）</strong>，包含三个步骤：</p>
+<ol>
+  <li><strong>采样</strong>：对模拟信号进行周期性采样，将其从时间连续变为时间离散。根据奈奎斯特定理，<strong>采样频率不得低于信号最高频率的两倍</strong>。</li>
+  <li><strong>量化</strong>：将采样所得的幅值按预设分级取整，将连续的模拟电平转换为离散的数值。</li>
+  <li><strong>编码</strong>：将量化后的整数转换为对应的二进制码。</li>
+</ol>
+
+<h3 class="sub">3．数字数据调制为模拟信号 <span class="badge kao">考点</span></h3>
+<p>数字数据调制技术在发送端将数字信号转换为模拟信号，在接收端则将模拟信号还原为数字信号，分别对应于调制解调器的调制和解调过程。图 2.3 显示了数字调制的三种方式。</p>
+<figure class="fig"><img src="../assets/ch2/fig-2-3.png" alt="图2.3 数字调制的三种方式" loading="lazy"><figcaption>图 2.3 数字调制的三种方式（王道教材 P34）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：数字调制的分类与特点（2024 统考）；调制阶数与码元比特数的关系（2011、2022 统考）</div></div>
+<ol>
+  <li><strong>幅移键控（Amplitude Shift Keying，ASK）</strong>。通过改变载波的<strong>振幅</strong>来表示数字信号 1 和 0。例如，用有载波和无载波输出分别表示 1 和 0。这种方式容易实现，但抗干扰能力差。</li>
+  <li><strong>频移键控（Frequency Shift Keying，FSK）</strong>。通过改变载波的<strong>频率</strong>来表示数字信号 1 和 0。例如，用频率 \(f_1\) 和频率 \(f_2\) 分别表示 1 和 0。这种方式容易实现，并且抗干扰能力强。</li>
+  <li><strong>相移键控（Phase Shift Keying，PSK）</strong>。通过改变载波的<strong>相位</strong>来表示数字信号 1 和 0。例如，用相位 0 和 \(\pi\) 分别表示 1 和 0，它是一种绝对调相方式。</li>
+</ol>
+<div class="box warn"><div class="box-title">⚠️ 注意：DPSK（差分相移键控）</div>
+<p>与 PSK 不同，DPSK（差分相移键控）是一种<strong>相对调相</strong>方式，它通过检测当前码元与前一个码元的载波相位差来传输数字信息。例如，用相位是否发生变化分别表示 1 和 0。</p>
+</div>
+<p>4）<strong>正交幅度调制（Quadrature Amplitude Modulation，QAM）</strong>。在载波频率相同的前提下，通过<strong>同时调制振幅和相位</strong>，形成复合信号，从而在有限带宽内实现更高的数据传输速率。</p>
+<p>QAM 基于正交载波，通常使用两路载波，分别对应正弦波和余弦波。两路载波的频率相同，但相位相差 90°，因此可在同一频带上独立传输而不会相互干扰。以 QAM-16 为例，常用如图 2.4(a) 所示的星座图表示：每路载波均有 4 种不同的振幅，其中横轴表示余弦波的幅度，纵轴表示正弦波的幅度。两路信号组合后可形成 16 种不同的信号状态，每个状态对应星座图上的一个点，并且代表一个 4 位二进制数。接收端收到信号后，通过判断该信号最接近哪个星座点，即可恢复出原始数据。若将每路载波的振幅调制为 8 种，则可组合成 64 种不同的信号状态（QAM-64），每个状态对应一个 6 位二进制数，如图 2.4(b) 所示。</p>
+<figure class="fig"><img src="../assets/ch2/fig-2-4.png" alt="图2.4 QAM-16 和 QAM-64 的星座图" loading="lazy"><figcaption>图 2.4 QAM-16 和 QAM-64 的星座图（王道教材 P35）</figcaption></figure>
+<p>假设波特率为 \(B\)，采用 \(m\) 个相位，每个相位有 \(n\) 种振幅，则该 QAM 的数据传输速率 \(R\) 为</p>
+<div class="formula">$$R=B\log_2(m\times n)\quad(\text{单位为 b/s})$$</div>
+<div class="box warn"><div class="box-title">课外拓展</div>
+<p><span class="badge ext">课外拓展</span> 各种参考资料中的常见写法为 16-QAM，即数字在前，但统考真题中的写法是 QAM-16。</p>
+</div>
+
+<h3 class="sub">4．模拟数据直接传输为模拟信号</h3>
+<p>在某些场景下，模拟数据直接以模拟信号形式传输，无须数字化。例如，传统电话系统中，语音信号通过双绞线直接传送到本地交换机。此外，若需通过高频信道（如无线电波）传输，则可采用<strong>调幅（AM）、调频（FM）或调相（PM）</strong>等模拟调制技术，将信号加载到高频载波上。</p>

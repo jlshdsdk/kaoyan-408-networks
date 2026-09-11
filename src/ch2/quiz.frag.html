@@ -1,0 +1,790 @@
+<h1 class="page-title">第2章 习题</h1>
+<p class="subtitle">题目取自王道《选择题做题本》《综合题做题本》· 选择题答案经答案速查逐题核对</p>
+<div class="box tip"><div class="box-title">✍️ 做题建议</div><p>本章计算题多，奈奎斯特定理与香农定理务必亲手推导；两个上界同时给出时取最小者。编码波形题先定一个码元周期的参照，再看中间/起始有无跳变。综合题建议先画出时空图再列时间表。</p></div>
+<h2 class="sec" id="q-2-1">一、选择题 · 2.1 通信基础（第 1～28 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 1 题</span><span class="q-src">单选</span></p>
+  <p>下列关于通信基础的基本概念的说法中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 信道与通信电路类似，一条可通信的电路往往包含一个信道</li>
+    <li>B. 调制是指把模拟数据转换为数字信号的过程</li>
+    <li>C. 信息传输速率是指通信信道上每秒传输的码元数</li>
+    <li>D. 在数值上，波特率等于比特率与每符号所含的比特数的比值</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>信道不等于通信电路，一条可双向通信的电路往往包含两个信道：一个是发送信道，一个是接收信道；多个通信用户共用通信电路时，每个用户在该通信电路都有一个信道，A 错误。调制是将数据转换为模拟信号的过程，B 错误。信息传输速率指每秒传输的比特数，每秒传输的码元数是波特率（码元传输速率），C 错误。"比特率"在数值上和"波特率"的关系为：波特率 = 比特率 / 每符号所含的比特数，D 正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 2 题</span><span class="q-src">单选</span></p>
+  <p>影响信道最大传输速率的因素主要有（　）</p>
+  <ul class="choices">
+    <li>A. 信道带宽和信噪比</li>
+    <li>B. 码元传输速率和噪声功率</li>
+    <li>C. 频率特性和带宽</li>
+    <li>D. 发送功率和噪声功率</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>根据香农定理，影响信道最大传输速率的因素主要有信道带宽和信噪比，而信噪比与信道内所传输的平均信号功率和噪声功率有关，数值上等于二者之比。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 3 题</span><span class="q-src">单选</span></p>
+  <p>（　）被用于计算机内部的数据传输。</p>
+  <ul class="choices">
+    <li>A. 串行传输</li>
+    <li>B. 并行传输</li>
+    <li>C. 同步传输</li>
+    <li>D. 异步传输</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>并行传输的特点：距离短、速度快。串行传输的特点：距离长、速度慢。因此在计算机内部（距离短）传输时应选择并行传输。同步、异步传输是通信方式，而不是传输方式。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 4 题</span><span class="q-src">单选</span></p>
+  <p>下列有关曼彻斯特编码的叙述，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 每个信号起始边界作为时钟信号有利于同步</li>
+    <li>B. 将时钟与数据取值都包含在信号中</li>
+    <li>C. 这种编码机制特别适合传输模拟数据</li>
+    <li>D. 每位的中间不跳变表示信号的取值为 0</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>曼彻斯特编码将时钟和数据包含在信号中，在传输数据的同时也将时钟一起传输给对方，码元中间的跳变作为时钟信号，不同的跳变方式作为数据信号，A 错误、B 正确。每个码元的中间都发生电平跳变，D 错误。曼彻斯特编码最适合传输二进制数字信号，不适合模拟数据，C 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 5 题</span><span class="q-src">单选</span></p>
+  <p>在数据通信中使用曼彻斯特编码的主要原因是（　）</p>
+  <ul class="choices">
+    <li>A. 实现对通信过程中传输错误的恢复</li>
+    <li>B. 实现对通信过程中收发双方的数据同步</li>
+    <li>C. 提高对数据的有效传输速率</li>
+    <li>D. 提高传输信号的抗干扰能力</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>曼彻斯特编码用码元中间的电平跳变来表示每个比特，可方便收发双方根据跳变来同步时钟，而不需要额外的时钟信号，B 正确。它与差错恢复、抗干扰能力无关，且每个码元变成两个时间间隔，占用的频带宽度是原始基带宽度的 2 倍，反而降低了有效传输速率。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 6 题</span><span class="q-src">单选 · 组合选项</span></p>
+  <p>不含同步信息的编码是（　）<br>I. 非归零编码　　II. 曼彻斯特编码　　III. 差分曼彻斯特编码</p>
+  <ul class="choices">
+    <li>A. 仅 I</li>
+    <li>B. 仅 II</li>
+    <li>C. 仅 II、III</li>
+    <li>D. I、II、III</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>非归零编码是最简单的一种编码方式，它用低电平表示 0，用高电平表示 1（或者采用相反的表示方式）。因为各个码元之间并没有间隔标志，所以不包含同步信息。曼彻斯特编码和差分曼彻斯特编码都将每个码元分成两个相等的时间间隔，码元的中间跳变也作为收发双方的同步信息，因此都不含额外的同步信息，实际应用较多，但它们所占的频带宽度是原始基带宽度的 2 倍。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 7 题</span><span class="q-src">单选</span></p>
+  <p>某信道的波特率为 1000Baud，若令其数据传输速率达到 4kb/s，则一个信号码元所取的有效离散值个数为（　）</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 4</li>
+    <li>C. 8</li>
+    <li>D. 16</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>比特率 = 波特率 × \(\log_2 n\)。若一个码元含有 \(k\) 比特的信息量，则表示该码元所需的不同离散值为 \(n = 2^k\) 个。波特率数值上等于比特率 / 每符号所含的比特数，因此每码元所含比特数 = 4000 / 1000 = 4，有效离散值的个数为 \(2^4 = 16\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 8 题</span><span class="q-src">单选</span></p>
+  <p>下图是某比特串的曼彻斯特编码信号波形，则该比特串为（　）</p>
+  <img src="../assets/ch2/quiz-2.1-q8.png" alt="第8题配图：曼彻斯特编码信号波形" loading="lazy">
+  <ul class="choices">
+    <li>A. 0011 0110</li>
+    <li>B. 1010 1101</li>
+    <li>C. 0101 0010</li>
+    <li>D. 1100 0101</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>在曼彻斯特编码中，可用向下跳变表示 1、向上跳变表示 0，或者采用相反的表示。按此规则读波形，该比特串可能是 0011 0110 或 1100 1001，四个选项中只有 0011 0110 符合，因此选 A。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 9 题</span><span class="q-src">单选</span></p>
+  <p>已知某信道的信号传输速率为 64kb/s，一个载波信号码元有 4 个有效离散值，则该信道的波特率为（　）</p>
+  <ul class="choices">
+    <li>A. 16kBaud</li>
+    <li>B. 32kBaud</li>
+    <li>C. 64kBaud</li>
+    <li>D. 128kBaud</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>一个码元若取 \(2^n\) 个不同的离散值，则含有 \(n\) 比特的信息量。本题中一个码元有 4 个有效离散值，所含的信息量为 \(\log_2 4 = 2\) 比特。因为数值上波特率 = 比特率 / 每符号所含的比特数，所以波特率为 (64/2)k = 32kBaud。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 10 题</span><span class="q-src">单选</span></p>
+  <p>有一个无噪声的 8kHz 信道，每个信号包含 8 级，每秒采样 24k 次，那么可以获得的最大传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 24kb/s</li>
+    <li>B. 32kb/s</li>
+    <li>C. 48kb/s</li>
+    <li>D. 72kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>无噪声的信号应该满足奈奎斯特定理，即最大数据传输速率 = \(2W\log_2 V\) 比特/秒。将题中的数据代入，\(2 \times 8\text{k} \times \log_2 8 = 48\text{kb/s}\)。注意题中给出的每秒采样 24k 次是无意义的，因为超过了波特率的上限 \(2W = 16\text{kBaud}\)，所以选项 D（24k × 3 = 72kb/s）是错误答案。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 11 题</span><span class="q-src">单选</span></p>
+  <p>对于某带宽为 4000Hz 的低通信道，采用 16 种不同的物理状态来表示数据。按照奈奎斯特定理，信道的最大传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 4kb/s</li>
+    <li>B. 8kb/s</li>
+    <li>C. 16kb/s</li>
+    <li>D. 32kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>根据奈奎斯特定理，题中 \(W = 4000\text{Hz}\)，最大码元传输速率 = \(2W = 8000\text{Baud}\)，16 种不同的物理状态可以表示 \(\log_2 16 = 4\) 比特的数据，因此信道的最大传输速率 = \(8000 \times 4 = 32\text{kb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 12 题</span><span class="q-src">单选</span></p>
+  <p>二进制信号在信噪比为 127:1 的 4kHz 信道上传输，最大数据传输速率可以达到（　）</p>
+  <ul class="choices">
+    <li>A. 28000b/s</li>
+    <li>B. 8000b/s</li>
+    <li>C. 4000b/s</li>
+    <li>D. 无限大</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>根据香农定理，最大数据率 = \(W\log_2(1 + S/N) = 4000 \times \log_2(1 + 127) = 28000\text{b/s}\)，容易误选 A。注意题中"二进制信号"的限制后，依据奈奎斯特定理，最大数据传输速率 = \(2W\log_2 V = 2 \times 4000 \times \log_2 2 = 8000\text{b/s}\)。两个上限中取小者，因此答案为 B。</p>
+    <p><strong>注意：</strong>若给出了码元与比特数之间的关系，则需两个公式的共同限制：实际最大速率受限于香农定理与奈奎斯特定理结果中的较小者。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 13 题</span><span class="q-src">单选</span></p>
+  <p>电话系统的典型参数是信道带宽为 3000Hz，信噪比为 30dB，则该系统的最大数据传输速率为（　）</p>
+  <ul class="choices">
+    <li>A. 3kb/s</li>
+    <li>B. 6kb/s</li>
+    <li>C. 30kb/s</li>
+    <li>D. 64kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>信噪比 \(S/N\) 常用分贝（dB）表示，数值上等于 \(10\log_{10}(S/N)\)。依题意有 \(30 = 10\log_{10}(S/N)\)，解得 \(S/N = 1000\)。根据香农定理，最大数据传输速率 = \(3000\log_2(1 + S/N) = 3000 \times \log_2 1001 \approx 3000 \times 10 = 30\text{kb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 14 题</span><span class="q-src">单选</span></p>
+  <p>一个信道的信号功率是 0.14W，噪声功率是 0.02W，频率范围为 3.5～3.9MHz，则该信道的最高数据传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 1.2Mb/s</li>
+    <li>B. 2.4Mb/s</li>
+    <li>C. 11.7Mb/s</li>
+    <li>D. 23.4Mb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>带宽受限且有噪声的信道应使用香农定理。最高数据传输速率 = \(W\log_2(1 + S/N)\)，其中信道带宽 \(W = 3.9 - 3.5 = 0.4\text{MHz}\)，信号功率 \(S = 0.14\text{W}\)，噪声功率 \(N = 0.02\text{W}\)，\(S/N = 0.14/0.02 = 7\)，代入得 \(0.4\text{M} \times \log_2 8 = 1.2\text{Mb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 15 题</span><span class="q-src">单选</span></p>
+  <p>采用 8 种相位，每种相位各有两种幅度的 QAM 调制方法，在 1200Baud 的信号传输速率下能达到的数据传输速率为（　）</p>
+  <ul class="choices">
+    <li>A. 2400b/s</li>
+    <li>B. 3600b/s</li>
+    <li>C. 9600b/s</li>
+    <li>D. 4800b/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>每个信号有 \(8 \times 2 = 16\) 种变化，每个码元携带 \(\log_2 16 = 4\) 比特信息，则信息传输速率为 \(1200 \times 4 = 4800\text{b/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 16 题</span><span class="q-src">单选</span></p>
+  <p>一个信道每 1/8s 采样一次，传输信号共有 16 种变化状态，最大数据传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 16b/s</li>
+    <li>B. 32b/s</li>
+    <li>C. 48b/s</li>
+    <li>D. 64b/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>由题意知采样率为 8Hz。有 16 种变化状态的信号可携带 \(\log_2 16 = 4\) 比特的数据，因此最大数据传输速率为 \(8 \times 4 = 32\text{b/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 17 题</span><span class="q-src">单选</span></p>
+  <p>某信道的带宽为 10MHz，信噪比为 30dB，采用 QAM-32 调制方案。若将带宽提高到 20MHz，信噪比提高到 40dB，则信道的极限数据传输速率大约提高到原来的（　）倍。</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 2.2</li>
+    <li>C. 2.4</li>
+    <li>D. 2.6</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>本题给出了信道带宽、信噪比和编码方式，需要综合奈氏准则与香农定理的限制。在原始条件下：香农定理的极限速率为 \(10 \times \log_2 1001 \approx 100\text{Mb/s}\)（注意，这里的信噪比应使用无单位记法），奈氏准则的极限速率为 \(2 \times 10 \times \log_2 32 = 100\text{Mb/s}\)。带宽和信噪比提升后：香农定理的极限速率为 \(20 \times \log_2 10001 \approx 266\text{Mb/s}\)，奈氏准则的极限速率为 \(2 \times 20 \times \log_2 32 = 200\text{Mb/s}\)。由于实际速率受限于二者中的较小值，故提升后的极限速率为 200Mb/s，约为原来的 2 倍。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 18 题</span><span class="q-src">单选 · 2009 统考真题</span></p>
+  <p>在无噪声的情况下，若某通信链路的带宽为 3kHz，采用 4 个相位，每个相位具有 4 种振幅的 QAM 调制技术，则该通信链路的最大数据传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 12kb/s</li>
+    <li>B. 24kb/s</li>
+    <li>C. 48kb/s</li>
+    <li>D. 96kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>采用 4 个相位，每个相位有 4 种振幅的 QAM 调制，共有 \(4 \times 4 = 16\) 种信号状态，每个码元可携带 \(\log_2 16 = 4\) 比特信息。根据奈奎斯特定理，最大传输速率为 \(2W\log_2 V = 2 \times 3\text{k} \times 4 = 24\text{kb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 19 题</span><span class="q-src">单选 · 2011 统考真题</span></p>
+  <p>若某通信链路的数据传输速率为 2400b/s，采用 4 相位调制，则该链路的波特率是（　）</p>
+  <ul class="choices">
+    <li>A. 600Baud</li>
+    <li>B. 1200Baud</li>
+    <li>C. 4800Baud</li>
+    <li>D. 9600Baud</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>波特率（\(B\)）与数据传输速率（\(C\)）的关系为 \(C = B \times \log_2 V\)，其中 \(V\) 为码元可取的离散值个数。采用 4 相位调制，即 \(V = 4\)，每个码元携带 \(\log_2 V = \log_2 4 = 2\) 比特信息。因此，波特率 = 数据传输速率 / 每个码元所含的比特数 = 2400 / 2 = 1200 波特。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 20 题</span><span class="q-src">单选 · 2013 统考真题</span></p>
+  <p>下图为 10BaseT 网卡接收到的信号波形，则该网卡收到的比特串是（　）</p>
+  <img src="../assets/ch2/quiz-2.1-q20.png" alt="第20题配图：10BaseT网卡接收到的信号波形" loading="lazy">
+  <ul class="choices">
+    <li>A. 0011 0110</li>
+    <li>B. 1010 1101</li>
+    <li>C. 0101 0010</li>
+    <li>D. 1100 0101</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>10Base-T 以太网采用曼彻斯特编码：每个码元中间有一次跳变，从低到高表示 0，从高到低表示 1（或采用相反的约定，但需保持一致）。图示波形对应的比特串可为 0011 0110 或 1100 1001，四个选项中只有 A 符合。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 21 题</span><span class="q-src">单选 · 2014 统考真题</span></p>
+  <p>在下列因素中，不影响信道数据传输速率的是（　）</p>
+  <ul class="choices">
+    <li>A. 信噪比</li>
+    <li>B. 频率带宽</li>
+    <li>C. 调制速率</li>
+    <li>D. 信号传播速度</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>由香农定理可知，信道极限数据传输速率受信噪比和频率带宽限制；调制速率（波特率）也直接影响数据速率。而信号传播速度仅决定传播时延，与传输速率无关，不影响信道数据传输速率。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 22 题</span><span class="q-src">单选 · 2015 统考真题</span></p>
+  <p>使用两种编码方案对比特流 01100111 进行编码的结果如下图所示，编码 1 和编码 2 分别是（　）</p>
+  <img src="../assets/ch2/quiz-2.1-q22.png" alt="第22题配图：两种编码方案波形" loading="lazy">
+  <ul class="choices">
+    <li>A. NRZ 和曼彻斯特编码</li>
+    <li>B. NRZ 和差分曼彻斯特编码</li>
+    <li>C. NRZI 和曼彻斯特编码</li>
+    <li>D. NRZI 和差分曼彻斯特编码</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>编码 1 为典型的 NRZ 编码：高电平表示 1，低电平表示 0，无跳变。编码 2 在每个比特周期中间均有跳变，高一低表示 1，低一高表示 0，符合曼彻斯特编码特征。差分曼彻斯特编码在比特周期起始处有跳变表示 0、无跳变表示 1，与图不符。因此，编码 1 和编码 2 分别为 NRZ 编码和曼彻斯特编码。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 23 题</span><span class="q-src">单选 · 2016 统考真题</span></p>
+  <p>如下图所示，如果连接 R2 和 R3 链路的频率带宽为 8kHz，信噪比为 30dB，该链路实际数据传输速率约为理论最大数据传输速率的 50%，那么该链路的实际数据传输速率约为（　）</p>
+  <img src="../assets/ch2/quiz-2.1-q23.png" alt="第23题配图：R2与R3链路" loading="lazy">
+  <ul class="choices">
+    <li>A. 8kb/s</li>
+    <li>B. 20kb/s</li>
+    <li>C. 40kb/s</li>
+    <li>D. 80kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>采用分贝（dB）记法时，信噪比 = \(10\log_{10}(S/N) = 30\)，解得 \(S/N = 1000\)。由香农定理可知，理论极限速率 = \(W \times \log_2(1 + S/N) = 8\text{k} \times \log_2(1 + 1000)\)。由于 \(2^{10} = 1024 \approx 1001\)，故 \(\log_2(1001) \approx 10\)，理论速率 \(\approx 8 \times 10 = 80\text{kb/s}\)。实际速率为理论值的 50%，即 \(80 \times 50\% = 40\text{kb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 24 题</span><span class="q-src">单选 · 2017 统考真题</span></p>
+  <p>若信道在无噪声情况下的极限数据传输速率不小于信噪比为 30dB 条件下的极限数据传输速率，则信号状态数至少是（　）</p>
+  <ul class="choices">
+    <li>A. 4</li>
+    <li>B. 8</li>
+    <li>C. 16</li>
+    <li>D. 32</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>设信号状态数为 \(V\)。无噪声信道的极限速率（奈奎斯特定理）为 \(2W\log_2 V\)；有噪声信道的极限速率（香农定理）为 \(W\log_2(1 + S/N)\)。已知信噪比为 30dB，可得 \(S/N = 1000\)，要求 \(2W\log_2 V \geq W\log_2(1001) \approx W \times 10\)，化简得 \(\log_2 V \geq 5\)，求得 \(V \geq 32\)。因此，信号状态数至少为 32。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 25 题</span><span class="q-src">单选 · 2021 统考真题</span></p>
+  <p>下图为一段差分曼彻斯特编码信号波形，该编码的二进制串是（　）</p>
+  <img src="../assets/ch2/quiz-2.1-q25.png" alt="第25题配图：差分曼彻斯特编码信号波形" loading="lazy">
+  <ul class="choices">
+    <li>A. 1011 1001</li>
+    <li>B. 1101 0001</li>
+    <li>C. 0010 1110</li>
+    <li>D. 1011 0110</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>差分曼彻斯特编码规则：每个比特周期起始处有电平跳变表示 0，无电平跳变表示 1。逐位判读波形：第 1 位无跳变（1），第 2 位有跳变（0），第 3 位无跳变（1），第 4 位无跳变（1），第 5 位有跳变（0），第 6 位有跳变（0），第 7 位有跳变（0），第 8 位无跳变（1），得到比特串为 1011 1001。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 26 题</span><span class="q-src">单选 · 2022 统考真题</span></p>
+  <p>在一条带宽为 200kHz 的无噪声信道上，若采用 4 个幅值的 ASK 调制，则该信道的最大数据传输速率是（　）</p>
+  <ul class="choices">
+    <li>A. 200kb/s</li>
+    <li>B. 400kb/s</li>
+    <li>C. 800kb/s</li>
+    <li>D. 1600kb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>在 ASK 调制中，4 个幅值表示 4 种信号状态（\(V = 4\)），每个码元携带 \(\log_2 4 = 2\) 比特。根据奈奎斯特定理，最大数据传输速率 = \(2W\log_2 V\)，已知带宽 \(W = 200\text{kHz}\)，代入得 \(2 \times 200\text{k} \times 2 = 800\text{kb/s}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 27 题</span><span class="q-src">单选 · 2023 统考真题</span></p>
+  <p>某无噪声理想信道带宽为 4MHz，采用 QAM 调制，若该信道的最大数据传输速率是 48Mb/s，则该信道采用的 QAM 调制方案是（　）</p>
+  <ul class="choices">
+    <li>A. QAM-16</li>
+    <li>B. QAM-32</li>
+    <li>C. QAM-64</li>
+    <li>D. QAM-128</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>由奈奎斯特定理：最大数据传输速率 = \(2W\log_2 V\)，\(V\) 表示码元的信号状态数。已知带宽 \(W = 4\text{MHz}\)，最大速率为 48Mb/s，代入得 \(\log_2 V = 6\)，求得 \(V = 2^6 = 64\)，即采用 QAM-64 调制。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 28 题</span><span class="q-src">单选 · 2024 统考真题</span></p>
+  <p>在下列二进制数字调制方法中，需要 2 个不同频率载波的是（　）</p>
+  <ul class="choices">
+    <li>A. ASK</li>
+    <li>B. PSK</li>
+    <li>C. FSK</li>
+    <li>D. DPSK</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>FSK（Frequency Shift Keying，频移键控）使用两个不同频率的载波分别表示 0 和 1，是唯一需要两个载波频率的二进制调制方式。ASK（幅移键控）改变幅度，PSK（相移键控）和 DPSK（差分相移键控）改变相位，均使用单一频率载波。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-2-2">选择题 · 2.2 传输介质（第 29～40 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 29 题</span><span class="q-src">单选</span></p>
+  <p>双绞线是用两根绝缘导线绞合而成的，绞合的目的是（　）</p>
+  <ul class="choices">
+    <li>A. 减少干扰</li>
+    <li>B. 提高传输速度</li>
+    <li>C. 增大传输距离</li>
+    <li>D. 增大抗拉强度</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>绞合可以减少两根导线相互的电磁干扰。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 30 题</span><span class="q-src">单选</span></p>
+  <p>在电缆中采用屏蔽技术带来的好处主要是（　）</p>
+  <ul class="choices">
+    <li>A. 减少信号衰减</li>
+    <li>B. 减少电磁干扰辐射</li>
+    <li>C. 减少物理损坏</li>
+    <li>D. 减少电缆的阻抗</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>屏蔽层的主要作用是提高电缆的抗干扰能力，即减少电磁干扰辐射。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 31 题</span><span class="q-src">单选</span></p>
+  <p>利用一根同轴电缆互连主机构成以太网，则主机间的通信方式为（　）</p>
+  <ul class="choices">
+    <li>A. 全双工</li>
+    <li>B. 半双工</li>
+    <li>C. 单工</li>
+    <li>D. 不确定</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>传统以太网采用广播的方式发送信息，同一时间只允许一台主机发送信息，否则各主机之间就形成冲突，因此主机间的通信方式是半双工。全双工是指通信双方可同时发送和接收信息；单工是指只有一个方向的通信而没有反方向的交互。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 32 题</span><span class="q-src">单选</span></p>
+  <p>同轴电缆比双绞线的传输速率更快，得益于（　）</p>
+  <ul class="choices">
+    <li>A. 同轴电缆的铜芯比双绞线的粗，能通过更大的电流</li>
+    <li>B. 同轴电缆的阻抗比较标准，减少了信号的衰减</li>
+    <li>C. 同轴电缆具有更高的屏蔽性，同时有更好的抗噪声性</li>
+    <li>D. 以上都正确</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>同轴电缆以硬铜线为芯，外包一层绝缘材料，绝缘材料的外面再包一层密织的网状导体，导体的外面又覆盖一层保护性的塑料外壳。这种结构使得它具有更高的屏蔽性，从而既有很高的带宽，又有很好的抗噪性。因此，同轴电缆的带宽更高，得益于它的高屏蔽性。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 33 题</span><span class="q-src">单选</span></p>
+  <p>不受电磁干扰和噪声影响的传输介质是（　）</p>
+  <ul class="choices">
+    <li>A. 屏蔽双绞线</li>
+    <li>B. 非屏蔽双绞线</li>
+    <li>C. 光纤</li>
+    <li>D. 同轴电缆</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>光纤的抗雷电和电磁干扰性能好，无串音干扰，保密性好。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 34 题</span><span class="q-src">单选</span></p>
+  <p>多模光纤传输光信号的原理是（　）</p>
+  <ul class="choices">
+    <li>A. 光的折射特性</li>
+    <li>B. 光的发射特性</li>
+    <li>C. 光的全反射特性</li>
+    <li>D. 光的绕射特性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>多模光纤传输光信号的原理是光的全反射特性。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 35 题</span><span class="q-src">单选</span></p>
+  <p>以下关于单模光纤的说法中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 光纤越粗，数据传输速率越高</li>
+    <li>B. 光纤的直径减小到只有光的一个波长大小，光沿直线传播</li>
+    <li>C. 光源是发光二极管或激光</li>
+    <li>D. 光纤是中空的</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>光纤的直径减小到与光线的一个波长相同时，光纤就如同一个波导，光在其中没有反射，而沿直线传播，这就是单模光纤。A 错误，光纤并非越粗速率越高（多模光纤较粗反而因色散失真传输距离较短）；C 错误，单模光纤的光源是激光（定向性好），多模光纤才使用发光二极管；D 错误，光纤是实心的光导纤维，并非中空。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 36 题</span><span class="q-src">单选</span></p>
+  <p>下面关于卫星通信的说法，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 卫星通信的距离长，覆盖的范围广</li>
+    <li>B. 使用卫星通信易于实现广播通信和多址通信</li>
+    <li>C. 卫星通信的好处在于不受气候的影响，误码率很低</li>
+    <li>D. 通信费用高、延时较大是卫星通信的不足之处</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>卫星通信有成本高、传播时延长、受气候影响大、保密性差、误码率较高的特点，C 中"不受气候的影响，误码率很低"说法错误。A、B、D 均为卫星通信的正确特点。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 37 题</span><span class="q-src">单选</span></p>
+  <p>某网络在物理层规定，信号的电平用 +10V～+15V 表示二进制 0，用 −10V～−15V 表示二进制 1，电线长度限于 15m 以内，这体现了物理层接口的（　）</p>
+  <ul class="choices">
+    <li>A. 机械特性</li>
+    <li>B. 功能特性</li>
+    <li>C. 电气特性</li>
+    <li>D. 规程特性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>本题易误选功能特性。规定各条线上的电压范围，以及电缆长度的限制，属于电气特性。而功能特性指明某条线上出现的某一电平的电压表示何种意义，以及每条线的功能（数据线、控制线、时钟线）。例如，数据线上的电压 +11V 表示二进制 1，就属于功能特性。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 38 题</span><span class="q-src">单选</span></p>
+  <p>当描述一个物理层接口引脚处于高电平时的含义时，该描述属于（　）</p>
+  <ul class="choices">
+    <li>A. 机械特性</li>
+    <li>B. 电气特性</li>
+    <li>C. 功能特性</li>
+    <li>D. 规程特性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>物理层的功能特性指明某条线上出现的某一电平的电压表示何种意义，以及每条线的功能。描述接口引脚处于高电平时的含义（该电平代表什么信号/意义），属于功能特性。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 39 题</span><span class="q-src">单选 · 2012 统考真题</span></p>
+  <p>在物理层接口特性中，用于描述完成每种功能的事件发生顺序的是（　）</p>
+  <ul class="choices">
+    <li>A. 机械特性</li>
+    <li>B. 功能特性</li>
+    <li>C. 过程特性</li>
+    <li>D. 电气特性</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>物理层的接口特性包括机械、电气、功能和过程四类。其中，过程特性（规程特性）用于描述完成各种功能时事件发生的先后顺序，即规定各操作（如建立连接、传输数据、释放线路等）的时序关系。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 40 题</span><span class="q-src">单选 · 2018 统考真题</span></p>
+  <p>下列选项中，不属于物理层接口规范定义范畴的是（　）</p>
+  <ul class="choices">
+    <li>A. 接口形状</li>
+    <li>B. 引脚功能</li>
+    <li>C. 物理地址</li>
+    <li>D. 信号电平</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>物理层接口规范涵盖四类特性：机械特性（如接口形状、尺寸）、电气特性（如信号电平、电压范围）、功能特性（如引脚功能、电平含义）和过程特性（事件发生顺序）。而物理地址（MAC 地址）用于标识数据链路层的设备，属于数据链路层的范畴，不在物理层定义范围内。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-2-3">选择题 · 2.3 物理层设备（第 41～49 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 41 题</span><span class="q-src">单选</span></p>
+  <p>下列关于物理层设备的叙述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 中继器仅作用于信号的电气部分</li>
+    <li>B. 利用中继器来扩大网络传输距离的原理是将衰减的信号进行放大</li>
+    <li>C. 集线器实质上相当于一个多端口的中继器</li>
+    <li>D. 物理层设备连接的几个网段仍是一个局域网</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>中继器的原理是将衰减的信号再生（再生 = 放大 + 整形），而不是简单地放大，B 错误。中继器仅作用于信号的电气部分，A 正确；集线器实质上是一个多端口的中继器，C 正确；中继器连接的两端属于同一局域网中的不同网段，所连网段仍构成一个局域网，D 正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 42 题</span><span class="q-src">单选</span></p>
+  <p>为了使数字信号传输得更远，可采用的设备是（　）</p>
+  <ul class="choices">
+    <li>A. 中继器</li>
+    <li>B. 放大器</li>
+    <li>C. 网桥</li>
+    <li>D. 路由器</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>放大器通常用于远距离地传输模拟信号，但它同时会放大噪声，引发失真。中继器用于数字信号的传输，其工作原理是信号再生，因此会减少失真。网桥用来连接两个网段以扩展物理网络的覆盖范围；路由器是网络层的互连设备，可以实现不同网络的互联。使数字信号传输得更远应采用中继器。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 43 题</span><span class="q-src">单选</span></p>
+  <p>以太网遵循 IEEE 802.3 标准，用粗缆组网时每段的长度不能大于 500m，超过 500m 时就要分段，段间相连利用的是（　）</p>
+  <ul class="choices">
+    <li>A. 网络适配器</li>
+    <li>B. 中继器</li>
+    <li>C. 调制解调器</li>
+    <li>D. 网关</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>中继器的主要功能是将信号复制、整形和放大再转发出去，以消除信号经过一长段电缆而造成的失真和衰减，使信号的波形和强度达到所需的要求，进而扩大网络传输的距离，原理是信号再生，因此选择中继器，其他三项显然有点大材小用。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 44 题</span><span class="q-src">单选</span></p>
+  <p>由集线器连接多台设备构成的网络在物理上和逻辑上的结构分别是（　）</p>
+  <ul class="choices">
+    <li>A. 总线形、环形</li>
+    <li>B. 网状、星形</li>
+    <li>C. 总线形、星形</li>
+    <li>D. 星形、总线形</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>集线器将多个设备连接在以它为中心的节点上，因此使用它的网络在物理拓扑上属于星形结构。当集线器工作时，一个端口接收到数据信号后，集线器将该信号整形放大，紧接着转发到其他所有处于工作状态的端口。因为集线器不具备交换机所具有的交换表，所以它发送数据时是没有针对性的，而采用广播方式发送。因此，使用集线器的星形以太网逻辑上仍然是总线网。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 45 题</span><span class="q-src">单选</span></p>
+  <p>用集线器连接的工作站集合（　）</p>
+  <ul class="choices">
+    <li>A. 同属一个冲突域，也同属一个广播域</li>
+    <li>B. 不同属一个冲突域，但同属一个广播域</li>
+    <li>C. 不同属一个冲突域，也不同属一个广播域</li>
+    <li>D. 同属一个冲突域，但不同属一个广播域</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>集线器的功能是将从一个端口收到的数据通过所有其他端口转发出去。集线器在物理层上扩大了网络的覆盖范围，但无法解决冲突域（第二层交换机可解决）与广播域（第三层交换机可解决）的问题，反而增大了冲突的范围。因此用集线器连接的工作站同属一个冲突域，也同属一个广播域。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 46 题</span><span class="q-src">单选</span></p>
+  <p>中继器可以用来连接（　）</p>
+  <ul class="choices">
+    <li>A. 不同类型的局域网</li>
+    <li>B. 广域网和局域网</li>
+    <li>C. 不同介质的局域网</li>
+    <li>D. 不同协议的局域网</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>中继器工作在物理层，无法对帧进行解封与重新封装（无法实现协议转换），其功能仅限于对接收到的帧对应的二进制串进行无差别转发，因此无法连接不同链路层协议的网段。中继器可以连接不同介质的局域网，如光纤和双绞线，只要它们具有相同协议。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 47 题</span><span class="q-src">单选</span></p>
+  <p>若有 5 台计算机连接到一台 10Mb/s 的集线器上，则每台计算机分得的平均带宽为（　）</p>
+  <ul class="choices">
+    <li>A. 2Mb/s</li>
+    <li>B. 5Mb/s</li>
+    <li>C. 10Mb/s</li>
+    <li>D. 50Mb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>集线器以广播的方式将信号从除输入端口外的所有端口输出，因此任意时刻只能有一个端口的有效数据输入。理想情况（无冲突）下，每秒通过集线器的数据量都是 10Mb，假设 5 台计算机占用相同大小的时间片来收发数据，则平均带宽的上限为 10Mb/s ÷ 5 = 2Mb/s。若有多台计算机同时发送数据，则会导致每台计算机实际获得的平均带宽低于 2Mb/s。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 48 题</span><span class="q-src">单选</span></p>
+  <p>当集线器的一个端口收到数据后，将其（　）</p>
+  <ul class="choices">
+    <li>A. 从所有端口广播出去</li>
+    <li>B. 从除输入端口外的所有端口广播出去</li>
+    <li>C. 根据目的地址从合适的端口转发出去</li>
+    <li>D. 随机选择一个端口转发出去</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>集线器没有寻址功能，一个端口接收到数据信号后，从除输入端口外的其他所有端口转发出去。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 49 题</span><span class="q-src">单选</span></p>
+  <p>下列关于中继器和集线器的说法中，不正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 二者都工作在 OSI 参考模型的物理层</li>
+    <li>B. 二者都可以对信号进行放大和整形</li>
+    <li>C. 通过中继器或集线器互连的网段数量不受限制</li>
+    <li>D. 中继器通常只有 2 个端口，而集线器通常有 4 个或更多端口</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>中继器和集线器均工作在物理层，集线器本质上是一个多端口中继器，它们都能对信号进行放大和整形（再生 = 放大 + 整形）。因为中继器不仅传送有用信号，还传送噪声和冲突信号，所以互相串联的个数只能在规定的范围内进行，否则网络将不可用（如 10Base-5 以太网中的"5-4-3 规则"），C 错误。中继器通常只有 2 个端口（一进一出），集线器通常有 4 个或更多端口，D 正确。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-comp">二、综合题</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 1</span><span class="q-src">2.1 通信基础</span></p>
+  <p>如下图所示，主机 A 和 B 都通过 10Mb/s 的链路连接到交换机 S。</p>
+  <img src="../assets/ch2/quiz-comp-1.png" alt="综合题1配图：主机A、B通过交换机S连接" loading="lazy">
+  <p>每条链路上的传播延迟都是 20μs。S 是一个存储转发设备，在它接收完一个分组 35μs 后开始转发收到的分组。试计算把 10000 比特从 A 发送到 B 所需要的总时间。</p>
+  <p>(1) 作为单个分组。</p>
+  <p>(2) 作为两个 5000 比特的分组一个紧跟着另一个发送。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p><strong>1）作为单个分组：</strong>每条链路的发送时延是 \(10000\text{b} \div 10\text{Mb/s} = 1000\text{μs}\)。</p>
+    <p>总传送时间等于 \(2 \times 1000 + 2 \times 20 + 35 = 2075\text{μs}\)。即：A 的发送时延 1000μs + 链路传播时延 20μs + S 的存储转发等待 35μs + S 的发送时延 1000μs + 链路传播时延 20μs。</p>
+    <p><strong>2）作为两个 5000 比特的分组：</strong>下面列出各种事件发生的时间表。</p>
+    <p>T = 0　开始</p>
+    <p>T = 500　A 完成分组 1 的发送，开始发送分组 2</p>
+    <p>T = 520　分组 1 完全到达 S</p>
+    <p>T = 555　分组 1 从 S 起程前往 B</p>
+    <p>T = 1000　A 结束分组 2 的发送</p>
+    <p>T = 1055　分组 2 从 S 起程前往 B</p>
+    <p>T = 1075　分组 2 的第 1 位开始到达 B</p>
+    <p>T = 1575　分组 2 的最后 1 位到达 B</p>
+    <p><strong>解法二（流水线 / 时空图）：</strong>此题属于分组交换各个过程中时间不等长的情况，类似于流水段不等长的情况，为避免出错，建议画出对应的时空图。根据题意可分为 5 个流水段，各流水段的时间分别为 500μs、20μs、35μs、500μs、20μs，共有 2 个分组，注意不同分组的相同流水段不能重叠。本题只有 2 个分组，不用流水线的方法也可求得结果，但当分组数量更多时，采用流水线的方法并画出时空图得出计算规律，才不容易出错。</p>
+    <p><strong>结论：</strong>(1) 2075μs；(2) 1575μs。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 2</span><span class="q-src">2.1 通信基础</span></p>
+  <p>一个分组交换网采用虚电路方式转发分组，分组的首部和数据部分分别为 \(h\) 位和 \(p\) 位。现有 \(L\)（\(L \gg p\) 且 \(L\) 为 \(p\) 的倍数）位的报文要通过该网络传送，源点和终点之间的线路数为 \(k\)，每条线路上的传播时延为 \(d\) 秒，数据传输速率为 \(b\) 位/秒，虚电路建立连接的时间为 \(s\) 秒，每个中间结点有 \(m\) 秒的平均处理时延。求源点开始发送数据直至终点收到全部数据所需要的时间。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>整个传输过程的总时延 = 连接建立时延 + 源点发送时延 + 中间节点的发送时延 + 中间节点的处理时延 + 传播时延。</p>
+    <p>虚电路的建立时延已给出，为 \(s\) 秒。</p>
+    <p>源点要将 \(L\) 位报文分割成分组，分组数 = \(L/p\)，每个分组的长度为 \((h + p)\) 位，源点要发送的数据量 = \((h + p)L/p\)，因此源点的发送时延 = \((h + p)L/(pb)\) 秒。</p>
+    <p>每个中间节点的发送时延 = \((h + p)/b\) 秒，源点和终点之间的线路数为 \(k\)，有 \(k - 1\) 个中间节点，因此中间节点的发送时延 = \((h + p)(k - 1)/b\) 秒。</p>
+    <p>中间节点的处理时延 = \(m(k - 1)\) 秒，传播时延 = \(kd\) 秒。</p>
+    <p>因此，源节点开始发送数据直至终点收到全部数据所需的时间为：</p>
+    <p>$$s + \frac{(h + p)L}{pb} + \frac{(h + p)(k - 1)}{b} + m(k - 1) + kd \ \text{秒}$$</p>
+  </div></details>
+</div>

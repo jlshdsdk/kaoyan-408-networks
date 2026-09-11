@@ -1,0 +1,69 @@
+{
+  "note": "第1章习题配图裁剪清单；rect 为相对整页图像的百分比 [x1, y1, x2, y2]，0-100，已略放宽但避开相邻题文字",
+  "items": [
+    {
+      "page": 6,
+      "rect": [28, 47.6, 74, 54],
+      "out": "quiz-1.1-q11.png",
+      "caption": "第11题配图：A—路由器—B 存储转发拓扑",
+      "book": "choice",
+      "src": "做题本P6"
+    },
+    {
+      "page": 7,
+      "rect": [20, 15.2, 85, 22.6],
+      "out": "quiz-1.1-q12.png",
+      "caption": "第12题配图：电路交换 / 报文交换或分组交换拓扑",
+      "book": "choice",
+      "src": "做题本P7"
+    },
+    {
+      "page": 7,
+      "rect": [28, 50.1, 74, 57.6],
+      "out": "quiz-1.1-q13.png",
+      "caption": "第13题配图：H1—2个交换机—H2 分组交换网络",
+      "book": "choice",
+      "src": "做题本P7"
+    },
+    {
+      "page": 8,
+      "rect": [30, 16.2, 75, 21.6],
+      "out": "quiz-1.1-q15.png",
+      "caption": "第15题配图：H1—路由器—H2",
+      "book": "choice",
+      "src": "做题本P8"
+    },
+    {
+      "page": 8,
+      "rect": [18, 38.9, 86, 51.2],
+      "out": "quiz-1.1-q16.png",
+      "caption": "第16题配图：H1—3条路径—H2 网络带宽标注图",
+      "book": "choice",
+      "src": "做题本P8"
+    },
+    {
+      "page": 9,
+      "rect": [24, 18.2, 84, 24.6],
+      "out": "quiz-1.1-q17.png",
+      "caption": "第17题配图：H1—R1—R2—H2 链路带宽",
+      "book": "choice",
+      "src": "做题本P9"
+    },
+    {
+      "page": 11,
+      "rect": [26, 58.2, 76, 74.6],
+      "out": "quiz-1.2-q10.png",
+      "caption": "第27题配图：TCP 报文段首部格式",
+      "book": "choice",
+      "src": "做题本P11"
+    },
+    {
+      "page": 17,
+      "rect": [38, 24.4, 72, 35.6],
+      "out": "quiz-1.2-q36.png",
+      "caption": "第53题配图：发送方/接收方时序图",
+      "book": "choice",
+      "src": "做题本P17"
+    }
+  ]
+}

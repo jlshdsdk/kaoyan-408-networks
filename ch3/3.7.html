@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.7 广域网 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第3章 数据链路层</a> › <span>3.7 广域网</span></div>
+<h1 class="page-title">3.7 广域网</h1>
+<p class="subtitle">对应王道教材 3.7 节（教材 P113–P115）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-3-7-1">3.7.1 广域网的基本概念</h2>
+<p><strong>广域网</strong>（Wide Area Network，WAN）通常指覆盖范围很广（远超一个城市）的长距离网络，其主要任务是<strong>长距离运送主机所发送的数据</strong>。连接广域网中各节点交换机的链路均为高速链路，因此广域网首要考虑的问题是<strong>通信容量是否足够大</strong>，以支持日益增长的通信需求。</p>
+<p>广域网<strong>不等于互联网</strong>。互联网可以连接不同类型的网络，通常通过路由器实现互联。如图 3.32 所示，多个相距较远的局域网可通过路由器接入广域网，从而构成一个覆盖范围广泛的互联网。因此，一个局域网可以通过广域网与另一个远程局域网通信。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-32.png" alt="图3.32 由相距较远的局域网通过路由器与广域网相连而成的互联网" loading="lazy"><figcaption>图 3.32 由相距较远的局域网通过路由器与广域网相连而成的互联网（王道教材 P113）</figcaption></figure>
+<p>广域网由若干<strong>节点交换机</strong>（注意不是路由器）及连接这些交换机的链路组成。节点交换机与路由器都用于转发分组，工作原理相似；但<strong>节点交换机工作在单个网络内部，而路由器用于连接多个网络构成的互联网</strong>。节点交换机的核心功能是<strong>存储并转发分组</strong>。广域网中节点之间采用<strong>点到点连接</strong>，但为提高网络可靠性，一个节点交换机通常与多个其他交换机相连。</p>
+<table class="tbl">
+  <caption>表 3.5 广域网和局域网的区别与联系（王道教材 P113）</caption>
+  <tr><th>项目</th><th>广域网</th><th>局域网</th></tr>
+  <tr><td>覆盖范围</td><td>很广，通常跨区域</td><td>较小，通常在一个区域内</td></tr>
+  <tr><td>连接方式</td><td>通常采用点对点连接</td><td>普遍使用广播信道</td></tr>
+  <tr><td>OSI 层次</td><td>三层：物理层、数据链路层、网络层</td><td>两层：物理层、数据链路层</td></tr>
+  <tr><td>联系与相似点</td><td colspan="2">1．广域网和局域网都是互联网的重要构件，从互联网角度看，两者地位平等（不存在包含关系）；2．当主机所属广域网或局域网的内部通信时，仅需使用该网络的物理地址</td></tr>
+  <tr><td>着重点</td><td>强调资源共享</td><td>强调数据传输</td></tr>
+</table>
+<p>在通信线路质量较差的年代，高级数据链路控制（HDLC）因其可靠的传输机制而成为主流的数据链路层协议。如今，在误码率极低的点对点有线链路上，更简单的点对点协议（PPP）则成为使用最广泛的数据链路层协议。最新大纲已将 HDLC 删除，故不再介绍。</p>
+
+<h2 class="sec" id="sec-3-7-2">3.7.2 点对点协议 PPP <span class="badge kao">考点</span></h2>
+<p><strong>点对点协议</strong>（Point-to-Point Protocol，PPP）是目前最流行的点对点链路控制协议。主要有两种应用场景：<strong>用户接入互联网时与 ISP 之间的通信；两台网络设备之间通过直连专线通信</strong>。在以太网中运行的 PPP 称为 PPPoE（PPP over Ethernet），它是对 PPP 的扩展，PPPoE 将 PPP 帧封装在以太网帧中，<strong>用户通过 ADSL 宽带上网时使用的就是 PPPoE</strong>。</p>
+<p>PPP 由以下三个部分组成：</p>
+<ol>
+  <li>一个<strong>链路控制协议（LCP）</strong>：用来建立、配置、测试数据链路连接，及协商一些选项；</li>
+  <li>一套<strong>网络控制协议（NCP）</strong>：PPP 支持多种网络层协议（如 IP、IPX 等），每种网络层协议需通过对应的 NCP 进行配置，以建立和管理其逻辑连接；</li>
+  <li>一种将 IP 数据报封装到串行链路的方法：IP 数据报作为 PPP 帧的信息部分被封装在 PPP 帧中传输，其长度受最大传送单元（MTU）限制。</li>
+</ol>
+<p>PPP 帧的格式如图 3.33 所示，<strong>首部包含 4 个字段，尾部包含 2 个字段</strong>。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-33.png" alt="图3.33 PPP帧的格式" loading="lazy"><figcaption>图 3.33 PPP 帧的格式（王道教材 P114）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：PPP 帧各字段详解</div>
+<ol>
+  <li><strong>标志字段（F）</strong>：首部和尾部各有一个，占 1B，规定为 0x7E（01111110），用作<strong>帧的定界符</strong>，标识帧的开始与结束。为实现透明传输，当信息段中出现与标志字段相同的比特模式时，需要采取填充措施：当 PPP 使用<strong>异步传输</strong>时，采用<strong>字节填充法</strong>，使用的转义字符为 0x7D（01111101）；当 PPP 使用<strong>同步传输</strong>时，采用<strong>零比特填充法</strong>。</li>
+  <li><strong>地址字段（A）</strong>：占 1B，规定为 0xFF，其意义暂未定义。</li>
+  <li><strong>控制字段（C）</strong>：占 1B，规定为 0x03，其意义也暂未定义。</li>
+  <li><strong>协议字段</strong>：占 2B，用于标识信息字段所承载的分组类型。若为 0x0021，表示信息字段为 IP 数据报；若为 0xC021，表示信息字段为 LCP 分组。</li>
+  <li><strong>信息字段</strong>：长度可变，范围为 0～1500B。</li>
+  <li><strong>帧检验序列（FCS）</strong>：占 2B，采用 CRC 校验生成的冗余码，用于差错检测。</li>
+</ol>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 注意：PPP 不存在最短帧长限制</div>
+<p>由于 PPP 是点对点链路上（而非总线形网络），无须使用 CSMA/CD 协议，因此<strong>不存在最短帧长的限制</strong>，其信息字段最小可为 0B（相比之下，以太网帧的数据部分至少需 46B）。</p>
+</div>
+<p>以用户拨号接入 ISP 的过程为例：用户拨号后，首先建立一条从用户到 ISP 的物理层连接；随后，用户向 ISP 发送一系列 LCP 分组（封装为 PPP 帧），协商链路参数并建立 LCP 连接；接着通过 NCP 配置网络层，ISP 为用户分配一个临时 IP 地址；通信结束后，依次释放网络层、数据链路层和物理层连接。PPP 的状态转换如图 3.34 所示。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-34.png" alt="图3.34 PPP的状态图" loading="lazy"><figcaption>图 3.34 PPP 的状态图（王道教材 P115）</figcaption></figure>
+<div class="box tip"><div class="box-title">📌 PPP 状态图的具体解释</div>
+<ol>
+  <li>PPP 链路的起始和终止均为<strong>链路静止</strong>状态，此时用户与 ISP 之间无物理层连接；</li>
+  <li>当检测到调制解调器的载波信号并成功建立物理层连接后，PPP 进入<strong>链路建立</strong>状态；</li>
+  <li>在链路建立状态下，LCP 开始协商配置选项（如最大帧长、鉴别协议等）。若协商成功，则 LCP 链路建立完成，PPP 进入<strong>鉴别</strong>状态；若协商失败，则退回到链路静止状态；</li>
+  <li>在鉴别状态下，若通信双方无须鉴别或身份鉴别成功，则进入<strong>网络层协议</strong>状态；若鉴别失败，则直接进入链路终止状态；</li>
+  <li>在网络层协议状态下，双方通过 NCP 配置网络层参数（如分配 IP 地址），配置完成后，PPP 进入<strong>链路打开</strong>状态，双方即可开始数据通信；</li>
+  <li>数据通信结束后，若一方发送终止请求并在收到确认后，或链路发生故障，PPP 将进入<strong>链路终止</strong>状态；待调制解调器的载波信号停止后，最终返回链路静止状态。</li>
+</ol>
+</div>
+<div class="box concept"><div class="box-title">📌 PPP 的主要特点</div>
+<ol>
+  <li>PPP 在<strong>链路建立阶段</strong>使用了确认机制，但在<strong>数据传输阶段</strong>仅提供无差错接收（通过 CRC 检验），不使用序号与确认机制，因此提供的是<strong>不可靠服务</strong>；</li>
+  <li>PPP <strong>仅支持全双工的点对点链路</strong>，不支持多点线路；</li>
+  <li>PPP 链路两端可运行<strong>不同的网络层协议</strong>，但仍能通过同一 PPP 链路进行通信；</li>
+  <li>PPP 是<strong>面向字节</strong>的协议，所有 PPP 帧的长度均为整数字节。</li>
+</ol>
+</div>
+
+<div class="pager">
+      <a class="prev" href="3.6.html"><span class="label">上一篇</span>3.6 局域网</a>
+      <a class="next" href="3.8.html"><span class="label">下一篇</span>3.8 数据链路层设备</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

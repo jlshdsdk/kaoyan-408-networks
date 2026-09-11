@@ -1,0 +1,10 @@
+[
+  {"page": 63, "rect": [22, 26, 82, 35.5], "out": "fig-3-1.png", "caption": "图3.1 主机H1向H2发送数据", "src": "教材P51", "book": "textbook"},
+  {"page": 63, "rect": [20, 36, 82, 51.5], "out": "fig-3-2.png", "caption": "图3.2 从协议的层次上看数据的流动", "src": "教材P51", "book": "textbook"},
+  {"page": 63, "rect": [20, 58, 82, 74], "out": "fig-3-3.png", "caption": "图3.3 只考虑数据在数据链路层的流动", "src": "教材P51", "book": "textbook"},
+  {"page": 64, "rect": [20, 28.5, 85, 35.5], "out": "fig-3-4.png", "caption": "图3.4 HDLC帧格式", "src": "教材P52", "book": "textbook"},
+  {"page": 66, "rect": [20, 43.5, 82, 54], "out": "fig-3-5.png", "caption": "图3.5 字符计数的过程示例", "src": "教材P54", "book": "textbook"},
+  {"page": 66, "rect": [20, 75.3, 84, 86], "out": "fig-3-6.png", "caption": "图3.6 字节填充的过程示例", "src": "教材P54", "book": "textbook"},
+  {"page": 67, "rect": [26, 25, 78, 33.5], "out": "fig-3-7.png", "caption": "图3.7 比特填充过程示例", "src": "教材P55", "book": "textbook"},
+  {"page": 70, "rect": [28, 14, 72, 34], "out": "fig-3-8.png", "caption": "图3.8 循环冗余码的运算过程", "src": "教材P58", "book": "textbook"}
+]

@@ -1,0 +1,19 @@
+[
+  {"page": 194, "rect": [18, 42, 85, 53], "out": "fig-4-12.png", "caption": "图4.12 具有多个可选扩展首部的IPv6数据报的一般形式", "src": "教材P182", "book": "textbook"},
+  {"page": 194, "rect": [18, 76, 85, 94], "out": "fig-4-13.png", "caption": "图4.13 IPv6数据报的基本首部的格式", "src": "教材P182", "book": "textbook"},
+  {"page": 196, "rect": [15, 17, 85, 32], "out": "fig-4-14.png", "caption": "图4.14 IPv6全球单播地址的几种划分方法", "src": "教材P184", "book": "textbook"},
+  {"page": 198, "rect": [20, 70, 82, 92], "out": "fig-4-15.png", "caption": "图4.15 Bellman-Ford算法的基本思想", "src": "教材P186", "book": "textbook"},
+  {"page": 199, "rect": [10, 22, 90, 47], "out": "fig-4-16.png", "caption": "图4.16 距离-向量算法实现的举例", "src": "教材P187", "book": "textbook"},
+  {"page": 200, "rect": [20, 61, 80, 76], "out": "fig-4-17.png", "caption": "图4.17 两个自治系统互连的示意图", "src": "教材P188", "book": "textbook"},
+  {"page": 202, "rect": [12, 74.5, 90, 83.5], "out": "fig-4-18.png", "caption": "图4.18 RIP举例：链路开销改变", "src": "教材P190", "book": "textbook"},
+  {"page": 204, "rect": [22, 34.5, 80, 51.5], "out": "fig-4-19.png", "caption": "图4.19 OSPF划分区域举例", "src": "教材P192", "book": "textbook"},
+  {"page": 206, "rect": [12, 41, 90, 61], "out": "fig-4-20.png", "caption": "图4.20 BGP路由的举例", "src": "教材P194", "book": "textbook"},
+  {"page": 207, "rect": [20, 8, 82, 26], "out": "fig-4-21.png", "caption": "图4.21 本地偏好值较高的路由优先", "src": "教材P195", "book": "textbook"},
+  {"page": 207, "rect": [18, 37, 85, 55], "out": "fig-4-22.png", "caption": "图4.22 根据经过AS跳数的多少选择BGP路由", "src": "教材P195", "book": "textbook"},
+  {"page": 207, "rect": [15, 70, 88, 87], "out": "fig-4-23.png", "caption": "图4.23 热土豆路由选择算法的举例", "src": "教材P195", "book": "textbook"},
+  {"page": 221, "rect": [10, 19, 90, 44], "out": "fig-4-24.png", "caption": "图4.24 单播与多播的比较", "src": "教材P209", "book": "textbook"},
+  {"page": 222, "rect": [20, 14, 80, 36], "out": "fig-4-25.png", "caption": "图4.25 D类IP地址与以太网多播地址的映射关系", "src": "教材P210", "book": "textbook"},
+  {"page": 224, "rect": [8, 70, 92, 95], "out": "fig-4-26.png", "caption": "图4.26 移动IP的基本通信过程", "src": "教材P212", "book": "textbook"},
+  {"page": 227, "rect": [20, 8, 82, 29], "out": "fig-4-27.png", "caption": "图4.27 路由器体系结构", "src": "教材P215", "book": "textbook"},
+  {"page": 227, "rect": [12, 58, 88, 73], "out": "fig-4-28.png", "caption": "图4.28 一个简单的网络拓扑", "src": "教材P215", "book": "textbook"}
+]

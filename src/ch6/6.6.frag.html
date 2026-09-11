@@ -1,0 +1,49 @@
+<h1 class="page-title">6.6 本章小结及疑难点</h1>
+<p class="subtitle">对应王道教材 6.6 节（教材 P303）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-6-6-1">本章要点小结</h2>
+<div class="box tip"><div class="box-title">📌 要点清单</div>
+<ul>
+  <li><strong>网络应用模型</strong>：C/S 模型（客户请求、服务器响应、客户间不直接通信、可扩展性差）与 P2P 模型（对等方直接通信、可扩展性好、健壮性强、占用本机资源多）；</li>
+  <li><strong>DNS</strong>：层次域名空间（顶级域/二级域/三级域，标号规则）；四类域名服务器（根、顶级、权限、本地）；解析方式（主机→本地必为递归查询，本地→其他可为递归或迭代，实际常用迭代）；协议运行在 UDP 之上，端口 53；高速缓存与 TTL；</li>
+  <li><strong>FTP</strong>：基于 TCP 的有状态协议；控制连接（端口 21，整个会话期间保持打开，传命令）与数据连接（端口 20，按需建立，传文件内容）；主动模式 PORT / 被动模式 PASV；</li>
+  <li><strong>电子邮件</strong>：用户代理 + 邮件服务器 + 协议；SMTP（推、TCP 25，三阶段：连接建立/邮件传送/连接释放，不使用中间邮件服务器中转）；POP3（拉、TCP 110，下载并保留/下载并删除）；IMAP（在线操作、选择性获取）；MIME（对 SMTP 的扩展，非 ASCII 数据编码为 ASCII 后交 SMTP 传输）；</li>
+  <li><strong>WWW/HTTP</strong>：三标准 URL/HTTP/HTML；HTTP 基于 TCP（端口 80）、自身无连接、无状态（Cookie 弥补）；HTTP/1.0 非持久连接（每对象 2RTT）、HTTP/1.1 持久连接（非流水线/流水线）；报文 = 开始行 + 首部行 + 空行 + 实体主体；常用方法 GET/HEAD/POST/PUT/DELETE/CONNECT；代理服务器 = Web 高速缓存。</li>
+</ul>
+</div>
+<table class="tbl">
+  <caption>表 6.f 常见应用层协议小结（王道教材表 6.2，P294）</caption>
+  <tr><th>应用程序</th><th>FTP 数据连接</th><th>FTP 控制连接</th><th>TELNET</th><th>SMTP</th><th>DNS</th><th>TFTP</th><th>HTTP</th><th>POP3</th><th>SNMP</th></tr>
+  <tr><td>使用协议</td><td>TCP</td><td>TCP</td><td>TCP</td><td>TCP</td><td>UDP</td><td>UDP</td><td>TCP</td><td>TCP</td><td>UDP</td></tr>
+  <tr><td>熟知端口号</td><td>20</td><td>21</td><td>23</td><td>25</td><td>53</td><td>69</td><td>80</td><td>110</td><td>161</td></tr>
+</table>
+
+<h2 class="sec" id="sec-6-6-2">疑难点解析</h2>
+
+<h3 class="sub">疑难点 1：如何理解客户进程端口号与服务器进程端口号？</h3>
+<p>服务器进程使用<strong>熟知端口号</strong>，这些端口号是固定且公开的，便于客户找到对应的服务。客户进程则使用<strong>临时端口号</strong>，由操作系统在连接发起时<strong>自动分配</strong>，仅在本次通信中有效。当客户向服务器发起连接时，会连接到服务器的熟知端口，并<strong>将自己的临时端口号告知服务器</strong>。服务器随后通过这一对端口号（自身的熟知端口 + 客户的临时端口）建立唯一的端到端连接。</p>
+
+<h3 class="sub">疑难点 2：互联网和万维网的区别是什么？</h3>
+<p><strong>互联网（Internet）</strong>是一个全球性的计算机网络互联系统，起源于 ARPAnet，采用 TCP/IP 协议族作为通信基础，提供主机之间的连通性。</p>
+<p><strong>万维网（World Wide Web，WWW）</strong>则是构建在互联网之上的一套<strong>应用层生态</strong>，由相互链接的网页和网站组成，通过 HTTP 协议和浏览器访问。</p>
+<p>简言之：互联网是<strong>"路"</strong>，万维网是<strong>"路上跑的一种车"</strong>。</p>
+
+<h3 class="sub">疑难点 3：HTTP/1.1 使用持久连接，为何下载一个网页及其图片仍可能需更多 RTT？</h3>
+<p>因为 <strong>TCP 连接初始的拥塞窗口通常仅为 1MSS</strong>，即使 HTTP/1.1 支持在同一个连接上连续发送请求，服务器也不能一次性发送全部数据。例如，网页文件为 1MSS，图片为 3MSS：</p>
+<ol>
+  <li>第 1 个 RTT：完成 TCP 建立连接的前两次握手；</li>
+  <li>第 2 个 RTT：第三次握手捎带 HTML 请求，服务器发送 1MSS（cwnd = 1）；</li>
+  <li>第 3 个 RTT：客户端确认网页并捎带图片请求，cwnd 增至 2MSS，发送 2MSS 图片；</li>
+  <li>第 4 个 RTT：客户端确认已收图片数据，cwnd 增至 4MSS，发送剩余 1MSS 图片。</li>
+</ol>
+<p>因此，总耗时由<strong>数据大小和拥塞窗口增长节奏</strong>共同决定，即使带宽充足，至少也需要 4RTT。若忽略传输层拥塞控制、仅从应用层交互估算时间，则极易得出错误结论。</p>
+
+<h3 class="sub">疑难点 4：以太网主机刚开机后访问某 Web 站点，需经历哪些通信过程？</h3>
+<p>主机刚开机时，尚未配置任何网络参数，通过有线方式接入本地局域网。在发送任何数据前，传统共享式以太网需遵循 CSMA/CD 机制以避免冲突（注意，现代交换式以太网普遍采用全双工模式，不再使用 CSMA/CD）。以访问 http://www.abc.com/index.html 为例，完整通信过程如下：</p>
+<div class="box concept"><div class="box-title">📌 三大阶段：DHCP 获取配置 → DNS 解析域名 → HTTP 获取网页</div>
+<ol>
+  <li><strong>DHCP 获取网络配置</strong>：主机启动后，先通过 DHCP 自动获取 IP 地址、子网掩码、默认网关、DNS 服务器地址等参数。DHCP 属于应用层协议，其报文封装在 UDP 数据报中，UDP 数据报再封装在 IP 数据报中，最终由数据链路层将该 IP 数据报封装为以太网 MAC 帧进行传输；</li>
+  <li><strong>DNS 解析域名</strong>：用户在浏览器中输入 URL 后，浏览器从中提取域名 www.abc.com，并向本地 DNS 服务器发起解析请求。DNS 属于应用层协议，在传输层中使用 UDP，查询报文被封装在 IP 数据报中。若 DNS 服务器与主机位于同一子网内，则主机先通过 ARP 将 DNS 服务器的 IP 地址解析为对应的 MAC 地址，再将 IP 数据报封装为单播帧发送给 DNS 服务器；若 DNS 服务器位于其他子网中，则主机先通过 ARP 获取默认网关的 MAC 地址，再将单播帧发送给默认网关，由其负责转发。最终，DNS 服务器返回响应，将域名对应的 IP 地址告知主机；</li>
+  <li><strong>HTTP 获取网页</strong>：获得目标 IP 地址后，浏览器向该 Web 服务器的 80 端口发起 TCP 连接请求。连接建立后，浏览器立即发送 GET /index.html 的 HTTP 请求。服务器收到请求后，返回包含 index.html 内容的 HTTP 响应。浏览器解析 HTML 页面，若其中引用了其他资源（如图片、视频等），则对每个资源分别发起新的 HTTP 请求（根据 HTTP 版本的不同，可能复用或新建连接）。所有资源传输完成后，TCP 通过四次挥手释放连接。浏览器解析 HTML，完成网页展示。</li>
+</ol>
+</div>

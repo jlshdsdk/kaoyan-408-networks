@@ -1,0 +1,14 @@
+[
+  {"page": 237, "rect": [10, 8, 90, 42], "out": "fig-5-1.png", "caption": "图5.1 传输层为相互通信的进程提供逻辑通信", "src": "教材P225", "book": "textbook"},
+  {"page": 242, "rect": [15, 8, 60, 29], "out": "fig-5-2.png", "caption": "图5.2 UDP数据报格式", "src": "教材P230", "book": "textbook"},
+  {"page": 242, "rect": [61, 10, 95, 29], "out": "fig-5-3.png", "caption": "图5.3 UDP基于端口的分用", "src": "教材P230", "book": "textbook"},
+  {"page": 242, "rect": [20, 41, 85, 58], "out": "fig-5-4.png", "caption": "图5.4 UDP数据报的首部和伪首部", "src": "教材P230", "book": "textbook"},
+  {"page": 249, "rect": [15, 12, 90, 41], "out": "fig-5-5.png", "caption": "图5.5 TCP报文段（首部格式）", "src": "教材P237", "book": "textbook"},
+  {"page": 251, "rect": [20, 7, 85, 36], "out": "fig-5-6.png", "caption": "图5.6 用三次握手建立TCP连接", "src": "教材P239", "book": "textbook"},
+  {"page": 251, "rect": [15, 61, 90, 96], "out": "fig-5-7.png", "caption": "图5.7 用四次挥手释放TCP连接", "src": "教材P239", "book": "textbook"},
+  {"page": 253, "rect": [20, 14, 85, 33], "out": "fig-5-8.png", "caption": "图5.8 A的发送缓存区中的数据划分成TCP段", "src": "教材P241", "book": "textbook"},
+  {"page": 254, "rect": [15, 49, 90, 86], "out": "fig-5-9.png", "caption": "图5.9 利用滑动窗口进行流量控制", "src": "教材P242", "book": "textbook"},
+  {"page": 256, "rect": [12, 56, 92, 86], "out": "fig-5-10.png", "caption": "图5.10 慢开始和拥塞避免算法的实现过程", "src": "教材P244", "book": "textbook"},
+  {"page": 257, "rect": [12, 54, 92, 86], "out": "fig-5-11.png", "caption": "图5.11 TCP拥塞控制算法的实现过程", "src": "教材P245", "book": "textbook"},
+  {"page": 258, "rect": [15, 12, 90, 49], "out": "fig-5-12.png", "caption": "图5.12 TCP拥塞控制的流程图", "src": "教材P246", "book": "textbook"}
+]

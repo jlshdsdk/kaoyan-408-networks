@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.8 数据链路层设备 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第3章 数据链路层</a> › <span>3.8 数据链路层设备</span></div>
+<h1 class="page-title">3.8 数据链路层设备</h1>
+<p class="subtitle">对应王道教材 3.8 节（教材 P117–P120）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-3-8-1">*3.8.1 网桥的基本概念 <span class="badge ext">课外拓展</span></h2>
+<p><span class="badge ext">课外拓展</span> 本节为带星号的选学内容，最新 408 考纲已将网桥删除，仅供理解后续交换机内容时参考。</p>
+<p>使用<strong>集线器</strong>在物理层扩展以太网会形成更大的<strong>冲突域</strong>。为避免这一问题，早期采用<strong>网桥</strong>在数据链路层扩展以太网，此时原来的每个以太网称为一个<strong>网段</strong>。使用网桥扩展时，<strong>不会将原本独立的两个冲突域合并成一个更大的冲突域</strong>。这是因为网桥具有<strong>识别帧和转发帧</strong>的能力：它根据帧首部的目的地址及自身的帧转发表，决定是转发还是丢弃所收到的帧，从而有效过滤通信量。</p>
+<div class="box warn"><div class="box-title">⚠️ 注意</div>
+<p>网桥是早期的数据链路层设备，现已被以太网交换机取代（交换机实质上就是一个多端口网桥），最新大纲中已将其删除。网桥只隔离冲突域，不隔离广播域。</p>
+</div>
+
+<h2 class="sec" id="sec-3-8-2">3.8.2 以太网交换机 <span class="badge kao">考点</span></h2>
+<h3 class="sub">1．交换机的原理和特点</h3>
+<p>以太网交换机也称<strong>二层交换机</strong>，其中"二层"指其工作在数据链路层。从实质上讲，它是一个<strong>多端口的网桥</strong>，能够将网络划分为多个较小的<strong>冲突域</strong>，从而为每个用户提供更高的带宽。</p>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：以太网交换机的特点（2015）</div>
+<p>在使用集线器构建的传统<strong>共享式以太网</strong>中，所有用户共享同一传输介质。例如，在 10Mb/s 网络中，若有 \(N\) 个用户，则每个用户的平均可用带宽仅为总带宽的 \(1/N\)，且在通信过程中极易发生冲突。而使用以太网交换机构建的<strong>交换式以太网</strong>则完全不同：每个端口提供独立的信道，主机通信时独占端口带宽（如 10Mb/s），无须与其他用户竞争介质。因此，<strong>一台有 \(N\) 个端口的交换机的总吞吐容量可达 \(N\times 10\)Mb/s，这正是交换机的最大优势所在</strong>。</p>
+<p>以太网交换机的特点：</p>
+<ol>
+  <li>当交换机端口直接连接主机或其他交换机时，通常工作在<strong>全双工方式</strong>；</li>
+  <li>交换机具有<strong>并行性</strong>，可同时连通多对端口，使每对通信主机都能无冲突地传输数据，因此<strong>无须使用 CSMA/CD 协议</strong>；</li>
+  <li>当交换机端口连接集线器时，由于集线器连接的所有设备均处于同一冲突域中，<strong>必须使用 CSMA/CD 协议</strong>，且只能工作在半双工方式；</li>
+  <li>交换机是一种即插即用设备，其内部的帧转发表是通过<strong>自学习算法</strong>，基于网络中各主机间的实际通信自动建立和更新；</li>
+  <li>交换机采用专门的交换结构芯片，因此交换速率较高。</li>
+</ol>
+</div>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：直通交换的转发时延分析（2013）</div>
+<p>以太网交换机主要采用两种交换模式：</p>
+<ol>
+  <li><strong>直通交换方式</strong>：接收到帧的目的 MAC 地址后，立即决定转发端口，无须等待整个帧接收完毕。该方式的转发时延非常小，缺点是不进行差错检测，因此可能将一些无效帧转发给其他站。因此，直通交换不适用于需要速率匹配、协议转换或差错检测的场景；</li>
+  <li><strong>存储转发交换方式</strong>：先完整接收并缓存整个帧，然后检查帧是否正确（可能还需要进行速率匹配或协议转换），若帧正确，则根据目的 MAC 地址转发；若帧出错，则直接丢弃。其优点是可靠性高，且支持不同速率端口之间的通信；缺点是转发时延较大。</li>
+</ol>
+</div>
+<p>交换机通常配备多种速率的端口，如 10Mb/s、100Mb/s 端口，以及多速率自适应端口。</p>
+<h3 class="sub">2．交换机的自学习功能 <span class="badge kao">考点</span></h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：以太网交换机基于 MAC 地址的转发机制（2009）、交换机的 MAC 地址学习过程（2014、2016、2021）</div>
+<p>以太网交换机的转发和过滤决策基于<strong>帧的 MAC 地址</strong>。其中，<strong>过滤</strong>是指决定是否丢弃一个帧，而<strong>转发</strong>则是指决定将帧从哪个端口送出。这两项功能依赖于交换机的<strong>交换表</strong>。每个表项至少包含两个字段：主机的 MAC 地址；该主机所连接的交换机端口号。例如在图 3.35 中，一台 4 端口的交换机分别连接四台计算机，其 MAC 地址分别为 A、B、C 和 D，交换表初始为空。</p>
+</div>
+<figure class="fig"><img src="../assets/ch3/fig-3-35.png" alt="图3.35 以太网交换机中的交换表" loading="lazy"><figcaption>图 3.35 以太网交换机中的交换表（王道教材 P119）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考法：自学习与转发过程的逐步推导（教材例析）</div>
+<p>交换机通过<strong>自学习算法</strong>动态构建并维护转发表，收到数据帧后，执行以下步骤：</p>
+<ol>
+  <li><strong>学习源 MAC 地址</strong>：交换机读取帧的源 MAC 地址，并将 {MAC 地址, 入端口} 写入或更新到交换表。这一过程称为自学习，可使交换机动态掌握各主机的连接位置；</li>
+  <li><strong>查看目的 MAC 地址</strong>：交换机解析帧的目的 MAC 地址，并根据其类型（单播、广播或组播）采取相应的转发策略；</li>
+  <li><strong>决策与转发</strong>：
+    <ul>
+      <li>为<strong>单播帧</strong>（目的 MAC 地址为普通主机地址）时，交换机在交换表中查找该目的地址：若找到对应表项（<strong>已知目的地址</strong>），则仅从该表项所指端口转发，实现精准交付；若未找到对应表项（<strong>未知目的地址</strong>），则执行<strong>未知单播帧泛洪</strong>（或称洪泛），即将帧从<strong>除接收端口外的所有其他活动端口</strong>转发出去，确保目标主机能收到；</li>
+      <li>为<strong>广播帧</strong>（目的 MAC 地址为 FF-FF-FF-FF-FF-FF）时，交换机不查询转发表，直接将帧泛洪到除接收端口外的所有其他活动端口；</li>
+      <li>为<strong>组播帧</strong>（目的地址为组播 MAC 地址）时，交换机通常也默认执行泛洪处理。</li>
+    </ul>
+  </li>
+</ol>
+<p><strong>以图 3.35 逐步推导</strong>：假设主机 A 从端口 1 向主机 B 发送帧。交换机收到后，<strong>学习源地址</strong>：将 {A, 1} 写入交换表，此后任何发往主机 A 的帧都将从端口 1 转发。执行<strong>未知目的地址泛洪</strong>：未找到主机 B 的对应表项，将帧发送至端口 2、3、4（除端口 1 外）。主机 C 和 D 收到帧后，发现目的地址非自身，丢弃该帧；仅主机 B 接收。</p>
+<p>随后，假设主机 B 从端口 3 向主机 A 回复帧。交换机收到后，<strong>学习源地址</strong>：将 {B, 3} 写入交换表。执行<strong>已知目的地址精准交付</strong>：查表发现主机 A 对应端口 1，于是直接从端口 1 单播转发该帧。</p>
+<p>至此，交换机已通过"A→B"和"B→A"的通信，完整学习了主机 A 与 B 的位置信息。随着时间的推移，只要主机 C 和 D 也主动发送帧，交换机便会逐步学习其 MAC 地址与端口的映射关系。最终，交换表将包含所有活跃主机的信息，实现高效、精准的转发。</p>
+</div>
+<div class="box tip"><div class="box-title">📌 交换表的老化与生成树协议（STP）</div>
+<ul>
+  <li>由于网络中的主机会动态变化，交换表必须具备自动更新的能力。为此，每个表项均设有<strong>老化时间</strong>，超时未更新的表项会被自动删除，以确保表项始终反映当前网络的实际连接状态；</li>
+  <li>为了提高可靠性，以太网交换机组网中常引入<strong>冗余链路</strong>，但可能形成环路，导致<strong>广播风暴</strong>和帧无限循环。为此，交换机采用<strong>生成树协议（STP）</strong>：在不改变物理拓扑的前提下，通过逻辑阻塞部分冗余端口，构建一棵覆盖所有交换机的无环生成树，确保任意两台主机间仅有一条有效路径，进而消除环路。同时，当主链路出现故障时，STP 可重新激活被阻塞端口，恢复连通性，实现自动容错。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="sec-3-8-3">3.8.3 共享式以太网 <span class="badge kao">考点</span></h2>
+<h3 class="sub">1．共享式以太网的基本特点</h3>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：共享式与交换式以太网的区别（2016）</div>
+<p><strong>共享式以太网</strong>是指以<strong>集线器（Hub）</strong>为中心连接设备构建的局域网。所有主机通过双绞线接入集线器，共享同一物理传输介质和总带宽。从逻辑上看，整个网络构成单一的局域网段，所有通信均发生在同一个冲突域和广播域中。共享式以太网的主要特点如下：</p>
+<ol>
+  <li><strong>工作在物理层</strong>：集线器仅对电信号进行放大和再生，<strong>不具备帧解析能力</strong>，无法识别 MAC 地址，也无任何智能转发或过滤功能；</li>
+  <li><strong>采用半双工通信和 CSMA/CD 协议</strong>：由于介质共享，任意时刻只能有一对主机成功通信，其他发送尝试将引发冲突，必须依赖 CSMA/CD 协议进行冲突检测与退避；</li>
+  <li><strong>单一冲突域与广播域</strong>：所有主机处于同一个冲突域和同一个广播域内；</li>
+  <li><strong>带宽共享，效率低下</strong>：若网络中有 \(N\) 台主机，则每台主机的平均带宽仅为总带宽的 \(1/N\)；</li>
+  <li><strong>盲目广播所有帧</strong>：集线器将收到的帧无差别地转发至所有其他端口，各主机需自行判断是否接收，不仅浪费带宽，还存在通信隐私泄露的风险。</li>
+</ol>
+</div>
+<p>正由于上述缺陷，共享式以太网早已于 20 世纪末退出历史舞台，现代网络不再部署。</p>
+<h3 class="sub">2．共享式与交换式以太网的转发行为对比</h3>
+<p>假设交换机已建立完整的转发表，以下从三种典型场景分析两类网络的处理差异：</p>
+<ol>
+  <li><strong>主机发送普通帧</strong>：对于共享式以太网，集线器将帧转发到除接收端口外的所有端口，各主机网卡根据帧的目的 MAC 地址决定是否接收。对于交换式以太网，交换机查询转发表后，仅将帧从目标主机所在的端口转发，其他主机完全无感知；</li>
+  <li><strong>主机发送广播帧</strong>：对于共享式以太网，集线器将帧转发到除接收端口外的所有端口，各主机网卡识别目的 MAC 地址为广播地址后接收该帧。对于交换式以太网，交换机识别目的 MAC 地址为广播地址，执行泛洪处理，各主机收到该广播帧后予以接收。两种情况<strong>效果相同，但原理不同</strong>：前者是物理层盲目复制，后者是数据链路层有意识泛洪；</li>
+  <li><strong>多对主机同时通信</strong>：对于共享式以太网，必然发生冲突，需执行 CSMA/CD 协议的退避重传机制。对于交换式以太网，支持多对端口并行交互，各对通信互不干扰。</li>
+</ol>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：各类网络设备对冲突域和广播域的影响（2020、2022）</div>
+<p><strong>集线器既不隔离广播域，也不隔离冲突域；交换机不隔离广播域，但隔离冲突域</strong>。只有路由器（网络层设备）等才能隔离广播域。</p>
+<table class="tbl">
+  <caption>表 3.6 共享式以太网与交换式以太网的特性对比（王道教材 P120）</caption>
+  <tr><th>网络类型</th><th>工作层次</th><th>通信模式</th><th>带宽分配</th><th>使用 CSMA/CD 协议？</th><th>安全性</th></tr>
+  <tr><td>共享式以太网</td><td>物理层</td><td>半双工</td><td>共享</td><td>是</td><td>低</td></tr>
+  <tr><td>交换式以太网</td><td>数据链路层</td><td>全双工（默认）</td><td>独占</td><td>否（全双工下）</td><td>较高</td></tr>
+</table>
+</div>
+<div class="box concept"><div class="box-title">📌 总结：集线器 vs 网桥 vs 以太网交换机</div>
+<table class="tbl">
+  <caption>表 集线器、网桥与以太网交换机对比</caption>
+  <tr><th>对比项</th><th>集线器（Hub）</th><th>网桥（Bridge）</th><th>以太网交换机（Switch）</th></tr>
+  <tr><td>工作层次</td><td>物理层</td><td>数据链路层</td><td>数据链路层</td></tr>
+  <tr><td>转发依据</td><td>无（仅放大再生信号）</td><td>MAC 地址 + 帧转发表</td><td>MAC 地址 + 交换表</td></tr>
+  <tr><td>能否隔离冲突域</td><td>不能（所有端口同一冲突域）</td><td>能（每个端口一个冲突域）</td><td>能（每个端口一个冲突域）</td></tr>
+  <tr><td>能否隔离广播域</td><td>不能</td><td>不能</td><td>不能（VLAN 除外）</td></tr>
+  <tr><td>端口数与形式</td><td>多端口</td><td>通常两端点、用于连接网段</td><td>多端口网桥</td></tr>
+  <tr><td>现状</td><td>已淘汰</td><td>已被交换机取代（考纲已删）</td><td>主流组网设备</td></tr>
+</table>
+</div>
+
+<div class="pager">
+      <a class="prev" href="3.7.html"><span class="label">上一篇</span>3.7 广域网</a>
+      <a class="next" href="3.9.html"><span class="label">下一篇</span>3.9 本章小结及疑难点</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

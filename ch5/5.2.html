@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.2 UDP - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第5章 传输层</a> › <span>5.2 UDP</span></div>
+<h1 class="page-title">5.2 UDP</h1>
+<p class="subtitle">对应王道教材 5.2 节（教材 P229–P231）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-5-2-1">5.2.1 UDP 数据报 <span class="badge kao">考点</span></h2>
+<h3 class="sub">1．UDP 概述</h3>
+<p>UDP 仅在 IP 层的数据报服务之上增加了<strong>复用、分用和差错检测</strong>的功能。若应用开发者选择 UDP 而非 TCP，则应用程序几乎直接与 IP 打交道。尽管 TCP 提供可靠服务，而 UDP 不提供，但 TCP 并非总是首选。许多应用更适合采用 UDP，主要原因如下（UDP 协议的优点，2014、2024 统考考查）：</p>
+<ol>
+  <li>UDP 是<strong>无连接</strong>的，没有建立连接的时延。TCP 需要在主机中维护连接状态（包括发送和接收缓存、拥塞控制参数、序号和确认序号等），而 UDP 无须维护这些状态。</li>
+  <li>UDP 是<strong>面向报文</strong>的。发送方 UDP 对应用层交下的报文，在添加首部后即向下交付给 IP 层，一次发送一个完整的报文（<strong>不可分割</strong>），既不合并不拆分，而是<strong>保留报文的边界</strong>。因此，应用程序必须选择合适大小的报文：若报文太长，则交给 IP 层后，可能导致分片；若报文太短，则会使 IP 首部的开销占比过大，两者均会降低传输效率。相比之下，TCP 是面向字节流的，每个字节都有编号，支持自动拆分与重组，对报文长度无限制。</li>
+  <li>UDP 的<strong>首部开销小</strong>，仅有 <strong>8B</strong>；而 TCP 首部至少 20B。</li>
+  <li>UDP 支持<strong>一对一、一对多和多对多</strong>的通信。TCP 仅支持一对一的通信。</li>
+  <li>UDP <strong>没有拥塞控制</strong>，因此网络拥塞不会影响源主机的发送速率。某些实时应用要求以稳定的速率发送数据，可以容忍少量丢包，但无法接受较大的传输时延。</li>
+</ol>
+<p>UDP 常用于<strong>一次性传输少量数据</strong>的应用（如 DNS、DHCP 等），因为 TCP 的连接建立、维护和释放会带来显著开销。UDP 也广泛用于<strong>多媒体应用</strong>（如视频会议、流媒体等），因为这些应用更关注<strong>低时延</strong>而非可靠性，而 TCP 的拥塞控制会引入不可接受的延迟。</p>
+<div class="box tip"><div class="box-title">📌 UDP 不保证可靠交付 ≠ 应用不可靠</div>
+<p>UDP 不保证可靠交付，但这并不意味着应用不要求可靠性——所有可靠性机制可由<strong>应用层自行实现</strong>，开发者可根据需求灵活设计。</p>
+</div>
+<h3 class="sub">2．UDP 的首部格式 <span class="badge kao">考点</span></h3>
+<p>UDP 数据报包含两部分：<strong>首部字段和数据字段</strong>。UDP 首部有 <strong>8B</strong>，由 <strong>4 个字段</strong>组成，每个字段的长度都是 <strong>2B</strong>，如图 5.2 所示。各个字段的意义如下（首部格式及字段含义为 2018 统考考点，首部长度为 2021 统考考点）：</p>
+<figure class="fig"><img src="../assets/ch5/fig-5-2.png" alt="图5.2 UDP 数据报格式" loading="lazy"><figcaption>图 5.2 UDP 数据报格式（王道教材 P230）</figcaption></figure>
+<ol>
+  <li><strong>源端口号</strong>。发送进程的端口号。需要对方回复时选用，不需要回复时可置为全 0。</li>
+  <li><strong>目的端口号</strong>。接收进程的端口号。该字段在所有 UDP 报文中都必须有效。</li>
+  <li><strong>长度</strong>。UDP 数据报的长度（<strong>包括首部和数据</strong>），其最小值是 8（仅有首部）。</li>
+  <li><strong>检验和</strong>。由发送方的传输层计算并写入，接收方的传输层检测是否有差错，有错就丢弃。在 IPv4 中，该字段可置为全 0 表示未使用（但不建议），在 IPv6 中则强制启用。</li>
+</ol>
+<figure class="fig"><img src="../assets/ch5/fig-5-3.png" alt="图5.3 UDP 基于端口的分用" loading="lazy"><figcaption>图 5.3 UDP 基于端口的分用（王道教材 P230）</figcaption></figure>
+<p>当传输层从 IP 层收到 UDP 数据报时，就根据首部中的<strong>目的端口</strong>，把 UDP 数据报通过相应的端口，上交给最后的终点——应用进程（图 5.3）。若接收方 UDP 发现收到的报文中的<strong>目的端口号不正确</strong>（不存在对应于端口号的应用进程），则<strong>丢弃该报文，并由 ICMP 发送"端口不可达"错误报文给发送方</strong>。</p>
+
+<h2 class="sec" id="sec-5-2-2">5.2.2 UDP 检验 <span class="badge kao">考点</span></h2>
+<p>在计算检验和时，要在 UDP 数据报之前增加 <strong>12B 的伪首部</strong>。伪首部并不是 UDP 的真正首部，只是在计算检验和时临时添加在 UDP 数据报的前面，得到一个临时的 UDP 数据报，检验和就是按照这个临时的 UDP 数据报来计算的。<strong>伪首部既不向下传输给网络层，也不向上递交给应用层，而只是为了计算检验和</strong>。图 5.4 给出了 UDP 数据报的首部和伪首部（UDP 检验的原理为 2025 统考考点）。</p>
+<figure class="fig"><img src="../assets/ch5/fig-5-4.png" alt="图5.4 UDP 数据报的首部和伪首部" loading="lazy"><figcaption>图 5.4 UDP 数据报的首部和伪首部（王道教材 P230）</figcaption></figure>
+<p>伪首部共 12B：源 IP 地址（4B）+ 目的 IP 地址（4B）+ 全 0（1B）+ 协议字段值 17（1B）+ UDP 长度（2B）。</p>
+<p>UDP 检验和的计算方法与 IP 首部检验和基本类似。不同之处在于：<strong>IP 检验和只检验 IP 数据报的首部，而 UDP 检验和把首部和数据部分一起检验</strong>。</p>
+<div class="box concept"><div class="box-title">📌 UDP 计算检验和的过程</div>
+<p><strong>发送方</strong>：首先将检验和字段置为全 0，然后将伪首部与 UDP 数据报视为一连串 16 位字。若 UDP 数据部分的长度为奇数个字节，则在计算时末尾补一个全 0B（该填充字节仅在计算检验和时临时添加，不影响实际发送的数据内容）。随后，按<strong>二进制反码</strong>规则对所有 16 位字求和，并将结果的<strong>反码填入检验和字段</strong>后发送。</p>
+<p><strong>接收方</strong>：将收到的 UDP 数据报与伪首部重新组合（同样在必要时补全字节），再按二进制反码求和。若无差错，则结果应为<strong>全 1（16 位全为 1）</strong>；否则说明有差错，接收方应<strong>丢弃</strong>该 UDP 数据报。</p>
+</div>
+<div class="box exam"><div class="box-title">🎯 考法：二进制反码求和的逐步计算（2024 统考）</div>
+<p>运算规则：① 从低位到高位逐列进行计算，0+0=0，0+1=1，1+1=0 并产生进位 1；② 若最高位相加后产生进位，则需将该进位加到结果的最低位，该过程称为<strong>回卷</strong>。</p>
+<p>假设有以下 3 个 16 位字：</p>
+<div class="formula">01100110 01100000<br>01010101 01010101<br>10001111 00001100</div>
+<p><strong>第一步</strong>：先将前两个字相加，得 <code>10111011 10110101</code>。</p>
+<p><strong>第二步</strong>：将结果与第三个字相加，最高位产生进位，需将进位加至最低位（回卷）：</p>
+<div class="formula">10111011 10110101<br>+ 10001111 00001100<br>= 01001010 11000001（最高位进位 1）<br>+ 1（进位加至最低位）<br>= 01001010 11000010</div>
+<p><strong>第三步</strong>：对上述相加结果取反码，就得到检验和：<code>10110101 00111101</code>。</p>
+<p><strong>接收方校验</strong>：将包括检验和在内的 4 个 16 位字相加，若结果为 <code>11111111 11111111</code>（全 1），则判定无差错；若结果中的某些位是 0，则说明有差错。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 注意：UDP 检验的两个易错点</div>
+<ol>
+  <li>若 UDP 检验和检验出数据报错误，通常应<strong>丢弃</strong>该报文；尽管 RFC 允许将其交付上层并附带错误指示，但实际实现中极少采用。</li>
+  <li>通过伪首部，UDP <strong>不仅能校验源端口号、目的端口号和数据内容，还能检测 IP 首部中的源地址和目的地址</strong>是否在传输过程中因错误而改变。注意：伪首部<strong>不会</strong>被发送给目的主机。</li>
+</ol>
+</div>
+<p>这种差错检验机制虽然检错能力有限，但其优势在于<strong>计算简单、处理速度快</strong>。</p>
+
+<div class="pager">
+      <a class="prev" href="5.1.html"><span class="label">上一篇</span>5.1 传输层提供的服务</a>
+      <a class="next" href="5.3.html"><span class="label">下一篇</span>5.3 TCP</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

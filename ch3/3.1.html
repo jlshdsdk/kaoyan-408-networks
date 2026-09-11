@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3.1 数据链路层的功能 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第3章 数据链路层</a> › <span>3.1 数据链路层的功能</span></div>
+<h1 class="page-title">3.1 数据链路层的功能</h1>
+<p class="subtitle">对应王道教材 3.1 节（教材 P50–P54）· 本节属于 408 考纲范围</p>
+
+<p><strong>数据链路层的主要任务是让帧在一段链路或一个网络中传输</strong>。尽管数据链路层协议种类繁多，但它们都需解决三个基本问题：<strong>封装成帧、透明传输和差错检测</strong>。</p>
+<p>数据链路层使用的信道主要有两种：</p>
+<ul>
+  <li><strong>点对点信道</strong>：一对一通信，通常通过一条专用物理链路连接两个节点。</li>
+  <li><strong>广播信道</strong>：一对多通信，单个节点发送的数据可被连接在同信道上的所有节点接收。</li>
+</ul>
+
+<h2 class="sec" id="sec-3-1-1">3.1.1 数据链路层所处的地位</h2>
+<p>以两台主机通过互联网通信为例（见图 3.1）：局域网 1 中的主机 H1 经路由器 R1、广域网及路由器 R2，连接到局域网 2 中的主机 H2。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-1.png" alt="图3.1 主机H1向H2发送数据" loading="lazy"><figcaption>图 3.1 主机 H1 向 H2 发送数据（王道教材 P51）</figcaption></figure>
+<p>主机 H1 和 H2 均具备完整的五层协议栈；路由器在转发分组时仅使用协议栈的下三层。当 H1 向 H2 发送数据时，数据在各节点的协议栈中<strong>多次上下流动</strong>（见图 3.2）：进入路由器后，先从物理层上至网络层，在转发表中确定下一跳地址，再下至物理层转发出去。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-2.png" alt="图3.2 从协议的层次上看数据的流动" loading="lazy"><figcaption>图 3.2 从协议的层次上看数据的流动（王道教材 P51）</figcaption></figure>
+<p>然而，在学习数据链路层时，我们通常聚焦于<strong>水平方向</strong>的数据链路层交互。此时可将通信过程简化为：H1 的链路层 → R1 的链路层 → R2 的链路层 → H2 的链路层（见图 3.3）。这三段链路可能采用不同的数据链路层协议，但每一段都独立完成帧的传输任务。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-3.png" alt="图3.3 只考虑数据在数据链路层的流动" loading="lazy"><figcaption>图 3.3 只考虑数据在数据链路层的流动（王道教材 P51）</figcaption></figure>
+<div class="box concept"><div class="box-title">📌 核心概念：链路、数据链路与帧</div>
+<p>介绍点对点信道的基本概念，其中部分也适用于广播信道：</p>
+<ul>
+  <li><strong>链路（Link）</strong>：指从一个节点到相邻节点的一段物理线路，是通信路径的组成部分。</li>
+  <li><strong>数据链路（Data Link）</strong>：在物理链路上添加实现通信协议的软硬件后所形成的<strong>逻辑通信通道</strong>。</li>
+  <li><strong>帧（Frame）</strong>：数据链路层对等实体间通信的<strong>协议数据单元</strong>。发送方将网络层交下的数据封装为帧发送；接收方从帧中提取数据并上交网络层。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="sec-3-1-2">3.1.2 链路管理</h2>
+<p>链路管理是指数据链路层连接的<strong>建立、维持和释放</strong>过程，主要用于<strong>面向连接</strong>的服务。</p>
+<p>通信双方必须首先确认对方处于就绪状态，并交换必要信息（如初始化帧序号），才能建立连接；传输过程中需维持连接状态；通信结束后则释放连接。</p>
+
+<h2 class="sec" id="sec-3-1-3">3.1.3 封装成帧与透明传输 <span class="badge kao">考点</span></h2>
+<p><strong>封装成帧</strong>是指在数据前后分别添加首部和尾部，构成一个完整的帧。帧长等于帧的数据部分长度加上首部和尾部的长度。首部和尾部包含控制信息，其核心作用是<strong>帧定界</strong>——帮助接收方从比特流中准确识别帧的起始与结束。例如，在 HDLC 协议中，使用标识字段 F（01111110）标识帧的开始和结束：接收方将第一个 F 视为帧的开始，下一个 F 标志该帧的结束，如图 3.4 所示。为提高传输效率，应使数据部分尽可能长，但帧过长会增加差错概率和重传开销。因此，各类链路层协议均规定了<strong>最大传送单元（MTU）</strong>，即帧数据部分的长度上限。</p>
+<figure class="fig"><img src="../assets/ch3/fig-3-4.png" alt="图3.4 HDLC帧格式" loading="lazy"><figcaption>图 3.4 HDLC 帧格式（王道教材 P52）</figcaption></figure>
+<p><strong>透明</strong>是计算机领域的一个重要概念，意指某事物虽存在，但对上层不可见。</p>
+<p><strong>透明传输</strong>是数据链路层的重要特性。"透明"在此意为：<strong>即使数据中恰好出现与帧定界符相同的比特组合，也不会被误判为帧边界</strong>。若不处理此问题，接收方可能提前结束帧解析，导致后续数据丢失。实现透明传输后，接收方能将帧完整恢复为原始 SDU（服务数据单元），使网络层"感知不到"底层的帧封装过程——即数据链路层对上层是透明的。</p>
+<div class="box tip"><div class="box-title">📌 记忆：帧定界的两种思路</div>
+<p>定界信息既可以放在帧本身（首尾加标志/计数字段，如 HDLC 的 F 标志、字符计数法的计数字段），也可以依靠物理层编码的冗余特性（违规编码法，见 3.2 节）。组帧四法的具体实现全部围绕"如何定界 + 如何避免数据被误判"展开。</p>
+</div>
+
+<h2 class="sec" id="sec-3-1-4">3.1.4 流量控制</h2>
+<p>由于链路两端节点的处理速率或缓存能力存在差异，若发送方速率过高，接收方可能因来不及处理而导致帧丢失。因此，<strong>流量控制旨在限制发送方的发送速率，使其不超过接收方的接收能力</strong>。该过程通常依赖<strong>反馈机制</strong>：发送方根据接收方的确认或窗口信息，决定是否继续发送。</p>
+<div class="box warn"><div class="box-title">⚠️ 辨析：流量控制在各层都有</div>
+<p>在 OSI 模型中，流量控制由数据链路层实现，用于调节<strong>相邻节点间</strong>的流量；而在 TCP/IP 模型中，该功能主要由<strong>传输层（如 TCP）</strong>承担，负责<strong>端到端</strong>的流量控制。流量控制功能并不是数据链路层独有的，其他层上也有相应的控制策略，只是各层的流量控制对象是在相应层的实体之间进行的。</p>
+</div>
+
+<h2 class="sec" id="sec-3-1-5">3.1.5 差错检测与可靠传输</h2>
+<p>由于信道噪声等因素，帧在传输过程中可能出现两类错误：</p>
+<ol>
+  <li><strong>位错</strong>：帧中某些比特发生翻转，通常通过<strong>循环冗余检验</strong>检测。</li>
+  <li><strong>帧错</strong>：包括帧丢失、重复或失序等，属于更高层的传输差错。</li>
+</ol>
+<p>早期 OSI 模型认为，数据链路层必须向上提供可靠传输服务。因此，在 CRC 检错基础上，引入了<strong>帧编号、确认与重传机制</strong>：接收方收到正确帧后需发送确认；发送方若在规定时间内未收到确认，则判定为出错并重传，直至收到确认为止。</p>
+<p>如今，是否采用可靠传输机制取决于<strong>信道质量</strong>：在通信质量较差的<strong>无线链路</strong>中，数据链路层仍使用确认与重传机制，以提供可靠服务；而在<strong>高质量的有线链路</strong>中，数据链路层仅进行 CRC 检错，将出错帧直接丢弃，不再负责重传——此时，重传任务由高层协议（如传输层 TCP）完成。</p>
+<div class="box concept"><div class="box-title">📌 核心原则</div>
+<p>数据链路层确保<strong>上交的帧无差错</strong>，但<strong>不保证所有帧都被成功交付</strong>（丢弃的帧不负责找回）。</p>
+</div>
+
+<div class="pager">
+      <a class="prev" href="index.html"><span class="label">上一篇</span>第3章 导学</a>
+      <a class="next" href="3.2.html"><span class="label">下一篇</span>3.2 组帧</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

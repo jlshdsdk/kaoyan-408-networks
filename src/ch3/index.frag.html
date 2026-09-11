@@ -1,0 +1,70 @@
+<h1 class="page-title">第3章 数据链路层 · 导学</h1>
+<p class="subtitle">依据王道教材章首【考纲内容】【复习提示】整理（教材 P50）· 本章属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-kaogang">考纲要求</h2>
+<p>408 考试大纲对本章的要求分为八块：</p>
+<ol>
+  <li><strong>数据链路层的功能</strong></li>
+  <li><strong>组帧</strong></li>
+  <li><strong>差错控制</strong>：检错编码、纠错编码</li>
+  <li><strong>流量控制与可靠传输机制</strong>
+    <ul>
+      <li>流量控制、可靠传输与滑动窗口机制；停止-等待协议；</li>
+      <li>后退 N 帧协议（GBN）；选择重传协议（SR）。</li>
+    </ul>
+  </li>
+  <li><strong>介质访问控制</strong>
+    <ul>
+      <li>信道划分：频分复用、时分复用、波分复用、码分复用；</li>
+      <li>随机访问：ALOHA 协议；CSMA 协议；CSMA/CD 协议；CSMA/CA 协议；</li>
+      <li>轮询访问：令牌传递协议。</li>
+    </ul>
+  </li>
+  <li><strong>局域网</strong>：局域网的基本概念与体系结构；以太网与 IEEE 802.3；IEEE 802.11 无线局域网；VLAN 的基本概念与基本原理</li>
+  <li><strong>广域网</strong>：广域网的基本概念；点对点协议（PPP）</li>
+  <li><strong>数据链路层设备</strong>：以太网交换机及其工作原理</li>
+</ol>
+
+<h2 class="sec" id="sec-tips">复习提示</h2>
+<p>本章是<strong>历年考试中考查的重点</strong>。要求在了解数据链路层基本概念和功能的基础上，重点掌握：</p>
+<ul>
+  <li><strong>滑动窗口机制</strong>与三种可靠传输协议（停止-等待、GBN、SR）；</li>
+  <li>各种 <strong>MAC 协议</strong>，特别是 CSMA/CD 协议、CSMA/CA 协议和以太网帧格式；</li>
+  <li>局域网的<strong>争用期</strong>和<strong>最小帧长</strong>的概念、<strong>二进制指数退避算法</strong>。</li>
+  <li>此外，中继器、网卡、集线器、网桥和局域网交换机的原理及区别也要重点掌握。</li>
+</ul>
+
+<h2 class="sec" id="sec-analysis">考点分布与备考建议</h2>
+<div class="box tip"><div class="box-title">📌 备考建议</div>
+<ul>
+  <li>本章是计算机网络四个大章中<strong>分值权重最高</strong>的章之一，选择题与综合题都常考，且计算密集。</li>
+  <li><strong>组帧四法</strong>（字符计数、字节填充、零比特填充、违规编码）与<strong>差错控制三码</strong>（奇偶校验、CRC、海明码）是 3.1~3.3 节的考点密集区：CRC 的模 2 除法、海明码的检验位确定与取值都要求<strong>每一步可复算</strong>，务必动手演算。</li>
+  <li>滑动窗口类计算题（发送窗口、信道利用率、序号位数）几乎每隔几年就出一道，要与第 3.4 节结合复习。</li>
+  <li>CSMA/CD 的争用期、最小帧长、二进制指数退避是经典计算考点；以太网帧格式要与组帧知识对照记忆。</li>
+  <li>设备辨析题（中继器/集线器/网桥/交换机的工作层次与冲突域隔离能力）属于送分题，用表格归纳记忆。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="sec-map">章节地图</h2>
+<div class="map-flow">
+  <a class="map-node" href="3.1.html">3.1 数据链路层的功能</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.2.html">3.2 组帧</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.3.html">3.3 差错控制</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.4.html">3.4 流量控制与可靠传输机制</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.5.html">3.5 介质访问控制</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.6.html">3.6 局域网</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.7.html">3.7 广域网</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.8.html">3.8 数据链路层设备</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.9.html">3.9 本章小结及疑难点</a>
+</div>
+
+<h2 class="sec" id="sec-toc">本章目录</h2>
+<div class="toc-line"><a href="3.1.html">3.1 数据链路层的功能</a>（<a href="3.1.html#sec-3-1-1">3.1.1 数据链路层所处的地位</a> · <a href="3.1.html#sec-3-1-2">3.1.2 链路管理</a> · <a href="3.1.html#sec-3-1-3">3.1.3 封装成帧与透明传输</a> · <a href="3.1.html#sec-3-1-4">3.1.4 流量控制</a> · <a href="3.1.html#sec-3-1-5">3.1.5 差错检测与可靠传输</a>）</div>
+<div class="toc-line"><a href="3.2.html">3.2 组帧</a>（<a href="3.2.html#sec-3-2-1">3.2.1 字符计数法</a> · <a href="3.2.html#sec-3-2-2">3.2.2 字节填充法</a> · <a href="3.2.html#sec-3-2-3">3.2.3 零比特填充法</a> · <a href="3.2.html#sec-3-2-4">3.2.4 违规编码法</a>）</div>
+<div class="toc-line"><a href="3.3.html">3.3 差错控制</a>（<a href="3.3.html#sec-3-3-1">3.3.1 检错编码</a> · <a href="3.3.html#sec-3-3-2">3.3.2 纠错编码</a>）</div>
+<div class="toc-line"><a href="3.4.html">3.4 流量控制与可靠传输机制</a></div>
+<div class="toc-line"><a href="3.5.html">3.5 介质访问控制</a></div>
+<div class="toc-line"><a href="3.6.html">3.6 局域网</a></div>
+<div class="toc-line"><a href="3.7.html">3.7 广域网</a></div>
+<div class="toc-line"><a href="3.8.html">3.8 数据链路层设备</a></div>
+<div class="toc-line"><a href="3.9.html">3.9 本章小结及疑难点</a></div>

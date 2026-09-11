@@ -1,0 +1,833 @@
+<h1 class="page-title">第3章 习题</h1>
+<p class="subtitle">题目取自王道《选择题做题本》《综合题做题本》· 选择题答案经答案速查逐题核对</p>
+<div class="box tip"><div class="box-title">✍️ 做题建议</div><p>先自己做完再展开答案；错题重点看解析中的排除思路。3.4 节滑动窗口与信道利用率计算题多，务必动手算完每一步再看解答；记住三个结论：GBN 发送窗口 \(W_T \leq 2^n-1\)、SR 接收窗口 \(W_R \leq 2^{n-1}\)、停止-等待利用率 \(U = \frac{L/C}{L/C + \mathrm{RTT} + T_{ack}}\)。</p></div>
+<h2 class="sec" id="q-3-1">一、选择题 · 3.1 数据链路层的功能（第 1～6 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 1 题</span><span class="q-src">单选</span></p>
+  <p>下列选项中，不属于数据链路层功能的是（　）</p>
+  <ul class="choices">
+    <li>A. 帧定界</li>
+    <li>B. 电路管理</li>
+    <li>C. 差错控制</li>
+    <li>D. 流量控制</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>数据链路层的主要功能包括：如何将二进制比特流组织成数据链路层的帧；如何控制帧在物理信道上的传输，包括如何处理传输差错；在两个网络实体之间提供数据链路的建立、维护和释放；控制链路上帧的传输速率，以使接收方有足够的缓存来接收每个帧。这些功能对应为帧定界、差错检测、链路管理和流量控制。<strong>电路管理功能由物理层提供</strong>，不属于数据链路层。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 2 题</span><span class="q-src">单选</span></p>
+  <p>下列选项中，不属于数据链路层功能的是（　）</p>
+  <ul class="choices">
+    <li>A. 透明传输</li>
+    <li>B. 差错检测</li>
+    <li>C. 可靠传输</li>
+    <li>D. 拥塞控制</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>拥塞控制是网络层或传输层的功能，用于防止过多的分组注入网络而导致网络性能下降，数据链路层只负责相邻节点间的传输，不关注网络整体的拥塞状况。透明传输、差错检测、可靠传输均是数据链路层的功能。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 3 题</span><span class="q-src">单选</span></p>
+  <p>下列选项中，不属于数据链路层协议功能的是（　）</p>
+  <ul class="choices">
+    <li>A. 定义数据格式</li>
+    <li>B. 提供节点之间的可靠传输</li>
+    <li>C. 控制对物理传输介质的访问</li>
+    <li>D. 为终端节点隐藏物理传输的细节</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>数据链路层的主要功能包括组帧，组帧即定义数据格式，选项 A 正确。数据链路层在物理层提供的不可靠的物理连接上实现节点到节点的可靠性传输，选项 B 正确。控制对物理传输介质的访问由数据链路层的介质访问控制（MAC）子层完成，选项 C 正确。<strong>为终端节点隐藏物理传输的细节是物理层的功能</strong>，数据链路层不必考虑如何实现无差别的比特传输，选项 D 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 4 题</span><span class="q-src">单选</span></p>
+  <p>为了避免传输过程中帧的丢失，数据链路层采用的方法是（　）</p>
+  <ul class="choices">
+    <li>A. 帧编号机制</li>
+    <li>B. 循环冗余检验码</li>
+    <li>C. 海明码</li>
+    <li>D. 计时器超时重发</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>为防止在传输过程中丢失帧，在可靠的数据链路层协议中，发送方为发送的每个数据帧设计一个计时器，当计时器到期而该帧的确认帧仍未到达时，发送方将重发该帧，即计时器超时重发。为保证接收方不会接收到重复帧，还需要对每个发送的帧进行编号；海明码和循环冗余检验码都只用于差错控制，解决不了"帧丢失"问题。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 5 题</span><span class="q-src">单选</span></p>
+  <p>对于信道比较可靠且对实时性要求高的网络，数据链路层采用（　）比较合适。</p>
+  <ul class="choices">
+    <li>A. 无确认的无连接服务</li>
+    <li>B. 有确认的无连接服务</li>
+    <li>C. 无确认的面向连接服务</li>
+    <li>D. 有确认的面向连接服务</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>无确认的无连接服务是指源主机发送帧时不需要先建立逻辑连接，目的主机收到时也不需要发回确认。若线路上有噪声而造成某一帧丢失，则数据链路层并不检测这样的丢帧现象，也不回复。当<strong>错误率很低</strong>时，这类服务非常合适，此时恢复任务可由上面的高层负责；这类服务对<strong>实时通信</strong>也非常合适，因为实时通信中数据迟到比数据损坏更不好。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 6 题</span><span class="q-src">单选</span></p>
+  <p>流量控制实际上是对（　）的控制。</p>
+  <ul class="choices">
+    <li>A. 发送方的数据流量</li>
+    <li>B. 接收方的数据流量</li>
+    <li>C. 发送、接收方的数据流量</li>
+    <li>D. 链路上任意两结点间的数据流量</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>流量控制是通过<strong>限制发送方的数据流量</strong>而使发送方的发送速率不超过接收方接收速率的一种技术，即控制的对象是发送方。接收方是流量控制的受益方，其速率不需要被控制。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-3-2">选择题 · 3.2 组帧（第 7 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 7 题</span><span class="q-src">单选 · 2013 统考真题</span></p>
+  <p>HDLC 协议对 01111100 01111110 组帧后，对应的比特串为（　）（注：HDLC 协议已从最新大纲中删除）</p>
+  <ul class="choices">
+    <li>A. 01111100 00111110 10</li>
+    <li>B. 01111100 01111101 01111110</li>
+    <li>C. 01111100 01111101 0</li>
+    <li>D. 01111100 01111110 01111101</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>HDLC 协议对比特串组帧时，HDLC 数据帧以比特模式 <code>01111110</code>（0111 1110）标识每个帧的起始和结束，因此在帧数据中只要出现 5 个连续的位"1"，就在输出的位流中填充一个"0"（零比特填充法）。原数据 01111100 011111<u>10</u> 中，第二段出现 5 个连续的"1"（01111 1…），填充后变为 01111100 00<u>1</u>1111<u>0</u> 10，即在 5 个连续"1"后插入一个 0。因此组帧后的比特串为 0111110<u>0</u> 0011111<u>0</u> 10（下划线部分为新填充的 0），选项 A 正确。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-3-3">选择题 · 3.3 差错控制（第 8～16 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 8 题</span><span class="q-src">单选</span></p>
+  <p>下列有关数据链路层差错控制的叙述中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 数据链路层只能提供差错检测，而不提供对差错的纠正</li>
+    <li>B. 奇偶检验码只能检测出错误而无法对其进行修正，也无法检测出双位错误</li>
+    <li>C. CRC 检验码可以检测出所有的单比特错误</li>
+    <li>D. 海明码可以纠正一位差错</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>链路层的差错控制有两种基本策略：检错编码和纠错编码。常见的纠错编码有海明码，它可以纠正一位差错，因此说数据链路层"只能检测、不能纠正"是错误的，A 当选。奇偶检验码只能检出奇数个比特错、无法定位修正，也无法检出双位（偶数个）错误，B 正确；CRC 检验编码可以检测出所有的单比特错误（记住该结论即可），C 正确；海明码可纠正一位差错，D 正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 9 题</span><span class="q-src">单选</span></p>
+  <p>下列关于奇偶检验码特征的描述中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 只能检查出奇数个比特错误</li>
+    <li>B. 能检查出任意个比特的错误</li>
+    <li>C. 比 CRC 检验更可靠</li>
+    <li>D. 只能检查出偶数个比特的错误</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>奇偶检验的原理是通过增加冗余位来使得码字中"1"的个数保持为奇数或偶数的编码方法，它只能检查出<strong>奇数个</strong>比特的错误——因为偶数个比特同时出错时"1"的奇偶性不变，检验失效。CRC 的检错能力远强于奇偶检验，C 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 10 题</span><span class="q-src">单选</span></p>
+  <p>字符 S 的 ASCII 编码从低到高依次为 1100101，采用奇检验，在下述收到的传输后字符中，错误（　）不能检测。</p>
+  <ul class="choices">
+    <li>A. 11000011</li>
+    <li>B. 11001010</li>
+    <li>C. 11001100</li>
+    <li>D. 11010011</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>字符 S 的编码 1100101 中"1"的个数为 4（偶数），采用奇检验时检验位补 1，使整个码字（含检验位共 8 位）中"1"的个数为奇数。接收方校验时统计每个选项 8 位中"1"的个数：<br>
+    A. 11000011 有 4 个 1（偶）→ 可检出；B. 11001010 有 4 个 1（偶）→ 可检出；C. 11001100 有 4 个 1（偶）→ 可检出；D. 11010011 有 5 个 1（奇）→ 检验通过，<strong>错误不能被检测</strong>。<br>
+    既然采用奇检验，那么传输的数据中 1 的个数若是偶数则可检测出错误，若 1 的个数是奇数则检测不出错误，故选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 11 题</span><span class="q-src">单选</span></p>
+  <p>为纠正 2 比特错误，编码的码距至少应为（　）</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 3</li>
+    <li>C. 4</li>
+    <li>D. 5</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>要纠正 \(d\) 位错误，编码的码距 \(l\) 需满足 \(l \geq 2d + 1\)。当 \(d = 2\) 时，所需码距为 \(2 \times 2 + 1 = 5\)。也可由码距关系式 \(l = d_{检} + c_{纠} + 1\)（且检错位数 \(d_{检} \geq\) 纠错位数 \(c_{纠}\)）理解：只纠错不检错时 \(l = 2c + 1 = 5\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 12 题</span><span class="q-src">单选</span></p>
+  <p>对于 10 位要传输的数据，若采用海明校验，则需要增加的冗余信息位数是（　）</p>
+  <ul class="choices">
+    <li>A. 3</li>
+    <li>B. 4</li>
+    <li>C. 5</li>
+    <li>D. 6</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在 \(k\) 比特信息位上附加 \(r\) 比特冗余信息，构成 \(k+r\) 比特的码字，必须满足 \(2^r \geq k + r + 1\)。这里 \(k = 10\)：\(r = 3\) 时 \(8 < 14\) 不满足；\(r = 4\) 时 \(16 \geq 10 + 4 + 1 = 15\) 满足。一般地，若 \(k\) 的取值小于等于 11 且大于 4，则 \(r = 4\)，故选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 13 题</span><span class="q-src">单选</span></p>
+  <p>下列关于循环冗余检验的说法中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 带 \(r\) 个检验位的多项式编码可以检测到所有长度小于或等于 \(r\) 的突发性错误</li>
+    <li>B. 通信双方可以无须商定就直接使用多项式编码</li>
+    <li>C. CRC 检验可以使用硬件来完成</li>
+    <li>D. 有一些特殊的多项式，因为其有很好的特性，而成了国际标准</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在使用多项式编码时，<strong>发送方和接收方必须预先商定一个生成多项式</strong>——发送方按照模 2 除法，得到检验码，在发送数据时将该检验码加到数据后面；接收方收到数据后，也需要根据该生成多项式来验证数据的正确性，双方不可能无须商定就直接使用，B 错误当选。选项 A 是正确结论（了解即可，无须掌握证明过程）；CRC 既可软件实现也可用硬件完成，C 正确；确实有一些特性优良的特殊多项式成了国际标准（如 CRC-CCITT），D 正确。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 14 题</span><span class="q-src">单选</span></p>
+  <p>要发送的数据是 1101 0110 11，采用 CRC 检验，生成多项式是 10011，那么最终发送的数据应是（　）</p>
+  <ul class="choices">
+    <li>A. 1101 0110 1110 10</li>
+    <li>B. 1101 0110 1101 10</li>
+    <li>C. 1101 0110 1111 10</li>
+    <li>D. 1111 0011 0111 00</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>假设一个帧有 \(m\) 位，其对应的多项式为 \(G(x)\)，则计算冗余码的步骤如下：<br>
+    ① <strong>加 0</strong>。假设 \(G(x)\) 的阶为 \(r\)，在帧的低 位端加上 \(r\) 个 0。生成多项式 10011 共 5 位，阶 \(r = 4\)，故在被除数 1101011011 后添 4 个 0，得 1101011011<strong>0000</strong>。<br>
+    ② <strong>模 2 除</strong>。利用模 2 除法，用 \(G(x)\) 对应的数据串除①中计算出的数据串，得到的余数即为冗余码（共 \(r\) 位，前面的 0 不可省略）。对 11010110110000 模 2 除 10011，得余数 <strong>1110</strong>。<br>
+    多项式以 2 为模运算：按模 2 运算规则，加法不进位，减法不借位，它刚好是异或操作。<br>
+    最终发送的数据 = 原数据 + 冗余码 = 1101 0110 11 <strong>1110</strong>，即 1101 0110 1111 10，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 15 题</span><span class="q-src">单选 · 2023 统考真题</span></p>
+  <p>若甲向乙发送数据时采用 CRC 检验，生成多项式为 \(G(X) = X^4 + X + 1\)（\(G = 10011\)），则乙方接收到比特串（　）时，可以断定其在传输过程中未发生错误。</p>
+  <ul class="choices">
+    <li>A. 10111 0000</li>
+    <li>B. 10111 0100</li>
+    <li>C. 10111 1000</li>
+    <li>D. 10111 1100</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>观察选项：除后 4 位外，前 5 位都为 10111，可知发送方发送的数据部分为 10111，检验序列共 4 位（\(G(X) = X^4 + X + 1\) 的阶为 4）。在数据 10111 后面加 4 个 0，得 101110000，用生成多项式 10011 对其做模 2 除法：商为 10100，<strong>余数为 1100</strong>，因此发送方发送的帧串为 10111 <strong>1100</strong>。乙方收到 10111 1100 后用 10011 做模 2 除法余数为 0，可断定传输过程中未发生错误，选 D。（其余三个选项的后 4 位与 1100 不符，除之余数非 0，必出错。）</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 16 题</span><span class="q-src">单选 · 2025 统考真题</span></p>
+  <p>某差错编码的编码集为 {1001 1010, 0101 1100, 1111 0000, 0000 1111}，该差错编码的检错和纠错能力是（　）</p>
+  <ul class="choices">
+    <li>A. 不超过 2 位错的 100% 检错、不超过 1 位错的纠错</li>
+    <li>B. 不超过 2 位错的 100% 检错、不超过 2 位错的纠错</li>
+    <li>C. 不超过 3 位错的 100% 检错、不超过 1 位错的纠错</li>
+    <li>D. 不超过 3 位错的 100% 检错、不超过 2 位错的纠错</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>首先计算该编码集的码距：码距指两个码字在对应位上取值不同的比特数量，计算方法是对两个位串进行异或（xor）运算，结果中 1 的个数即为码距；编码集的码距取<strong>任意两个有效码字之间码距的最小值</strong>。对四个码字两两比较，任意两个码字的码距至少为 4，故该编码集的码距 \(d_{\min} = 4\)。根据差错控制理论，若编码集的码距为 \(d\)，则可检测不超过 \(d - 1\) 位错误，能纠正不超过 \(\lfloor (d-1)/2 \rfloor\) 位错误。因此该编码集最多能检测 3 位错误、纠正 1 位错误，选 C。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-3-4">选择题 · 3.4 流量控制与可靠传输机制（第 17～47 题）</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 17 题</span><span class="q-src">单选</span></p>
+  <p>下列关于停止-等待协议的叙述中，正确的是（　）</p>
+  <ul class="choices">
+    <li>A. 发送窗口和接收窗口的尺寸都为 1</li>
+    <li>B. 最大的信道利用率有可能达到 100%</li>
+    <li>C. 适合于往返时间比较长的信道</li>
+    <li>D. 接收方可以不按序接收</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>停止-等待协议采用 1 比特给数据帧编号，发送窗口和接收窗口的尺寸都为 1，选项 A 正确。仅在收到当前窗口内的数据帧后，接收窗口才能向前移动，因此一定是按序接收的，D 错误。停止-等待协议的信道利用率 = 一个数据帧的发送时延 ÷（一个数据帧的发送时延 + RTT + 一个确认帧的发送时延），其中分子一定是小于分母的，所以信道利用率<strong>不可能达到 100%</strong>，B 错误；当 RTT 较大时，会降低信道利用率，因此停止-等待协议适合 RTT 较小（往返时间短）的信道，C 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 18 题</span><span class="q-src">单选</span></p>
+  <p>下列情况中，会使停止-等待协议的效率变得很低的是（　）</p>
+  <ul class="choices">
+    <li>A. 当源主机和目的主机之间的距离很近而且数据传输速率很高时</li>
+    <li>B. 当源主机和目的主机之间的距离很远而且数据传输速率很高时</li>
+    <li>C. 当源主机和目的主机之间的距离很近而且数据传输速率很低时</li>
+    <li>D. 当源主机和目的主机之间的距离很远而且数据传输速率很低时</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>根据信道利用率的计算公式 \(U = \frac{L/C}{L/C + \mathrm{RTT} + T_{ack}}\)，当数据传输速率很高时，数据帧的发送时间 \(L/C\) 很短（分子变小）；当源主机和目的主机的距离很远时，往返时延 RTT 很大（分母变大），此时的信道利用率很低。两者同时出现时效率最低，故选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 19 题</span><span class="q-src">单选</span></p>
+  <p>在简单的停止-等待协议中，当帧出现丢失时，发送方会永远等待下去，解决这种死锁现象的办法是（　）</p>
+  <ul class="choices">
+    <li>A. 差错检验</li>
+    <li>B. 帧序号</li>
+    <li>C. NAK 机制</li>
+    <li>D. 超时机制</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>在停止-等待协议中，发送方设置了计时器，在发送一个帧后，发送方等待确认，若在计时器计满时仍未收到确认，则再次发送相同的帧，以免陷入永久的等待——即超时重传机制解决了帧丢失导致的死锁。帧序号用于解决重复帧问题，差错检验用于检出比特错误，均不解决"永远等待"问题。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 20 题</span><span class="q-src">单选</span></p>
+  <p>在停止-等待协议中，为了让接收方能判断所收到的数据帧是否重复，采用（　）的方法。</p>
+  <ul class="choices">
+    <li>A. 帧编号</li>
+    <li>B. 检错码</li>
+    <li>C. 重传计时器</li>
+    <li>D. NAK 帧</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>在停止-等待协议中，使用 1 位来编号即可。若连续出现相同序号的数据帧，则表明发送方进行了超时重传；若连续出现相同序号的确认帧，则表明接收方收到了重复帧。检错码只能发现比特错误，计时器只负责触发重传，都不能识别重复帧。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 21 题</span><span class="q-src">单选</span></p>
+  <p>一个信道的数据传输速率为 4kb/s，单向传播时延为 30ms，若使停止-等待协议的信道最大利用率达到 80%，那么要求的数据帧长至少为（　）</p>
+  <ul class="choices">
+    <li>A. 160 比特</li>
+    <li>B. 320 比特</li>
+    <li>C. 560 比特</li>
+    <li>D. 960 比特</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>设 \(C\) 为数据传输速率，\(L\) 为帧长，\(R\) 为单程传播时延。停止-等待协议的信道最大利用率为</p>
+    <p>\(U = \dfrac{L/C}{L/C + 2R} = \dfrac{L}{L + 2RC} = \dfrac{L}{L + 2 \times 30\text{ms} \times 4\text{kb/s}} = 80\%\)</p>
+    <p>即 \(L = 0.8(L + 240) \Rightarrow 0.2L = 192 \Rightarrow L = 960\text{bit}\)，故数据帧长至少为 960 比特。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 22 题</span><span class="q-src">单选</span></p>
+  <p>主机甲采用停止-等待协议向主机乙发送数据，数据传输速率是 6kb/s，单向传播时延是 100ms，忽略确认帧的发送时延。若信道的利用率为 40%，则数据帧的长度为（　）</p>
+  <ul class="choices">
+    <li>A. 240 比特</li>
+    <li>B. 320 比特</li>
+    <li>C. 600 比特</li>
+    <li>D. 800 比特</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>本题忽略确认帧的发送时延，所以信道利用率 = 数据帧的发送时延 /（数据帧的发送时延 + 往返时延）= 0.4。设发送时延为 \(T_d\)，则 \(T_d/(T_d + 200\text{ms}) = 0.4\)，解得数据帧的发送时延 \(T_d = 4/30\text{s}\)。所以数据帧的长度为 \(6\text{kb/s} \times 4/30\text{s} = 800\text{bit}\)。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 23 题</span><span class="q-src">单选</span></p>
+  <p>在停止-等待协议中，若发送方发送的数据帧中途丢失，则可能发生的情况是（　）</p>
+  <ul class="choices">
+    <li>A. 接收方发送 NAK 帧，请求重发此帧</li>
+    <li>B. 发送方在经过超时时间后未收到 ACK 帧，自动重发此帧</li>
+    <li>C. 接收方在经过超时时间后，向发送方发送 ACK 帧，请求重发此帧</li>
+    <li>D. 发送方继续发送后续帧，直到经过超时时间后未收到 ACK 帧，重发此帧</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>停止-等待协议使用确认和重传机制，发送方每发送一个帧，就要停下来等待接收方发回的确认帧，收到确认帧后才能发送下一帧。帧在途中丢失时接收方根本收不到任何数据，因此不会发送 NAK 或 ACK；发送方经过超时时间后未收到 ACK 帧，则自动重传此帧，B 正确。停止-等待协议发送窗口为 1，发送方不可能"继续发送后续帧"，D 错误。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 24 题</span><span class="q-src">单选</span></p>
+  <p>下列关于连续 ARQ 的说法中，错误的是（　）</p>
+  <ul class="choices">
+    <li>A. 发送方可以连续发送若干数据帧，而不是发完一个数据帧就停下来等待确认帧</li>
+    <li>B. 发送方收到了接收方发来的确认帧，还可以接着发送数据帧</li>
+    <li>C. 相比停止-等待协议，连续 ARQ 因为减少了等待时间，所以提高了信道利用率</li>
+    <li>D. 接收方可以不按序接收数据帧</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>连续 ARQ 协议分为 GBN 协议和 SR 协议。SR 的接收窗口大于 1，接收方可以先收下失序但仍落在接收窗口内的那些数据帧；但 <strong>GBN 的接收窗口等于 1，接收方必须按序接收数据帧</strong>，因此"接收方可以不按序接收"的说法对连续 ARQ 不成立，D 错误当选。A、B、C 均为连续 ARQ 的正确特征：连续发送减少了等待时间，提高了信道利用率。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 25 题</span><span class="q-src">单选</span></p>
+  <p>数据链路层采用后退 N 帧协议进行流量控制，发送方已发送编号为 0～6 的帧，之后收到 5 号数据帧的确认，发送方的滑动窗口向后移动后，发送方可发送的数据帧数量为 6 个，假设整个过程未发生超时，则应采用（　）位给数据帧编号。</p>
+  <ul class="choices">
+    <li>A. 3</li>
+    <li>B. 4</li>
+    <li>C. 5</li>
+    <li>D. 6</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：A</p>
+    <p><strong>解析：</strong>发送方收到 5 号帧的确认后（GBN 采用累积确认），表示 5 号帧及之前的所有帧都被接收方正确接收，因此滑动窗口右移后，新窗口内的第一个帧就是 6 号帧；又因为此时可发送的数据帧数为 6，因此发送窗口的总大小为 7。在 GBN 协议中，若采用 \(n\) 位给帧编号，则发送窗口大小 \(W_T \leq 2^n - 1\)，由 \(2^n - 1 \geq 7\) 得 \(n = 3\)，故选 A。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 26 题</span><span class="q-src">单选</span></p>
+  <p>数据链路层采用后退 N 帧协议，发送方已经发送了编号从 0 到 6 的帧。当计时器超时的时候，只收到对 1、2、4 号帧的确认，发送方需要重传的帧的数量是（　）</p>
+  <ul class="choices">
+    <li>A. 1</li>
+    <li>B. 2</li>
+    <li>C. 5</li>
+    <li>D. 6</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>后退 N 帧协议采用<strong>累积确认</strong>，收到对 4 号帧的确认即表示 4 号帧及 4 号帧之前的数据帧都已被正确接收，所以只需重传 5 号帧和 6 号帧这两个数据帧，数量为 2，选 B。（"只收到 1、2、4 号帧的确认"中的个别确认帧丢失并不影响，因为累积确认，不代表 3 号帧未到达接收方。）</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 27 题</span><span class="q-src">单选</span></p>
+  <p>数据链路层采用了后退 N 帧协议 (GBN)，若发送窗口的大小是 32，则至少需要（　）位的序列号才能保证协议不出错。</p>
+  <ul class="choices">
+    <li>A. 4</li>
+    <li>B. 5</li>
+    <li>C. 6</li>
+    <li>D. 7</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>对于滑动窗口协议，序列号个数要大于或等于窗口数（发送窗口大小 + 接收窗口大小），所以在后退 N 帧的协议中，序列号个数不小于"发送窗口大小 + 1"。题中发送窗口大小是 32，那么序列号个数最少应该是 33 个，而 \(2^5 = 32 < 33 \leq 2^6 = 64\)，所以最少需要 6 位的序列号才能达到要求，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 28 题</span><span class="q-src">单选</span></p>
+  <p>若采用后退 N 帧的 ARQ 协议进行流量控制，帧编号字段为 7 位，则发送窗口的最大长度为（　）</p>
+  <ul class="choices">
+    <li>A. 7</li>
+    <li>B. 8</li>
+    <li>C. 127</li>
+    <li>D. 128</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>若发送窗口过大，接收窗口整体向前移动时，新窗口中的序列号和旧窗口的序列号产生重叠，致使接收方无法区别发送方发送的帧是重传帧还是新帧，因此在后退 N 帧的 ARQ 协议中，发送窗口 \(W_T \leq 2^n - 1\)。本题中 \(n = 7\)，因此发送窗口的最大长度是 \(2^7 - 1 = 127\)，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 29 题</span><span class="q-src">单选</span></p>
+  <p>一个使用选择重传协议的数据链路层，若采用了 5 位的帧序列号，则可以选用的最大接收窗口是（　）</p>
+  <ul class="choices">
+    <li>A. 15</li>
+    <li>B. 16</li>
+    <li>C. 31</li>
+    <li>D. 32</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在选择重传协议中，若用 \(n\) 比特对帧编号，则发送窗口和接收窗口的大小关系为 \(1 < W_R \leq W_T\)，还需满足 \(W_R + W_T \leq 2^n\)，所以接收窗口的最大尺寸不超过序号范围的一半，即 \(W_R \leq 2^{n-1} = 2^4 = 16\)，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 30 题</span><span class="q-src">单选</span></p>
+  <p>对于窗口总大小为 \(n\) 的滑动窗口，最多可以有（　）帧已发送但没有确认。</p>
+  <ul class="choices">
+    <li>A. 0</li>
+    <li>B. \(n-1\)</li>
+    <li>C. \(n\)</li>
+    <li>D. \(n/2\)</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在连续 ARQ 协议中，发送窗口大小 ≤ 窗口总数 − 1。例如，窗口总数为 8，编号为 0～7，假设这 8 个帧都已发出，下一轮又发出编号 0～7 的 8 个帧，接收方将无法判断第二轮发的 8 个帧到底是重传帧还是新帧，因为它们的序号完全相同。另一方面，对于后退 N 帧协议，发送窗口大小<strong>可以等于</strong>窗口总数 − 1，因为它的接收窗口大小为 1，所有的帧保证按序接收。因此对于窗口大小为 \(n\) 的滑动窗口，其发送窗口大小最大为 \(n - 1\)，即最多可以有 \(n-1\) 帧已发送但没有确认。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 31 题</span><span class="q-src">单选</span></p>
+  <p>数据链路层采用选择重传协议 (SR) 传输数据，若帧序号采用 4 比特编号，接收窗口大小为 7，则发送窗口最大是（　）</p>
+  <ul class="choices">
+    <li>A. 17</li>
+    <li>B. 8</li>
+    <li>C. 9</li>
+    <li>D. 10</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>在选择重传协议中，若用 \(n\) 比特对帧编号，则发送窗口和接收窗口的大小关系为 \(1 < W_R \leq W_T\)，此外还要满足 \(W_R + W_T \leq 2^n\)。因此发送窗口的最大尺寸为 \(2^4 - 7 = 16 - 7 = 9\)，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 32 题</span><span class="q-src">单选</span></p>
+  <p>对无序接收的滑动窗口协议，若序号位数为 \(n\)，则接收窗口最大尺寸为（　）</p>
+  <ul class="choices">
+    <li>A. \(2^n - 1\)</li>
+    <li>B. \(2n\)</li>
+    <li>C. \(2n - 1\)</li>
+    <li>D. \(2^{n-1}\)</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>本题未直接告知使用的是选择重传协议，而是通过间接方式给出的。题目称"无序接收的滑动窗口协议"，表示接收窗口大于 1，所以使用的是选择重传协议，接收窗口最大尺寸为 \(2^{n-1}\)（由 \(W_R + W_T \leq 2^n\) 且 \(W_R \leq W_T\) 推得），选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 33 题</span><span class="q-src">单选</span></p>
+  <p>采用滑动窗口机制对两个相邻节点 A 和 B 的通信过程进行流量控制。A 和 B 之间的数据传输速率为 20kb/s，数据帧和确认帧的长度都为 2000B，往返传播时延为 1400ms，采用 3 比特给数据帧编号，测得在 A 和 B 的通信过程中信道利用率大于 80%，则（　）（注：在 SR 协议中，默认发送窗口大小等于接收窗口大小）</p>
+  <ul class="choices">
+    <li>A. 节点 A、B 之间只能采用停止-等待协议</li>
+    <li>B. 节点 A、B 之间只能采用 GBN 协议</li>
+    <li>C. 节点 A、B 之间只能采用 SR 协议</li>
+    <li>D. 节点 A、B 之间可以采用 GBN 协议或 SR 协议</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>无论采用哪种滑动窗口协议，信道利用率的计算方法都是：发送窗口内所有数据帧的发送时延 /（一个数据帧的发送时延 + RTT + 一个确认帧的发送时延）。分母记为 \(T\) = 一个数据帧的发送时延 + RTT + 一个确认帧的发送时延，其中数据帧或确认帧的发送时延 = 2000B ÷ 20kb/s = 800ms，RTT = 1400ms，即 \(T = 800 + 800 + 1400 = 3000\text{ms}\)。假设发送窗口大小为 \(x\)，则 800x/3000 &gt; 0.8，即发送窗口大小 \(x\) 要大于 3。GBN 协议的发送窗口为 \(2^3 - 1 = 7\)，满足要求；SR 协议的发送窗口为 \(2^2 = 4\)，也满足要求。因此 A 和 B 之间可以采用 GBN 协议或 SR 协议，选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 34 题</span><span class="q-src">单选</span></p>
+  <p>流量控制是实现发送方和接收方速度一致的机制，实现这种机制所采取的措施是（　）</p>
+  <ul class="choices">
+    <li>A. 增大接收方接收速度</li>
+    <li>B. 减小发送方发送速度</li>
+    <li>C. 接收方向发送方反馈信息</li>
+    <li>D. 增加双方的缓冲区</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>实现流量控制的常用方法是滑动窗口协议，它让<strong>接收方把自己的接收窗口大小反馈给发送方</strong>，以调节发送方的发送窗口大小，避免发送方因发送速度过快而导致接收方来不及接收。流量控制的核心措施是接收方向发送方反馈信息，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 35 题</span><span class="q-src">单选</span></p>
+  <p>假设两台主机之间采用后退 N 帧协议传输数据，数据传输速率为 16kb/s，单向传播时延为 250ms，数据帧的长度是 128B，确认帧的长度也是 128B，为使信道利用率达到最高，则帧序号的比特数至少为（　）</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 3</li>
+    <li>C. 4</li>
+    <li>D. 5</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>为使信道利用率最高（100%），要让发送方在一个发送周期内持续发送帧，不能出现发送窗口内的帧发送完但还未收到第一帧的确认帧的情况。发送周期 = 发送一个数据帧的时间 + 往返时延 + 发送一个确认帧的时间，发送一个数据帧或确认帧的时间均为 128B ÷ 16kb/s = 64ms，发送周期 = 64ms + 250ms × 2 + 64ms = 628ms。为保证发送方持续发送帧，在一个发送周期内至少要发送的帧数为 628ms ÷ 64ms ≈ 10，即发送窗口大小至少为 10，所以帧序号至少采用满足 \(2^n - 1 \geq 10\) 的比特数，即 4 比特，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 36 题</span><span class="q-src">单选</span></p>
+  <p>在下列滑动窗口机制中，理论上可以达到 100% 信道利用率的是（　）<br>
+  Ⅰ. 停止-等待协议　　Ⅱ. 后退 N 帧协议　　Ⅲ. 选择重传协议</p>
+  <ul class="choices">
+    <li>A. Ⅰ</li>
+    <li>B. Ⅱ</li>
+    <li>C. Ⅲ</li>
+    <li>D. Ⅱ 和 Ⅲ</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>信道利用率 = 发送周期内用于发送数据帧的时间 / 发送周期，其中发送周期 = 发送一个数据帧的时间 + 往返时延 + 发送一个确认帧的时间。停止-等待协议的发送窗口为 1，一个周期内只能发一帧，分子恒小于分母，<strong>不可能达到 100%</strong> 的信道利用率；只要发送窗口足够大，后退 N 帧协议和选择重传协议都有可能在一个发送周期内持续发送帧，达到 100% 的信道利用率，选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 37 题</span><span class="q-src">单选</span></p>
+  <p>数据链路层采用选择重传协议进行流量控制，发送方在收到 0～3 号帧的确认后，又收到了 5 号帧的确认，发送窗口内还有其他帧未发送，且未发生超时，则发送方将（　）</p>
+  <ul class="choices">
+    <li>A. 重传 4 号帧</li>
+    <li>B. 重传 5 号帧</li>
+    <li>C. 接收该确认帧并继续发送剩下的帧</li>
+    <li>D. 停止发送并等待超时</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>在选择重传协议中，接收方对正确收到的每个数据帧单独进行确认，不要求收到的数据帧是有序的。依题意，接收方已正确收到 0～3 号和 5 号数据帧，但不确定 4 号数据帧是否收到。<strong>因为没有发生超时，发送方不进行重传</strong>，所以接收该确认帧并继续发送剩下的数据帧，选 C。（若 4 号帧确实丢失，稍后也会由 4 号帧自身的超时计时器触发单独重传。）</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 38 题</span><span class="q-src">单选 · 2009 统考真题</span></p>
+  <p>数据链路层采用了后退 N 帧 (GBN) 协议，发送方已经发送了编号为 0～7 的帧。当计时器超时的时候，若发送方只收到 0、2、3 号帧的确认，则发送方需要重发的帧数是（　）</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 3</li>
+    <li>C. 4</li>
+    <li>D. 5</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>在 GBN 协议中，当接收方检测到某帧出错时，会简单地丢弃该帧及所有的后续帧，发送方超时后需重传该数据帧及所有的后续帧。注意，在 GBN 协议中，接收方一般采用累积确认的方式，即接收方对按序到达的最后一个分组发送确认，因此本题中收到 3 号帧的确认就表示编号为 0、1、2、3 的帧已接收，而此时发送方未收到 1 号帧的确认只能代表确认帧在返回的过程中丢失，而不代表 1 号帧未到达接收方。因此需要重发的帧为编号 4、5、6、7 的帧，共 4 帧，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 39 题</span><span class="q-src">单选 · 2011 统考真题</span></p>
+  <p>数据链路层采用选择重传协议 (SR) 传输数据，发送方已发送 0～3 号数据帧，现已收到 1 号帧的确认，而 0、2 号帧依次超时，则此时需要重传的帧数是（　）</p>
+  <ul class="choices">
+    <li>A. 1</li>
+    <li>B. 2</li>
+    <li>C. 3</li>
+    <li>D. 4</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>在选择重传协议中，接收方逐个确认正确接收的分组，不管接收到的分组是否有序，只要正确接收就发送选择 ACK 分组进行确认，因此 ACK 分组不再具有累积确认的作用——对于这一点，要特别注意与 GBN 协议的区别。此题中只收到 1 号帧的确认，0、2 号帧超时，因为对 1 号帧的确认不具有累积确认的作用，所以发送方认为接收方未收到 0、2 号帧，于是重传这两帧，共 2 帧，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 40 题</span><span class="q-src">单选 · 2012 统考真题</span></p>
+  <p>两台主机之间的数据链路层采用后退 N 帧协议 (GBN) 传输数据，数据传输速率为 16kb/s，单向传播时延为 270ms，数据帧长度范围是 128～512 字节，接收方总是以与数据帧等长的帧进行确认。为使信道利用率达到最高，帧序号的比特数至少为（　）</p>
+  <ul class="choices">
+    <li>A. 5</li>
+    <li>B. 4</li>
+    <li>C. 3</li>
+    <li>D. 2</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>连续 ARQ 的信道利用率：</p>
+    <p>$$U = \frac{\text{发送窗口大小} \times \text{数据帧长} / \text{数据传输速率}}{(\text{数据帧长} / \text{数据传输速率}) \times 2 + \text{RTT}} = \frac{\text{发送窗口大小} / \text{数据传输速率}}{2/\text{数据传输速率} + \text{RTT} / \text{数据帧长}}$$</p>
+    <p>从上述公式可知，数据帧长越大，信道利用率就越高。数据帧长是不确定的，范围为 128～512B，在计算最小窗口数时，为了保证无论数据帧长如何变化，信道利用率都能达到 100%，<strong>应以 128B 的帧长计算</strong>。因此，当最短的帧长都能达到 100% 的信道利用率时，发送更长的数据帧也都能达到 100% 的信道利用率（若以 512B 的帧长计算，则求得的最小窗口数在 128B 的帧长下达不到 100% 的信道利用率）。首先计算出发送一个帧的时间：128 × 8 ÷ (16 × 10³) = 64ms；发送一个帧到收到确认帧为止的总时间：64 + 270 × 2 + 64 = 668ms；这段时间总共可发送 668/64 = 10.4 帧，即发送窗口 ≥ 11，而 GBN 接收窗口 = 1，序列号个数需 ≥ 12，所以至少需要用 4 位比特进行编号，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 41 题</span><span class="q-src">单选 · 2014 统考真题</span></p>
+  <p>主机甲与主机乙之间使用后退 N 帧协议 (GBN) 传输数据，主机甲的发送窗口尺寸为 1000，数据帧长为 1000 字节，信道带宽为 100Mb/s，主机乙每收到一个数据帧，就立即利用一个短帧（忽略其传输延迟）进行确认，若主机甲和主机乙之间的单向传播时延是 50ms，则主机甲可以达到的最大平均数据传输速率约为（　）</p>
+  <ul class="choices">
+    <li>A. 10Mb/s</li>
+    <li>B. 20Mb/s</li>
+    <li>C. 80Mb/s</li>
+    <li>D. 100Mb/s</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：C</p>
+    <p><strong>解析：</strong>考虑制约甲方的数据传输速率的因素。首先，信道带宽能直接制约数据的传输速率，传输速率一定是小于或等于信道带宽的。其次，因为甲方和乙方之间采用后退 N 帧协议传输数据，要考虑发送一个数据到接收到它的确认之前，最多能发送多少数据，甲方的最大传输速率受这两个条件的约束，所以甲方的最大传输速率是这两个值中的小者。甲方的发送窗口尺寸为 1000，即收到第一个数据的确认前，最多能发送 1000 个数据帧，即 1000 × 1000B = 1MB 的内容；而从发送第一个帧到接收到它的确认的时间是一个帧的发送时间加上往返时间，即 1000B ÷ 100Mb/s + 50ms + 50ms = 0.10008s，此时的最大传输速率为 1MB ÷ 0.10008s ≈ 10MB/s = 80Mb/s。信道带宽为 100Mb/s，因此答案为 min(80Mb/s, 100Mb/s) = <strong>80Mb/s</strong>，选 C。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 42 题</span><span class="q-src">单选 · 2015 统考真题</span></p>
+  <p>主机甲通过 128kb/s 卫星链路，采用滑动窗口协议向主机乙发送数据，链路单向传播时延为 250ms，帧长为 1000 字节。不考虑确认帧的开销，为使链路利用率不小于 80%，帧序号的比特数至少是（　）</p>
+  <ul class="choices">
+    <li>A. 3</li>
+    <li>B. 4</li>
+    <li>C. 7</li>
+    <li>D. 8</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>按发送周期思考，从开始发送帧到收到第一个确认帧为止，用时为 \(T\) = 第一个帧的发送时延 + 第一个帧的传播时延 + 确认帧的发送时延 + 确认帧的传播时延，这里忽略确认帧的发送时延。因此 \(T = 1000\text{B} \div 128\text{kb/s} + \text{RTT} = 0.5625\text{s}\)。接着计算在 \(T\) 内需要发送多少数据才能满足利用率不小于 80%：设数据大小为 \(L\) 字节，则 \((L \div 128\text{kb/s}) / T \geq 0.8\)，得到 \(L \geq 7200\text{B}\)，即在一个发送周期内至少要发 7.2 个帧才能满足要求。设需要编号的比特数为 \(n\)，则滑动窗口（本题按连续 ARQ 最大窗口 \(2^n - 1\) 考虑）需 \(2^n - 1 \geq 7.2\)，\(n\) 至少为 4，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 43 题</span><span class="q-src">单选 · 2018 统考真题</span></p>
+  <p>主机甲采用停止-等待协议向主机乙发送数据，数据传输速率是 3kb/s，单向传播时延是 200ms，忽略确认帧的传输时延。当信道利用率等于 40% 时，数据帧的长度为（　）</p>
+  <ul class="choices">
+    <li>A. 240 比特</li>
+    <li>B. 400 比特</li>
+    <li>C. 480 比特</li>
+    <li>D. 800 比特</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>信道利用率 = 传输帧的有效时间 / 传输帧的周期。假设帧的长度为 \(x\) 比特。对于有效时间，应该用帧的大小除以数据传输速率，即 \(x \div 3\text{kb/s}\)。对于帧的传输周期，应包含 4 部分：帧在发送方的发送时延、帧从发送方到接收方的单程传播时延、确认帧在接收方的发送时延、确认帧从接收方到发送方的单程传播时延。这 4 个时延中，因为题目中说"忽略确认帧的传输时延"，所以不计算确认帧的传输时延（传输时延也称发送时延，注意与传播时延区分）。所以帧的传输周期由三部分组成：首先是帧在发送方的发送时延 \(x \div 3\text{kb/s}\)，其次是帧从发送方到接收方的单程传播时延 200ms，最后是确认帧从接收方到发送方的单程传播时延 200ms，三相加得周期为 \(x \div 3\text{kb/s} + 400\text{ms}\)。代入信道利用率的公式：\(\frac{x/3000}{x/3000 + 0.4} = 0.4\)，解得 \(x = 800\text{bit}\)，选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 44 题</span><span class="q-src">单选 · 2019 统考真题</span></p>
+  <p>对于滑动窗口协议，若分组序号采用 3 比特编号，发送窗口大小为 5，则接收窗口最大是（　）</p>
+  <ul class="choices">
+    <li>A. 2</li>
+    <li>B. 3</li>
+    <li>C. 4</li>
+    <li>D. 5</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>从滑动窗口的概念来看：停止-等待协议，发送窗口大小 = 1，接收窗口大小 = 1；后退 N 帧协议，发送窗口大小 &gt; 1，接收窗口大小 = 1；选择重传协议，发送窗口大小 &gt; 1，接收窗口大小 &gt; 1。在选择重传协议中，还需满足：接收窗口大小 ≤ 发送窗口大小；发送窗口大小 + 接收窗口大小 ≤ \(2^n\)。根据以上规则，采用 3 比特编号，发送窗口大小为 5，接收窗口大小 ≤ \(2^3 - 5 = 3\)，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 45 题</span><span class="q-src">单选 · 2020 统考真题</span></p>
+  <p>假设主机甲采用停止-等待协议向主机乙发送数据帧，数据帧长与确认帧长均为 1000B，数据传输速率是 10kb/s，单程传播延时是 200ms。则主机甲的最大信道利用率为（　）</p>
+  <ul class="choices">
+    <li>A. 80%</li>
+    <li>B. 66.7%</li>
+    <li>C. 44.4%</li>
+    <li>D. 40%</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>发送数据帧和确认帧的时间均为 \(t = 1000 \times 8\text{b} \div 10\text{kb/s} = 800\text{ms}\)。<br>
+    发送周期为 \(T = 800\text{ms} + 200\text{ms} + 800\text{ms} + 200\text{ms} = 2000\text{ms}\)（数据帧发送时延 + 数据帧传播时延 + 确认帧发送时延 + 确认帧传播时延）。<br>
+    信道利用率为 \(t/T \times 100\% = 800/2000 = 40\%\)，选 D。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 46 题</span><span class="q-src">单选 · 2023 统考真题</span></p>
+  <p>假设通过同一条信道，数据链路层分别采用停止-等待协议、GBN 协议和 SR 协议（发送窗口和接收窗口相等）传输数据，三个协议的数据帧长相同，忽略确认帧长，帧序号位数为 3 比特。若对应三个协议的发送方最大信道利用率分别是 \(U_1\)、\(U_2\) 和 \(U_3\)，则 \(U_1\)、\(U_2\) 和 \(U_3\) 满足的关系是（　）</p>
+  <ul class="choices">
+    <li>A. \(U_1 \leq U_2 \leq U_3\)</li>
+    <li>B. \(U_1 \leq U_3 \leq U_2\)</li>
+    <li>C. \(U_2 \leq U_3 \leq U_1\)</li>
+    <li>D. \(U_3 \leq U_2 \leq U_1\)</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：B</p>
+    <p><strong>解析：</strong>信道利用率 \(U = nT_D/T\)，其中 \(n\) 是发送窗口的大小，\(T_D\) 是发送一个数据帧的时间，\(T\) 是一个数据帧的发送周期。在 \(T_D\) 和 \(T\) 确定的情况下，\(n\) 越大，信道利用率就越大。设帧序号的比特数为 \(k = 3\)，则停止-等待协议的发送窗口 \(W_{T1} = 1\)；GBN 协议的发送窗口 \(W_{T2} = 2^k - 1 = 7\)；SR 协议的发送窗口 \(W_{T3} \leq 2^{k-1} = 4\)（通常取 \(2^{k-1}\)）。因此 \(W_{T1} \leq W_{T3} \leq W_{T2}\)，故 \(U_1 \leq U_3 \leq U_2\)，选 B。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">第 47 题</span><span class="q-src">单选 · 2024 统考真题</span></p>
+  <p>主机甲通过选择重传 (SR) 滑动窗口协议向主机乙发送帧的部分过程如下图所示，Fx 为数据帧，ACKx 为确认帧，\(x\) 是位数为 3 比特的序号。主机乙只对正确接收的数据帧进行独立确认，发送窗口与接收窗口大小相同且均为最大值。主机甲在 \(t_1\) 时刻和 \(t_2\) 时刻发送的数据帧分别是（　）</p>
+  <img src="../assets/ch3/quiz-3.4-q47.png" alt="第47题配图：SR协议发送过程示意图" loading="lazy">
+  <ul class="choices">
+    <li>A. F1, F3</li>
+    <li>B. F1, F4</li>
+    <li>C. F3, F1</li>
+    <li>D. F4, F1</li>
+  </ul>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p class="ans-key">答案：D</p>
+    <p><strong>解析：</strong>数据帧编号的范围是 0～7，发送窗口与接收窗口大小相等且均为最大值，因此发送窗口大小 = 接收窗口大小 = \(2^{3-1} = 4\)。甲发送 F0、F1、F2 和 F3 四个数据帧后，收到 F0 的确认，因此在 \(t_1\) 时刻，发送窗口向右滑动，可以继续发送 <strong>F4</strong>；之后收到 F2 的确认，但由于 F1 丢失，甲无法收到 F1 的确认，发送窗口无法继续向右滑动，直到 \(t_2\) 时刻，F1 超时，重传 <strong>F1</strong>。因此 \(t_1\)、\(t_2\) 时刻发送的帧分别为 F4、F1，选 D。</p>
+  </div></details>
+</div>
+
+<h2 class="sec" id="q-comp">二、综合题</h2>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 1</span><span class="q-src">3.2 组帧</span></p>
+  <p>在一个数据链路协议中使用下列字符编码：<br>
+  A: 01000111　　B: 11100011　　ESC: 11100000　　FLAG: 01111110<br>
+  在使用下列成帧方法的情况下，说明为传送 4 个字符 A、B、ESC、FLAG 所组织的帧而实际发送的二进制位序列（使用 FLAG 作为首尾标志，ESC 作为转义字符）。<br>
+  (1) 使用字符计数法。(2) 使用字符填充法。(3) 使用零比特填充法。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>(1) <strong>字符计数法：</strong>第一字节为所传输的字符计数 5（帧长度字段 + 4 个数据字符），转换为二进制为 00000101，后面依次为 A、B、ESC、FLAG 的二进制编码：</p>
+    <p>00000101　01000111　11100011　11100000　01111110</p>
+    <p>(2) <strong>字符填充法：</strong>首尾标志位 FLAG（01111110），在所传输的数据中，若出现控制字符（FLAG 或 ESC 本身），则在该字符前插入转义字符 ESC（11100000）。数据中的 ESC 字符前要插入 ESC，FLAG 字符前也要插入 ESC：</p>
+    <p>01111110　01000111　11100011　11100000 11100000　11100000 01111110　01111110</p>
+    <p>(3) <strong>零比特填充法：</strong>首尾标志位 FLAG（01111110），把 4 个字符连成位流后扫描，凡出现连续 5 个"1"，就在其后插入一个"0"（位流跨字符边界处也要一并考虑）：<br>
+    · A|B 边界：A=01000111，B=11100011，相连处出现 6 个连续"1"（A 的后 3 个 + B 的前 3 个），在第 5 个"1"后插 0，该段变为 01000111 110100011；<br>
+    · B|ESC 边界：B 的后 2 个"1"与 ESC 的前 3 个"1"构成 5 连"1"，插 0 后 ESC 段变为 111000000；<br>
+    · FLAG 数据本身含 5 连"1"，插 0 后变为 011111010。<br>
+    实际发送的二进制位序列为：</p>
+    <p>01111110　01000111　110100011　111000000　011111010　01111110</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 2</span><span class="q-src">3.3 差错控制</span></p>
+  <p>在数据传输过程中，若接收方收到的二进制比特序列为 10110011010，接收双方采用的生成多项式为 \(G(x) = x^4 + x^3 + 1\)，则该二进制比特序列在传输中是否出错？如果未出错，则发送数据的比特序列和 CRC 检验码的比特序列分别是什么？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>根据题意，生成多项式 \(G(x) = x^4 + x^3 + 1\) 对应的比特序列为 11001。进行二进制模 2 除法，被除数为 10110011010，除数为 11001：</p>
+    <p>10110011010 ÷ 11001，商为 1101010，最终所得<strong>余数为 0</strong>，因此该比特序列在传输过程中<strong>未出现差错</strong>。</p>
+    <p>接收到的序列 = 发送数据 + CRC 检验码，CRC 检验码的位数等于生成多项式 \(G(x)\) 的最高次幂，即 4 位。因此：</p>
+    <p>发送数据的比特序列是 <strong>1011001</strong>（前 7 位），CRC 检验码的比特序列是 <strong>1010</strong>（后 4 位）。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 3</span><span class="q-src">3.4 流量控制与可靠传输机制</span></p>
+  <p>在选择重传协议中，设序号用 3 比特编号，发送窗口 \(W_T = 6\)，接收窗口 \(W_R = 3\)。试找出一种情况，使得在此情况下协议不能正确工作。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>对于选择重传协议，接收窗口和发送窗口的尺寸需满足：接收窗口尺寸 \(W_R\) + 发送窗口尺寸 \(W_T \leq 2^n\)，而题目中给出的数据是 \(W_R + W_T = 9 > 2^3 = 8\)，所以是无法正常工作的。举例说明：</p>
+    <p>发送方：0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0<br>
+    接收方：0 1 2 3 4 5 6 7 0 1 2 3 4 5 6 7 0</p>
+    <p>发送方发送 0～5 号共 6 个数据帧时，因发送窗口已满，发送暂停。接收方收到所有数据帧，对每个帧都发送确认帧，并期待后面的 6、7、0 号帧。若所有的确认帧都未到达发送方，经过发送方计时器控制的超时时间后，发送方再次发送之前的 6 个数据帧，而<strong>接收方收到 0 号帧后，无法判断是新的数据帧还是重传的旧数据帧</strong>（新窗口与旧窗口的序号重叠），协议因此不能正确工作。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 4</span><span class="q-src">3.4 流量控制与可靠传输机制</span></p>
+  <p>假设一个信道的数据传输速率为 5kb/s，单向传输时延为 30ms，那么帧长在什么范围内，才能使用于差错控制的停止-等待协议的效率至少为 50%？（忽略确认帧的发送时延）</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>设数据帧长为 \(L\)。在停止-等待协议中，发送数据帧的时间为 \(L/B\)，发送完数据帧后等待确认的时间为 \(2R\)（往返传播时延）。要使协议的效率至少为 50%，要求信道利用率 \(U\) 至少为 50%，则</p>
+    <p>$$\text{信道利用率}\, U = \frac{\text{数据发送时延}}{\text{数据发送时延} + \text{往返时延}} = \frac{L/B}{L/B + 2R} \geq 50\%$$</p>
+    <p>解得 \(L \geq 2RB = 2 \times 5000 \times 0.03\text{bit} = 300\text{bit}\)。</p>
+    <p><strong>结论：</strong>当帧长大于或等于 300bit 时，停止-等待协议的效率至少为 50%。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 5</span><span class="q-src">3.4 流量控制与可靠传输机制</span></p>
+  <p>假定信道的数据传输速率为 100kb/s，单程传播时延为 250ms，每个数据帧的长度均为 2000 位，且不考虑确认帧长、首部和处理时间等开销，为了达到最大的传输效率，试问帧的序号应为多少位？此时信道利用率是多少？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>RTT = 250 × 2 = 500ms = 0.5s。</p>
+    <p>一个帧的发送时间等于 2000bit ÷ 100kb/s = 20 × 10⁻³ s = 0.02s。</p>
+    <p>一个帧发送完后经过一个单程时延到达接收方，再经过一个单程时延发送方收到确认帧，从而可以继续发送，因此要使传输效率最大，就要让发送方继续地发送帧（一个发送周期内不停顿）。设发送窗口等于 \(x\)，则</p>
+    <p>$$0.02\text{s} \times x = 0.02\text{s} + \text{RTT} = 0.52\text{s}$$</p>
+    <p>解得 \(x = 26\)，即发送窗口取 26 即可。因为 16 < 26 < 32，所以帧序号应为 <strong>5 位</strong>。在使用连续 ARQ 的情况下，发送窗口的最大值是 31，大于 26，可以不间断地发送帧，此时信道利用率是 <strong>100%</strong>。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 6</span><span class="q-src">3.4 流量控制与可靠传输机制</span></p>
+  <p>在数据传输速率为 50kb/s 的卫星信道上传送长度为 1kbit 的帧，总是采用捎带确认，帧序号长度为 3bit，单向传播延迟为 270ms。对于下面三种协议，信道的最大利用率是多少？<br>
+  (1) 停止-等待协议。(2) 后退 N 帧协议。(3) 选择重传协议（假设发送窗口和接收窗口相等）。</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong>最大信道利用率即每个传输周期内每个协议可发送的最大帧数占比。由题意，数据帧的长度为 1kbit，信道的数据传输速率为 50kb/s，因此信道的发送时延为 1/50 s = 0.02s，另外信道端到端的传播时延 = 0.27s。本题中的确认帧是捎带的（通过数据帧来传送），因此每个数据帧的传输周期为 (0.02 + 0.27 + 0.02 + 0.27) s = <strong>0.58s</strong>。</p>
+    <p>(1) <strong>停止-等待协议：</strong>发送方每发送一帧，都要等待接收方的应答信号，之后才能发送下一帧；接收方每接收一帧，都要反馈一个应答信号，表示可接收下一帧。其中用于发送数据帧的时间为 0.02s。因此，信道的最大利用率为 0.02/0.58 ≈ <strong>3.4%</strong>。</p>
+    <p>(2) <strong>后退 N 帧协议：</strong>接收窗口尺寸为 1，若采用 \(n\) 比特对帧编号，则其发送窗口的尺寸 \(W\) 满足 \(1 < W \leq 2^n - 1\)。发送方可以连续再发送若干数据帧，直到发送窗口内的数据帧都发送完毕。若收到接收方的确认帧，则可以继续发送；若某个帧出错，接收方只是简单地丢弃该帧及所有的后续帧，发送方超时后，需要重传该数据帧及所有的后续数据帧。根据题目条件，在达到最大传输速率的情况下，发送窗口的大小应为 \(2^n - 1 = 7\)，此时在第一帧的数据传输周期 0.58s 内，实际连续发送了 7 帧（考虑极限情况，0.58s 后接收方只收到 0 号帧的确认，此时又可以发出一个新帧，这样依次下去，取极限即是每个传输周期 0.58s 内发送了 7 帧），因此此时的最大信道利用率为 7 × 0.02/0.58 ≈ <strong>24.1%</strong>。</p>
+    <p>(3) <strong>选择重传协议：</strong>接收窗口尺寸和发送窗口尺寸都大于 1，可以一次发送或接收多个帧。若采用 \(n\) 比特对帧编号，则窗口尺寸应满足：接收窗口尺寸 + 发送窗口尺寸 ≤ \(2^n\)。当发送窗口与接收窗口尺寸相等时，应有接收窗口尺寸 ≤ \(2^{n-1}\) 且发送窗口尺寸 ≤ \(2^{n-1}\)。发送方可以连续发送若干数据帧，直到发送窗口内的数据帧都发送完毕；若收到接收方的确认帧，则可以继续发送；若某帧出错，接收方只是简单地丢弃该帧，发送方超时后需重传该数据帧。和 (2) 问中的情况类似，唯一不同的是为了达到最大信道利用率，发送窗口大小应为 \(2^{n-1} = 4\)，因此，此时的最大信道利用率为 4 × 0.02/0.58 ≈ <strong>13.8%</strong>。</p>
+  </div></details>
+</div>
+
+<div class="quiz-item">
+  <p><span class="q-no">综合题 7</span><span class="q-src">3.4 流量控制与可靠传输机制 · 2017 统考真题</span></p>
+  <p>甲乙双方均采用后退 N 帧协议 (GBN) 进行持续的双向数据传输，且双方始终采用捎带确认，帧长均为 1000B。\(S_{x,y}\) 和 \(R_{x,y}\) 分别表示甲方和乙方发送的数据帧，其中 \(x\) 是发送序号，\(y\) 是确认序号（表示希望接收对方的下一帧序号），数据帧的发送序号和确认序号字段均为 3 比特。信道传输速率为 100Mb/s，RTT = 0.96ms。下图给出了甲方发送数据帧和接收数据帧的两种场景，其中 \(t_0\) 为初始时刻，此时甲方的发送和确认序号均为 0，\(t_1\) 时刻甲方有足够多的数据待发送。回答下列问题。</p>
+  <img src="../assets/ch3/quiz-comp-q7.png" alt="综合题7配图：GBN双向传输两种场景时序图" loading="lazy">
+  <p>(1) 对于图 (a)，\(t_0\) 时刻到 \(t_1\) 时刻期间，甲方可以断定乙方已正确接收的数据帧数是多少？正确接收的是哪几个帧（请用 \(S_{x,y}\) 形式给出）？<br>
+  (2) 对于图 (a)，从 \(t_1\) 时刻起，甲方在不出现超时且未收到乙方新的数据帧之前，最多还可以发送多少个数据帧？其中第一个帧和最后一个帧分别是哪个（请用 \(S_{x,y}\) 形式给出）？<br>
+  (3) 对于图 (b)，从 \(t_1\) 时刻起，甲方在不出现新的超时且未收到乙方新的数据帧之前，需要重发多少个数据帧？重发的第一个帧是哪个帧（请用 \(S_{x,y}\) 形式给出）？<br>
+  (4) 甲方可以达到的最大信道利用率是多少？</p>
+  <details class="ans"><summary>答案与解析</summary><div class="ans-body">
+    <p><strong>解答：</strong></p>
+    <p>(1) \(t_0\) 时刻到 \(t_1\) 时刻期间，甲方可以断定乙方已正确接收 3 个数据帧，分别是 \(S_{0,0}\)、\(S_{1,0}\)、\(S_{2,0}\)。<br>
+    依据：乙方发出的帧 \(R_{3,3}\) 的确认序号是 3，即希望甲方发送序号 3 的数据帧，说明乙方已经正确接收甲方序号为 0～2 的数据帧（注意，捎带确认中的确认序号是期待接收对方的下一帧的序号，即累积确认）。</p>
+    <p>(2) 从 \(t_1\) 时刻起，甲方最多还可以发送 5 个数据帧，其中第一帧是 \(S_{5,2}\)，最后一帧是 \(S_{1,2}\)。<br>
+    推导：发送序号 3 位，共有 8 个序号。在 GBN 协议中，发送窗口 + 1 ≤ 序号总数，故发送窗口取最大值 7。图 (a) 中甲方已发送序号 0～4 共 5 帧，收到 \(R_{3,3}\)（累积确认）后发送窗口滑到基序号 3，窗口覆盖序号 3、4、5、6、7、0、1，其中 3、4 已发送，故最多还可发送序号 5、6、7、0、1 共 5 帧。又因乙方发出的帧序号为 0、1、3（\(R_{0,1}\)、\(R_{1,3}\)、\(R_{3,3}\)），甲方始终未收到乙方的 2 号帧，故甲方的确认序号 \(y = 2\)（期待乙方的 2 号帧）。因此这 5 帧依次为 \(S_{5,2}\)、\(S_{6,2}\)、\(S_{7,2}\)、\(S_{0,2}\)、\(S_{1,2}\)。</p>
+    <p>(3) 对于图 (b)，甲方需要重发 3 个数据帧，重发的第一个帧是 \(S_{2,3}\)。<br>
+    推导：在 GBN 协议中，发送方发送 \(N\) 帧后检测出错，则需要重发出错帧及其之后已发送的所有帧。图 (b) 中 \(S_{2,0}\) 超时，故需重发已发送的序号 2、3、4 共 3 个数据帧，重发的第一帧序号为 2。又因甲方已正确收到乙方发出的序号 0～2 的帧（\(R_{0,1}\)、\(R_{1,2}\)、\(R_{2,2}\)），期待乙方的 3 号帧，所以重发帧的确认序号应为 3，即重发的第一帧是 \(S_{2,3}\)（其后为 \(S_{3,3}\)、\(S_{4,3}\)）。</p>
+    <p>(4) 甲方可以达到的最大信道利用率 \(U\) 为：</p>
+    <p>$$U = \frac{\text{发送窗口大小} \times \dfrac{\text{帧长}}{\text{数据传输速率}}}{\text{RTT} + \dfrac{\text{帧长}}{\text{数据传输速率}} \times 2} = \frac{7 \times \dfrac{8 \times 1000}{100 \times 10^6}}{0.96 \times 10^{-3} + \dfrac{8 \times 1000}{100 \times 10^6} \times 2} \times 100\% = 50\%$$</p>
+    <p>其中帧发送时延 = 8 × 1000b ÷ 100Mb/s = 0.08ms，分子为一个发送窗口（7 帧）的发送时间 7 × 0.08ms = 0.56ms，分母为发送周期 = 帧发送时延 × 2（双向数据帧的发送时延，捎带确认）+ RTT = 0.16ms + 0.96ms = 1.12ms，故 \(U = 0.56/1.12 = 50\%\)。</p>
+  </div></details>
+</div>
+
+<!--PART2-->

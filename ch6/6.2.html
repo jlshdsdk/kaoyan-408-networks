@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6.2 域名系统 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第6章 应用层</a> › <span>6.2 域名系统</span></div>
+<h1 class="page-title">6.2 域名系统 DNS</h1>
+<p class="subtitle">对应王道教材 6.2 节（教材 P270–P273）· 本节属于 408 考纲范围</p>
+
+<div class="box exam"><div class="box-title">🎯 考点跟踪：DNS 使用的传输层及以下协议（2018、2021 统考）</div></div>
+<p><strong>域名系统</strong>（Domain Name System，DNS）是互联网使用的命名系统，用于将便于人们记忆、具有特定含义的主机名（如 www.cskaoyan.com）转换为便于机器处理的 IP 地址。相比难记的数字形式，人们更倾向于使用具有特定含义的字符串来标识互联网上的计算机。<strong>DNS 采用客户/服务器模型，其协议运行在 UDP 之上，使用 53 号端口</strong>。</p>
+<p>从概念上，DNS 可分为三部分：<strong>层次域名空间</strong>、<strong>域名服务器</strong>和<strong>解析器</strong>。</p>
+
+<h2 class="sec" id="sec-6-2-1">6.2.1 层次域名空间</h2>
+<p>互联网采用<strong>层次树状结构</strong>的命名方法。按照这种命名方法，任何连接到互联网的主机或路由器都有唯一的层次结构名称，即<strong>域名</strong>（Domain Name）。<strong>域</strong>（Domain）是名字空间中一个可被管理的划分。域可以进一步划分为子域，子域还可以继续细分，从而形成<strong>顶级域、二级域、三级域</strong>等层次结构。每个域名由一系列<strong>标号</strong>组成，各标号之间用点（"."）分隔。</p>
+<p>如图 6.3 所示是王道论坛提供 WWW 服务的服务器域名，它由三个标号组成，其中标号 com 是<strong>顶级域名</strong>，标号 cskaoyan 是<strong>二级域名</strong>，标号 www 是<strong>三级域名</strong>。</p>
+<figure class="fig"><img src="../assets/ch6/fig-6-3.png" alt="图6.3 一个域名的例子" loading="lazy"><figcaption>图 6.3 一个域名的例子（王道教材 P270）</figcaption></figure>
+<div class="box concept"><div class="box-title">📌 域名中标号的注意事项</div>
+<ol>
+  <li>标号中的英文字母<strong>不区分大小写</strong>；</li>
+  <li>标号中除连字符（-）外，不得使用其他标点符号；</li>
+  <li>每个标号不超过 63 个字符，整个域名（含分隔点）的总长度不超过 255 个字符；</li>
+  <li>级别最低的域名写在最左边，级别最高的顶级域名写在最右边。</li>
+</ol>
+</div>
+<p><strong>顶级域名</strong>（Top Level Domain，TLD）主要分为以下三大类：</p>
+<ol>
+  <li><strong>国家顶级域名（ccTLD）</strong>：代表国家的域名，如 "cn" 表示中国，"us" 表示美国；</li>
+  <li><strong>通用顶级域名（gTLD）</strong>：常见的包括 "com"（公司）、"net"（网络服务机构）、"org"（非营利性组织）、"edu"（教育机构）和 "gov"（国家或政府机构）等；</li>
+  <li><strong>基础结构域名（arpa）</strong>：用于反向域名解析，即将 IP 地址转换为对应的域名。</li>
+</ol>
+<figure class="fig"><img src="../assets/ch6/fig-6-4.png" alt="图6.4 域名空间的树状结构" loading="lazy"><figcaption>图 6.4 域名空间的树状结构（王道教材 P271）</figcaption></figure>
+<p>在域名系统中，各级域名由其上一级的域名管理机构管理。顶级域名由互联网名称与数字地址分配机构（ICANN）管理。国家顶级域名下的二级域名由相应国家自行规定和管理。每个组织还可以将其所辖的域名进一步划分为若干子域，并将这些子域委托给其他组织管理。例如，负责管理 cn 域的中国将 edu.cn 子域授权给中国教育和科研计算机网（CERNET）进行管理。</p>
+
+<h2 class="sec" id="sec-6-2-2">6.2.2 域名服务器 <span class="badge kao">考点</span></h2>
+<p>域名到 IP 地址的解析是由运行在域名服务器上的程序完成的。一个服务器负责管辖（或有管理权限）的范围称为<strong>区</strong>，其范围小于或等于域。一个区内的所有节点必须是连通的，每个区都设有相应的<strong>权限域名服务器</strong>（也称授权域名服务器），用于保存该区中所有主机的域名到 IP 地址的映射信息。每个域名服务器不仅要能够解析部分域名到 IP 地址的映射，还要能维护指向其他域名服务器的信息：当自身无法完成解析时，要能知道向哪个服务器进一步查询。</p>
+<p>DNS 使用大量的域名服务器，它们按<strong>层次结构</strong>组织。没有任何一台域名服务器包含互联网上所有主机的映射，相反，这些映射分布在所有域名服务器上。<strong>有四种类型的域名服务器：</strong></p>
+<table class="tbl">
+  <caption>表 6.b 四类域名服务器的职责对比（依据教材 P271–P272 归纳）</caption>
+  <tr><th>类型</th><th>层级地位</th><th>主要职责</th></tr>
+  <tr><td><strong>根域名服务器</strong></td><td>DNS 层次结构中的最高层级</td><td>知道全部顶级域名服务器的域名和 IP 地址；本地域名服务器无法解析时首先向它查询。全球共 13 个根域名服务器（每个实际是由多个冗余服务器组成的集群）；通常并不直接把待查询的域名解析成 IP 地址，而是返回下一步应查询的<strong>顶级域名服务器</strong>的地址</td></tr>
+  <tr><td><strong>顶级域名服务器</strong></td><td>管理在该顶级域注册的所有二级域名</td><td>如 .com 顶级域名服务器管理所有以 .com 结尾的域名；收到 DNS 查询请求时，返回相应的响应（可能是最终的解析结果即目标 IP 地址，也可能是下一步应当查找的域名服务器的 IP 地址）</td></tr>
+  <tr><td><strong>权限域名服务器</strong>（授权域名服务器）</td><td>管理特定区的域名信息</td><td>每台主机必须在所属区的权限服务器处登记，该服务器总能将其管辖的主机名解析为对应的 IP 地址。为提高可靠性，通常建议每个区配置至少两个权限域名服务器；许多本地域名服务器也同时承担权限域名服务器的角色</td></tr>
+  <tr><td><strong>本地域名服务器</strong></td><td>域名系统的关键入口</td><td>每家 ISP、一所大学甚至大学的各个院系通常都会部署自己的本地域名服务器。主机发起 DNS 查询时，请求<strong>首先</strong>被发送给它配置的本地域名服务器（Windows 中配置"本地连接"时填写的 DNS 服务器地址）</td></tr>
+</table>
+<figure class="fig"><img src="../assets/ch6/fig-6-5.png" alt="图6.5 DNS的层次结构" loading="lazy"><figcaption>图 6.5 DNS 的层次结构（王道教材 P272）</figcaption></figure>
+
+<h2 class="sec" id="sec-6-2-3">6.2.3 域名解析过程 <span class="badge kao">考点</span></h2>
+<div class="box exam"><div class="box-title">🎯 考点跟踪：DNS 协议的功能与意义（2021）· DNS 递归查询机制（2010）· DNS 迭代查询机制（2016、2020）</div></div>
+<p><strong>域名解析</strong>是指将域名转换为 IP 地址的过程。当客户端需要进行域名解析时，会通过本机的 DNS 客户端构造一个 DNS 请求报文，并以 <strong>UDP 数据报</strong>的形式发送给本地域名服务器。域名解析有两种方式：<strong>递归查询</strong>和<strong>迭代查询</strong>。</p>
+<div class="box tip"><div class="box-title">📌 两种查询方式的核心规则</div>
+<ol>
+  <li><strong>主机向本地域名服务器的查询都采用递归查询</strong>：若本地域名服务器不知道被查询域名的 IP 地址，它会以 DNS 客户的身份，代替主机向其他根域名服务器继续发出查询请求，而不是让主机自行进行后续查询。无论后续采用何种查询方式，主机向本地域名服务器的查询都采用递归查询。</li>
+  <li><strong>本地域名服务器向其他域名服务器可采用递归查询或迭代查询</strong>。</li>
+</ol>
+</div>
+<p><strong>递归查询</strong>（图 6.6(a)）：本地域名服务器只需向根域名服务器发起一次查询，后续的查询过程由各级域名服务器之间递归完成。最终，根域名服务器将请求的 IP 地址返回给本地域名服务器，再由本地域名服务器将结果返回给原始主机。由于这种方式会给根域名服务器带来过重负载，<strong>实际中几乎不被采用</strong>。</p>
+<p><strong>迭代查询</strong>（图 6.6(b)）：本地域名服务器向根域名服务器的查询通常采用迭代查询。当根域名服务器收到本地域名服务器的迭代查询请求时，要么直接给出所查询的 IP 地址，要么告诉本地域名服务器"你下一步应向哪个顶级域名服务器查询"。随后，由本地域名服务器向该顶级域名服务器发起新的查询。同样，顶级域名服务器收到请求后，要么直接给出所查询的 IP 地址，要么告诉本地域名服务器下一步应当向哪个权限域名服务器查询。如此逐级查询，直到获得目标 IP 地址，最后由本地域名服务器将结果返回给发起查询的主机。</p>
+<figure class="fig"><img src="../assets/ch6/fig-6-6.png" alt="图6.6 两种域名解析方式工作原理" loading="lazy"><figcaption>图 6.6 两种域名解析方式工作原理（王道教材 P273）</figcaption></figure>
+<div class="box exam"><div class="box-title">🎯 考法：域名解析的完整流程（教材例析，最多涉及 8 个 UDP 报文：4 个查询 + 4 个回答）</div>
+<p>假设某客户希望获取主机 y.abc.com 的 IP 地址：</p>
+<ol>
+  <li>客户向其本地域名服务器发送 DNS 请求报文（<strong>递归查询</strong>）；</li>
+  <li>本地域名服务器收到请求后，先查询本地缓存；若未命中，则以 DNS 客户身份向根域名服务器发送解析请求报文（<strong>迭代查询</strong>）；</li>
+  <li>根域名服务器收到请求后，识别该域名属于 .com 顶级域，返回 .com 顶级域名服务器 dns.com 的 IP 地址；</li>
+  <li>本地域名服务器向顶级域名服务器 dns.com 发送解析请求报文（迭代查询）；</li>
+  <li>顶级域名服务器 dns.com 收到请求后，识别该域名属于 abc.com 区，返回其权限域名服务器 dns.abc.com 的 IP 地址；</li>
+  <li>本地域名服务器向权限域名服务器 dns.abc.com 发送解析请求报文（迭代查询）；</li>
+  <li>权限域名服务器 dns.abc.com 收到请求后，返回 y.abc.com 对应的 IP 地址；</li>
+  <li>本地域名服务器将结果保存到本地缓存，并返回给客户。</li>
+</ol>
+</div>
+<div class="box concept"><div class="box-title">📌 DNS 高速缓存</div>
+<p>为提高 DNS 查询效率并减少互联网上的查询流量，域名服务器广泛使用 <strong>DNS 高速缓存</strong>，用于存储近期查询过的域名与 IP 地址的映射。当后续收到相同域名的查询时，服务器可直接从缓存返回结果，无须再次发起完整的解析流程。由于主机名与 IP 地址的映射关系并非永久有效，DNS 缓存中的记录会设置<strong>生存时间（TTL）</strong>，到期后自动失效并被清除。此外，主机端也常维护本地 DNS 缓存，只有当本地缓存未命中时，才会向 DNS 服务器发起查询，从而进一步提升解析速度并减轻网络负载。</p>
+</div>
+
+<div class="pager">
+      <a class="prev" href="6.1.html"><span class="label">上一篇</span>6.1 网络应用模型</a>
+      <a class="next" href="6.3.html"><span class="label">下一篇</span>6.3 文件传输协议</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

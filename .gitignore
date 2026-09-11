@@ -1,0 +1,12 @@
+# 原始素材与工具（体积大，不入库）
+pages/
+tools/
+scripts/_*.png
+scripts/__pycache__/
+*.tmp
+
+# 说明：pages/ 为教材 PDF 的整页扫描图（约 300MB，版权素材，仅本地生产用）
+# 站点成品引用的是 assets/chN/ 下的裁剪插图，全部入库
+ 
+# Դ PDF ���������� 188MB �� GitHub 100MB ���ƣ�������� 
+*.pdf

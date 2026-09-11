@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.4 本章小结及疑难点 - 考研408计算机网络带学</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+</head>
+<body>
+<nav class="topnav"><div class="inner">
+      <a class="brand" href="../index.html">考研408计算机网络带学</a>
+      <a class="chlink" href="../index.html">首页</a>
+      <a class="chlink" href="../ch1/index.html">第1章</a>
+      <a class="chlink" href="../ch2/index.html">第2章</a>
+      <a class="chlink" href="../ch3/index.html">第3章</a>
+      <a class="chlink" href="../ch4/index.html">第4章</a>
+      <a class="chlink" href="../ch5/index.html">第5章</a>
+      <a class="chlink" href="../ch6/index.html">第6章</a>
+</div></nav>
+<main>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第5章 传输层</a> › <span>5.4 本章小结及疑难点</span></div>
+<h1 class="page-title">5.4 本章小结及疑难点</h1>
+<p class="subtitle">对应王道教材 5.4 节（教材 P265–P266）· 本节属于 408 考纲范围</p>
+
+<h2 class="sec" id="sec-5-4-1">本章要点回顾</h2>
+<ul>
+  <li><strong>传输层的功能</strong>：提供应用进程之间的端到端逻辑通信；复用与分用；对整个报文进行差错检测；提供面向连接（TCP 可靠）与无连接（UDP 不可靠）两种传输服务。</li>
+  <li><strong>寻址与端口</strong>：端口号 16 位，仅具本地意义；熟知端口号 0～1023（FTP 21、TELNET 23、SMTP 25、DNS 53、TFTP 69、HTTP 80、SNMP 161），登记端口号 1024～49151，短暂端口号 49152～65535；套接字 =（IP 地址 : 端口号），唯一标识网络中某台主机上的一个应用进程。</li>
+  <li><strong>UDP</strong>：首部 8B（源端口、目的端口、长度、检验和各 2B）；面向报文、保留报文边界、支持一对多、无拥塞控制；检验需添加 12B 伪首部（含 IP 地址与协议字段 17），按 16 位字二进制反码求和再取反，接收方校验结果应全 1。</li>
+  <li><strong>TCP 报文段</strong>：首部 20～60B；序号按字节编号，确认号为期望收到的下一字节序号（累积确认）；数据偏移单位 4B；六个控制位 URG/ACK/PSH/RST/SYN/FIN；窗口字段通告接收能力；检验计算同样使用 12B 伪首部（协议字段为 6）。</li>
+  <li><strong>连接管理</strong>：三次握手（SYN 消耗一个序号、第三次握手可携带数据）；四次挥手（FIN 消耗一个序号、半关闭状态、TIME-WAIT 等待 2MSL）。</li>
+  <li><strong>可靠传输</strong>：序号 + 累积确认 + 重传（超时 RTO 略大于 RTTS；收到 3 个冗余 ACK 触发快重传）。</li>
+  <li><strong>流量控制</strong>：滑动窗口机制，接收方通过窗口字段通告 rwnd，rwnd=0 时靠持续计时器 + 零窗口探测报文段打破死锁。</li>
+  <li><strong>拥塞控制</strong>：四算法——慢开始（cwnd 指数增长）、拥塞避免（线性加 1）、快重传（3 个冗余 ACK 立即重传）、快恢复（cwnd 减半而非置 1）；超时则 ssthresh=cwnd/2、cwnd=1 重新慢开始；发送窗口上限 = min[rwnd, cwnd]。</li>
+</ul>
+
+<h2 class="sec" id="sec-5-4-2">疑难点逐条辨析</h2>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 1：MSS（最大报文段长度）设置得过大或过小会有什么影响？</div>
+<p>MSS 的设定与接收方的缓存大小或接收窗口无关，其主要目的是<strong>避免 IP 分片</strong>。若 MSS 设置得<strong>太小</strong>，网络利用率会显著降低——因为每个 TCP 报文段至少要加上 40B 的首部（TCP 首部 20B + IP 首部 20B）才能形成一个 IP 数据报；极端情况下，若数据部分仅 1B，则有效载荷占比仅为 1/41；若再考虑数据链路层的帧头尾开销，实际利用率还会更低。若 MSS 设置得<strong>太大</strong>，在 IP 层传输时可能因超过路径中某段链路的 MTU 而被分片；接收端需将所有分片重新组装成原始 TCP 报文段，一旦任一分片丢失，整个报文段都必须重传，反而增加传输开销和延迟。</p>
+<p>因此，<strong>MSS 应尽可能大，但以在 IP 层不发生分片为前提</strong>。然而，由于互联网路径是动态变化的，某条路径上无须分片的 MSS，在另一条路径上可能仍需分片，故最佳 MSS 难以确定。为此，TCP 规定默认 MSS 为 <strong>536B</strong>，这意味着所有互联网主机都应能接收长度为 536B（数据）+20B（TCP 首部）=556B 的 TCP 报文段。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 2：TCP 使用的是后退 N 帧（GBN）还是选择重传（SR）？</div>
+<p>表面上看，TCP 使用累积确认，类似于 GBN。但区别在于：<strong>接收方不会丢弃正确到达但失序的报文段，而是将其缓存</strong>，并反复发送冗余 ACK，指明期望收到的下一个按序报文段的序号。例如，假设发送方 A 连续发送 N 个报文段，其中第 k（k&lt;N）个丢失，其余均正确到达接收方 B。在 GBN 中，接收方会丢弃所有失序的报文段（第 k+1 至 N 个），发送方需重传从第 k 个开始的所有未确认报文段；而 <strong>TCP 仅重传丢失的第 k 个报文段</strong>，后续已缓存的报文段无须重传。此外，TCP 还支持 SACK（Selective ACK）选项：启用 SACK 后，接收方可明确告知发送方哪些非连续的数据块已成功接收，使重传行为更接近 SR 协议。因此，<strong>TCP 的重传机制可视为 GBN 与 SR 的混合体</strong>：基础行为基于累积确认和冗余 ACK 实现高效单点重传，SACK 则进一步增强了选择性确认能力。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 3：为什么超时事件发生时 cwnd 被置为 1，而收到 3 个冗余 ACK 时 cwnd 减半？</div>
+<p>两种事件反映的网络拥塞<strong>严重程度不同</strong>。<strong>收到 3 个冗余 ACK</strong>，表明后续部分报文段已成功到达接收方（否则无法触发重复确认），说明网络仍具备一定传输能力，拥塞相对较轻。此时 TCP 采用快速重传机制，将 cwnd 减半（乘法减小），适度降低发送速率。<strong>超时事件发生</strong>，意味着连 ACK 都未能及时返回，很可能网络已严重拥塞甚至局部瘫痪。为最大限度缓解拥塞，TCP 将 cwnd 重置为 1MSS，进入慢开始阶段，极其谨慎地重新探测网络容量。因此，<strong>超时代表更严重的拥塞，故采取更强的抑制措施；而冗余 ACK 表明网络尚可通信，只需适度退让</strong>。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 4：为什么不采用"两次握手"建立连接？</div>
+<p>主要是为了<strong>防止已失效的连接请求报文段突然传送到服务器，导致错误建立连接</strong>。考虑如下情况：客户 A 向服务器 B 发送 TCP 连接请求（SYN），该报文在网络中长时间滞留。A 超时后重传 SYN，B 收到后正常建立连接，完成数据传输并断开。此后，先前滞留的<strong>旧 SYN 报文（失效请求）才到达 B</strong>。</p>
+<ul>
+  <li><strong>若采用三次握手</strong>：B 收到旧 SYN 后，会向 A 发送 SYN-ACK；但 A 发现该确认序号无效（非当前请求），直接丢弃，不回复 ACK，连接无法建立。</li>
+  <li><strong>若采用两次握手</strong>：B 收到旧 SYN 后，立即认为连接已建立，并等待 A 发送数据；而 A 并无此连接意图，不会响应，导致 B 长期占用资源，造成浪费。</li>
+</ul>
+<p>因此，三次握手能有效避免因网络延迟的旧请求引发的资源误分配，而两次握手无法做到。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 5：为什么 TCP 在建立连接时不能每次都选择相同的、固定的初始序号？</div>
+<p>假设主机 A 与 B 频繁建立连接、传输数据后释放。若每次 A 都使用相同的初始序号（如 1），考虑这样的场景：A 发送的某些 TCP 报文段在网络中滞留较久，A 超时后重传并完成后续通信。但这些旧报文段在连接早已释放后才到达 B，而此时 A 与 B 已建立一条<strong>新的 TCP 连接</strong>。由于新连接仍使用相同的初始序号，旧报文段的序号可能落在新连接的有效窗口内，导致 B 误将其当作新数据接收，造成数据混乱或协议错误。为防止此类问题，<strong>新连接的初始序号必须与之前连接使用过的序号不同</strong>，确保迟到的旧报文段序号不会被新连接接受。因此，TCP 不能使用固定初始序号，而应采用随时间递增的<strong>随机化初始序号</strong>。</p>
+</div>
+<div class="box warn"><div class="box-title">⚠️ 疑难点 6：假定在一个互联网中，所有链路的传输都不出现差错、所有节点也都不会发生故障，TCP 的"可靠交付"功能是否就是多余的？</div>
+<p><strong>不是多余的</strong>。即使底层无差错、无故障，IP 层本身是<strong>无连接且不可靠</strong>的，仍可能导致数据丢失、失序或重复，因此 TCP 的可靠交付依然必不可少。典型情况包括：</p>
+<ol>
+  <li>IP 数据报独立选路，可能到达时<strong>失序</strong>；</li>
+  <li>路由异常可能导致数据报在网中循环，TTL 减至 0 后被<strong>丢弃</strong>；</li>
+  <li>路由器突发拥塞时，来不及处理的数据报会被<strong>丢弃</strong>。</li>
+</ol>
+<p>以上问题均发生在网络层，与链路差错或节点故障无关。只有依靠 TCP 的可靠交付机制，才能确保目的进程收到完整、有序且无重复的数据。</p>
+</div>
+
+<div class="pager">
+      <a class="prev" href="5.3.html"><span class="label">上一篇</span>5.3 TCP</a>
+      <a class="next" href="quiz.html"><span class="label">下一篇</span>第5章 习题</a>
+    </div>
+</main>
+<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>
