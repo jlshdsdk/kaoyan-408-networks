@@ -3,25 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6.1 网络应用模型 - 考研408计算机网络带学</title>
+<title>6.1 网络应用模型 - 计算机网络自学网站</title>
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<script>window.SITE_BASE = '../';</script>
+<script defer src="../assets/js/site.js"></script>
 </head>
 <body>
-<nav class="topnav"><div class="inner">
-      <a class="brand" href="../index.html">考研408计算机网络带学</a>
-      <a class="chlink" href="../index.html">首页</a>
-      <a class="chlink" href="../ch1/index.html">第1章</a>
-      <a class="chlink" href="../ch2/index.html">第2章</a>
-      <a class="chlink" href="../ch3/index.html">第3章</a>
-      <a class="chlink" href="../ch4/index.html">第4章</a>
-      <a class="chlink" href="../ch5/index.html">第5章</a>
-      <a class="chlink" href="../ch6/index.html">第6章</a>
-</div></nav>
-<main>
+<header class="topbar">
+    <button class="burger" id="btn-burger" aria-label="目录">☰</button>
+    <a class="brand" href="../index.html">计算机网络自学网站</a>
+    <span class="tagline">王道带学 · 考点 × 插图 × 真题 × 打卡</span>
+    <span class="spacer"></span>
+    <div class="searchbox">
+      <span class="s-ico">🔎</span>
+      <input id="search-input" type="text" placeholder="全网搜索知识点 / 协议 / 端口号 / 题号…" autocomplete="off">
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <button class="topbtn" id="btn-fs-dec" title="减小字号">A-</button>
+    <button class="topbtn" id="btn-fs-inc" title="增大字号">A+</button>
+    <button class="topbtn" id="btn-theme" title="深色模式">🌙</button>
+  </header>
+<div class="side-mask" id="side-mask"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<div class="side-brand">
+      <div class="sb-title">循序渐进</div>
+      <div class="sb-line">计算机网络 · 408 带学手册<br>紧扣考纲 · 学练结合</div>
+    </div>
+<a class="side-home" href="../index.html">🏠 全站首页 · 408 考纲对照</a>
+<div class="side-group" data-ch="1">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第1章 计算机网络体系结构</span><span class="cnt">0/5</span></div>
+<div class="side-items">
+<a href="../ch1/index.html" data-key="ch1/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch1/1.1.html" data-key="ch1/1.1.html"><span class="dot">●</span>1.1 计算机网络概述</a>
+<a href="../ch1/1.2.html" data-key="ch1/1.2.html"><span class="dot">●</span>1.2 计算机网络体系结构与参考模型</a>
+<a href="../ch1/1.3.html" data-key="ch1/1.3.html"><span class="dot">●</span>1.3 本章小结及疑难点</a>
+<a href="../ch1/quiz.html" data-key="ch1/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+<div class="side-group" data-ch="2">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第2章 物理层</span><span class="cnt">0/6</span></div>
+<div class="side-items">
+<a href="../ch2/index.html" data-key="ch2/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch2/2.1.html" data-key="ch2/2.1.html"><span class="dot">●</span>2.1 通信基础</a>
+<a href="../ch2/2.2.html" data-key="ch2/2.2.html"><span class="dot">●</span>2.2 传输介质</a>
+<a href="../ch2/2.3.html" data-key="ch2/2.3.html"><span class="dot">●</span>2.3 物理层设备</a>
+<a href="../ch2/2.4.html" data-key="ch2/2.4.html"><span class="dot">●</span>2.4 本章小结及疑难点</a>
+<a href="../ch2/quiz.html" data-key="ch2/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+<div class="side-group" data-ch="3">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第3章 数据链路层</span><span class="cnt">0/11</span></div>
+<div class="side-items">
+<a href="../ch3/index.html" data-key="ch3/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch3/3.1.html" data-key="ch3/3.1.html"><span class="dot">●</span>3.1 数据链路层的功能</a>
+<a href="../ch3/3.2.html" data-key="ch3/3.2.html"><span class="dot">●</span>3.2 组帧</a>
+<a href="../ch3/3.3.html" data-key="ch3/3.3.html"><span class="dot">●</span>3.3 差错控制</a>
+<a href="../ch3/3.4.html" data-key="ch3/3.4.html"><span class="dot">●</span>3.4 流量控制与可靠传输机制</a>
+<a href="../ch3/3.5.html" data-key="ch3/3.5.html"><span class="dot">●</span>3.5 介质访问控制</a>
+<a href="../ch3/3.6.html" data-key="ch3/3.6.html"><span class="dot">●</span>3.6 局域网</a>
+<a href="../ch3/3.7.html" data-key="ch3/3.7.html"><span class="dot">●</span>3.7 广域网</a>
+<a href="../ch3/3.8.html" data-key="ch3/3.8.html"><span class="dot">●</span>3.8 数据链路层设备</a>
+<a href="../ch3/3.9.html" data-key="ch3/3.9.html"><span class="dot">●</span>3.9 本章小结及疑难点</a>
+<a href="../ch3/quiz.html" data-key="ch3/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+<div class="side-group" data-ch="4">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第4章 网络层</span><span class="cnt">0/10</span></div>
+<div class="side-items">
+<a href="../ch4/index.html" data-key="ch4/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch4/4.1.html" data-key="ch4/4.1.html"><span class="dot">●</span>4.1 网络层的功能</a>
+<a href="../ch4/4.2.html" data-key="ch4/4.2.html"><span class="dot">●</span>4.2 IPv4</a>
+<a href="../ch4/4.3.html" data-key="ch4/4.3.html"><span class="dot">●</span>4.3 IPv6</a>
+<a href="../ch4/4.4.html" data-key="ch4/4.4.html"><span class="dot">●</span>4.4 路由算法与路由协议</a>
+<a href="../ch4/4.5.html" data-key="ch4/4.5.html"><span class="dot">●</span>4.5 IP多播</a>
+<a href="../ch4/4.6.html" data-key="ch4/4.6.html"><span class="dot">●</span>4.6 移动IP</a>
+<a href="../ch4/4.7.html" data-key="ch4/4.7.html"><span class="dot">●</span>4.7 网络层设备</a>
+<a href="../ch4/4.8.html" data-key="ch4/4.8.html"><span class="dot">●</span>4.8 本章小结及疑难点</a>
+<a href="../ch4/quiz.html" data-key="ch4/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+<div class="side-group" data-ch="5">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第5章 传输层</span><span class="cnt">0/6</span></div>
+<div class="side-items">
+<a href="../ch5/index.html" data-key="ch5/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch5/5.1.html" data-key="ch5/5.1.html"><span class="dot">●</span>5.1 传输层提供的服务</a>
+<a href="../ch5/5.2.html" data-key="ch5/5.2.html"><span class="dot">●</span>5.2 UDP</a>
+<a href="../ch5/5.3.html" data-key="ch5/5.3.html"><span class="dot">●</span>5.3 TCP</a>
+<a href="../ch5/5.4.html" data-key="ch5/5.4.html"><span class="dot">●</span>5.4 本章小结及疑难点</a>
+<a href="../ch5/quiz.html" data-key="ch5/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+<div class="side-group open" data-ch="6">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第6章 应用层</span><span class="cnt">0/8</span></div>
+<div class="side-items">
+<a href="../ch6/index.html" data-key="ch6/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch6/6.1.html" class="active" data-key="ch6/6.1.html"><span class="dot">●</span>6.1 网络应用模型</a>
+<a href="../ch6/6.2.html" data-key="ch6/6.2.html"><span class="dot">●</span>6.2 域名系统</a>
+<a href="../ch6/6.3.html" data-key="ch6/6.3.html"><span class="dot">●</span>6.3 文件传输协议</a>
+<a href="../ch6/6.4.html" data-key="ch6/6.4.html"><span class="dot">●</span>6.4 电子邮件</a>
+<a href="../ch6/6.5.html" data-key="ch6/6.5.html"><span class="dot">●</span>6.5 万维网</a>
+<a href="../ch6/6.6.html" data-key="ch6/6.6.html"><span class="dot">●</span>6.6 本章小结及疑难点</a>
+<a href="../ch6/quiz.html" data-key="ch6/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+</div></div>
+</aside>
+<main class="content">
 <div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第6章 应用层</a> › <span>6.1 网络应用模型</span></div>
 <h1 class="page-title">6.1 网络应用模型</h1>
 <p class="subtitle">对应王道教材 6.1 节（教材 P267–P269）· 本节属于 408 考纲范围</p>
@@ -83,7 +174,8 @@
       <a class="next" href="6.2.html"><span class="label">下一篇</span>6.2 域名系统</a>
     </div>
 </main>
-<footer class="site-footer">考研408计算机网络带学 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+</div>
+<footer class="site-footer">计算机网络自学网站 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
 习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
 </body>
 </html>

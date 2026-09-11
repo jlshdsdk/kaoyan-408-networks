@@ -1,53 +1,45 @@
 # -*- coding: utf-8 -*-
-"""页面构建器：把 src/ 下的内容片段包上统一的头/导航/面包屑/尾/上页下页，输出到站点目录。
-- 子代理只写内容片段（<main> 内部），消灭相对路径/导航错误
+"""页面构建器 v2：顶栏 + 侧边目录 + 内容区 布局。
+- 子代理只写内容片段（<main> 内部），导航/侧栏/搜索索引由本脚本统一生成
 - 用法：
     python pagebuild.py              # 构建全部
     python pagebuild.py ch1/1.1     # 只构建指定页
-片段路径约定：src/{chdir}/{page}.frag.html，例如 src/ch1/1.1.frag.html
-特殊片段：src/index.frag.html → index.html（根）
-每章：src/chN/index.frag.html（导学）、src/chN/quiz.frag.html（习题）
+片段路径约定：src/{chdir}/{page}.frag.html；quiz 支持 quiz.part-*.frag.html 拼接
 页面顺序（prev/next）：首页 → ch1导学 → ch1各节 → ch1 quiz → ch2导学 → …
+另生成 search-index.json（站内搜索用）。
 """
-import sys, os, json
+import sys, os, json, glob as _glob
 
 base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 manifest = json.load(open(os.path.join(base, 'scripts', 'site_manifest.json'), encoding='utf-8'))
 
-SITE_NAME = '考研408计算机网络带学'
+SITE_NAME = '计算机网络自学网站'
+TAGLINE = '王道带学 · 考点 × 插图 × 真题 × 打卡'
+BRAND_TITLE = '循序渐进'
+BRAND_L1 = '计算机网络 · 408 带学手册'
+BRAND_L2 = '紧扣考纲 · 学练结合'
 
 
 def flat_pages():
-    seq = [{'key': 'index.html', 'title': '首页'}]
+    seq = [{'key': 'index.html', 'title': '首页', 'ch': 0}]
     for ch in manifest['chapters']:
         n = ch['num']
         d = f'ch{n}'
-        seq.append({'key': f'{d}/index.html', 'title': f'第{n}章 导学'})
+        seq.append({'key': f'{d}/index.html', 'title': f'第{n}章 导学', 'ch': n})
         for s in ch['sections']:
-            seq.append({'key': f'{d}/{s["id"]}.html', 'title': f'{s["id"]} {s["title"]}'})
-        seq.append({'key': f'{d}/quiz.html', 'title': f'第{n}章 习题'})
+            seq.append({'key': f'{d}/{s["id"]}.html', 'title': f'{s["id"]} {s["title"]}', 'ch': n})
+        seq.append({'key': f'{d}/quiz.html', 'title': f'第{n}章 习题', 'ch': n})
     return seq
 
 
-def nav_links(depth):
-    r = '../' * depth
-    out = [f'<a class="brand" href="{r}index.html">{SITE_NAME}</a>',
-           f'<a class="chlink" href="{r}index.html">首页</a>']
-    for ch in manifest['chapters']:
-        n = ch['num']
-        out.append(f'<a class="chlink" href="{r}ch{n}/index.html">第{n}章</a>')
-    return '\n      '.join(out)
-
-
 def page_href(target_key, cur_key):
-    """计算从 cur_key 页面指向 target_key 页面的相对链接。"""
+    """相对链接：cur 为根页或 chN 内页。"""
     cur_depth = 0 if cur_key == 'index.html' else 1
     prefix = '../' * cur_depth
     if target_key == 'index.html':
         return prefix + 'index.html'
     if cur_depth == 0:
-        return target_key  # 根页面指向 chN/xxx.html
-    # 同章目录内：chN/xxx.html → xxx.html（同章），跨章 → ../chM/xxx.html
+        return target_key
     cur_dir = cur_key.split('/')[0]
     tgt_dir = target_key.split('/')[0]
     if tgt_dir == cur_dir:
@@ -55,20 +47,65 @@ def page_href(target_key, cur_key):
     return prefix + target_key
 
 
+def topbar_html(depth, cur_key):
+    r = '../' * depth
+    return f'''<header class="topbar">
+    <button class="burger" id="btn-burger" aria-label="目录">☰</button>
+    <a class="brand" href="{r}index.html">{SITE_NAME}</a>
+    <span class="tagline">{TAGLINE}</span>
+    <span class="spacer"></span>
+    <div class="searchbox">
+      <span class="s-ico">🔎</span>
+      <input id="search-input" type="text" placeholder="全网搜索知识点 / 协议 / 端口号 / 题号…" autocomplete="off">
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <button class="topbtn" id="btn-fs-dec" title="减小字号">A-</button>
+    <button class="topbtn" id="btn-fs-inc" title="增大字号">A+</button>
+    <button class="topbtn" id="btn-theme" title="深色模式">🌙</button>
+  </header>'''
+
+
+def sidebar_html(depth, cur_key):
+    """cur_key 形如 'index.html' 或 'ch1/1.1.html'。"""
+    r = '../' * depth
+    cur_ch = 0 if cur_key == 'index.html' else int(cur_key.split('/')[0][2:])
+    parts = ['<aside class="sidebar" id="sidebar">']
+    parts.append(f'''<div class="side-brand">
+      <div class="sb-title">{BRAND_TITLE}</div>
+      <div class="sb-line">{BRAND_L1}<br>{BRAND_L2}</div>
+    </div>''')
+    parts.append(f'<a class="side-home" href="{r}index.html">🏠 全站首页 · 408 考纲对照</a>')
+    for ch in manifest['chapters']:
+        n = ch['num']
+        open_cls = ' open' if n == cur_ch else ''
+        cnt = 2 + len(ch['sections'])
+        parts.append(f'<div class="side-group{open_cls}" data-ch="{n}">')
+        parts.append(f'''<div class="side-head"><span class="chev">▶</span>
+          <span>第{n}章 {ch["title"]}</span><span class="cnt">0/{cnt}</span></div>''')
+        parts.append('<div class="side-items">')
+        items = [(f'ch{n}/index.html', '本章导学')]
+        items += [(f'ch{n}/{s["id"]}.html', f'{s["id"]} {s["title"]}') for s in ch['sections']]
+        items.append((f'ch{n}/quiz.html', '章末习题 · 答案折叠'))
+        for key, label in items:
+            active = ' class="active"' if key == cur_key else ''
+            datak = f' data-key="{key}"'
+            parts.append(f'<a href="{r}{key}"{active}{datak}><span class="dot">●</span>{label}</a>')
+        parts.append('</div></div>')
+    parts.append('</aside>')
+    return '\n'.join(parts)
+
+
 def load_body(frag_key):
-    """读片段；习题页支持 quiz.part-*.frag.html 多部分按序拼接（大章习题由多个工匠分写）。"""
-    import glob as _g
     frag = os.path.join(base, 'src', *frag_key.split('/')) + '.frag.html'
     if os.path.exists(frag):
         return open(frag, encoding='utf-8').read()
-    parts = sorted(_g.glob(os.path.join(base, 'src', *frag_key.split('/')) + '.part-*.frag.html'))
+    parts = sorted(_glob.glob(os.path.join(base, 'src', *frag_key.split('/')) + '.part-*.frag.html'))
     if parts:
         return '\n'.join(open(p, encoding='utf-8').read() for p in parts)
     return None
 
 
 def build_page(frag_key, title, crumbs, prev, nxt):
-    """frag_key 形如 'ch1/1.1'、'ch1/quiz' 或 'index'。"""
     body = load_body(frag_key)
     if body is None:
         return False
@@ -82,11 +119,11 @@ def build_page(frag_key, title, crumbs, prev, nxt):
 
     # 占位符注入：全站目录（首页用）
     if '<!--FULL_TOC-->' in body:
-        parts = ['<div class="box">']
+        parts = ['<div class="tocbox">']
         for ch in manifest['chapters']:
             n = ch['num']
             parts.append(f'<h3 class="sub" style="margin:14px 0 6px">第{n}章 {ch["title"]}</h3>')
-            parts.append('<div style="font-size:14.5px">')
+            parts.append('<div style="font-size:.9rem">')
             parts.append(f'<div class="toc-line"><a href="ch{n}/index.html">本章导学</a><span class="pg">考纲要求 · 章节地图</span></div>')
             for s in ch['sections']:
                 subs = ' / '.join(x['id'] for x in s['subsections'])
@@ -119,16 +156,20 @@ def build_page(frag_key, title, crumbs, prev, nxt):
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
   onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'\\\\(',right:'\\\\)',display:false}}],throwOnError:false}});"></script>
+<script>window.SITE_BASE = '{r}';</script>
+<script defer src="{r}assets/js/site.js"></script>
 </head>
 <body>
-<nav class="topnav"><div class="inner">
-      {nav_links(depth)}
-</div></nav>
-<main>
+{topbar_html(depth, cur_key)}
+<div class="side-mask" id="side-mask"></div>
+<div class="layout">
+{sidebar_html(depth, cur_key)}
+<main class="content">
 <div class="crumbs">{crumb_html}</div>
 {body}
 {pager}
 </main>
+</div>
 <footer class="site-footer">{SITE_NAME} · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
 习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
 </body>
@@ -141,8 +182,26 @@ def build_page(frag_key, title, crumbs, prev, nxt):
     return True
 
 
+def write_search_index():
+    idx = [{'t': '首页 · 408 考纲对照', 'u': 'index.html', 's': '', 'k': '考纲 大纲 对照 使用说明 目录'}]
+    for ch in manifest['chapters']:
+        n = ch['num']
+        idx.append({'t': f'第{n}章 {ch["title"]} · 导学', 'u': f'ch{n}/index.html',
+                    's': '', 'k': '考纲要求 复习提示 考点分布 章节地图'})
+        for s in ch['sections']:
+            subs = ' '.join(x['title'] for x in s['subsections'])
+            idx.append({'t': f'{s["id"]} {s["title"]}', 'u': f'ch{n}/{s["id"]}.html',
+                        's': f'第{n}章 {ch["title"]}', 'k': subs})
+        idx.append({'t': f'第{n}章 习题', 'u': f'ch{n}/quiz.html', 's': f'第{n}章',
+                    'k': '选择题 综合题 答案 解析 做题本 真题'})
+    outp = os.path.join(base, 'search-index.json')
+    with open(outp, 'w', encoding='utf-8') as f:
+        json.dump(idx, f, ensure_ascii=False, indent=0)
+    print(f'SEARCH_INDEX {len(idx)} entries')
+
+
 def main():
-    only = sys.argv[1].rstrip('.html') if len(sys.argv) > 1 else None
+    only = sys.argv[1] if len(sys.argv) > 1 else None
     if only and only.endswith('.html'):
         only = only[:-5]
     seq = flat_pages()
@@ -150,12 +209,9 @@ def main():
 
     def neighbors(key):
         i = idx[key]
-        prv = seq[i-1] if i > 0 else None
-        nx = seq[i+1] if i+1 < len(seq) else None
-        return prv, nx
+        return (seq[i-1] if i > 0 else None), (seq[i+1] if i+1 < len(seq) else None)
 
-    jobs = []  # (frag_key, out_key, title, crumbs)
-    jobs.append(('index', 'index.html', '首页', [('首页', None)]))
+    jobs = [('index', 'index.html', '首页', [('首页', None)])]
     for ch in manifest['chapters']:
         n = ch['num']
         d = f'ch{n}'
@@ -178,6 +234,8 @@ def main():
         prv, nx = neighbors(out_key)
         if build_page(frag_key, title, crumbs, prv, nx):
             built += 1
+    if not only:
+        write_search_index()
     print(f'PAGEBUILD_DONE built={built}')
 
 
