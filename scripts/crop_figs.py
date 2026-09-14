@@ -12,7 +12,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 from PIL import Image
 
 base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGEDIRS = {'textbook': 'textbook', 'choice': 'choice', 'comp': 'comp'}
+PAGEDIRS = {'textbook': 'textbook', 'choice': 'choice', 'comp': 'comp',
+            'biji': 'biji', 'gaojun': 'gaojun'}
 
 figdir = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1].startswith('--ch') else None
 

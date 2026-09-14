@@ -205,6 +205,11 @@ ol li, ul li { margin: 4px 0; }
 .box.warn { border-left: 4px solid var(--amber); background: var(--amber-light); }
 .box.exam { border-left: 4px solid var(--accent); background: #fef2f2; }
 html[data-theme="dark"] .box.exam { background: #7f1d1d33; }
+.box.sup { border-left: 4px solid #8b5cf6; background: #f8f5ff; }
+html[data-theme="dark"] .box.sup { background: #8b5cf620; }
+.box.sup .box-title { color: #6d28d9; }
+html[data-theme="dark"] .box.sup .box-title { color: #c4b5fd; }
+.badge.sup { background: #8b5cf6; color: #fff; }
 
 /* 徽标 */
 .badge {

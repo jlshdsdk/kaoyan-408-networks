@@ -142,6 +142,7 @@
 </div>
 <div class="box warn"><div class="box-title">⚠️ 疑难点 4：为什么不采用"两次握手"建立连接？</div>
 <p>主要是为了<strong>防止已失效的连接请求报文段突然传送到服务器，导致错误建立连接</strong>。考虑如下情况：客户 A 向服务器 B 发送 TCP 连接请求（SYN），该报文在网络中长时间滞留。A 超时后重传 SYN，B 收到后正常建立连接，完成数据传输并断开。此后，先前滞留的<strong>旧 SYN 报文（失效请求）才到达 B</strong>。</p>
+<figure class="fig"><img src="../assets/ch5/sup-5-1.png" alt="“两报文握手”建立 TCP 连接可能出现的错误" loading="lazy"><figcaption>图 5-sup-1 "两报文握手"建立 TCP 连接可能出现的错误（高军教材 P300）</figcaption></figure>
 <ul>
   <li><strong>若采用三次握手</strong>：B 收到旧 SYN 后，会向 A 发送 SYN-ACK；但 A 发现该确认序号无效（非当前请求），直接丢弃，不回复 ACK，连接无法建立。</li>
   <li><strong>若采用两次握手</strong>：B 收到旧 SYN 后，立即认为连接已建立，并等待 A 发送数据；而 A 并无此连接意图，不会响应，导致 B 长期占用资源，造成浪费。</li>

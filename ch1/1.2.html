@@ -260,6 +260,9 @@
 <div class="box exam"><div class="box-title">🎯 考点跟踪：应用层数据的逐层封装过程（2021 统考）</div></div>
 <p>使用协议栈进行通信的过程如图 1.18 所示：每个协议栈的顶端是一个面向用户的接口。用户首先将数据交给本主机的应用层，应用层加上必要的控制信息，组成应用层的 PDU；然后下放到传输层，作为传输层的 SDU，加上传输层的 PCI，组成传输层的 PDU；接着下放到网络层，组成网络层的 SDU，加上网络层的 PCI，再次组成网络层的 PDU；继续下放到数据链路层……如此<strong>层层下放、层层封装</strong>，最终形成的数据帧（或数据包）经过物理链路传输。到达接收方节点后，协议栈逆向<strong>逐层拆开"包裹"</strong>，并将收到的数据交给用户。</p>
 <figure class="fig"><img src="../assets/ch1/fig-1-18.png" alt="图1.18 协议栈的通信过程示例" loading="lazy"><figcaption>图 1.18 协议栈的通信过程示例（王道教材 P22）</figcaption></figure>
+<div class="box sup"><div class="box-title"><span class="badge sup">深入浅出</span>补充：从"发一个请求"看各层各管什么事</div>
+<p>把封装过程落到每一层"加的那一坨控制信息"上，分层的目的就一目了然：应用层构建 HTTP 请求报文；传输层加 TCP 首部——为了<strong>区分应用进程并实现可靠传输</strong>；网络层加 IP 首部——为了<strong>让分组能在互联网上被路由器转发</strong>；数据链路层加帧头和帧尾——为了<strong>在一段链路上送达并检错</strong>；物理层还要加<strong>前导码</strong>——为了让接收方"听见铃声"、做好接收帧的准备。最有意思的是中间路由器：它只拆到网络层，读出目的网络地址查路由表转发，<strong>再把帧头帧尾拆掉重新封装成适配下一段网络的新帧</strong>——同一份数据在两段链路上"穿了两件不同的外衣"。理解了这一点，"每层只关心自己的首部"就不再是死记硬背。（高军教材 1.6.2、湖科大笔记 1.2 节）</p>
+</div>
 
 <div class="pager">
       <a class="prev" href="1.1.html"><span class="label">上一篇</span>1.1 计算机网络概述</a>
