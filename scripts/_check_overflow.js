@@ -1,1 +1,0 @@
-(function(){var vw=document.documentElement.clientWidth;var out=[];document.querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();if(r.right>vw+2&&r.width>30){out.push(el.tagName+' w='+Math.round(r.width));}});return 'overflow_count='+out.length+' dw='+document.documentElement.scrollWidth+' vw='+vw+' details='+out.slice(0,6).join(',');})()

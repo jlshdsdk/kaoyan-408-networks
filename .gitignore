@@ -10,3 +10,10 @@ scripts/__pycache__/
  
 # 源 PDF 体积超大（最大 188MB 超 GitHub 100MB 限制），不入库 
 *.pdf
+ 
+# 走查临时产物 
+shots/ 
+scripts/_*.js 
+scripts/_*.txt 
+scripts/_*.tgz 
+scripts/_*.html
