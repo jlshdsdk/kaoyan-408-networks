@@ -249,6 +249,19 @@ html[data-theme="dark"] table.tbl th { color: #ddd3fe; }
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 15px 20px; margin: 18px 0;
 }
+/* 习题配图（裸 img）：约束宽度、居中、卡片观感 */
+.quiz-item img, main.content img {
+  max-width: 100%; height: auto;
+}
+.quiz-item p > img:only-child, .quiz-item img {
+  display: block; margin: 12px auto;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: #fff; padding: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.quiz-item td img, .quiz-item th img { margin: 4px auto; }
+/* KaTeX 长公式横向滚动兜底 */
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 3px 0; }
 .quiz-item .q-no { font-weight: 700; color: var(--primary); }
 .quiz-item .q-src { font-size: .76rem; color: #94a3b8; margin-left: 8px; }
 .choices { margin: 8px 0 4px; padding-left: 8px; list-style: none; }
@@ -377,6 +390,19 @@ footer.site-footer {
   h1.page-title { font-size: 1.45rem; }
   .pager { flex-direction: column; }
   .pager .next { text-align: left; }
+}
+@media (max-width: 640px) {
+  /* 顶栏收窄：隐藏搜索框，压缩按钮与间距，杜绝横向溢出 */
+  .topbar { gap: 8px; padding: 0 10px; }
+  .topbar .searchbox { display: none; }
+  .topbar .brand { font-size: 1rem; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .topbar .spacer { display: none; }
+  .topbtn { width: 30px; height: 30px; font-size: .76rem; }
+  .topbar .burger { width: 32px; }
+  main.content { padding: 18px 14px 56px; }
+  .hero { padding: 22px 16px 18px; }
+  .motto .m-main { font-size: 1.02rem; letter-spacing: 2px; }
+  .card { padding: 16px; }
 }
 @media print {
   .topbar, .sidebar, .pager, details.ans summary, .side-mask { display: none; }

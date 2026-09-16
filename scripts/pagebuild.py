@@ -105,6 +105,15 @@ def load_body(frag_key):
     return None
 
 
+def asset_v(rel):
+    """静态资源 mtime 版本号（缓存穿透）。"""
+    p = os.path.join(base, *rel.split('/'))
+    try:
+        return str(int(os.path.getmtime(p)))
+    except OSError:
+        return '1'
+
+
 def build_page(frag_key, title, crumbs, prev, nxt):
     body = load_body(frag_key)
     if body is None:
@@ -151,13 +160,13 @@ def build_page(frag_key, title, crumbs, prev, nxt):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} - {SITE_NAME}</title>
-<link rel="stylesheet" href="{r}assets/css/site.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+<link rel="stylesheet" href="{r}assets/css/site.css?v={asset_v('assets/css/site.css')}">
+<link rel="stylesheet" href="{r}assets/katex/katex.min.css?v={asset_v('assets/katex/katex.min.css')}">
+<script defer src="{r}assets/katex/katex.min.js?v={asset_v('assets/katex/katex.min.js')}"></script>
+<script defer src="{r}assets/katex/contrib/auto-render.min.js?v={asset_v('assets/katex/contrib/auto-render.min.js')}"
   onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'\\\\(',right:'\\\\)',display:false}}],throwOnError:false}});"></script>
 <script>window.SITE_BASE = '{r}';</script>
-<script defer src="{r}assets/js/site.js"></script>
+<script defer src="{r}assets/js/site.js?v={asset_v('assets/js/site.js')}"></script>
 </head>
 <body>
 {topbar_html(depth, cur_key)}
