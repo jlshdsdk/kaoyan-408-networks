@@ -2,6 +2,20 @@
 
 > 任务已完成并上线。本文件留作档案。
 
+## 2026-09-17 agent-browser 润色走查
+
+用 agent-browser CLI 全站走查（首页亮/暗、正文页、习题页展开答案、移动端 400px、vitals），修复：
+1. **习题页横向溢出**（dw 2861px）：69 张习题配图是裸 `<img>`（`<p>`/`<td>` 内），未吃到 figure 的
+   max-width → 新增 `.quiz-item img / main.content img` 全局约束 + 卡片化观感
+2. **KaTeX 长公式溢出兜底**：`.katex-display` overflow-x auto
+3. **移动端顶栏溢出 66px**（A+/🌙 被挤出屏）：≤640px 隐藏搜索框、压缩按钮（400px 视口 dw=vw 清零）
+4. **LCP 6780ms → 244ms**：KaTeX CSS/JS/字体（20 woff2）自托管至 assets/katex/，
+   摆脱 jsdelivr 阻塞渲染（国内访问 CDN 慢是主因）；同源加载
+5. **缓存穿透**：css/js 链接加 ?v=mtime，用户更新后不再吃到旧缓存
+6. 走查确认正常：侧栏折叠/进度计数、搜索、打卡、暗色模式、答案折叠、sup 补充框、KaTeX 公式
+（走查截图存 shots/，已加入 .gitignore 不入库；agent-browser 走查时曾误连旧 daemon 会话里的
+其他站点标签，close --all 后恢复正常——换工具走查时注意会话隔离）
+
 ## 2026-09-15 补充资料融合（用户提交两本《深入浅出计算机网络》）
 
 融合策略与结果（重复内容已刻意排除，工匠汇报了"未采纳清单"）：
