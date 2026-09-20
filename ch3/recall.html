@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3章 速记手册 - 计算机网络自学网站</title>
+<link rel="stylesheet" href="../assets/css/site.css?v=1789885100">
+<link rel="stylesheet" href="../assets/katex/katex.min.css?v=499162500">
+<script defer src="../assets/katex/katex.min.js?v=499162500"></script>
+<script defer src="../assets/katex/contrib/auto-render.min.js?v=499162500"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<script>window.SITE_BASE = '../';</script>
+<script>window.SELFTEST = 0;</script>
+<script defer src="../assets/js/site.js?v=1789129371"></script>
+<script defer src="../assets/js/selftest.js?v=1789884746"></script>
+</head>
+<body>
+<header class="topbar">
+    <button class="burger" id="btn-burger" aria-label="目录">☰</button>
+    <a class="brand" href="../index.html">计算机网络自学网站</a>
+    <span class="tagline">王道带学 · 考点 × 插图 × 真题 × 打卡</span>
+    <span class="spacer"></span>
+    <div class="searchbox">
+      <span class="s-ico">🔎</span>
+      <input id="search-input" type="text" placeholder="全网搜索知识点 / 协议 / 端口号 / 题号…" autocomplete="off">
+      <div class="search-results" id="search-results"></div>
+    </div>
+    <button class="topbtn" id="btn-fs-dec" title="减小字号">A-</button>
+    <button class="topbtn" id="btn-fs-inc" title="增大字号">A+</button>
+    <button class="topbtn" id="btn-theme" title="深色模式">🌙</button>
+  </header>
+<div class="side-mask" id="side-mask"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<div class="side-brand">
+      <div class="sb-title">循序渐进</div>
+      <div class="sb-line">计算机网络 · 408 带学手册<br>紧扣考纲 · 学练结合</div>
+    </div>
+<a class="side-home" href="../index.html">🏠 全站首页 · 408 考纲对照</a>
+<div class="side-group" data-ch="1">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第1章 计算机网络体系结构</span><span class="cnt">0/5</span></div>
+<div class="side-items">
+<a href="../ch1/index.html" data-key="ch1/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch1/1.1.html" data-key="ch1/1.1.html"><span class="dot">●</span>1.1 计算机网络概述</a>
+<a href="../ch1/1.2.html" data-key="ch1/1.2.html"><span class="dot">●</span>1.2 计算机网络体系结构与参考模型</a>
+<a href="../ch1/1.3.html" data-key="ch1/1.3.html"><span class="dot">●</span>1.3 本章小结及疑难点</a>
+<a href="../ch1/quiz.html" data-key="ch1/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch1/recall.html" data-key="ch1/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+<div class="side-group" data-ch="2">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第2章 物理层</span><span class="cnt">0/6</span></div>
+<div class="side-items">
+<a href="../ch2/index.html" data-key="ch2/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch2/2.1.html" data-key="ch2/2.1.html"><span class="dot">●</span>2.1 通信基础</a>
+<a href="../ch2/2.2.html" data-key="ch2/2.2.html"><span class="dot">●</span>2.2 传输介质</a>
+<a href="../ch2/2.3.html" data-key="ch2/2.3.html"><span class="dot">●</span>2.3 物理层设备</a>
+<a href="../ch2/2.4.html" data-key="ch2/2.4.html"><span class="dot">●</span>2.4 本章小结及疑难点</a>
+<a href="../ch2/quiz.html" data-key="ch2/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch2/recall.html" data-key="ch2/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+<div class="side-group open" data-ch="3">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第3章 数据链路层</span><span class="cnt">0/11</span></div>
+<div class="side-items">
+<a href="../ch3/index.html" data-key="ch3/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch3/3.1.html" data-key="ch3/3.1.html"><span class="dot">●</span>3.1 数据链路层的功能</a>
+<a href="../ch3/3.2.html" data-key="ch3/3.2.html"><span class="dot">●</span>3.2 组帧</a>
+<a href="../ch3/3.3.html" data-key="ch3/3.3.html"><span class="dot">●</span>3.3 差错控制</a>
+<a href="../ch3/3.4.html" data-key="ch3/3.4.html"><span class="dot">●</span>3.4 流量控制与可靠传输机制</a>
+<a href="../ch3/3.5.html" data-key="ch3/3.5.html"><span class="dot">●</span>3.5 介质访问控制</a>
+<a href="../ch3/3.6.html" data-key="ch3/3.6.html"><span class="dot">●</span>3.6 局域网</a>
+<a href="../ch3/3.7.html" data-key="ch3/3.7.html"><span class="dot">●</span>3.7 广域网</a>
+<a href="../ch3/3.8.html" data-key="ch3/3.8.html"><span class="dot">●</span>3.8 数据链路层设备</a>
+<a href="../ch3/3.9.html" data-key="ch3/3.9.html"><span class="dot">●</span>3.9 本章小结及疑难点</a>
+<a href="../ch3/quiz.html" data-key="ch3/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch3/recall.html" class="active" data-key="ch3/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+<div class="side-group" data-ch="4">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第4章 网络层</span><span class="cnt">0/10</span></div>
+<div class="side-items">
+<a href="../ch4/index.html" data-key="ch4/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch4/4.1.html" data-key="ch4/4.1.html"><span class="dot">●</span>4.1 网络层的功能</a>
+<a href="../ch4/4.2.html" data-key="ch4/4.2.html"><span class="dot">●</span>4.2 IPv4</a>
+<a href="../ch4/4.3.html" data-key="ch4/4.3.html"><span class="dot">●</span>4.3 IPv6</a>
+<a href="../ch4/4.4.html" data-key="ch4/4.4.html"><span class="dot">●</span>4.4 路由算法与路由协议</a>
+<a href="../ch4/4.5.html" data-key="ch4/4.5.html"><span class="dot">●</span>4.5 IP多播</a>
+<a href="../ch4/4.6.html" data-key="ch4/4.6.html"><span class="dot">●</span>4.6 移动IP</a>
+<a href="../ch4/4.7.html" data-key="ch4/4.7.html"><span class="dot">●</span>4.7 网络层设备</a>
+<a href="../ch4/4.8.html" data-key="ch4/4.8.html"><span class="dot">●</span>4.8 本章小结及疑难点</a>
+<a href="../ch4/quiz.html" data-key="ch4/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch4/recall.html" data-key="ch4/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+<div class="side-group" data-ch="5">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第5章 传输层</span><span class="cnt">0/6</span></div>
+<div class="side-items">
+<a href="../ch5/index.html" data-key="ch5/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch5/5.1.html" data-key="ch5/5.1.html"><span class="dot">●</span>5.1 传输层提供的服务</a>
+<a href="../ch5/5.2.html" data-key="ch5/5.2.html"><span class="dot">●</span>5.2 UDP</a>
+<a href="../ch5/5.3.html" data-key="ch5/5.3.html"><span class="dot">●</span>5.3 TCP</a>
+<a href="../ch5/5.4.html" data-key="ch5/5.4.html"><span class="dot">●</span>5.4 本章小结及疑难点</a>
+<a href="../ch5/quiz.html" data-key="ch5/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch5/recall.html" data-key="ch5/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+<div class="side-group" data-ch="6">
+<div class="side-head"><span class="chev">▶</span>
+          <span>第6章 应用层</span><span class="cnt">0/8</span></div>
+<div class="side-items">
+<a href="../ch6/index.html" data-key="ch6/index.html"><span class="dot">●</span>本章导学</a>
+<a href="../ch6/6.1.html" data-key="ch6/6.1.html"><span class="dot">●</span>6.1 网络应用模型</a>
+<a href="../ch6/6.2.html" data-key="ch6/6.2.html"><span class="dot">●</span>6.2 域名系统</a>
+<a href="../ch6/6.3.html" data-key="ch6/6.3.html"><span class="dot">●</span>6.3 文件传输协议</a>
+<a href="../ch6/6.4.html" data-key="ch6/6.4.html"><span class="dot">●</span>6.4 电子邮件</a>
+<a href="../ch6/6.5.html" data-key="ch6/6.5.html"><span class="dot">●</span>6.5 万维网</a>
+<a href="../ch6/6.6.html" data-key="ch6/6.6.html"><span class="dot">●</span>6.6 本章小结及疑难点</a>
+<a href="../ch6/quiz.html" data-key="ch6/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch6/recall.html" data-key="ch6/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+</div></div>
+</aside>
+<main class="content">
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第3章 数据链路层</a> › <span>速记手册</span></div>
+<h1 class="page-title">第3章 速记手册</h1>
+<p class="subtitle">考前 30 分钟过一遍 · 全章压缩重组，细节以各节正文与教材为准</p>
+
+<h2 class="sec" id="sec-recall-map">知识框架</h2>
+<div class="map-flow">
+  <a class="map-node" href="3.1.html">3.1 功能</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.2.html">3.2 组帧</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.3.html">3.3 差错控制</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.4.html">3.4 流量控制与可靠传输</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.5.html">3.5 介质访问控制</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.6.html">3.6 局域网</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.7.html">3.7 广域网</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.8.html">3.8 设备</a><span class="map-arrow">→</span>
+  <a class="map-node" href="3.9.html">3.9 小结</a>
+</div>
+
+<h2 class="sec" id="sec-recall-points">核心考点速记</h2>
+<table class="tbl">
+  <caption>第3章条件反射级结论速查（★ 为统考高频）</caption>
+  <tr><th>考点</th><th>一句话结论</th></tr>
+  <tr><td>★ 组帧四法</td><td>字符计数（计数含自身1B，计数错即失步）、字节填充（SOH/EOT+ESC转义）、零比特填充（01111110定界，5个连续1后填0，HDLC采用）、违规编码（如曼彻斯特"高-高"，IEEE 802 采用）</td></tr>
+  <tr><td>★ 码距与检错纠错</td><td>l = d + c + 1 且 d ≥ c；检 d 位错需 l ≥ d+1，纠 c 位错需 l ≥ 2c+1；纠错能力恒不超过检错能力</td></tr>
+  <tr><td>奇偶检验</td><td>码距为 2，只能检测奇数位错，不能定位错误</td></tr>
+  <tr><td>★ CRC</td><td>数据左移 r 位后模 2 除以 G(x)，余数即 FCS；只检错不纠错，余数为 0 则接受；以太网 FCS 用 32 位 CRC 且不检验前导码</td></tr>
+  <tr><td>★ 海明码</td><td>检验位数 k 满足 2^k ≥ n+k+1；检验位 Pi 放在位号 2^(i-1) 处；校验方程结果 S3S2S1 即出错位号，取反即纠错（单比特纠错）</td></tr>
+  <tr><td>★ 流量控制层次</td><td>数据链路层：相邻节点间，收不下就不返回确认；传输层：端到端，用确认中的窗口字段动态调节</td></tr>
+  <tr><td>★ 三种 ARQ 窗口</td><td>S-W：WT=WR=1；GBN：1&lt;WT≤2^n−1，WR=1；SR：WT=WR=2^(n-1)；通式 WT+WR≤2^n</td></tr>
+  <tr><td>★ GBN vs SR 确认</td><td>GBN 累积确认（ACKn 表示 n 号及之前全部收到）、失序帧丢弃、仅最早未确认帧计时；SR 逐帧独立确认（可用 NAK）、缓存失序帧、每帧独立计时器</td></tr>
+  <tr><td>★ 信道利用率</td><td>S-W：U = TD/(TD+RTT+TA)；连续 ARQ：U = N·TD/(TD+RTT+TA)，发不满周期才用此式，NTD ≥ 周期时 U=1；实际速率 = 利用率 × 带宽</td></tr>
+  <tr><td>★ 四种复用</td><td>FDM 分频不分时（需隔离频带）、TDM 分时不分频（STDM 按需动态分配时隙）、WDM 是光的频分、CDM 频率时间都共享（码片正交，规格化内积：自身=1、反码=−1、他站=0）</td></tr>
+  <tr><td>三种 CSMA</td><td>1-坚持：忙则持续监听、空则立即发（冲突多）；非坚持：忙则随机等待再听（时延大）；p-坚持：时隙信道，空则以概率 p 发送——前两者的折中</td></tr>
+  <tr><td>★ CSMA/CD</td><td>用于有线总线/半双工（全双工不需要）；口诀"先听后发、边听边发、冲突停发、随机重发"；争用期 2τ；截断二进制指数退避，k=min(重传次数,10)，16 次失败放弃</td></tr>
+  <tr><td>★ CSMA/CA（802.11）</td><td>无线无法冲突检测（信号弱+隐蔽站），改为冲突避免；帧间间隔 SIFS&lt;PIFS&lt;DIFS；NAV 虚拟载波监听 + RTS/CTS 预约缓解隐蔽站；DCF 必选、PCF 可选</td></tr>
+  <tr><td>令牌传递</td><td>令牌是特殊控制帧，同一时刻仅一站独占信道，无冲突、公平，适合高负载；用于令牌环（802.5）等</td></tr>
+  <tr><td>★ 以太网服务</td><td>无连接、尽最大努力交付（不可靠，纠错交给高层）；曼彻斯特编码；逻辑总线、物理星形</td></tr>
+  <tr><td>★ MAC 帧</td><td>目的6B+源6B+类型2B+数据46~1500B+FCS 4B；最短帧长 64B（不含 8B 前导码），数据 46 = 64−18；类型 0x0800 表示 IP</td></tr>
+  <tr><td>★ MAC 地址</td><td>48 位（6B）固化在网卡 ROM，高 24 位厂商代码、低 24 位序列号；路由器每个接口一个 MAC</td></tr>
+  <tr><td>★ 802.11 帧地址</td><td>地址 1=直接接收方、地址 2=直接发送方、地址 3 视"去往/来自 AP"放实际目的或源地址；MAC 首部 30B，帧体 ≤2312B</td></tr>
+  <tr><td>★ VLAN</td><td>802.1Q 在源地址与类型字段间插 4B 标签（0x8100 开头），12 位 VID 最多 4096 个 VLAN，最大帧长 1518→1522B，数据最小 46→42B；隔离广播域，跨 VLAN 通信需路由器/三层交换机；干线链路传 802.1Q 帧</td></tr>
+  <tr><td>PPP</td><td>LCP+NCP+封装方法三部分；面向字节；F=0x7E、A=0xFF、C=0x03、协议 2B、信息 0~1500B、FCS 2B；异步链路字节填充、同步链路零比特填充；仅检错不编号确认（不可靠），无最短帧长限制</td></tr>
+  <tr><td>★ 设备与域</td><td>集线器（物理层）：冲突域、广播域都不隔离；网桥/交换机（链路层）：隔离冲突域、不隔离广播域；路由器：都隔离；交换机=N端口网桥，N 端口总容量 N×端口带宽</td></tr>
+  <tr><td>★ 交换机自学习</td><td>口诀"源进登记，目的查表；同口丢弃，查不到泛洪"；广播/组播帧一律泛洪；表项有老化时间；冗余链路用 STP 消除环路</td></tr>
+  <tr><td>交换模式</td><td>直通：收完目的地址即转发，时延小但不检错；存储转发：收全帧检验后转发，可靠、支持速率转换</td></tr>
+  <tr><td>广域网</td><td>不等于互联网；节点交换机（非路由器）工作在单个网络内部，存储转发；WAN 三层、LAN 两层</td></tr>
+</table>
+
+<h2 class="sec" id="sec-recall-traps">易错清单</h2>
+<div class="box warn"><div class="box-title">⚠️ 考前必看 · 高频翻车点</div>
+<ol>
+  <li>GBN 最大发送窗口是 2^n−1，SR 是 2^(n-1)——两者不同，别混。</li>
+  <li>信道利用率公式：发送周期 = TD+RTT+TA，TA 不忽略时要计入，别把周期当 RTT。</li>
+  <li>最小帧长 = 2τ×数据率；凡长度小于 64B 的帧都是冲突异常中止的无效帧。</li>
+  <li>最短帧长 64B 不含 8B 前导码；802.1Q 插标签后数据最小变 42B。</li>
+  <li>CRC 只检错不纠错；奇偶检验只查奇数位错；海明码才能定位并纠单比特错。</li>
+  <li>802.11 用 CSMA/CA 不是 CD——无线无法边发边检测冲突，且发送后必须发完整帧。</li>
+  <li>集线器两个域都不隔离；交换机只隔离冲突域；只有路由器/VLAN 隔离广播域。</li>
+  <li>交换机连主机是全双工无须 CSMA/CD；交换机连集线器仍需 CSMA/CD 且只能半双工。</li>
+  <li>PPP 无最短帧长限制（点对点不用 CSMA/CD），信息字段最小可为 0B。</li>
+  <li>数据链路层窗口尺寸固定，传输层（TCP）窗口可动态变化——"滑动窗口"表述别越层。</li>
+</ol>
+</div>
+
+<h2 class="sec" id="sec-recall-numbers">必背数字 · 公式</h2>
+<table class="tbl">
+  <caption>数字与公式速览</caption>
+  <tr><th>条目</th><th>数值 / 公式</th></tr>
+  <tr><td>滑动窗口通式</td><td>WT + WR ≤ 2^n；GBN：WT ≤ 2^n−1（WR=1）；SR：WT=WR ≤ 2^(n-1)</td></tr>
+  <tr><td>停止-等待信道利用率</td><td>U = TD / (TD + RTT + TA)</td></tr>
+  <tr><td>连续 ARQ 信道利用率</td><td>U = N·TD / (TD + RTT + TA)（NTD 小于周期时，否则 U=1）</td></tr>
+  <tr><td>最短帧长 / 争用期</td><td>最短帧长 = 2τ × 数据率；争用期 = 2τ；10Mb/s 时 64B（512bit，争用期 51.2μs）</td></tr>
+  <tr><td>CSMA/CD 退避</td><td>第 k 次冲突从 {0,…,2^k−1} 选 r，推迟 r 倍争用期，k = min(重传次数, 10)，16 次失败放弃</td></tr>
+  <tr><td>码距判定</td><td>l = d + c + 1（d ≥ c）；检 d 位错：l ≥ d+1；纠 c 位错：l ≥ 2c+1</td></tr>
+  <tr><td>海明码</td><td>2^k ≥ n + k + 1（如 n=4 取 k=3，共 7 位）</td></tr>
+  <tr><td>MAC 地址 / VID</td><td>MAC 48 位（6B）；VLAN 标签 4B，VID 12 位 → 最多 4096 个 VLAN</td></tr>
+  <tr><td>以太网帧</td><td>数据 46~1500B（MTU=1500），帧长 64~1518B（不含前导码）；802.1Q 最大 1522B</td></tr>
+  <tr><td>以太网帧间隔</td><td>10Mb/s 帧间最小间隔 9.6μs（96 比特时间）；100Base-T 减为 0.96μs，网段 ≤100m</td></tr>
+  <tr><td>PPP 帧字段</td><td>F=0x7E（1B）、A=0xFF、C=0x03、协议 2B、信息 0~1500B、FCS 2B（CRC）</td></tr>
+  <tr><td>CDMA</td><td>码片 m 位（通常 64 或 128），规格化内积：S·S=1，S·S̄=−1，S·T=0</td></tr>
+  <tr><td>802.11</td><td>SSID ≤32B，BSA 直径 ≤100m；MAC 首部 30B、帧体 ≤2312B、FCS 4B；SIFS&lt;PIFS&lt;DIFS</td></tr>
+</table>
+
+<h2 class="sec" id="sec-recall-quiz">一分钟自测五问</h2>
+<div class="quiz-item">
+  <p><span class="q-no">问 1</span><span class="q-src">窗口约束</span></p>
+  <p>用 3 比特对帧编号，GBN 的发送窗口最大是多少？SR 呢？若 GBN 取 3 比特编号、发送窗口为 5，接收窗口最大为多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p class="ans-key">答案：GBN 最大 7（2^3−1）；SR 最大 4（2^(3-1)）；WT=5 时 WR ≤ 2^3−5 = 3。</p>
+    <p><strong>提示：</strong>GBN 上限 2^n−1、SR 上限 2^(n-1)，通式 WT+WR ≤ 2^n。超限的后果是序号回绕后接收方无法区分新帧与重传的旧帧。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 2</span><span class="q-src">信道利用率</span></p>
+  <p>1Mb/s 链路 RTT=20ms，分组 1200bit，忽略 TA 与处理时延，停止-等待协议的信道利用率约多少？换 10Mb/s 后呢？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p class="ans-key">答案：TD=1.2ms，U = 1.2/21.2 ≈ 5.66%；10Mb/s 时 TD=0.12ms，U ≈ 0.596%。</p>
+    <p><strong>提示：</strong>RTT 远大于 TD 时停止-等待利用率极低；连续 ARQ 用 N·TD 扩大分子，NTD ≥ 周期时 U=1。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 3</span><span class="q-src">CSMA/CD</span></p>
+  <p>10Mb/s 以太网端到端单程传播时延 25.6μs，最短帧长应是多少字节？为什么凡小于 64B 的帧都要丢弃？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p class="ans-key">答案：最短帧长 = 2×25.6μs×10Mb/s = 512bit = 64B。</p>
+    <p><strong>提示：</strong>争用期 2τ=51.2μs 内若检测到冲突会立即停发，实际发出的数据必小于 64B——因此小于 64B 的帧只可能是冲突异常中止的无效帧。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 4</span><span class="q-src">设备与域</span></p>
+  <p>集线器、以太网交换机、路由器分别隔离冲突域和广播域中的哪一个？交换机如何处理收到的广播帧和未知单播帧？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p class="ans-key">答案：集线器都不隔离；交换机只隔离冲突域；路由器两个域都隔离（VLAN 也可隔离广播域）。广播帧和查不到表项的未知单播帧，交换机都向除入端口外的所有端口泛洪。</p>
+    <p><strong>提示：</strong>口诀"源进登记，目的查表；同口丢弃，查不到泛洪"。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 5</span><span class="q-src">CRC 与海明码</span></p>
+  <p>数据 101001 用生成多项式 1101 做 CRC，发送帧是什么？要纠正 1 位错、检测 2 位错，码距至少各为多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p class="ans-key">答案：101001 左移 3 位后模 2 除 1101，余数 001，发送帧 101001001；检 2 位错需码距 ≥3，纠 1 位错需码距 ≥ 2×1+1 = 3。</p>
+    <p><strong>提示：</strong>CRC 余数非 0 即丢帧，只检错不纠错；海明码用 2^k ≥ n+k+1 求检验位，可定位并纠正单比特错。</p>
+  </div></details>
+</div>
+
+<div class="pager">
+      <a class="prev" href="quiz.html"><span class="label">上一篇</span>第3章 习题</a>
+      <a class="next" href="../ch4/index.html"><span class="label">下一篇</span>第4章 导学</a>
+    </div>
+</main>
+</div>
+<footer class="site-footer">计算机网络自学网站 · 内容依据王道《2027计算机网络考研复习指导》整理，仅供个人学习备考使用<br>
+习题与解析源自王道做题本，答案经答案速查交叉核对</footer>
+</body>
+</html>

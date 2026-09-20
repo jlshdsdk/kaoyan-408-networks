@@ -1,0 +1,108 @@
+<h1 class="page-title">第4章 速记手册</h1>
+<p class="subtitle">考前 30 分钟过一遍 · 全章压缩重组，细节以各节正文与教材为准</p>
+
+<h2 class="sec" id="recall-map">知识框架</h2>
+<div class="map-flow">
+  <a class="map-node" href="4.1.html">网络层的功能</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.2.html">IPv4</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.3.html">IPv6</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.4.html">路由算法与协议</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.5.html">IP 多播</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.6.html">移动 IP</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.7.html">网络层设备</a><span class="map-arrow">→</span>
+  <a class="map-node" href="4.8.html">本章小结</a>
+</div>
+
+<h2 class="sec" id="recall-core">核心考点速记</h2>
+<table class="tbl">
+  <tr><th style="width:18%">考点</th><th>速记要点</th></tr>
+  <tr><td>网络层功能</td><td>分组转发（数据平面）+ 路由选择（控制平面）；TCP/IP 采用无连接数据报服务、尽最大努力交付，可靠性由主机保证</td></tr>
+  <tr><td>虚电路 vs 数据报</td><td>虚电路：先建连接、固定路径、网络保可靠、首部仅带 VCID、对故障敏感；数据报：免连接、独立选路、不保序不保可靠、故障适应强</td></tr>
+  <tr><td>SDN</td><td>控制与转发解耦，控制器经南向接口（OpenFlow）下发流表；流表项 = 匹配字段 + 动作，支持广义转发</td></tr>
+  <tr><td>IP 首部</td><td>首部长度以 4B 为单位（最大 60B）、总长度以 1B 为单位、片偏移以 8B 为单位；TTL 减为 0 丢弃；首部检验和只查首部、每过路由器重算</td></tr>
+  <tr><td>IP 分片</td><td>超过 MTU 才分片，分片可在源主机/路由器，重组仅在目的主机；靠标识 + 标志（DF/MF）+ 片偏移重组；除最后一片外数据长度须为 8B 整数倍</td></tr>
+  <tr><td>分类地址</td><td>A：1~126（2⁷−2 个网，2²⁴−2 台）；B：128~191.255；C：192~223.255.255；网络号 127 环回、0 保留；主机号全 0 网络地址、全 1 直接广播</td></tr>
+  <tr><td>子网 / CIDR</td><td>掩码 1 对应网络+子网号、0 对应主机号，与运算得网络地址；CIDR 斜线记法，地址块含 2ᴺ 个地址、可用 2ᴺ−2；借 n 位得 2ⁿ 个子网</td></tr>
+  <tr><td>路由聚合与匹配</td><td>聚合 = 截取各前缀的共同部分；转发用最长前缀匹配，特定主机路由（/32）优先级最高、默认路由 0.0.0.0/0 最低</td></tr>
+  <tr><td>NAT / VPN</td><td>NAT 修改 IP+端口（涉传输层），靠 NAT 转换表双向映射；VPN 用 IP 隧道 + 加密在公网传私有地址数据报</td></tr>
+  <tr><td>ARP</td><td>网络层协议，解析同一局域网内 IP→MAC：请求广播（FF-FF-FF-FF-FF-FF）、响应单播；跨网解析的是下一跳（网关/路由器接口）的 MAC</td></tr>
+  <tr><td>DHCP</td><td>应用层、基于 UDP，C/S 模式；Discover→Offer→Request→ACK 四步全广播（客户源 0.0.0.0、目的 255.255.255.255）；租用期 50% 续租、87.5% 重广播</td></tr>
+  <tr><td>ICMP</td><td>网络层、封装于 IP；差错报告 5 种（终点不可达、时间超过、参数问题、改变路由、源点抑制）+ 询问 2 种；ping 用回送请求/回答，traceroute 靠 TTL 递增触发时间超过</td></tr>
+  <tr><td>IPv6</td><td>128 位地址、基本首部固定 40B、8 个字段、无检验和；只有源主机能分片；地址类型单播/多播/任播（无广播）；::零压缩只能用一次；过渡 = 双协议栈 + 隧道</td></tr>
+  <tr><td>路由算法</td><td>距离-向量基于 Bellman-Ford，只与邻居交换完整距离向量，报文大小与节点数成正比；链路状态洪泛局部信息、各自跑 Dijkstra，无无穷计数</td></tr>
+  <tr><td>RIP</td><td>内部、距离向量、应用层、UDP 520；跳数度量，直连为 1，16 = 不可达，仅适用小网；与邻居定期（30s）交换完整路由表；更新口诀"改（加 1 改下一跳）→ 比"</td></tr>
+  <tr><td>OSPF</td><td>内部、链路状态、网络层、直接封装于 IP（协议号 89）；洪泛链路状态、变化时触发更新、收敛快；五种分组（Hello/DD/LSR/LSU/LSAck）；划分区域 + 主干区域</td></tr>
+  <tr><td>BGP</td><td>外部、路径向量、应用层、TCP 179；找"较好"而非最佳路由；eBGP 跨 AS、iBGP 在 AS 内；选路顺序：本地偏好 → AS 跳数最少 → 热土豆 → BGP 标识符最小</td></tr>
+  <tr><td>IP 多播</td><td>一对多，目的地址为 D 类（224.0.0.0~239.255.255.255，前 4 位 1110），只能作目的地址、不产生 ICMP 差错；仅适用 UDP；D 类低 23 位映射多播 MAC（多对一，IP 层过滤）；IGMP 管本地组成员</td></tr>
+  <tr><td>移动 IP</td><td>移动中永久地址不变；三实体：移动节点、归属代理、外地代理 + 转交地址；下行：归属代理截获 → 隧道 → 外地代理解封；上行直接用永久地址作源、不经归属代理</td></tr>
+  <tr><td>网络层设备</td><td>集线器/中继器：隔不了冲突域也隔不了广播域；交换机/网桥：隔冲突域不隔广播域；路由器：两者都能隔；路由表四字段 = 目的网络、子网掩码、下一跳、接口</td></tr>
+</table>
+
+<h2 class="sec" id="recall-pitfalls">易错清单</h2>
+<div class="box warn"><div class="box-title">⚠️ 全章高频陷阱，逐条自检</div>
+  <ol>
+    <li><strong>协议层次归属（408 第一大陷阱）</strong>：ARP、ICMP、IGMP 属网络层；RIP 是应用层（UDP 520）；OSPF 是网络层（IP 89）；BGP 是应用层（TCP 179）。</li>
+    <li>IGP（RIP/OSPF）用于 AS 内部，EGP（BGP）用于 AS 之间——"内部/外部"以自治系统为界，不是以路由器为界。</li>
+    <li>RIP 跳数 16 表示不可达（最多 15 个路由器）；"坏消息传播得慢"= 慢收敛/无穷计数，不是指好消息。</li>
+    <li>IP 分片：片偏移单位是 8B 不是 1B；标识、DF/MF、片偏移三字段用于重组，重组只在目的主机。</li>
+    <li>主机号全 0 是网络地址、全 1 是直接广播地址，都不能分给主机；127.x.x.x 环回不出主机；0.0.0.0 表本主机、255.255.255.255 受限广播仅限本网。</li>
+    <li>私有地址三段（10/8、172.16/12、192.168/16）公网路由器一律不转发，上网必须经 NAT。</li>
+    <li>NAT 路由器会改 IP 和端口（涉传输层），普通路由器转发不改 IP 首部。</li>
+    <li>ARP 只在本局域网有效：跨网解析的是默认网关/下一跳路由器接口的 MAC，不是远端主机的 MAC；MAC 地址逐跳更新而 IP 地址端到端不变（NAT 除外）。</li>
+    <li>IPv6 无广播（单播/多播/任播）、首部无检验和、只有源主机能分片；"::"零压缩一个地址只能用一次。</li>
+    <li>集线器隔不了任何域，交换机只隔冲突域，能抑制广播风暴的只有路由器。</li>
+  </ol>
+</div>
+
+<h2 class="sec" id="recall-numbers">必背数字 · 公式 · 端口</h2>
+<table class="tbl">
+  <tr><th style="width:26%">类别</th><th>内容</th></tr>
+  <tr><td>分类地址范围</td><td>A：1.0.0.0 ~ 126.255.255.255（默认掩码 255.0.0.0）；B：128.0.0.0 ~ 191.255.255.255（255.255.0.0）；C：192.0.0.0 ~ 223.255.255.255（255.255.255.0）；D：224~239（多播）；E：240~255（保留）</td></tr>
+  <tr><td>每网最大主机数</td><td>A 类 2²⁴−2，B 类 2¹⁶−2，C 类 2⁸−2（减网络地址与广播地址）</td></tr>
+  <tr><td>私有地址三段</td><td>10.0.0.0/8、172.16.0.0/12（172.16~172.31）、192.168.0.0/16</td></tr>
+  <tr><td>特殊地址</td><td>0.0.0.0 = 本网络本主机（DHCP 用）；255.255.255.255 = 受限广播；127.x.x.x = 环回；0.0.0.0/0 = 默认路由</td></tr>
+  <tr><td>IPv4 首部单位</td><td>首部长度 ×4B（最大 60B，常用 20B，开头常为 0x45）；总长度单位 1B（最大 65535B）；片偏移单位 8B；以太网 MTU = 1500B</td></tr>
+  <tr><td>IP 协议号</td><td>TCP = 6，UDP = 17，ICMP = 1，IGMP = 2，OSPF = 89</td></tr>
+  <tr><td>端口 / 计时</td><td>RIP：UDP 520，周期 30s，超时 180s；OSPF：Hello 间隔 10s，判死 40s，LSA 刷新 30min、最长生存 60min；BGP：TCP 179，Keepalive 60s，保持时间 180s</td></tr>
+  <tr><td>RIP 度量</td><td>直连网络距离 1；路径最多 15 个路由器；16 = 不可达</td></tr>
+  <tr><td>IPv6</td><td>地址 128 位（空间为 IPv4 的 2⁹⁶ 倍）；基本首部固定 40B、8 个字段；有效载荷 ≤65535B；多播 FF00::/8，链路本地 FE80::/10，环回 ::1，未指明 ::/128</td></tr>
+  <tr><td>多播地址</td><td>D 类 224.0.0.0 ~ 239.255.255.255（前 4 位 1110），可标识 2²⁸ 个多播组；以太网多播 MAC：01-00-5E 开头，D 类低 23 位映射、32 个 IP 对 1 个 MAC</td></tr>
+  <tr><td>计算公式</td><td>网络地址 = IP 与 掩码（逐位与）；借 n 位得 2ⁿ 个子网；主机号 m 位每网可用 2^m−2；CIDR 块主机号 N 位共 2ᴺ 个地址；可用地址数 = 需求向上取 2 的幂后定前缀</td></tr>
+</table>
+
+<h2 class="sec" id="recall-quiz">一分钟自测五问</h2>
+<div class="quiz-item">
+  <p><span class="q-no">问 1</span><span class="q-src">协议层次</span></p>
+  <p>RIP、OSPF、BGP、ARP、ICMP、IGMP 各属于哪一层？各用什么承载（协议号/端口）？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p>RIP：应用层，UDP 520；OSPF：网络层，直接封装于 IP 数据报（协议号 89）；BGP：应用层，TCP 179；ARP、ICMP、IGMP：均为网络层（ICMP 协议号 1、IGMP 协议号 2，ARP 解析 IP→MAC）。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 2</span><span class="q-src">子网计算</span></p>
+  <p>将 208.115.21.0/24 划成每个子网至少容纳 50 台主机的子网，掩码是什么？最多划几个？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p>50 台主机需主机号 6 位（2⁶−2=62≥50），主机号剩 8−2=6 位，借 2 位作子网号，可划 2²=4 个子网，掩码 255.255.255.192（/26）。各子网网络地址：.0、.64、.128、.192。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 3</span><span class="q-src">路由协议对比</span></p>
+  <p>RIP"坏消息传播得慢"是什么现象？根源是什么？跳数上限与不可达值各是多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p>链路故障后各路由器互相误信对方仍可达，距离逐轮加 1 缓慢爬升（慢收敛/无穷计数问题），需多次交换才能收敛；根源是与邻居周期交换完整路由表、无全局拓扑信息；上限 15 个路由器，距离 16 表示不可达。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 4</span><span class="q-src">转发过程</span></p>
+  <p>主机 H1 发分组给另一网段的 H4：目的 IP 和目的 MAC 分别是谁？途中有何变化？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p>IP 分组中源/目的 IP（H1、H4）端到端不变；目的 MAC 是默认网关（路由器入接口）的 MAC，经 ARP 解析获得；每过一个路由器，MAC 帧的源/目的地址都更新为当前链路两端接口的 MAC。</p>
+  </div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 5</span><span class="q-src">设备与域</span></p>
+  <p>集线器、交换机、路由器各能隔离冲突域/广播域吗？IPv6 相比 IPv4 在分片和地址类型上有何不同？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body">
+    <p>集线器（物理层）两者都不能；交换机（链路层）能隔冲突域不能隔广播域；路由器（网络层）两者都能。IPv6 只有源主机能分片（端到端分片），地址类型为单播/多播/任播，没有广播。</p>
+  </div></details>
+</div>

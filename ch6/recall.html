@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.8 本章小结及疑难点 - 计算机网络自学网站</title>
+<title>第6章 速记手册 - 计算机网络自学网站</title>
 <link rel="stylesheet" href="../assets/css/site.css?v=1789885100">
 <link rel="stylesheet" href="../assets/katex/katex.min.css?v=499162500">
 <script defer src="../assets/katex/katex.min.js?v=499162500"></script>
@@ -77,7 +77,7 @@
 <a href="../ch3/quiz.html" data-key="ch3/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
 <a href="../ch3/recall.html" data-key="ch3/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
-<div class="side-group open" data-ch="4">
+<div class="side-group" data-ch="4">
 <div class="side-head"><span class="chev">▶</span>
           <span>第4章 网络层</span><span class="cnt">0/10</span></div>
 <div class="side-items">
@@ -89,7 +89,7 @@
 <a href="../ch4/4.5.html" data-key="ch4/4.5.html"><span class="dot">●</span>4.5 IP多播</a>
 <a href="../ch4/4.6.html" data-key="ch4/4.6.html"><span class="dot">●</span>4.6 移动IP</a>
 <a href="../ch4/4.7.html" data-key="ch4/4.7.html"><span class="dot">●</span>4.7 网络层设备</a>
-<a href="../ch4/4.8.html" class="active" data-key="ch4/4.8.html"><span class="dot">●</span>4.8 本章小结及疑难点</a>
+<a href="../ch4/4.8.html" data-key="ch4/4.8.html"><span class="dot">●</span>4.8 本章小结及疑难点</a>
 <a href="../ch4/quiz.html" data-key="ch4/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
 <a href="../ch4/recall.html" data-key="ch4/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
@@ -105,7 +105,7 @@
 <a href="../ch5/quiz.html" data-key="ch5/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
 <a href="../ch5/recall.html" data-key="ch5/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
-<div class="side-group" data-ch="6">
+<div class="side-group open" data-ch="6">
 <div class="side-head"><span class="chev">▶</span>
           <span>第6章 应用层</span><span class="cnt">0/8</span></div>
 <div class="side-items">
@@ -117,66 +117,104 @@
 <a href="../ch6/6.5.html" data-key="ch6/6.5.html"><span class="dot">●</span>6.5 万维网</a>
 <a href="../ch6/6.6.html" data-key="ch6/6.6.html"><span class="dot">●</span>6.6 本章小结及疑难点</a>
 <a href="../ch6/quiz.html" data-key="ch6/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
-<a href="../ch6/recall.html" data-key="ch6/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
+<a href="../ch6/recall.html" class="active" data-key="ch6/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 </aside>
 <main class="content">
-<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第4章 网络层</a> › <span>4.8 本章小结及疑难点</span></div>
-<h1 class="page-title">4.8 本章小结及疑难点</h1>
-<p class="subtitle">对应王道教材 4.8 节（教材 P223）· 本章要点回顾与疑难辨析</p>
+<div class="crumbs"><a href="../index.html">首页</a> › <a href="index.html">第6章 应用层</a> › <span>速记手册</span></div>
+<h1 class="page-title">第6章 速记手册</h1>
+<p class="subtitle">考前 30 分钟过一遍 · 全章压缩重组，细节以各节正文与教材为准</p>
 
-<h2 class="sec" id="sec-4-8-0">本章要点回顾</h2>
-<ul>
-  <li><strong>IPv4 基础</strong>：IP 数据报 = 首部 + 数据；首部关键字段包括版本、首部长度、总长度、TTL、协议、首部检验和、源/目的 IP 地址；"尽最大努力交付"是 IP 层的基本服务模型。</li>
-  <li><strong>IP 地址与子网</strong>：分类地址 → 子网划分（借用主机号）→ CIDR 无分类编址（前缀 + 掩码）；子网掩码与目的地址按位与可判断是否在同一网络；路由聚合（超网）可缩小路由表。</li>
-  <li><strong>ARP / DHCP / ICMP</strong>：ARP 完成"同网段 IP 地址 → MAC 地址"的解析；DHCP 自动配置主机 IP 参数（应用层、基于 UDP）；ICMP 提供差错报告与询问（ICMP 差错报文、回送请求/回答），是 traceroute、ping 的基础。</li>
-  <li><strong>IPv6</strong>：128 位地址，首部固定 40B、仅 8 个字段、取消首部检验和、只有源主机能分片；地址类型为单播/多播/任播；缩写规则=省略前导零 + 双冒号零压缩（只能用一次）；过渡策略=双协议栈 + 隧道技术。</li>
-  <li><strong>路由算法</strong>：静态（手工配置，简单小网）vs 动态；距离-向量算法基于 Bellman-Ford（只知邻居的距离向量，报文大小与节点数成正比）；链路状态算法基于 Dijkstra（洪泛局部链路状态，全网各自算最短路）。</li>
-  <li><strong>三大路由协议</strong>：RIP（内部、距离向量、UDP 520、跳数上限 15、坏消息传播得慢）；OSPF（内部、链路状态、直接封装于 IP 协议号 89、五种分组、划分区域、收敛快）；BGP（外部、路径向量、TCP 179、寻求"较好"而非"最佳"路由、四种报文）。</li>
-  <li><strong>IP 多播</strong>：一对多通信，目的地址为 D 类地址（224.0.0.0～239.255.255.255）；仅适用于 UDP；D 类地址低 23 位映射为以太网多播 MAC 地址（多对一，主机需在 IP 层过滤）；IGMP 管理本地组成员，多播路由协议构造多播转发树。</li>
-  <li><strong>移动 IP</strong>：移动中保持永久地址不变；三大实体（移动节点、归属代理、外地代理）+ 转交地址；通信核心是"归属代理截获 → 隧道 → 外地代理解封 → 交付"。</li>
-  <li><strong>网络层设备</strong>：集线器/中继器隔离不了任何域；交换机/网桥隔离冲突域；路由器既隔离冲突域又隔离广播域；路由器 = 路由选择（控制平面）+ 分组转发（数据平面）；路由表四字段（目的网络、子网掩码、下一跳、接口），无匹配时走默认路由 0.0.0.0/0.0.0.0。</li>
-</ul>
-
-<h2 class="sec" id="sec-4-8-1">疑难点 1："尽最大努力交付"有哪些含义？</h2>
-<p>"尽最大努力交付"（best effort）并不意味着"保证交付"，其确切含义是：</p>
-<ol>
-  <li>不保证 IP 数据报无差错地到达目的主机；</li>
-  <li>不保证在规定时间内交付；</li>
-  <li>不保证按发送顺序交付；</li>
-  <li>不保证不重复交付；</li>
-  <li>不主动丢弃数据报——仅在以下情况丢弃：首部检验和出错，或因缓存满而无法处理。</li>
-</ol>
-<div class="box concept"><div class="box-title">📌 首部检验和能保证什么？</div>
-<p>IP 首部包含"首部检验和"字段。凡交付给目的主机的 IP 数据报，其首部均未检验出差错（有错即被丢弃）。因此，<strong>IP 层可确保首部完整性，但不保证数据部分正确性或传输可靠性</strong>。目前互联网绝大多数流量基于此模型。若应用需要可靠传输，则由高层协议（如 TCP）实现。</p>
+<h2 class="sec" id="rc-map">知识框架</h2>
+<div class="map-flow">
+  <span class="map-node">应用模型<br><small>C/S · P2P</small></span> →
+  <span class="map-node">DNS<br><small>UDP 53 · 递归/迭代</small></span> →
+  <span class="map-node">FTP<br><small>TCP 21/20 · 双连接</small></span> →
+  <span class="map-node">电子邮件<br><small>SMTP 25 · POP3 110 · IMAP</small></span> →
+  <span class="map-node">万维网<br><small>HTTP 80 · URL/HTML</small></span> →
+  <span class="map-node">小结<br><small>端口全表 · 疑难点</small></span>
 </div>
 
-<h2 class="sec" id="sec-4-8-2">疑难点 2：局域网中 A 广播 ARP 请求获取 B 的硬件地址时，由谁发送 ARP 响应？返回的是谁的硬件地址？</h2>
-<ul>
-  <li><strong>若 A 与 B 在同一局域网</strong>：计算机 B 收到 ARP 请求后，直接向 A 单播 ARP 响应，返回 <strong>B 自身</strong>的硬件地址；</li>
-  <li><strong>若 B 不在 A 所在局域网</strong>：A 的 ARP 请求无法到达 B。此时，连接该局域网的路由器（A 的默认网关）会<strong>代理响应</strong>，向 A 返回<strong>路由器在该局域网接口</strong>的硬件地址。</li>
-</ul>
+<h2 class="sec" id="rc-points">核心考点速记</h2>
+<table class="tbl">
+  <caption>表 R6.a 第6章核心考点一览</caption>
+  <tr><th>考点</th><th>速记要点</th></tr>
+  <tr><td>C/S 模型</td><td>客户主动请求、服务器被动响应；客户间不直接通信；可扩展性差（受服务器性能与带宽制约）</td></tr>
+  <tr><td>P2P 模型</td><td>节点兼具客户/服务器角色，对等方直接通信；可扩展性好、健壮性强；占用本机资源多，ISP 限制</td></tr>
+  <tr><td>DNS 基础</td><td>域名→IP；客户/服务器模型；运行在 UDP 之上，端口 53；层次域名空间：顶级域/二级域/三级域</td></tr>
+  <tr><td>四类域名服务器</td><td>根（13 个，指路不代跑）、顶级、权限（每区建议至少两个）、本地（主机查询首先发给它）</td></tr>
+  <tr><td>DNS 解析</td><td>主机→本地必为递归；本地→根/顶级/权限常为迭代（"你告诉我该找谁"）；高速缓存 + TTL</td></tr>
+  <tr><td>FTP</td><td>基于 TCP 的有状态协议；控制连接 21（整个会话保持打开，传命令）；数据连接 20（按需建立，传文件）</td></tr>
+  <tr><td>FTP 两种模式</td><td>主动 PORT：服务器用 20 主动连客户端；被动 PASV：服务器随机开端口等客户端来连；由客户端决定</td></tr>
+  <tr><td>邮件组成</td><td>用户代理 + 邮件服务器 + 协议；邮件服务器双重角色（发信时为客户、收信时为服务器）</td></tr>
+  <tr><td>SMTP</td><td>推（Push）、TCP 25；三阶段：建立/传送/释放；仅传 7 位 ASCII；不使用中间邮件服务器中转</td></tr>
+  <tr><td>POP3 / IMAP</td><td>拉（Pull）、TCP 110；下载并保留 / 下载并删除；IMAP 更强：在线操作、选择性获取部分内容</td></tr>
+  <tr><td>MIME</td><td>不取代 SMTP，只做扩展：把非 ASCII 数据编码为 ASCII 再交 SMTP 传输</td></tr>
+  <tr><td>HTTP 特点</td><td>基于 TCP（80）可靠传输，但自身无连接、无状态；Cookie（识别码 + 数据库）弥补无状态</td></tr>
+  <tr><td>持久/非持久连接</td><td>HTTP/1.0 非持久：每对象 2RTT；HTTP/1.1 持久（默认）：非流水线/流水线（全连续仅 1RTT）</td></tr>
+  <tr><td>HTTP 报文</td><td>开始行（请求行/状态行）+ 首部行 + 空行 + 实体主体；方法 GET/HEAD/POST/PUT/DELETE/CONNECT</td></tr>
+  <tr><td>代理服务器</td><td>= Web 高速缓存；过期副本用 If-Modified-Since 询问，未改则回 304 不含实体主体</td></tr>
+</table>
 
-<h2 class="sec" id="sec-4-8-3">疑难点 3：数据报首部只有源和目的的 IP 地址，未指明下一跳路由器，如何确定转发路径？</h2>
-<p>路由器收到数据报后，根据路由表查出<strong>下一跳的 IP 地址</strong>，但不会修改 IP 数据报内容。该 IP 地址随后交由数据链路层处理：通过 <strong>ARP 将下一跳 IP 地址解析为对应的 MAC 地址</strong>，并填入 MAC 帧首部，从而在物理网络中正确送达下一跳。此过程对每个数据报重复执行。</p>
-<div class="box warn"><div class="box-title">⚠️ 能否在路由表中直接使用硬件地址以避免 ARP 查询？</div>
-<p>答案是<strong>不能</strong>。IP 地址的抽象性屏蔽了底层网络差异，是互联网可扩展性的基础。若路由表直接使用平面化的硬件地址，将导致表项数量剧增、管理复杂，反而得不偿失。</p>
+<h2 class="sec" id="rc-warn">易错清单</h2>
+<div class="box warn"><div class="box-title">⚠️ 高频易错点</div>
+<ul>
+  <li>HTTP 本身是<strong>无连接</strong>的——虽基于 TCP，但无须先建立"HTTP 连接"。</li>
+  <li>FTP 是<strong>有状态</strong>协议（跟踪用户目录位置等），HTTP 才是无状态。</li>
+  <li>控制信息走独立连接 → FTP 属<strong>带外</strong>传送；控制连接整个会话不断开。</li>
+  <li>邮件方向：发送全程<strong>推</strong>（SMTP），读取才是<strong>拉</strong>（POP3/IMAP）。</li>
+  <li>Web 邮件（如 Gmail 网页版）：浏览器↔服务器两端都用 HTTP，仅服务器之间用 SMTP。</li>
+  <li>根域名服务器通常<strong>不直接给出 IP</strong>，只返回下一站顶级域名服务器地址。</li>
+  <li>完整 DNS 迭代解析最多 8 个 UDP 报文：4 查询 + 4 回答。</li>
+  <li>URL 一般形式 &lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;，请求行里用相对 URL（Host 指明域名）。</li>
+</ul>
 </div>
 
-<h2 class="sec" id="sec-4-8-4">疑难点 4："路由器实现了物理层、数据链路层、网络层"的含义是什么？</h2>
-<p>这句话是指：路由器具备处理物理层、数据链路层和网络层协议的能力。具体而言：</p>
+<h2 class="sec" id="rc-ports">必背端口 · 数字</h2>
+<table class="tbl">
+  <caption>表 R6.b 常见应用层协议端口与传输层协议（教材表 6.2）</caption>
+  <tr><th>应用程序</th><th>FTP数据</th><th>FTP控制</th><th>TELNET</th><th>SMTP</th><th>DNS</th><th>TFTP</th><th>HTTP</th><th>POP3</th><th>SNMP</th></tr>
+  <tr><td>使用协议</td><td>TCP</td><td>TCP</td><td>TCP</td><td>TCP</td><td>UDP</td><td>UDP</td><td>TCP</td><td>TCP</td><td>UDP</td></tr>
+  <tr><td>熟知端口</td><td>20</td><td>21</td><td>23</td><td>25</td><td>53</td><td>69</td><td>80</td><td>110</td><td>161</td></tr>
+</table>
+<div class="box tip"><div class="box-title">📌 关键数字</div>
 <ul>
-  <li>在<strong>物理层</strong>，路由器能接收和发送比特流；</li>
-  <li>在<strong>数据链路层</strong>，它能识别帧结构、解析 MAC 地址，并完成帧的解封装与重新封装；</li>
-  <li>在<strong>网络层</strong>，它能读取 IP 数据报首部，根据目的 IP 地址查询路由表，做出转发决策。</li>
+  <li><strong>HTTPS = HTTP over TLS，端口 443</strong>（课外拓展：SSL/TLS 位于运输层与应用层之间）。</li>
+  <li><strong>IMAP</strong> 基于 TCP，熟知端口 <strong>143</strong>。</li>
+  <li>根域名服务器全球共 <strong>13</strong> 个（实为多个冗余服务器组成的集群）。</li>
+  <li>域名标号 ≤ 63 字符；整个域名（含点）≤ 255 字符。</li>
+  <li>非持久连接取一个对象 = 2×RTT；流水线方式全部对象连续传输仅 1×RTT。</li>
+  <li> 权限域名服务器：每区建议至少配 <strong>2</strong> 个。</li>
 </ul>
-<div class="box concept"><div class="box-title">📌 结论</div>
-<p>当路由器转发数据时，会先解封装输入帧，提取出 IP 数据报，再根据下一跳接口<strong>重新封装成适合输出链路的新帧</strong>。正是这种能力，使路由器可以互连底层技术不同的网络（例如以太网与 PPP 链路）。这与仅工作在物理层的中继器或仅工作在数据链路层的交换机有本质区别。</p>
 </div>
+
+<h2 class="sec" id="rc-quiz">一分钟自测五问</h2>
+<div class="quiz-item">
+  <p><strong>Q1</strong>：主机向本地域名服务器、本地域名服务器向根域名服务器，分别用什么查询方式？</p>
+  <details class="ans"><summary>查看答案</summary><p>主机→本地：一律<strong>递归查询</strong>（本地替主机跑腿）；本地→根等：通常<strong>迭代查询</strong>（根只指路，本地自己挨个问）。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q2</strong>：FTP 的控制连接和数据连接各用哪个端口？各自传什么、存活多久？</p>
+  <details class="ans"><summary>查看答案</summary><p>控制连接 <strong>21</strong>：传命令与响应，整个会话期间保持打开；数据连接 <strong>20</strong>（主动模式）：传文件内容，每次传输按需建立、传完即关。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q3</strong>：从撰写到读信，邮件协议的"推"与"拉"各发生在哪段？</p>
+  <details class="ans"><summary>查看答案</summary><p>用户代理→发送端服务器、发送端服务器→接收端服务器都用 <strong>SMTP（推）</strong>；收件人用 <strong>POP3/IMAP（拉）</strong>从接收端服务器取信。Web 邮件则两端均用 HTTP。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q4</strong>：HTTP/1.0 请求一个文档耗时多少？HTTP/1.1 持久连接的两种方式是什么？</p>
+  <details class="ans"><summary>查看答案</summary><p>HTTP/1.0 非持久：文档传输时间 + <strong>2×RTT</strong>（每对象都如此）；HTTP/1.1 持久连接默认启用，分<strong>非流水线</strong>（等前一响应才发下一请求）与<strong>流水线</strong>（连续发请求，全部连续传输仅 1×RTT）。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q5</strong>：C/S 模型中客户之间能直接通信吗？P2P 分发文件为何通常更快？</p>
+  <details class="ans"><summary>查看答案</summary><p>不能，客户之间通常不直接通信；P2P 将分发任务分散到多个对等方、支持并行下载，且容量随节点数自然增长，故向多用户分发一个大文件通常比 C/S 快。</p></details>
+</div>
+
+<p class="subtitle">课外拓展：6.6 节末尾的"网络安全一览"（对称/公钥密码、数字签名、SSL/TLS、防火墙与 IDS）不在 408 考纲内，速记手册不展开。</p>
 
 <div class="pager">
-      <a class="prev" href="4.7.html"><span class="label">上一篇</span>4.7 网络层设备</a>
-      <a class="next" href="quiz.html"><span class="label">下一篇</span>第4章 习题</a>
+      <a class="prev" href="quiz.html"><span class="label">上一篇</span>第6章 习题</a>
+      <a class="next" style="visibility:hidden"><span class="label">—</span>—</a>
     </div>
 </main>
 </div>

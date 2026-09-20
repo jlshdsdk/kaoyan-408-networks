@@ -1,0 +1,87 @@
+<h1 class="page-title">第2章 速记手册</h1>
+<p class="subtitle">考前 30 分钟过一遍 · 全章压缩重组，细节以各节正文与教材为准</p>
+
+<h2 class="sec" id="r2-map">知识框架</h2>
+<div class="map-flow">
+  <div class="map-node"><strong>通信基础概念</strong>（2.1）：数据/信号/码元 → 信源-信道-信宿 → 同步/异步、串行/并行、单工/半双工/全双工 → 波特率 vs 比特率</div>
+  <div class="map-arrow">↓</div>
+  <div class="map-node"><strong>极限容量</strong>（2.1）：奈氏准则（无噪声限码元速率）→ 香农定理（有噪声限信息速率）→ 信噪比两种记法</div>
+  <div class="map-arrow">↓</div>
+  <div class="map-node"><strong>编码与调制</strong>（2.1）：数字→数字（RZ/NRZ/NRZI/曼彻斯特/差分曼彻斯特）；模拟→数字（PCM：采样-量化-编码）；数字→模拟（ASK/FSK/PSK/DPSK/QAM）</div>
+  <div class="map-arrow">↓</div>
+  <div class="map-node"><strong>传输介质</strong>（2.2）：双绞线/同轴电缆/光纤（多模 vs 单模）→ 无线（无线电波全向；微波/红外/激光视距）→ 物理层接口四特性</div>
+  <div class="map-arrow">↓</div>
+  <div class="map-node"><strong>物理层设备</strong>（2.3）：中继器（信号再生、5-4-3 规则）→ 集线器（多端口中继器、广播、不能分割冲突域）</div>
+  <div class="map-arrow">↓</div>
+  <div class="map-node"><strong>小结</strong>（2.4）：传输介质不属于物理层（"第 0 层"）；基带/频带/宽带传输辨析</div>
+</div>
+
+<h2 class="sec" id="r2-table">核心考点速记</h2>
+<table class="tbl">
+  <tr><th>考点</th><th>一句话要义</th><th>考法/年份</th></tr>
+  <tr><td>波特率与比特率</td><td>比特率 = 波特率 × log₂V；波特率与进制（V）无关</td><td>2011、2014、2022 统考</td></tr>
+  <tr><td>奈氏准则</td><td>理想低通信道极限码元速率 2W Baud，极限信息速率 2Wlog₂V b/s</td><td>2009、2014、2022、2023 统考</td></tr>
+  <tr><td>香农定理</td><td>有噪声信道极限信息速率 Wlog₂(1+S/N)，代入用无单位信噪比</td><td>2014、2016 统考</td></tr>
+  <tr><td>奈氏 vs 香农</td><td>无噪声问码元用奈氏；给信噪比用香农；两者都给取较小者</td><td>2017 统考</td></tr>
+  <tr><td>信噪比 dB</td><td>dB = 10lg(S/N)；30dB 即 S/N=1000，lg 记法仅是表达形式</td><td>2013、2016 统考</td></tr>
+  <tr><td>编码方式辨析</td><td>曼彻斯特/差分曼彻斯特每位中间必跳变（兼作时钟）；NRZ 不含同步信息；NRZI 起始跳变表 0</td><td>2013、2015、2021 统考</td></tr>
+  <tr><td>PCM 三步骤</td><td>采样（频率 ≥ 信号最高频率 2 倍）→ 量化 → 编码</td><td>采样定理结合计算</td></tr>
+  <tr><td>数字调制</td><td>ASK 调幅（抗扰差）、FSK 调频（需两个载波频率、抗扰强）、PSK 调相；DPSK 相对调相；QAM 调幅+调相</td><td>2011、2022、2024 统考</td></tr>
+  <tr><td>QAM 速率</td><td>R = B·log₂(m×n)，m 相位 × n 振幅；QAM-16 每码元 4 比特</td><td>2009、2011、2023 统考</td></tr>
+  <tr><td>传输介质</td><td>双绞线绞合减干扰；同轴 50Ω 基带/75Ω 宽带；光纤靠全反射，多模短距、单模远距（激光光源）</td><td>选择题常考</td></tr>
+  <tr><td>无线介质</td><td>无线电波全向可穿透；微波/红外/激光需视距强指向；卫星覆盖广但时延大、保密差</td><td>选择题常考</td></tr>
+  <tr><td>接口四特性</td><td>机械（形状引脚）、电气（电压范围/距离）、功能（电平含义）、过程（事件顺序）；MAC 地址不属于物理层</td><td>2012、2018 统考</td></tr>
+  <tr><td>中继器</td><td>原理是信号再生（放大+整形），非简单放大；两端口；受传播延迟限制（5-4-3 规则）</td><td>选择题常考</td></tr>
+  <tr><td>集线器</td><td>多端口中继器；广播至除输入端口外所有端口；物理星形逻辑总线；半双工；不能分割冲突域</td><td>2010、2020 统考</td></tr>
+</table>
+
+<h2 class="sec" id="r2-warn">易错清单</h2>
+<div class="box warn"><div class="box-title">⚠️ 考前逐条过</div>
+<ol>
+  <li>奈氏限码元速率（无噪声），香农限信息速率（有噪声）——选题先看题干有无噪声/信噪比。</li>
+  <li>波特率与比特率换算必须取 log₂V，别把 16 种状态当成 16 比特。</li>
+  <li>香农公式代入的 S/N 是无单位比值；30dB ≠ 30，要先换算成 1000。</li>
+  <li>曼彻斯特编码每个码元跳变两次占双带宽，波特率是比特率的 2 倍。</li>
+  <li>中继器/集线器都属物理层，不能隔离冲突域，集线器所有端口同属一个冲突域。</li>
+  <li>中继器原理是信号再生，不是简单放大；放大器用于模拟信号且会放大噪声。</li>
+  <li>采样频率不低于信号最高频率的 2 倍——是最高频率，不是带宽的 2 倍。</li>
+  <li>异步传输"异步"指字节之间，字节内部比特仍同步；并行传输用于计算机内部短距离。</li>
+</ol>
+</div>
+
+<h2 class="sec" id="r2-formula">必背数字 · 公式</h2>
+<div class="formula">$$\text{奈氏准则（无噪声）：极限数据传输速率}=2W\log_2 V \ \text{b/s}$$</div>
+<div class="formula">$$\text{香农定理（有噪声）：极限数据传输速率}=W\log_2(1+S/N) \ \text{b/s}$$</div>
+<div class="formula">$$\text{信噪比（dB）}=10\log_{10}(S/N) \qquad \text{30dB}\to S/N=1000,\ \text{20dB}\to 100$$</div>
+<div class="formula">$$\text{比特率}=\text{波特率}\times\log_2 V \qquad \text{QAM：}R=B\log_2(m\times n)$$</div>
+<table class="tbl">
+  <tr><th>数字</th><th>含义</th></tr>
+  <tr><td>2 倍</td><td>PCM 采样频率 ≥ 信号最高频率的 2 倍</td></tr>
+  <tr><td>2W Baud</td><td>理想低通信道极限码元速率（W 为带宽 Hz）</td></tr>
+  <tr><td>5-4-3</td><td>10Base-5：最多 5 段电缆、4 个中继器、仅 3 段可挂主机</td></tr>
+  <tr><td>50Ω / 75Ω</td><td>同轴电缆：50Ω 基带数字传输，75Ω 宽带（有线电视）</td></tr>
+  <tr><td>4 特性</td><td>物理层接口：机械、电气、功能、过程（规程）</td></tr>
+  <tr><td>1 码元</td><td>QAM-16 携带 4 比特，QAM-64 携带 6 比特（log₂ 状态数）</td></tr>
+</table>
+
+<h2 class="sec" id="r2-quiz">一分钟自测五问</h2>
+<div class="quiz-item">
+  <p><span class="q-no">问 1</span>无噪声 8kHz 信道、16 种码元状态，最大数据传输速率是多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body"><p>用奈氏准则：2×8k×log₂16 = 8k×4 = <strong>64kb/s</strong>。无噪声只考虑奈氏，不需要信噪比。</p></div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 2</span>带宽 3kHz、信噪比 30dB 的信道，极限速率约多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body"><p>30dB → S/N=1000；香农：3k×log₂(1+1000) ≈ 3k×10 = <strong>30kb/s</strong>（注意用无单位信噪比）。</p></div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 3</span>波特率 1200 Baud、QAM 采用 8 相位 × 2 振幅，数据传输速率是多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body"><p>共 16 种状态，每码元 4 比特：1200×4 = <strong>4800b/s</strong>（R = B·log₂(m×n)）。</p></div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 4</span>曼彻斯特编码与差分曼彻斯特编码的跳变各代表什么？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body"><p>曼彻斯特：<strong>码元中间跳变</strong>既作时钟又表示数据（如下降沿为 1）；差分曼彻斯特：中间跳变<strong>仅作时钟</strong>，数据由<strong>码元起始处有无跳变</strong>决定（无跳变为 1，有跳变为 0）。</p></div></details>
+</div>
+<div class="quiz-item">
+  <p><span class="q-no">问 5</span>为什么集线器连接的主机越多效率越低？10Mb/s 集线器接 5 台主机，每台平均带宽多少？</p>
+  <details class="ans"><summary>答案</summary><div class="ans-body"><p>集线器是共享式广播设备、半双工、<strong>所有端口同属一个冲突域</strong>，主机越多冲突越多；10/5 = <strong>2Mb/s</strong>。物理星形、逻辑总线，且不能分割冲突域。</p></div></details>
+</div>

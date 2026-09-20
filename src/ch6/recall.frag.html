@@ -1,0 +1,89 @@
+<h1 class="page-title">第6章 速记手册</h1>
+<p class="subtitle">考前 30 分钟过一遍 · 全章压缩重组，细节以各节正文与教材为准</p>
+
+<h2 class="sec" id="rc-map">知识框架</h2>
+<div class="map-flow">
+  <span class="map-node">应用模型<br><small>C/S · P2P</small></span> →
+  <span class="map-node">DNS<br><small>UDP 53 · 递归/迭代</small></span> →
+  <span class="map-node">FTP<br><small>TCP 21/20 · 双连接</small></span> →
+  <span class="map-node">电子邮件<br><small>SMTP 25 · POP3 110 · IMAP</small></span> →
+  <span class="map-node">万维网<br><small>HTTP 80 · URL/HTML</small></span> →
+  <span class="map-node">小结<br><small>端口全表 · 疑难点</small></span>
+</div>
+
+<h2 class="sec" id="rc-points">核心考点速记</h2>
+<table class="tbl">
+  <caption>表 R6.a 第6章核心考点一览</caption>
+  <tr><th>考点</th><th>速记要点</th></tr>
+  <tr><td>C/S 模型</td><td>客户主动请求、服务器被动响应；客户间不直接通信；可扩展性差（受服务器性能与带宽制约）</td></tr>
+  <tr><td>P2P 模型</td><td>节点兼具客户/服务器角色，对等方直接通信；可扩展性好、健壮性强；占用本机资源多，ISP 限制</td></tr>
+  <tr><td>DNS 基础</td><td>域名→IP；客户/服务器模型；运行在 UDP 之上，端口 53；层次域名空间：顶级域/二级域/三级域</td></tr>
+  <tr><td>四类域名服务器</td><td>根（13 个，指路不代跑）、顶级、权限（每区建议至少两个）、本地（主机查询首先发给它）</td></tr>
+  <tr><td>DNS 解析</td><td>主机→本地必为递归；本地→根/顶级/权限常为迭代（"你告诉我该找谁"）；高速缓存 + TTL</td></tr>
+  <tr><td>FTP</td><td>基于 TCP 的有状态协议；控制连接 21（整个会话保持打开，传命令）；数据连接 20（按需建立，传文件）</td></tr>
+  <tr><td>FTP 两种模式</td><td>主动 PORT：服务器用 20 主动连客户端；被动 PASV：服务器随机开端口等客户端来连；由客户端决定</td></tr>
+  <tr><td>邮件组成</td><td>用户代理 + 邮件服务器 + 协议；邮件服务器双重角色（发信时为客户、收信时为服务器）</td></tr>
+  <tr><td>SMTP</td><td>推（Push）、TCP 25；三阶段：建立/传送/释放；仅传 7 位 ASCII；不使用中间邮件服务器中转</td></tr>
+  <tr><td>POP3 / IMAP</td><td>拉（Pull）、TCP 110；下载并保留 / 下载并删除；IMAP 更强：在线操作、选择性获取部分内容</td></tr>
+  <tr><td>MIME</td><td>不取代 SMTP，只做扩展：把非 ASCII 数据编码为 ASCII 再交 SMTP 传输</td></tr>
+  <tr><td>HTTP 特点</td><td>基于 TCP（80）可靠传输，但自身无连接、无状态；Cookie（识别码 + 数据库）弥补无状态</td></tr>
+  <tr><td>持久/非持久连接</td><td>HTTP/1.0 非持久：每对象 2RTT；HTTP/1.1 持久（默认）：非流水线/流水线（全连续仅 1RTT）</td></tr>
+  <tr><td>HTTP 报文</td><td>开始行（请求行/状态行）+ 首部行 + 空行 + 实体主体；方法 GET/HEAD/POST/PUT/DELETE/CONNECT</td></tr>
+  <tr><td>代理服务器</td><td>= Web 高速缓存；过期副本用 If-Modified-Since 询问，未改则回 304 不含实体主体</td></tr>
+</table>
+
+<h2 class="sec" id="rc-warn">易错清单</h2>
+<div class="box warn"><div class="box-title">⚠️ 高频易错点</div>
+<ul>
+  <li>HTTP 本身是<strong>无连接</strong>的——虽基于 TCP，但无须先建立"HTTP 连接"。</li>
+  <li>FTP 是<strong>有状态</strong>协议（跟踪用户目录位置等），HTTP 才是无状态。</li>
+  <li>控制信息走独立连接 → FTP 属<strong>带外</strong>传送；控制连接整个会话不断开。</li>
+  <li>邮件方向：发送全程<strong>推</strong>（SMTP），读取才是<strong>拉</strong>（POP3/IMAP）。</li>
+  <li>Web 邮件（如 Gmail 网页版）：浏览器↔服务器两端都用 HTTP，仅服务器之间用 SMTP。</li>
+  <li>根域名服务器通常<strong>不直接给出 IP</strong>，只返回下一站顶级域名服务器地址。</li>
+  <li>完整 DNS 迭代解析最多 8 个 UDP 报文：4 查询 + 4 回答。</li>
+  <li>URL 一般形式 &lt;协议&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;，请求行里用相对 URL（Host 指明域名）。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="rc-ports">必背端口 · 数字</h2>
+<table class="tbl">
+  <caption>表 R6.b 常见应用层协议端口与传输层协议（教材表 6.2）</caption>
+  <tr><th>应用程序</th><th>FTP数据</th><th>FTP控制</th><th>TELNET</th><th>SMTP</th><th>DNS</th><th>TFTP</th><th>HTTP</th><th>POP3</th><th>SNMP</th></tr>
+  <tr><td>使用协议</td><td>TCP</td><td>TCP</td><td>TCP</td><td>TCP</td><td>UDP</td><td>UDP</td><td>TCP</td><td>TCP</td><td>UDP</td></tr>
+  <tr><td>熟知端口</td><td>20</td><td>21</td><td>23</td><td>25</td><td>53</td><td>69</td><td>80</td><td>110</td><td>161</td></tr>
+</table>
+<div class="box tip"><div class="box-title">📌 关键数字</div>
+<ul>
+  <li><strong>HTTPS = HTTP over TLS，端口 443</strong>（课外拓展：SSL/TLS 位于运输层与应用层之间）。</li>
+  <li><strong>IMAP</strong> 基于 TCP，熟知端口 <strong>143</strong>。</li>
+  <li>根域名服务器全球共 <strong>13</strong> 个（实为多个冗余服务器组成的集群）。</li>
+  <li>域名标号 ≤ 63 字符；整个域名（含点）≤ 255 字符。</li>
+  <li>非持久连接取一个对象 = 2×RTT；流水线方式全部对象连续传输仅 1×RTT。</li>
+  <li> 权限域名服务器：每区建议至少配 <strong>2</strong> 个。</li>
+</ul>
+</div>
+
+<h2 class="sec" id="rc-quiz">一分钟自测五问</h2>
+<div class="quiz-item">
+  <p><strong>Q1</strong>：主机向本地域名服务器、本地域名服务器向根域名服务器，分别用什么查询方式？</p>
+  <details class="ans"><summary>查看答案</summary><p>主机→本地：一律<strong>递归查询</strong>（本地替主机跑腿）；本地→根等：通常<strong>迭代查询</strong>（根只指路，本地自己挨个问）。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q2</strong>：FTP 的控制连接和数据连接各用哪个端口？各自传什么、存活多久？</p>
+  <details class="ans"><summary>查看答案</summary><p>控制连接 <strong>21</strong>：传命令与响应，整个会话期间保持打开；数据连接 <strong>20</strong>（主动模式）：传文件内容，每次传输按需建立、传完即关。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q3</strong>：从撰写到读信，邮件协议的"推"与"拉"各发生在哪段？</p>
+  <details class="ans"><summary>查看答案</summary><p>用户代理→发送端服务器、发送端服务器→接收端服务器都用 <strong>SMTP（推）</strong>；收件人用 <strong>POP3/IMAP（拉）</strong>从接收端服务器取信。Web 邮件则两端均用 HTTP。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q4</strong>：HTTP/1.0 请求一个文档耗时多少？HTTP/1.1 持久连接的两种方式是什么？</p>
+  <details class="ans"><summary>查看答案</summary><p>HTTP/1.0 非持久：文档传输时间 + <strong>2×RTT</strong>（每对象都如此）；HTTP/1.1 持久连接默认启用，分<strong>非流水线</strong>（等前一响应才发下一请求）与<strong>流水线</strong>（连续发请求，全部连续传输仅 1×RTT）。</p></details>
+</div>
+<div class="quiz-item">
+  <p><strong>Q5</strong>：C/S 模型中客户之间能直接通信吗？P2P 分发文件为何通常更快？</p>
+  <details class="ans"><summary>查看答案</summary><p>不能，客户之间通常不直接通信；P2P 将分发任务分散到多个对等方、支持并行下载，且容量随节点数自然增长，故向多用户分发一个大文件通常比 C/S 快。</p></details>
+</div>
+
+<p class="subtitle">课外拓展：6.6 节末尾的"网络安全一览"（对称/公钥密码、数字签名、SSL/TLS、防火墙与 IDS）不在 408 考纲内，速记手册不展开。</p>

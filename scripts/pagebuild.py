@@ -29,6 +29,7 @@ def flat_pages():
         for s in ch['sections']:
             seq.append({'key': f'{d}/{s["id"]}.html', 'title': f'{s["id"]} {s["title"]}', 'ch': n})
         seq.append({'key': f'{d}/quiz.html', 'title': f'第{n}章 习题', 'ch': n})
+        seq.append({'key': f'{d}/recall.html', 'title': f'第{n}章 速记手册', 'ch': n})
     return seq
 
 
@@ -86,6 +87,7 @@ def sidebar_html(depth, cur_key):
         items = [(f'ch{n}/index.html', '本章导学')]
         items += [(f'ch{n}/{s["id"]}.html', f'{s["id"]} {s["title"]}') for s in ch['sections']]
         items.append((f'ch{n}/quiz.html', '章末习题 · 答案折叠'))
+        items.append((f'ch{n}/recall.html', '⭐ 速记手册'))
         for key, label in items:
             active = ' class="active"' if key == cur_key else ''
             datak = f' data-key="{key}"'
@@ -139,6 +141,7 @@ def build_page(frag_key, title, crumbs, prev, nxt):
                 parts.append(f'<div class="toc-line"><a href="ch{n}/{s["id"]}.html">{s["id"]} {s["title"]}</a>'
                              f'<span class="pg">{subs}</span></div>')
             parts.append(f'<div class="toc-line"><a href="ch{n}/quiz.html">第{n}章 习题（选择 + 综合，答案折叠）</a><span class="pg">做题本</span></div>')
+            parts.append(f'<div class="toc-line"><a href="ch{n}/recall.html">⭐ 第{n}章 速记手册</a><span class="pg">框架 · 考点 · 易错 · 必背</span></div>')
             parts.append('</div>')
         parts.append('</div>')
         body = body.replace('<!--FULL_TOC-->', '\n'.join(parts))
@@ -166,7 +169,9 @@ def build_page(frag_key, title, crumbs, prev, nxt):
 <script defer src="{r}assets/katex/contrib/auto-render.min.js?v={asset_v('assets/katex/contrib/auto-render.min.js')}"
   onload="renderMathInElement(document.body,{{delimiters:[{{left:'$$',right:'$$',display:true}},{{left:'\\\\(',right:'\\\\)',display:false}}],throwOnError:false}});"></script>
 <script>window.SITE_BASE = '{r}';</script>
+<script>window.SELFTEST = {1 if out_key.endswith('quiz.html') else 0};</script>
 <script defer src="{r}assets/js/site.js?v={asset_v('assets/js/site.js')}"></script>
+<script defer src="{r}assets/js/selftest.js?v={asset_v('assets/js/selftest.js')}"></script>
 </head>
 <body>
 {topbar_html(depth, cur_key)}
@@ -202,7 +207,9 @@ def write_search_index():
             idx.append({'t': f'{s["id"]} {s["title"]}', 'u': f'ch{n}/{s["id"]}.html',
                         's': f'第{n}章 {ch["title"]}', 'k': subs})
         idx.append({'t': f'第{n}章 习题', 'u': f'ch{n}/quiz.html', 's': f'第{n}章',
-                    'k': '选择题 综合题 答案 解析 做题本 真题'})
+                    'k': '选择题 综合题 答案 解析 做题本 真题 自测'})
+        idx.append({'t': f'第{n}章 速记手册', 'u': f'ch{n}/recall.html', 's': f'第{n}章',
+                    'k': '速记 知识框架 核心考点 易错 必背 数字 公式 端口 一分钟自测'})
     outp = os.path.join(base, 'search-index.json')
     with open(outp, 'w', encoding='utf-8') as f:
         json.dump(idx, f, ensure_ascii=False, indent=0)
@@ -235,6 +242,10 @@ def main():
                      [('首页', page_href('index.html', f'{d}/x')),
                       (f'第{n}章 {ch["title"]}', 'index.html'),
                       ('本章习题', None)]))
+        jobs.append((f'{d}/recall', f'{d}/recall.html', f'第{n}章 速记手册',
+                     [('首页', page_href('index.html', f'{d}/x')),
+                      (f'第{n}章 {ch["title"]}', 'index.html'),
+                      ('速记手册', None)]))
 
     built = 0
     for frag_key, out_key, title, crumbs in jobs:

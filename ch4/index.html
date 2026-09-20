@@ -4,13 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>第4章 网络层 · 导学 - 计算机网络自学网站</title>
-<link rel="stylesheet" href="../assets/css/site.css?v=1789577100">
+<link rel="stylesheet" href="../assets/css/site.css?v=1789885100">
 <link rel="stylesheet" href="../assets/katex/katex.min.css?v=499162500">
 <script defer src="../assets/katex/katex.min.js?v=499162500"></script>
 <script defer src="../assets/katex/contrib/auto-render.min.js?v=499162500"
   onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
 <script>window.SITE_BASE = '../';</script>
+<script>window.SELFTEST = 0;</script>
 <script defer src="../assets/js/site.js?v=1789129371"></script>
+<script defer src="../assets/js/selftest.js?v=1789884746"></script>
 </head>
 <body>
 <header class="topbar">
@@ -44,6 +46,7 @@
 <a href="../ch1/1.2.html" data-key="ch1/1.2.html"><span class="dot">●</span>1.2 计算机网络体系结构与参考模型</a>
 <a href="../ch1/1.3.html" data-key="ch1/1.3.html"><span class="dot">●</span>1.3 本章小结及疑难点</a>
 <a href="../ch1/quiz.html" data-key="ch1/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch1/recall.html" data-key="ch1/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 <div class="side-group" data-ch="2">
 <div class="side-head"><span class="chev">▶</span>
@@ -55,6 +58,7 @@
 <a href="../ch2/2.3.html" data-key="ch2/2.3.html"><span class="dot">●</span>2.3 物理层设备</a>
 <a href="../ch2/2.4.html" data-key="ch2/2.4.html"><span class="dot">●</span>2.4 本章小结及疑难点</a>
 <a href="../ch2/quiz.html" data-key="ch2/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch2/recall.html" data-key="ch2/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 <div class="side-group" data-ch="3">
 <div class="side-head"><span class="chev">▶</span>
@@ -71,6 +75,7 @@
 <a href="../ch3/3.8.html" data-key="ch3/3.8.html"><span class="dot">●</span>3.8 数据链路层设备</a>
 <a href="../ch3/3.9.html" data-key="ch3/3.9.html"><span class="dot">●</span>3.9 本章小结及疑难点</a>
 <a href="../ch3/quiz.html" data-key="ch3/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch3/recall.html" data-key="ch3/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 <div class="side-group open" data-ch="4">
 <div class="side-head"><span class="chev">▶</span>
@@ -86,6 +91,7 @@
 <a href="../ch4/4.7.html" data-key="ch4/4.7.html"><span class="dot">●</span>4.7 网络层设备</a>
 <a href="../ch4/4.8.html" data-key="ch4/4.8.html"><span class="dot">●</span>4.8 本章小结及疑难点</a>
 <a href="../ch4/quiz.html" data-key="ch4/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch4/recall.html" data-key="ch4/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 <div class="side-group" data-ch="5">
 <div class="side-head"><span class="chev">▶</span>
@@ -97,6 +103,7 @@
 <a href="../ch5/5.3.html" data-key="ch5/5.3.html"><span class="dot">●</span>5.3 TCP</a>
 <a href="../ch5/5.4.html" data-key="ch5/5.4.html"><span class="dot">●</span>5.4 本章小结及疑难点</a>
 <a href="../ch5/quiz.html" data-key="ch5/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch5/recall.html" data-key="ch5/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 <div class="side-group" data-ch="6">
 <div class="side-head"><span class="chev">▶</span>
@@ -110,6 +117,7 @@
 <a href="../ch6/6.5.html" data-key="ch6/6.5.html"><span class="dot">●</span>6.5 万维网</a>
 <a href="../ch6/6.6.html" data-key="ch6/6.6.html"><span class="dot">●</span>6.6 本章小结及疑难点</a>
 <a href="../ch6/quiz.html" data-key="ch6/quiz.html"><span class="dot">●</span>章末习题 · 答案折叠</a>
+<a href="../ch6/recall.html" data-key="ch6/recall.html"><span class="dot">●</span>⭐ 速记手册</a>
 </div></div>
 </aside>
 <main class="content">
@@ -163,7 +171,7 @@
 </ol>
 
 <h2 class="sec" id="sec-tips">复习提示</h2>
-<p>本章是历年考查的<strong>重中之重</strong>，尤其是结合第 3 章、第 5 章、第 6 章出综合题的概率很大。其中 <strong>IPv4 和路由</strong>的相关知识点是核心，历年真题都有涉及，因此必须牢固掌握其原理，还要多做题目，以便灵活应用。本章的其他知识点，如 IPv6、IP 多播、移动 IP 也要有所了解。</p>
+<p>本章是历年考查的<strong>重中之重</strong>，综合题经常和第 3 章、第 5 章、第 6 章串起来出。核心是 <strong>IPv4 和路由</strong>，历年真题几乎年年涉及，原理要吃透，子网划分、路由聚合这类计算要亲手练熟。其余部分如 IPv6、IP 多播、移动 IP 考得浅，了解即可。</p>
 
 <h2 class="sec" id="sec-analysis">考点分布与备考建议</h2>
 <div class="box tip"><div class="box-title">📌 备考建议</div>
@@ -198,7 +206,7 @@
 <div class="toc-line"><a href="4.8.html">4.8 本章小结及疑难点</a></div>
 
 <div class="pager">
-      <a class="prev" href="../ch3/quiz.html"><span class="label">上一篇</span>第3章 习题</a>
+      <a class="prev" href="../ch3/recall.html"><span class="label">上一篇</span>第3章 速记手册</a>
       <a class="next" href="4.1.html"><span class="label">下一篇</span>4.1 网络层的功能</a>
     </div>
 </main>

@@ -262,6 +262,44 @@ html[data-theme="dark"] table.tbl th { color: #ddd3fe; }
 .quiz-item td img, .quiz-item th img { margin: 4px auto; }
 /* KaTeX 长公式横向滚动兜底 */
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 3px 0; }
+
+/* ============ 自测模式（习题页） ============ */
+.st-launch { display: flex; align-items: center; gap: 14px; margin: 18px 0 4px; }
+.st-launch .st-go {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff;
+  border: none; border-radius: 999px; padding: 10px 26px;
+  font-size: .95rem; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, .35);
+}
+.st-launch .st-go:hover { filter: brightness(1.08); }
+.st-launch .st-best { font-size: .85rem; color: var(--text-light); }
+.st-bar {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 18px; z-index: 300;
+  background: #1e293b; color: #e2e8f0;
+  border: 1px solid #475569; border-radius: 999px;
+  padding: 9px 18px; font-size: .88rem; font-weight: 600;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .35);
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+}
+.st-bar .st-exit {
+  background: rgba(255,255,255,.12); color: #fff; border: 1px solid #64748b;
+  border-radius: 999px; padding: 3px 12px; cursor: pointer; font-size: .8rem;
+}
+.st-opt { cursor: pointer; border-radius: 6px; padding: 2px 8px; margin: 2px -8px; transition: background .12s; }
+.st-opt:hover { background: var(--primary-light); }
+.st-pick { outline: 2px solid #8b5cf6; outline-offset: -2px; }
+.st-right { background: #dcfce6; border-radius: 6px; }
+.st-right::after { content: " ✓"; color: var(--green); font-weight: 700; }
+.st-wrong { background: #fee2e2; border-radius: 6px; }
+.st-wrong::after { content: " ✗"; color: var(--accent); font-weight: 700; }
+html[data-theme="dark"] .st-right { background: #14532d66; }
+html[data-theme="dark"] .st-wrong { background: #7f1d1d66; }
+.st-skip {
+  font-size: .8rem; color: var(--amber); background: var(--amber-light);
+  border: 1px dashed var(--amber); border-radius: 8px; padding: 4px 12px; margin: 10px 0;
+}
+@media (max-width: 640px) { .st-bar { font-size: .78rem; padding: 8px 12px; bottom: 10px; max-width: 96vw; overflow-x: auto; } }
 .quiz-item .q-no { font-weight: 700; color: var(--primary); }
 .quiz-item .q-src { font-size: .76rem; color: #94a3b8; margin-left: 8px; }
 .choices { margin: 8px 0 4px; padding-left: 8px; list-style: none; }
@@ -363,6 +401,16 @@ details.ans .ans-key { font-weight: 700; color: var(--accent); }
 .toc-line a { text-decoration: none; }
 .toc-line a:visited { color: var(--green); }
 .toc-line .pg { color: #94a3b8; font-size: .8rem; white-space: nowrap; }
+
+/* 章节地图（导学/速记页知识框架链） */
+.map-flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0; }
+.map-node {
+  background: var(--primary-light); border: 1.5px solid var(--primary);
+  color: var(--primary); font-weight: 600; border-radius: 8px; padding: 6px 12px;
+  font-size: .86rem; text-decoration: none;
+}
+.map-node:hover { background: var(--primary); color: #fff; }
+.map-arrow { color: #94a3b8; font-weight: 700; }
 
 footer.site-footer {
   border-top: 1px solid var(--border); margin-top: 40px; padding: 20px 16px 34px;
