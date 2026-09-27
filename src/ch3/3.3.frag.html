@@ -60,7 +60,7 @@
   <li><strong>构造发送帧</strong>：将余数作为 FCS 附加到原始数据后，即 <code>101001001</code>（共 9 位）。</li>
 </ol>
 </div>
-<figure class="fig"><img src="../assets/ch3/fig-3-8.png" alt="图3.8 循环冗余码的运算过程" loading="lazy"><figcaption>图 3.8 循环冗余码的运算过程（王道教材 P58）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-8.webp" alt="图3.8 循环冗余码的运算过程" loading="lazy"><figcaption>图 3.8 循环冗余码的运算过程（王道教材 P58）</figcaption></figure>
 <div class="box sup"><div class="box-title">💡 深入浅出补充：模 2 除法为什么就是异或</div>
 <p>普通除法要比较大小、借位退位，而模 2 除法只看当前首位：首位是 1 就商 1、拿除数异或下来；首位是 0 就商 0、直接落下。这是因为"不借位的减法"与异或在数学上完全等价（相同为 0、不同为 1）。于是硬件上用一排异或门、一拍一位就能"除"完整个位串——这正是 CRC"实现简单、硬件支持成熟"的根源。</p>
 </div>

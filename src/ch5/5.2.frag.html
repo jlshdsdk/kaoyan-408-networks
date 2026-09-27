@@ -17,19 +17,19 @@
 </div>
 <h3 class="sub">2．UDP 的首部格式 <span class="badge kao">考点</span></h3>
 <p>UDP 数据报包含两部分：<strong>首部字段和数据字段</strong>。UDP 首部有 <strong>8B</strong>，由 <strong>4 个字段</strong>组成，每个字段的长度都是 <strong>2B</strong>，如图 5.2 所示。各个字段的意义如下（首部格式及字段含义为 2018 统考考点，首部长度为 2021 统考考点）：</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-2.png" alt="图5.2 UDP 数据报格式" loading="lazy"><figcaption>图 5.2 UDP 数据报格式（王道教材 P230）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-2.webp" alt="图5.2 UDP 数据报格式" loading="lazy"><figcaption>图 5.2 UDP 数据报格式（王道教材 P230）</figcaption></figure>
 <ol>
   <li><strong>源端口号</strong>。发送进程的端口号。需要对方回复时选用，不需要回复时可置为全 0。</li>
   <li><strong>目的端口号</strong>。接收进程的端口号。该字段在所有 UDP 报文中都必须有效。</li>
   <li><strong>长度</strong>。UDP 数据报的长度（<strong>包括首部和数据</strong>），其最小值是 8（仅有首部）。</li>
   <li><strong>检验和</strong>。由发送方的传输层计算并写入，接收方的传输层检测是否有差错，有错就丢弃。在 IPv4 中，该字段可置为全 0 表示未使用（但不建议），在 IPv6 中则强制启用。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch5/fig-5-3.png" alt="图5.3 UDP 基于端口的分用" loading="lazy"><figcaption>图 5.3 UDP 基于端口的分用（王道教材 P230）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-3.webp" alt="图5.3 UDP 基于端口的分用" loading="lazy"><figcaption>图 5.3 UDP 基于端口的分用（王道教材 P230）</figcaption></figure>
 <p>当传输层从 IP 层收到 UDP 数据报时，就根据首部中的<strong>目的端口</strong>，把 UDP 数据报通过相应的端口，上交给最后的终点——应用进程（图 5.3）。若接收方 UDP 发现收到的报文中的<strong>目的端口号不正确</strong>（不存在对应于端口号的应用进程），则<strong>丢弃该报文，并由 ICMP 发送"端口不可达"错误报文给发送方</strong>。</p>
 
 <h2 class="sec" id="sec-5-2-2">5.2.2 UDP 检验 <span class="badge kao">考点</span></h2>
 <p>在计算检验和时，要在 UDP 数据报之前增加 <strong>12B 的伪首部</strong>。伪首部并不是 UDP 的真正首部，只是在计算检验和时临时添加在 UDP 数据报的前面，得到一个临时的 UDP 数据报，检验和就是按照这个临时的 UDP 数据报来计算的。<strong>伪首部既不向下传输给网络层，也不向上递交给应用层，而只是为了计算检验和</strong>。图 5.4 给出了 UDP 数据报的首部和伪首部（UDP 检验的原理为 2025 统考考点）。</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-4.png" alt="图5.4 UDP 数据报的首部和伪首部" loading="lazy"><figcaption>图 5.4 UDP 数据报的首部和伪首部（王道教材 P230）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-4.webp" alt="图5.4 UDP 数据报的首部和伪首部" loading="lazy"><figcaption>图 5.4 UDP 数据报的首部和伪首部（王道教材 P230）</figcaption></figure>
 <p>伪首部共 12B：源 IP 地址（4B）+ 目的 IP 地址（4B）+ 全 0（1B）+ 协议字段值 17（1B）+ UDP 长度（2B）。</p>
 <p>UDP 检验和的计算方法与 IP 首部检验和基本类似。不同之处在于：<strong>IP 检验和只检验 IP 数据报的首部，而 UDP 检验和把首部和数据部分一起检验</strong>。</p>
 <div class="box concept"><div class="box-title">📌 UDP 计算检验和的过程</div>

@@ -4,7 +4,7 @@
 <h2 class="sec" id="sec-6-4-1">6.4.1 电子邮件系统的组成结构</h2>
 <p>作为一种<strong>异步通信</strong>方式，电子邮件不要求通信双方同时在线。发送端将邮件发送至收件人所用的邮件服务器，并存入其邮箱，收件人可随时登录自己的邮件服务器读取邮件。</p>
 <p>完整的电子邮件系统应包含如图 6.8 所示的<strong>三个主要组成部分</strong>：<strong>用户代理</strong>（User Agent）、<strong>邮件服务器</strong>，以及电子邮件所<strong>依赖的协议</strong>（如 SMTP、POP3 或 IMAP 等）。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-8.png" alt="图6.8 电子邮件系统的主要组成部分" loading="lazy"><figcaption>图 6.8 电子邮件系统的主要组成部分（王道教材 P283）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-8.webp" alt="图6.8 电子邮件系统的主要组成部分" loading="lazy"><figcaption>图 6.8 电子邮件系统的主要组成部分（王道教材 P283）</figcaption></figure>
 <ul>
   <li><strong>用户代理（UA）</strong>：用户与电子邮件系统之间的接口。用户代理为用户提供友好的操作界面，用于发送和接收邮件，至少应具备撰写、显示和处理邮件等基本功能。通常，用户代理是运行在个人计算机上的电子邮件客户端软件，如 Outlook、Foxmail 等。</li>
   <li><strong>邮件服务器</strong>：负责邮件的发送与接收，并向发件人反馈邮件传送状态（如已投递、被拒收或丢失等）。邮件服务器采用客户/服务器模式工作，但需具备<strong>双重角色</strong>：既能作为服务器接收邮件，又能作为客户发送邮件。例如，当邮件服务器 A 向邮件服务器 B 发送邮件时，A 扮演 SMTP 客户，B 则作为 SMTP 服务器；反之亦然。</li>
@@ -15,7 +15,7 @@
 <p><strong>SMTP 采用推（Push）的方式</strong>，即用户代理或发送端邮件服务器主动将邮件推送至目标服务器；而 <strong>POP3 采用拉（Pull）的方式</strong>，即用户代理读取邮件时，主动向服务器发起请求，拉取邮箱中的邮件。</p>
 </div>
 <p>电子邮件的发送与接收过程可简化为如图 6.9 所示。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-9.png" alt="图6.9 电子邮件的发送、接收过程" loading="lazy"><figcaption>图 6.9 电子邮件的发送、接收过程（王道教材 P284）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-9.webp" alt="图6.9 电子邮件的发送、接收过程" loading="lazy"><figcaption>图 6.9 电子邮件的发送、接收过程（王道教材 P284）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 电子邮件的收发过程（六步）</div>
 <ol>
   <li>发件人通过用户代理撰写和编辑待发送的邮件；</li>
@@ -41,7 +41,7 @@
 <div class="box exam"><div class="box-title">🎯 考点跟踪：SMTP 协议的特点（2018 统考）</div></div>
 <p>由于 SMTP 协议<strong>仅支持传输 7 位 ASCII 码文本邮件</strong>，因此无法直接传送非英语字符（如中文、俄文，甚至带重音符号的法文或德文），也无法传输可执行文件或其他二进制对象。为解决这一限制，提出了<strong>多用途互联网邮件扩展</strong>（Multipurpose Internet Mail Extensions，MIME）。</p>
 <p><strong>MIME 并未修改或取代 SMTP，而是在其基础上进行扩展。</strong>当发送端需要传输包含非 ASCII 数据的邮件时，不能直接通过 SMTP 发送，而要先用 MIME 将非 ASCII 数据<strong>编码为 ASCII 格式</strong>，再交由 SMTP 传输。接收端收到邮件后，再通过 MIME 对 ASCII 数据进行解码还原，进而恢复原始的非 ASCII 内容。MIME 与 SMTP 的关系如图 6.10 所示。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-10.png" alt="图6.10 SMTP与MIME的关系" loading="lazy"><figcaption>图 6.10 SMTP 与 MIME 的关系（王道教材 P285）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-10.webp" alt="图6.10 SMTP与MIME的关系" loading="lazy"><figcaption>图 6.10 SMTP 与 MIME 的关系（王道教材 P285）</figcaption></figure>
 <p>MIME 主要包括以下三部分内容：</p>
 <ol>
   <li>定义了 5 个新的首部字段：MIME 版本、内容描述、内容标识、传送编码和内容类型；</li>

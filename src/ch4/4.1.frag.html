@@ -17,7 +17,7 @@
 <p>由于历史原因，许多有关 TCP/IP 的文献也将网络层的路由器称为网关。做题时要根据上下文判断"网关"一词指的是设备还是应用网关。</p>
 </div>
 <p>TCP/IP 在网络互连方面的做法是：在网络层采用标准化协议，但相互连接的网络可以是异构的。因为参与互连的计算机网络都使用相同的网际协议 IP，通过 IP 协议就可使这些性能各异的网络在网络层上<strong>看起来像是一个统一的网络</strong>，可以把互连后的网络视为一个<strong>虚拟互连网络</strong>，简称 IP 网络。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-1.png" alt="图4.1 IP 网络的概念" loading="lazy"><figcaption>图 4.1 IP 网络的概念（王道教材 P128）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-1.webp" alt="图4.1 IP 网络的概念" loading="lazy"><figcaption>图 4.1 IP 网络的概念（王道教材 P128）</figcaption></figure>
 <p>使用 IP 网络的好处是：当 IP 网络上的主机进行通信时，就好像在单个网络上通信一样，而看不见互连的各个网络的具体异构细节（如具体的编址方案、路由选择协议等）。</p>
 
 <h2 class="sec" id="sec-4-1-2">4.1.2 路由与转发</h2>
@@ -35,7 +35,7 @@
 <div class="box exam"><div class="box-title">🎯 考点跟踪：虚电路的特点（2020 统考）</div></div>
 <p>在虚电路方式中，两台主机进行通信前，必须首先在网络层建立一条<strong>逻辑连接</strong>，即虚电路（Virtual Circuit，VC）。该连接一旦建立，其对应的端到端传输路径即被固定。与电路交换类似，整个通信过程可分为三个阶段：<strong>虚电路建立、数据传输与虚电路释放</strong>。</p>
 <p>每次建立虚电路时，系统为其分配一个未使用过的<strong>虚电路号（VCID）</strong>，以区别于同一节点上的其他虚电路。此后，双方就沿着已建立的虚电路传送分组。值得注意的是，<strong>仅在连接建立阶段使用完整的源和目的地址</strong>，后续分组的首部仅需携带虚电路号。每个中间节点都维护一个虚电路表，其中记录了每条虚电路的 VCID 及下一跳信息，这些内容在连接建立过程中确定。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-2.png" alt="图4.2 虚电路方式的工作原理" loading="lazy"><figcaption>图 4.2 虚电路方式的工作原理（王道教材 P129）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-2.webp" alt="图4.2 虚电路方式的工作原理" loading="lazy"><figcaption>图 4.2 虚电路方式的工作原理（王道教材 P129）</figcaption></figure>
 <p>以图 4.2 中主机 A 向主机 B 发送分组为例：</p>
 <ol>
   <li>数据传输前，主机 A 与主机 B 需先建立虚电路连接：A 发送"呼叫请求"分组，经由中间节点转发至 B；若 B 同意建立连接，则返回"呼叫应答"分组予以确认。</li>
@@ -57,7 +57,7 @@
 
 <h3 class="sub">2．数据报</h3>
 <p>在数据报方式中，<strong>发送分组前无须建立连接</strong>。源主机将应用层报文分割为若干数据段，并封装成携带完整源地址和目的地址的独立分组。中间节点对分组短暂缓存，<strong>独立选路后随即转发</strong>。网络层不提供服务质量保证，也不确保可靠传输，因此分组可能丢失、重复、失序或出错。这就使得网络中的路由器比较简单，且造价低廉（与电话网络相比）。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-3.png" alt="图4.3 数据报方式转发分组" loading="lazy"><figcaption>图 4.3 数据报方式转发分组（王道教材 P130）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-3.webp" alt="图4.3 数据报方式转发分组" loading="lazy"><figcaption>图 4.3 数据报方式转发分组（王道教材 P130）</figcaption></figure>
 <p>以图 4.3 中主机 A 向主机 B 发送分组为例：</p>
 <ol>
   <li>主机 A 将分组逐个发送至与其直连的节点 A，该节点对分组进行短暂缓存。</li>
@@ -95,7 +95,7 @@
 <h2 class="sec" id="sec-4-1-4">4.1.4 SDN 的基本概念 <span class="badge kao">考点</span></h2>
 <p>网络层的核心任务是分组转发与路由选择。从功能架构上看，网络层可抽象地划分为两个逻辑平面：<strong>数据平面</strong>（也称转发平面）和<strong>控制平面</strong>，其中，<strong>数据平面负责执行分组转发，而控制平面负责实现路由选择，生成并维护路由信息</strong>。</p>
 <p><strong>软件定义网络</strong>（Software Defined Network，SDN）是一种近年来广泛采用的创新网络架构，其核心在于<strong>控制平面与数据平面的解耦</strong>：控制平面集中化，数据平面分布式部署。在传统网络中，每台路由器同时承担控制与转发功能，既运行路由协议，又维护转发表。而在 SDN 架构中，路由器仅保留数据平面功能，不再运行路由选择软件，因此彼此之间无须交换路由信息。网络的控制功能由一个<strong>逻辑集中式的远程控制器</strong>（通常由多个服务器协同实现）统一承担。该控制器掌握全网拓扑及主机状态，能为每个分组计算最优转发路径，并通过 <strong>OpenFlow</strong> 等协议将相应的<strong>流表</strong>（SDN 中的转发表）下发至各路由器。路由器的工作因此变得极为简洁：接收分组、匹配流表、执行转发。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-4.png" alt="图4.4 SDN 结构" loading="lazy"><figcaption>图 4.4 SDN 结构（王道教材 P131）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-4.webp" alt="图4.4 SDN 结构" loading="lazy"><figcaption>图 4.4 SDN 结构（王道教材 P131）</figcaption></figure>
 <div class="box warn"><div class="box-title">⚠️ 注意：SDN 并非要改造整个互联网</div>
 <p>如此一来，网络架构又变为集中控制模式，而互联网本质上是分布式的。SDN 并非要把整个互联网改造为集中控制模式，这显然不具有可行性。然而，在某些特定条件下，例如像一些大型数据中心互联的广域网，采用 SDN 架构能够显著提升网络的运行效率。</p>
 </div>

@@ -133,7 +133,7 @@
 
 <h3 class="sub">2．信源、信道与信宿</h3>
 <p>数据通信系统主要划分为<strong>信源</strong>、<strong>信道</strong>和<strong>信宿</strong>三部分。信源是产生和发送数据的源头，信宿是接收数据的终点，它们通常都是计算机或其他数字终端装置。<strong>信道</strong>是信号的传输介质，一条双向通信的线路包含一个发送信道和一个接收信道。信源发出信息后，需经发送变换器转换为适合在信道传输的信号；该信号经信道传至接收端后，由接收变换器还原为原始信息，再交付给信宿。噪声源是信道上的噪声及分散在通信系统其他各处的噪声的集中表示。</p>
-<figure class="fig"><img src="../assets/ch2/fig-2-1.png" alt="图2.1 一个单向通信系统的模型" loading="lazy"><figcaption>图 2.1 一个单向通信系统的模型（王道教材 P31）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch2/fig-2-1.webp" alt="图2.1 一个单向通信系统的模型" loading="lazy"><figcaption>图 2.1 一个单向通信系统的模型（王道教材 P31）</figcaption></figure>
 <p>按传输信号形式的不同，信道分为传送模拟信号的<strong>模拟信道</strong>和传送数字信号的<strong>数字信道</strong>；按传输介质的不同，分为<strong>无线信道</strong>和<strong>有线信道</strong>。</p>
 <p><span class="badge kao">考点</span>按同步方式分，传输又分为<strong>同步传输</strong>和<strong>异步传输</strong>。同步传输以比特流为单位，数据块连续发送、字节之间没有间隔，也没有起始位和终止位，要求收发双方时钟严格同步：可采用<strong>外同步</strong>（额外增加一条时钟信号线）或<strong>内同步</strong>（发送端把时钟信号编码进数据中一起发送，如曼彻斯特编码）。异步传输以<strong>字节</strong>为传输单位，字节之间的时间间隔不固定，接收端只在每个字节的起始处对字节内的比特实现同步，因此通常要在每个字节前后分别加上<strong>起始位和结束位</strong>。注意："异步"指<strong>字节之间</strong>异步，字节内部的各比特仍是同步传输的。</p>
 <p>信道上传送的信号有<strong>基带信号</strong>和<strong>宽带信号</strong>之分。基带信号是由信源发出的未经过调制的原始电信号，当在信道中直接传送基带信号时，称为<strong>基带传输</strong>；宽带信号是将基带信号调制到高频载波上形成的信号，然后其在信道上传输，这种方式称为<strong>宽带传输</strong>。</p>
@@ -216,7 +216,7 @@
 
 <h3 class="sub">1．数字数据编码为数字信号</h3>
 <p>数字数据编码用于基带传输，即在基本不改变信号频率的情况下直接传输数字信号。编码的核心在于如何用电平或跳变来表示二进制数 0 和 1。常用编码方式如图 2.2 所示。</p>
-<figure class="fig"><img src="../assets/ch2/fig-2-2.png" alt="图2.2 常用的数字数据编码" loading="lazy"><figcaption>图 2.2 常用的数字数据编码（王道教材 P33）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch2/fig-2-2.webp" alt="图2.2 常用的数字数据编码" loading="lazy"><figcaption>图 2.2 常用的数字数据编码（王道教材 P33）</figcaption></figure>
 <ol>
   <li><strong>归零（RZ）编码</strong>。用高电平表示 1，低电平表示 0（或相反），<strong>每个码元中间都会跳变回零电平（"归零"）</strong>。接收方可利用这一跳变来调整自身的时钟基准，从而实现收发双方的自同步。但由于归零过程占用了一部分带宽，传输效率会受到一定影响。</li>
   <li><strong>非归零（NRZ）编码</strong>。与 RZ 编码的区别是<strong>不进行归零</strong>，整个周期都可用于传输数据，因此编码效率最高。但由于缺乏内在的时钟信息，收发双方需额外时钟线来实现同步。</li>
@@ -227,7 +227,7 @@
 <div class="box sup"><div class="box-title"><span class="badge sup">深入浅出</span>补充：曼彻斯特编码为什么"自带时钟"</div>
 <p>想象接收方按固定节拍"看表采样"：若一长串 0 或一长串 1 使线路电平长时间不变，接收方的时钟就会慢慢漂移，采错比特边界。曼彻斯特编码强制<strong>每个码元中间必跳变一次</strong>——这个跳变像节拍器一样不断"敲"醒接收方："新码元的中点在这里"。于是跳变既是时钟（定边界），又能携带数据（跳变方向定 0/1），一举两得；代价是跳变占用了带宽，实际波特率是比特率的两倍。</p>
 </div>
-<figure class="fig"><img src="../assets/ch2/sup-2-1.png" alt="常用编码波形对比：NRZ、RZ、曼彻斯特与差分曼彻斯特" loading="lazy"><figcaption>常用编码波形对比：曼彻斯特编码码元中间的跳变既表示数据又兼作时钟（湖科大笔记 P34）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch2/sup-2-1.webp" alt="常用编码波形对比：NRZ、RZ、曼彻斯特与差分曼彻斯特" loading="lazy"><figcaption>常用编码波形对比：曼彻斯特编码码元中间的跳变既表示数据又兼作时钟（湖科大笔记 P34）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪（波形特性）</div>
 <p>NRZ 与 NRZI 编码的波形特性（2015 统考）；曼彻斯特编码的波形特性（2013、2015 统考）；差分曼彻斯特编码的波形特性（2021 统考）。</p>
 </div>
@@ -252,7 +252,7 @@
 
 <h3 class="sub">3．数字数据调制为模拟信号 <span class="badge kao">考点</span></h3>
 <p>数字数据调制技术在发送端将数字信号转换为模拟信号，在接收端则将模拟信号还原为数字信号，分别对应于调制解调器的调制和解调过程。图 2.3 显示了数字调制的三种方式。</p>
-<figure class="fig"><img src="../assets/ch2/fig-2-3.png" alt="图2.3 数字调制的三种方式" loading="lazy"><figcaption>图 2.3 数字调制的三种方式（王道教材 P34）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch2/fig-2-3.webp" alt="图2.3 数字调制的三种方式" loading="lazy"><figcaption>图 2.3 数字调制的三种方式（王道教材 P34）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：数字调制的分类与特点（2024 统考）；调制阶数与码元比特数的关系（2011、2022 统考）</div></div>
 <ol>
   <li><strong>幅移键控（Amplitude Shift Keying，ASK）</strong>。通过改变载波的<strong>振幅</strong>来表示数字信号 1 和 0。例如，用有载波和无载波输出分别表示 1 和 0。这种方式容易实现，但抗干扰能力差。</li>
@@ -264,7 +264,7 @@
 </div>
 <p>4）<strong>正交幅度调制（Quadrature Amplitude Modulation，QAM）</strong>。在载波频率相同的前提下，通过<strong>同时调制振幅和相位</strong>，形成复合信号，从而在有限带宽内实现更高的数据传输速率。</p>
 <p>QAM 基于正交载波，通常使用两路载波，分别对应正弦波和余弦波。两路载波的频率相同，但相位相差 90°，因此可在同一频带上独立传输而不会相互干扰。以 QAM-16 为例，常用如图 2.4(a) 所示的星座图表示：每路载波均有 4 种不同的振幅，其中横轴表示余弦波的幅度，纵轴表示正弦波的幅度。两路信号组合后可形成 16 种不同的信号状态，每个状态对应星座图上的一个点，并且代表一个 4 位二进制数。接收端收到信号后，通过判断该信号最接近哪个星座点，即可恢复出原始数据。若将每路载波的振幅调制为 8 种，则可组合成 64 种不同的信号状态（QAM-64），每个状态对应一个 6 位二进制数，如图 2.4(b) 所示。</p>
-<figure class="fig"><img src="../assets/ch2/fig-2-4.png" alt="图2.4 QAM-16 和 QAM-64 的星座图" loading="lazy"><figcaption>图 2.4 QAM-16 和 QAM-64 的星座图（王道教材 P35）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch2/fig-2-4.webp" alt="图2.4 QAM-16 和 QAM-64 的星座图" loading="lazy"><figcaption>图 2.4 QAM-16 和 QAM-64 的星座图（王道教材 P35）</figcaption></figure>
 <p>假设波特率为 \(B\)，采用 \(m\) 个相位，每个相位有 \(n\) 种振幅，则该 QAM 的数据传输速率 \(R\) 为</p>
 <div class="formula">$$R=B\log_2(m\times n)\quad(\text{单位为 b/s})$$</div>
 <div class="box warn"><div class="box-title">课外拓展</div>

@@ -1154,7 +1154,7 @@
 <div class="quiz-item">
   <p><span class="q-no">第 77 题</span><span class="q-src">单选 · 2019 统考真题</span></p>
   <p>某客户通过一个 TCP 连接向服务器发送数据的部分过程如下图所示。客户在 \(t_0\) 时刻第一次收到确认序列号 ack_seq = 100 的段，并发送序列号 seq = 100 的段，但发生丢失。若 TCP 支持快速重传，则客户重新发送 seq = 100 段的时刻是（　）</p>
-  <img src="../assets/ch5/quiz-5.3-q77.png" alt="第77题配图：客户与服务器TCP报文交互时序图" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-q77.webp" alt="第77题配图：客户与服务器TCP报文交互时序图" loading="lazy">
   <ul class="choices">
     <li>A. \(t_1\)</li>
     <li>B. \(t_2\)</li>
@@ -1245,7 +1245,7 @@
 <div class="quiz-item">
   <p><span class="q-no">第 83 题</span><span class="q-src">单选 · 2021 统考真题</span></p>
   <p>设主机甲通过 TCP 向主机乙发送数据，部分过程如下图所示。甲在 \(t_0\) 时刻发送一个序号 seq = 501、封装 200B 数据的段，在 \(t_1\) 时刻收到乙发送的序号 seq = 601、确认序号 ack_seq = 501、接收窗口 rcvwnd = 500B 的段，则甲在未收到新的确认段之前，可以继续向乙发送的数据序号范围是（　）</p>
-  <img src="../assets/ch5/quiz-5.3-q83.png" alt="第83题配图：甲乙TCP交互时序图" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-q83.webp" alt="第83题配图：甲乙TCP交互时序图" loading="lazy">
   <ul class="choices">
     <li>A. 501～1000</li>
     <li>B. 601～1100</li>
@@ -1310,7 +1310,7 @@
 <div class="quiz-item">
   <p><span class="q-no">第 87 题</span><span class="q-src">单选 · 2025 统考真题</span></p>
   <p>主机甲通过 TCP 向主机乙发送数据的部分过程如下图，seq 为序号，ack_seq 为确认序号，rcvwnd 为接收窗口。甲在 \(t_0\) 时刻的拥塞窗口和发送窗口均为 2000B，拥塞控制阈值为 8000B，MSS = 1000B。甲始终以 MSS 发送 TCP 段。若甲在 \(t_1\) 时刻收到如图所示的确认段，则甲在未收到新的确认段之前，还可以继续向乙发送的 TCP 段数是（　）</p>
-  <img src="../assets/ch5/quiz-5.3-q87.png" alt="第87题配图：甲乙TCP数据发送过程时序图" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-q87.webp" alt="第87题配图：甲乙TCP数据发送过程时序图" loading="lazy">
   <ul class="choices">
     <li>A. 2</li>
     <li>B. 3</li>
@@ -1367,7 +1367,7 @@
 <div class="quiz-item">
   <p><span class="q-no">综合题 4</span><span class="q-src">5.2 UDP</span></p>
   <p>一个 UDP 首部的信息（十六进制表示）为 0xF7 21 00 45 00 2C E8 27。UDP 数据报的格式如下图所示。试问：</p>
-  <img src="../assets/ch5/quiz-5.2-comp4.png" alt="综合题4配图：UDP数据报首部格式" loading="lazy">
+  <img src="../assets/ch5/quiz-5.2-comp4.webp" alt="综合题4配图：UDP数据报首部格式" loading="lazy">
   <p>(1) 源端口、目的端口、数据报总长度、数据部分长度分别是什么？</p>
   <p>(2) 该 UDP 数据报是从客户发送给服务器还是从服务器发送给客户？使用该 UDP 服务的程序使用的是哪个应用层协议？</p>
   <details class="ans"><summary>答案与解析</summary><div class="ans-body">
@@ -1494,7 +1494,7 @@
 <div class="quiz-item">
   <p><span class="q-no">综合题 17</span><span class="q-src">5.3 TCP</span></p>
   <p>一个 TCP 首部的数据信息（十六进制表示）为 0x0D 28 00 15 50 5F A9 06 00 00 00 00 70 02 40 00 C0 29 00 00。TCP 首部的格式如下图所示。请回答：</p>
-  <img src="../assets/ch5/quiz-5.3-comp17.png" alt="综合题17配图：TCP首部格式" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-comp17.webp" alt="综合题17配图：TCP首部格式" loading="lazy">
   <p>(1) 源端口号和目的端口号各是多少？</p>
   <p>(2) 发送的序列号是多少？确认号是多少？</p>
   <p>(3) TCP 首部的长度是多少？</p>
@@ -1511,12 +1511,12 @@
 <div class="quiz-item">
   <p><span class="q-no">综合题 18</span><span class="q-src">5.3 TCP · 2012 统考真题</span></p>
   <p>主机 H 通过快速以太网连接 Internet，IP 地址为 192.168.0.8，服务器 S 的 IP 地址为 211.68.71.80。H 与 S 使用 TCP 通信时，在 H 上捕获的其中 5 个 IP 分组如表 1 所示。</p>
-  <img src="../assets/ch5/quiz-5.3-comp18a.png" alt="综合题18配图：捕获的5个IP分组（表1）" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-comp18a.webp" alt="综合题18配图：捕获的5个IP分组（表1）" loading="lazy">
   <p>(1) 表 1 中的 IP 分组中，哪几个是由 H 发送的？哪几个完成了 TCP 连接建立过程？哪几个在通过快速以太网传输时进行了填充？</p>
   <p>(2) 根据表 1 中的 IP 分组，分析 S 已经收到的应用层数据字节数是多少。</p>
   <p>(3) 若表 1 中的某个 IP 分组在 S 发出时的前 40B 如表 2 所示，则该 IP 分组到达 H 时经过了多少个路由器？</p>
-  <img src="../assets/ch5/quiz-5.3-comp18b.png" alt="综合题18配图：来自S的分组前40B（表2）" loading="lazy">
-  <img src="../assets/ch5/quiz-5.3-comp18c.png" alt="综合题18配图：IP分组头结构（图1）与TCP段头结构（图2）" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-comp18b.webp" alt="综合题18配图：来自S的分组前40B（表2）" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-comp18c.webp" alt="综合题18配图：IP分组头结构（图1）与TCP段头结构（图2）" loading="lazy">
   <details class="ans"><summary>答案与解析</summary><div class="ans-body">
     <p><strong>解答：</strong></p>
     <p>(1) 由图 1 看出，源 IP 地址为 IP 分组头的第 13～16 个字节。在表 1 中，1、3、4 号分组的源 IP 地址均为 192.168.0.8（c0 a8 00 08H），所以 1、3、4 号分组是由 H 发送的。再观察 1、3、4 号分组的标识字段，分别是 9b、9c、9d，标识字段是一个计数器，每产生一个数据报就加 1，这也说明主机 H 先后发送了 1, 3, 4 号分组。</p>
@@ -1530,7 +1530,7 @@
 <div class="quiz-item">
   <p><span class="q-no">综合题 19</span><span class="q-src">5.3 TCP · 2016 统考真题</span></p>
   <p>假设下图中的 H3 访问 Web 服务器 S 时，S 为新建的 TCP 连接分配了 20KB（K = 1024）的接收缓存，最大段长 MSS = 1KB，平均往返时间 RTT = 200ms。H3 建立连接时的初始序号为 100，且持续以 MSS 大小的段向 S 发送数据，拥塞窗口初始阈值为 32KB；S 对收到的每个段进行确认，并通告新的接收窗口。假定 TCP 连接建立完成后，S 端的 TCP 接收缓存仅有数据存入而无数据取出。请回答下列问题：</p>
-  <img src="../assets/ch5/quiz-5.3-comp19.png" alt="综合题19配图：网络拓扑图" loading="lazy">
+  <img src="../assets/ch5/quiz-5.3-comp19.webp" alt="综合题19配图：网络拓扑图" loading="lazy">
   <p>(1) 在 TCP 连接建立过程中，H3 收到的 S 发送过来的第二次握手 TCP 段的 SYN 和 ACK 标志位的值分别是多少？确认序号是多少？</p>
   <p>(2) H3 收到的第 8 个确认段所通告的接收窗口是多少？此时 H3 的拥塞窗口变为多少？H3 的发送窗口变为多少？</p>
   <p>(3) H3 的发送窗口等于 0 时，下一个待发送的数据段序号是多少？H3 从发送第 1 个数据段到发送窗口等于 0 时刻为止，平均数据传输速率是多少？（忽略段的传输时延）</p>

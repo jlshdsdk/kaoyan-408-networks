@@ -132,14 +132,14 @@
 
 <h2 class="sec" id="sec-3-2-1">3.2.1 字符计数法 <span class="badge kao">考点</span></h2>
 <p>字符计数法在帧首部设置一个<strong>计数字段</strong>，用于记录该帧包含的<strong>总字节数（包括计数字段自身占用的 1B）</strong>，如图 3.5 所示。接收方读取该计数值后，即可确定后续数据的长度，从而定位帧的结束位置；由于帧是连续传输的，下一帧的起始位置也随之确定。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-5.png" alt="图3.5 字符计数的过程示例" loading="lazy"><figcaption>图 3.5 字符计数的过程示例（王道教材 P54）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-5.webp" alt="图3.5 字符计数的过程示例" loading="lazy"><figcaption>图 3.5 字符计数的过程示例（王道教材 P54）</figcaption></figure>
 <div class="box warn"><div class="box-title">⚠️ 主要缺陷：计数字段出错则满盘皆输</div>
 <p>当计数字段在传输过程中出错时，接收方将无法正确识别帧的边界，导致<strong>收发双方失去同步</strong>，可能引发灾难性后果（后续所有帧的边界全部错位）。这也是字符计数法在实际中很少使用的原因。</p>
 </div>
 
 <h2 class="sec" id="sec-3-2-2">3.2.2 字节填充法 <span class="badge kao">考点</span></h2>
 <p>字节填充法通过特定<strong>控制字符</strong>实现帧定界。在图 3.6 中，控制字符 <strong>SOH</strong> 表示帧的起始，<strong>EOT</strong> 表示帧的结束。为避免数据中出现的 SOH 或 EOT 被误判为帧的定界符，发送方会在这些特殊字符前<strong>插入一个 ESC 字符</strong>（注意，ESC 是 ASCII 码中的一个单字节控制字符），以实现<strong>透明传输</strong>。若数据中原本就包含 ESC，则同样在其前再插入一个 ESC。接收方收到 ESC 后，会将其丢弃，并将紧随其后的字符视为普通数据（而非控制字符），从而<strong>还原出原始数据</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-6.png" alt="图3.6 字节填充的过程示例" loading="lazy"><figcaption>图 3.6 字节填充的过程示例（王道教材 P54）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-6.webp" alt="图3.6 字节填充的过程示例" loading="lazy"><figcaption>图 3.6 字节填充的过程示例（王道教材 P54）</figcaption></figure>
 <p>当帧的数据部分中出现 ESC、EOT 或 SOH 时［见图 3.6(a)］，发送方在每个 ESC、EOT 或 SOH 之前插入一个 ESC 字符［见图 3.6(b)］，接收方处理后恢复原数据［见图 3.6(c)］。</p>
 
 <h2 class="sec" id="sec-3-2-3">3.2.3 零比特填充法 <span class="badge kao">考点</span></h2>
@@ -150,7 +150,7 @@
   <li><strong>接收方</strong>：执行逆操作——每收到 5 个连续的"1"，就自动<strong>删除其后的"0"</strong>，以恢复原始数据。</li>
 </ul>
 <p>早期的 HDLC 协议正是采用这种方法来实现透明传输。零比特填充法<strong>易于硬件实现，性能优于字节填充法</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-7.png" alt="图3.7 比特填充过程示例" loading="lazy"><figcaption>图 3.7 比特填充过程示例（王道教材 P55）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-7.webp" alt="图3.7 比特填充过程示例" loading="lazy"><figcaption>图 3.7 比特填充过程示例（王道教材 P55）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考法：2013 统考真题·逐步复算</div>
 <p><strong>题目</strong>：HDLC 协议对 <code>01111100 01111110</code> 组帧后，对应的比特串为？</p>
 <p><strong>逐步计算</strong>（发送方每遇 5 个连续"1"即在其后填一个"0"）：</p>

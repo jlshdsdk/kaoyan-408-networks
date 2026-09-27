@@ -15,7 +15,7 @@
 <p>假设 \(d_x(y)\) 表示从节点 \(x\) 到节点 \(y\) 的最短路径费用，则有：</p>
 <div class="formula">$$d_x(y)=\min\{c(x,v)+d_v(y)\},\quad v\ \text{是}\ x\ \text{的所有邻居}$$</div>
 <p>式中，\(c(x,v)\) 是从 \(x\) 到其邻居 \(v\) 的链路费用。已知 \(x\) 的所有邻居到 \(y\) 的最短路径费用后，\(x\) 到 \(y\) 的最短路径费用即为所有 \(c(x,v)+d_v(y)\) 中的最小值。所有最短路径算法都依赖于一个基本性质：<strong>"两点之间的最短路径，必然包含路径上任意子路径的最短路径"</strong>。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-15.png" alt="图4.15 Bellman-Ford算法的基本思想" loading="lazy"><figcaption>图 4.15 Bellman-Ford 算法的基本思想（王道教材 P186）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-15.webp" alt="图4.15 Bellman-Ford算法的基本思想" loading="lazy"><figcaption>图 4.15 Bellman-Ford 算法的基本思想（王道教材 P186）</figcaption></figure>
 <p>在距离-向量算法中，每个节点 \(x\) 维护以下路由信息：</p>
 <ol>
   <li>从 \(x\) 到每个直接相连邻居 \(v\) 的链路费用 \(c(x,v)\)；</li>
@@ -35,7 +35,7 @@
 </ol>
 <p>显然，<strong>更新报文的大小与网络节点数成正比</strong>，大型网络中可能产生较大的通信开销。最常见的距离-向量路由协议是 RIP，它采用跳数作为路径费用的度量标准。</p>
 </div>
-<figure class="fig"><img src="../assets/ch4/fig-4-16.png" alt="图4.16 距离-向量算法实现的举例" loading="lazy"><figcaption>图 4.16 距离-向量算法实现的举例（王道教材 P187）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-16.webp" alt="图4.16 距离-向量算法实现的举例" loading="lazy"><figcaption>图 4.16 距离-向量算法实现的举例（王道教材 P187）</figcaption></figure>
 <h3 class="sub">3．链路状态算法</h3>
 <p><strong>链路状态</strong>（Link State，LS）指的是：本路由器与哪些邻居相连，以及对应链路的代价。链路状态算法要求每个节点都掌握<strong>完整的全网拓扑结构图</strong>。为此，每个节点执行以下两项任务：</p>
 <ul>
@@ -67,7 +67,7 @@
   <li><strong>外部网关协议（External Gateway Protocol，EGP）</strong>：当源主机和目的主机位于不同的自治系统中（这两个自治系统可能使用不同的 IGP），数据报在到达某一自治系统边界时，就需要借助一种协议将路由信息传递到另一个自治系统。当前广泛使用的外部网关协议是 <strong>BGP-4</strong>。</li>
 </ol>
 <p>自治系统之间的路由选择也称<strong>域间路由选择</strong>，自治系统内部的路由选择也称<strong>域内路由选择</strong>。每个自治系统都至少有一个或多个<strong>边界路由器</strong>，这些路由器除运行本系统的内部网关协议外，还需运行外部网关协议（如 BGP-4）。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-17.png" alt="图4.17 两个自治系统互连的示意图" loading="lazy"><figcaption>图 4.17 两个自治系统互连的示意图（王道教材 P188）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-17.webp" alt="图4.17 两个自治系统互连的示意图" loading="lazy"><figcaption>图 4.17 两个自治系统互连的示意图（王道教材 P188）</figcaption></figure>
 
 <h2 class="sec" id="sec-4-4-3">4.4.3 路由信息协议（RIP） <span class="badge kao">考点</span></h2>
 <p>路由信息协议（Routing Information Protocol，RIP）是内部网关协议（IGP）中最早得到广泛应用的协议之一。RIP 是一种<strong>分布式的、基于距离向量</strong>的路由选择协议。</p>
@@ -142,7 +142,7 @@
 </ol>
 <p>可见，RIP 对链路故障或距离增加这类"坏消息"的传播非常缓慢。若无跳数上限（15）的限制，路由器将无限循环转发无效路由信息，因此"坏消息传播得慢"也称为<strong>无穷计数问题</strong>。</p>
 </div>
-<figure class="fig"><img src="../assets/ch4/fig-4-18.png" alt="图4.18 RIP举例：链路开销改变" loading="lazy"><figcaption>图 4.18 RIP 举例：链路开销改变（王道教材 P190）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-18.webp" alt="图4.18 RIP举例：链路开销改变" loading="lazy"><figcaption>图 4.18 RIP 举例：链路开销改变（王道教材 P190）</figcaption></figure>
 
 <h2 class="sec" id="sec-4-4-4">4.4.4 开放最短路径优先协议（OSPF） <span class="badge kao">考点</span></h2>
 <p>虽然名称中含有"最短路径优先"，但这并不意味着其他路由协议不采用最短路径原则。实际上，自治系统内使用的所有路由协议都旨在寻找一条最短路径，只是最短的度量标准不同。</p>
@@ -173,7 +173,7 @@
 </div>
 <h3 class="sub">2．OSPF 划分区域</h3>
 <p>为支持大规模网络，OSPF 将一个自治系统划分为若干更小的<strong>区域（Area）</strong>。划分区域的好处是：将洪泛法交换链路状态信息的范围限制在各区域内，而非整个 AS，从而显著减少网络通信开销。每个区域由一个或多个<strong>区域边界路由器</strong>负责为进出该区域的分组提供路由。AS 内必须有一个区域配置成<strong>主干区域</strong>（如 0.0.0.0），它包含 AS 内的所有区域边界路由器（可能还包含部分非边界路由器），用于连通其他区域。当分组需在不同区域之间传送时，其转发路径为：<strong>源区域 → 本地区域边界路由器 → 主干区域 → 目的区域边界路由器 → 目的地</strong>。此外，主干区域中还需指定一个<strong>自治系统边界路由器</strong>，专门负责与本 AS 外的其他 AS 交换路由信息。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-19.png" alt="图4.19 OSPF划分区域举例" loading="lazy"><figcaption>图 4.19 OSPF 划分区域举例（王道教材 P192）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-19.webp" alt="图4.19 OSPF划分区域举例" loading="lazy"><figcaption>图 4.19 OSPF 划分区域举例（王道教材 P192）</figcaption></figure>
 <h3 class="sub">3．OSPF 的五种分组类型 <span class="badge kao">考点</span></h3>
 <table class="tbl">
   <caption>表：OSPF 的五种分组类型（王道教材 P192）</caption>
@@ -228,7 +228,7 @@
   <li>类似地，R3 也会在其路由表中添加表项 &lt;X, R2&gt;。每个路由器在收到新的 BGP 路由通告后，都需要执行 <strong>NEXT-HOP 解析</strong>和 <strong>IGP 查找</strong>，才能将路由正确写入本地路由表。</li>
 </ol>
 </div>
-<figure class="fig"><img src="../assets/ch4/fig-4-20.png" alt="图4.20 BGP路由的举例" loading="lazy"><figcaption>图 4.20 BGP 路由的举例（王道教材 P194）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-20.webp" alt="图4.20 BGP路由的举例" loading="lazy"><figcaption>图 4.20 BGP 路由的举例（王道教材 P194）</figcaption></figure>
 <h3 class="sub">3．BGP 路由选择 <span class="badge kao">考点</span></h3>
 <p>若从一个 AS 到另一个 AS 中的网络 X 只有一条 BGP 路由，则无须进行路由选择。如果存在两条或更多的 BGP 路由可供选择，则应根据以下原则，并按给定的优先顺序，选择一条较好的 BGP 路由：</p>
 <ol>
@@ -237,9 +237,9 @@
   <li><strong>使用热土豆路由选择算法</strong>：假设按前两种方法都无法确定最好的路由（本地偏好相同、所经过的 AS 个数也相同），AS 中的每个路由器执行热土豆路由选择算法（比喻成烫手的热土豆），使分组<strong>经过最少的转发次数离开本 AS</strong>。这时要使用内部网关协议（如 RIP 或 OSPF），对于不同的路由器，得出的选择结果是不同的；</li>
   <li><strong>选择 BGP 标识符数值最小的路由</strong>：BGP 标识符是运行 BGP 路由器的唯一标识符。当以上三种方法都无法找出最好的 BGP 路由时，可使用 BGP 标识符来选择路由。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch4/fig-4-21.png" alt="图4.21 本地偏好值较高的路由优先" loading="lazy"><figcaption>图 4.21 本地偏好值较高的路由优先（王道教材 P195）</figcaption></figure>
-<figure class="fig"><img src="../assets/ch4/fig-4-22.png" alt="图4.22 根据经过AS跳数的多少选择BGP路由" loading="lazy"><figcaption>图 4.22 根据经过 AS 跳数的多少选择 BGP 路由（王道教材 P195）</figcaption></figure>
-<figure class="fig"><img src="../assets/ch4/fig-4-23.png" alt="图4.23 热土豆路由选择算法的举例" loading="lazy"><figcaption>图 4.23 热土豆路由选择算法的举例（王道教材 P195）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-21.webp" alt="图4.21 本地偏好值较高的路由优先" loading="lazy"><figcaption>图 4.21 本地偏好值较高的路由优先（王道教材 P195）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-22.webp" alt="图4.22 根据经过AS跳数的多少选择BGP路由" loading="lazy"><figcaption>图 4.22 根据经过 AS 跳数的多少选择 BGP 路由（王道教材 P195）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-23.webp" alt="图4.23 热土豆路由选择算法的举例" loading="lazy"><figcaption>图 4.23 热土豆路由选择算法的举例（王道教材 P195）</figcaption></figure>
 <h3 class="sub">4．BGP 的四种报文 <span class="badge kao">考点</span></h3>
 <p>当 BGP 刚启动时，BGP 会话的两端需要交换<strong>完整的 BGP 路由表</strong>；此后，仅在路由发生变化时发送更新部分。这种方式有助于节省网络带宽并降低路由器的处理开销。BGP-4 定义了以下四种报文类型：</p>
 <table class="tbl">

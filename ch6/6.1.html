@@ -135,7 +135,7 @@
   <li>客户<strong>主动</strong>发起服务请求，并等待接收处理结果；</li>
   <li>服务器收到请求后，解析并处理该请求，将结果返回给客户。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch6/fig-6-1.png" alt="图6.1 C/S模型" loading="lazy"><figcaption>图 6.1 C/S 模型（王道教材 P268）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-1.webp" alt="图6.1 C/S模型" loading="lazy"><figcaption>图 6.1 C/S 模型（王道教材 P268）</figcaption></figure>
 <p>服务器上运行着专门提供某种服务的程序，能够同时处理多个来自远程或本地客户程序的请求。<strong>客户程序必须事先知道服务器程序的地址</strong>；而服务器程序启动后便一直不断运行着，被动等待并接收来自各地客户程序的请求，因此<strong>服务器程序无须知道客户程序的地址</strong>。</p>
 <p>客户/服务器模型的主要<strong>特征</strong>：客户是服务请求方，服务器是服务提供方。例如在 Web 应用中，始终运行的 Web 服务器响应运行在客户上的浏览器所发出的请求。采用 C/S 模型的常见应用包括 <strong>Web、文件传输协议（FTP）和电子邮件（SMTP/POP3/IMAP）</strong>等。</p>
 <div class="box tip"><div class="box-title">📌 客户/服务器模型的主要特点</div>
@@ -148,7 +148,7 @@
 
 <h2 class="sec" id="sec-6-1-2">6.1.2 P2P 模型 <span class="badge kao">考点</span></h2>
 <p>在 C/S 模型中，服务器的性能决定了整个系统的吞吐能力，当面临大量用户请求时，服务器极易成为系统瓶颈。<strong>对等</strong>（Peer-to-Peer，P2P）模型的<strong>思想</strong>是：网络中的内容不再集中存储于中心服务器，<strong>每个节点同时具备下载和上传的能力</strong>，其权利与义务大体是对等的，如图 6.2 所示。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-2.png" alt="图6.2 P2P模型" loading="lazy"><figcaption>图 6.2 P2P 模型（王道教材 P268）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-2.webp" alt="图6.2 P2P模型" loading="lazy"><figcaption>图 6.2 P2P 模型（王道教材 P268）</figcaption></figure>
 <p>在 P2P 模型中，各计算机没有固定的客户和服务器角色划分。任意两台计算机——称为<strong>对等方</strong>（Peer），均可直接相互通信。从实现机制上看，P2P 模型本质上仍基于客户/服务器模式：每个节点访问其他节点资源时扮演客户角色，为其他节点提供资源时又充当服务器角色。</p>
 <div class="box tip"><div class="box-title">📌 与 C/S 模型相比，P2P 模型的优点</div>
 <ol>

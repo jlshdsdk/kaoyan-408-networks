@@ -16,7 +16,7 @@
 <h2 class="sec" id="sec-4-6-2">4.6.2 移动 IP 通信过程</h2>
 <p>在移动 IP 中，每个移动站都有一个初始 IP 地址称为<strong>永久地址</strong>（或归属地址），移动站初始所在的网络称为<strong>归属网络</strong>。永久地址和归属网络的关联是固定不变的。移动站离开归属网络后，所接入的外地网络也称<strong>被访网络</strong>，被访网络中的代理称为<strong>外地代理</strong>，它通常是连接在被访网络上的路由器。</p>
 <p>外地代理有两个重要功能：① 为移动站分配一个临时的<strong>转交地址</strong>，该地址属于被访网络，用于标识移动站的当前位置；② 将此转交地址及时通知给其归属代理，以便后者建立从归属网络到当前位置的转发路径。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-26.png" alt="图4.26 移动IP的基本通信过程" loading="lazy"><figcaption>图 4.26 移动 IP 的基本通信过程（王道教材 P212，图中移动站 A 的永久地址为 131.8.6.7/16，归属网络为 131.8.0.0/16，漫游到被访网络 15.0.0.0/8 后获得转交地址 15.5.6.7/8）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-26.webp" alt="图4.26 移动IP的基本通信过程" loading="lazy"><figcaption>图 4.26 移动 IP 的基本通信过程（王道教材 P212，图中移动站 A 的永久地址为 131.8.6.7/16，归属网络为 131.8.0.0/16，漫游到被访网络 15.0.0.0/8 后获得转交地址 15.5.6.7/8）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 移动 IP 的基本通信流程</div>
 <ol>
   <li><strong>本地通信</strong>：移动站 A 位于其归属网络时，按传统的 TCP/IP 方式直接通信；</li>

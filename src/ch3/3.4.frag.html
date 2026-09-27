@@ -15,8 +15,8 @@
 
 <h3 class="sub">2．滑动窗口流量控制基本原理</h3>
 <p>滑动窗口流量控制是一种更高效的流量控制方法。在任意时刻，发送方维持一组连续的、允许发送的帧序号，称为<strong>发送窗口</strong>（\(W_T\)）；接收方也维持一组连续的、允许接收的帧序号，称为<strong>接收窗口</strong>（\(W_R\)）。发送窗口的大小决定了在未收到对方确认的情况下，发送方最多还能发送多少帧以及哪些帧；接收窗口则用于控制接收方可以接收哪些帧，<strong>超出窗口范围的帧将被丢弃</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-9.png" alt="图3.9 发送窗口的工作原理" loading="lazy"><figcaption>图 3.9 发送窗口的工作原理：(a)允许发送 0～4 号共 5 个帧；(b)允许发送 1～4 号共 4 个帧；(c)不允许发送任何帧；(d)允许发送 5～7 号共 3 个帧（王道教材 P62）</figcaption></figure>
-<figure class="fig"><img src="../assets/ch3/fig-3-10.png" alt="图3.10 接收窗口的工作原理" loading="lazy"><figcaption>图 3.10 接收窗口（\(W_R\)=1）的工作原理（王道教材 P63）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-9.webp" alt="图3.9 发送窗口的工作原理" loading="lazy"><figcaption>图 3.9 发送窗口的工作原理：(a)允许发送 0～4 号共 5 个帧；(b)允许发送 1～4 号共 4 个帧；(c)不允许发送任何帧；(d)允许发送 5～7 号共 3 个帧（王道教材 P62）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-10.webp" alt="图3.10 接收窗口的工作原理" loading="lazy"><figcaption>图 3.10 接收窗口（\(W_R\)=1）的工作原理（王道教材 P63）</figcaption></figure>
 <p>发送方每收到一个按序到达的确认帧，就将发送窗口向前滑动一个位置，从而允许发送一个新帧。当窗口内所有帧均已发送但尚未收到确认时，发送方暂停发送。接收方每收到一个序号落在接收窗口内的帧，便接收该帧，随后将接收窗口向前滑动一个位置，并返回确认。若收到的帧序号落在接收窗口之外，则一律丢弃。</p>
 <div class="box concept"><div class="box-title">📌 滑动窗口的重要特性</div>
 <ol>
@@ -64,7 +64,7 @@
 <div class="box exam"><div class="box-title">🎯 考点跟踪：GBN 协议的工作原理（2009）· 累积确认机制（2017）· 滑动窗口机制（2012、2015、2017）· 超时重传机制（2017）</div></div>
 <p>在<strong>后退 N 帧（GBN）协议</strong>中，发送方可在未收到确认帧的情况下，连续发送多个序号落在发送窗口内的数据帧。<strong>后退 N 帧的含义</strong>是：若某个已发送的数据帧因超时未收到确认而被判定为丢失或出错，则发送方不仅需要重传该帧，还需重传其后所有已发送但未被确认的帧。这一机制的前提是：<strong>接收方仅按序接收数据帧</strong>，任何失序到达的帧都将被丢弃。</p>
 <p>如图 3.11 所示，发送方向接收方连续发送数据帧，发送完 0 号帧后，可继续发送 1 号、2 号等后续帧。其通常<strong>仅为最早未确认的帧</strong>维护一个超时计时器，当该帧被确认后，计时器移至下一个未确认帧。由于连续发送了多个帧，确认帧必须明确指示所确认的帧序号。为降低开销，GBN 协议采用<strong>累积确认</strong>机制：接收方无须对每个正确接收的帧立即返回确认，而可在连续收到多个正确帧后，仅对其中序号最大的帧发送一个确认。具体而言，<strong>ACKn 表示接收方已正确收到 n 号帧及之前的所有帧</strong>，下次期望接收的是 n+1 号帧（若序号回绕，则可能是 0 号帧）。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-11.png" alt="图3.11 GBN协议的工作原理：对出错数据帧的处理" loading="lazy"><figcaption>图 3.11 GBN 协议的工作原理：对出错数据帧的处理（王道教材 P65）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-11.webp" alt="图3.11 GBN协议的工作原理：对出错数据帧的处理" loading="lazy"><figcaption>图 3.11 GBN 协议的工作原理：对出错数据帧的处理（王道教材 P65）</figcaption></figure>
 <p>由于接收方仅按序接收帧，当某帧出错或丢失时，其后所有正确到达的帧即便无误，也会被丢弃。例如在图 3.11 中，尽管在出错的 2 号帧之后又收到了 6 个正确的数据帧，接收方仍必须将它们全部丢弃。此外，为了防止确认帧丢失，接收方可以<strong>重复发送最近一次的确认帧</strong>（如 ACK1），促使发送方尽快感知当前的接收状态。2 号帧的计时器超时后，发送方将从该帧开始，重传窗口内所有未被确认的帧（2 号及之后的帧）。</p>
 <div class="box concept"><div class="box-title">📌 GBN 协议的窗口约束</div>
 <p>若采用 \(n\) 比特对帧编号，则发送窗口 \(W_T\) 应满足 \(1 &lt; W_T \le 2^n - 1\)。若 \(W_T &gt; 2^n-1\)，可能导致接收方无法区分新发送的帧与因序号回绕而重复出现的旧帧。GBN 协议的接收窗口大小固定为 \(W_R=1\)，这保证了帧的严格按序接收。</p>
@@ -84,7 +84,7 @@
 </ul>
 <p>此外，选择重传协议还引入了更高效的差错处理策略：一旦接收方检测到某个数据帧出错，可立即向发送方发送<strong>否定帧（NAK）</strong>，<strong>请求重传 NAK 指定的帧</strong>，从而避免等待超时。</p>
 <p>在图 3.12 中，2 号帧丢失后，接收方仍可正常接收并缓存后续到达的数据帧（如 3～9 号帧）；发送方超时重传 2 号帧并被成功接收后，接收窗口即可向前滑动。在某个时刻，若接收方检测到 10 号帧出错，则会立即发送否定帧 NAK10；在此期间，接收方仍可继续接收并缓存后续帧；发送方收到 NAK10 后，立即重传 10 号帧，无须等待超时。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-12.png" alt="图3.12 SR协议的工作原理：对超时和出错数据帧的处理" loading="lazy"><figcaption>图 3.12 SR 协议的工作原理：对超时和出错数据帧的处理（王道教材 P65）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-12.webp" alt="图3.12 SR协议的工作原理：对超时和出错数据帧的处理" loading="lazy"><figcaption>图 3.12 SR 协议的工作原理：对超时和出错数据帧的处理（王道教材 P65）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 SR 协议的窗口约束</div>
 <p>选择重传协议的<strong>接收窗口 \(W_R\) 和发送窗口 \(W_T\) 均大于 1</strong>，允许一次发送或接收多个数据帧。若采用 \(n\) 比特对帧编号，需满足两个条件：</p>
 <ol>
@@ -112,7 +112,7 @@
 
 <h4 class="sub">（1）停止-等待协议的信道利用率</h4>
 <p>停止-等待协议的优点是实现简单，但缺点是信道利用率极低。图 3.13 显示了停止-等待协议中数据帧和确认帧的发送时间关系。假定在发送方和接收方之间有一个直通的信道来传送分组。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-13.png" alt="图3.13 停止-等待协议中数据帧和确认帧的发送时间关系" loading="lazy"><figcaption>图 3.13 停止-等待协议中数据帧和确认帧的发送时间关系（王道教材 P66）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-13.webp" alt="图3.13 停止-等待协议中数据帧和确认帧的发送时间关系" loading="lazy"><figcaption>图 3.13 停止-等待协议中数据帧和确认帧的发送时间关系（王道教材 P66）</figcaption></figure>
 <p>发送方发送一个分组的发送时延为 \(T_D\)，显然 \(T_D\) 等于分组长度除以数据传输速率。假定分组正确到达接收方后，其处理时间可忽略不计，接收方立即返回确认；接收方发送确认分组的发送时延为 \(T_A\)（通常可忽略不计）。再假设发送方处理确认分组的时间也可忽略不计，则发送方经过时间 \(T_D + RTT + T_A\) 后就可再发送下一个分组，其中 RTT 是往返时延。由于仅有 \(T_D\) 时间用于有效发送数据，因此停止-等待协议的信道利用率 \(U\) 为</p>
 <div class="formula">$$U = \frac{T_D}{T_D + RTT + T_A}$$</div>
 <div class="box exam"><div class="box-title">🎯 考法：停止-等待协议信道利用率的计算（教材例析）</div>
@@ -121,7 +121,7 @@
 
 <h4 class="sub">（2）连续 ARQ 协议的信道利用率</h4>
 <p>连续 ARQ 协议采用流水线传输（见图 3.14），允许发送方连续发送多个分组，从而在信道上维持持续的数据流动。只要发送窗口足够大，即可显著提升信道利用率。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-14.png" alt="图3.14 连续ARQ协议的流水线传输可提高信道利用率" loading="lazy"><figcaption>图 3.14 连续 ARQ 协议的流水线传输可提高信道利用率（王道教材 P67）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-14.webp" alt="图3.14 连续ARQ协议的流水线传输可提高信道利用率" loading="lazy"><figcaption>图 3.14 连续 ARQ 协议的流水线传输可提高信道利用率（王道教材 P67）</figcaption></figure>
 <p>设连续 ARQ 协议的发送窗口大小为 \(N\)（最多可连续发送 \(N\) 个分组），分为两种情况：</p>
 <ol>
   <li><strong>若 \(N T_D &lt; T_D + RTT + T_A\)</strong>：即在一个发送周期内可发送完 \(N\) 个分组，此时信道无法被完全占满，信道利用率为

@@ -1,48 +1,48 @@
 [
  {
-  "file": "fig-4-5.png",
+  "file": "fig-4-5.webp",
   "caption": "图4.5 IP数据报的格式",
   "page": 149,
   "w": 714,
   "h": 423
  },
  {
-  "file": "fig-4-6.png",
+  "file": "fig-4-6.webp",
   "caption": "图4.6 IP分片的例子",
   "page": 151,
   "w": 712,
   "h": 273
  },
  {
-  "file": "fig-4-7.png",
+  "file": "fig-4-7.webp",
   "caption": "图4.7 分类的IP地址",
   "page": 152,
   "w": 714,
   "h": 296
  },
  {
-  "file": "fig-4-8.png",
+  "file": "fig-4-8.webp",
   "caption": "图4.8 路由聚合的例子",
   "page": 155,
   "w": 606,
   "h": 226
  },
  {
-  "file": "fig-4-9.png",
+  "file": "fig-4-9.webp",
   "caption": "图4.9 NAT路由器的工作原理",
   "page": 157,
   "w": 801,
   "h": 396
  },
  {
-  "file": "fig-4-10.png",
+  "file": "fig-4-10.webp",
   "caption": "图4.10 ARP的工作原理",
   "page": 160,
   "w": 851,
   "h": 374
  },
  {
-  "file": "fig-4-11.png",
+  "file": "fig-4-11.webp",
   "caption": "图4.11 使用ARP的4种典型情况",
   "page": 160,
   "w": 721,

@@ -126,18 +126,18 @@
 <p class="subtitle">对应王道教材 3.5 节（教材 P77–P83）· 本节属于 408 考纲范围</p>
 
 <p><strong>介质访问控制</strong>的主要任务是协调共享同一信道的各节点的传输行为，以避免彼此之间的信号冲突。如图 3.15 所示，在广播信道中，节点 A、B、C、D 和 E 共享同一信道，若 A 与 C、B 与 D 同时通信且未加控制，则可能因信号干扰而通信失败。用于决定广播信道资源分配的协议属于数据链路层的<strong>介质访问控制（Medium Access Control，MAC）子层</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-15.png" alt="图3.15 广播信道的通信方式" loading="lazy"><figcaption>图 3.15 广播信道的通信方式（王道教材 P78）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-15.webp" alt="图3.15 广播信道的通信方式" loading="lazy"><figcaption>图 3.15 广播信道的通信方式（王道教材 P78）</figcaption></figure>
 <p>常见的介质访问控制方法包括：<strong>信道划分介质访问控制、随机访问介质访问控制和轮询访问介质访问控制</strong>。其中，前者采用静态划分信道的方式，后两者则属于动态分配信道的方式。</p>
 
 <h2 class="sec" id="sec-3-5-1">3.5.1 信道划分介质访问控制 <span class="badge kao">考点</span></h2>
 <p>信道划分介质访问控制通过<strong>复用技术</strong>，将同一传输介质上的多个设备通信隔离开来，合理分配时域或频域资源。所谓<strong>复用</strong>，是指在发送端将多个发送方的信号组合到一条物理信道上传输，在接收端再将复用信号分离，并交付给对应的接收方，如图 3.16 所示。当传输介质的带宽超过单个信号所需带宽时，复用技术还能有效提高传输系统的利用率。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-16.png" alt="图3.16 复用原理示意图" loading="lazy"><figcaption>图 3.16 复用原理示意图（王道教材 P78）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-16.webp" alt="图3.16 复用原理示意图" loading="lazy"><figcaption>图 3.16 复用原理示意图（王道教材 P78）</figcaption></figure>
 <p>信道划分的实质是通过分时、分频、分码等方式，将一个广播信道在逻辑上划分为若干互不干扰的子信道，从而实现多个点对点通信。信道划分介质访问控制主要包括以下四种方式。</p>
 
 <h3 class="sub">1．时分复用（TDM）</h3>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：时分复用的概念（2013 统考）</div></div>
 <p><strong>时分复用</strong>（Time Division Multiplexing，TDM）将信道的传输时间划分为等长的时间片，构成一个 TDM 帧。每个用户在每个 TDM 帧中占用<strong>固定序号</strong>的时隙，且该时隙周期性出现（周期即为 TDM 帧长度）。所有用户在不同时间共享相同的信道资源，如图 3.17 所示。需注意，TDM 帧是一段固定长度的时间间隔，与数据链路层的"帧"概念不同。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-17.png" alt="图3.17 时分复用的原理示意图" loading="lazy"><figcaption>图 3.17 时分复用的原理示意图（王道教材 P78）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-17.webp" alt="图3.17 时分复用的原理示意图" loading="lazy"><figcaption>图 3.17 时分复用的原理示意图（王道教材 P78）</figcaption></figure>
 <p>从某一时刻看，信道上传送的是某对用户之间的信号；从一段时间看，则是按时间分割的复用信号。由于 TDM 按固定次序分配时隙，当某用户暂无数据发送时，其分配的时隙仍被保留、无法被其他用户利用，因此信道利用率较低。</p>
 <div class="box concept"><div class="box-title">📌 统计时分复用（STDM）</div>
 <p><strong>统计时分复用</strong>（Statistic TDM，STDM）也称<strong>异步时分复用</strong>，是对 TDM 的改进。STDM 不固定分配时隙，而是按需动态分配：仅当用户有数据要发送时，才为其分配 STDM 帧中的时隙，从而显著提高线路利用率。例如，假设线路数据速率为 6000b/s，3 个用户的平均速率均为 2000b/s：采用 TDM 时，每个用户固定分配 2000b/s 的带宽；而在 STDM 下，各用户可动态共享全部带宽，当其他用户无数据发送时，某一用户可利用接近线路总速率（此处为 6000b/s）的带宽进行突发传输，进而显著提高线路的平均利用率。</p>
@@ -146,7 +146,7 @@
 <h3 class="sub">2．频分复用（FDM）</h3>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：频分复用的概念（2013 统考）</div></div>
 <p><strong>频分复用</strong>（Frequency Division Multiplexing，FDM）将信道的总频带划分为多个子频带，每个子频带作为一个独立子信道，供一对用户通信使用，如图 3.18 所示。所有用户在<strong>同一时间占用不同的频带资源</strong>。各子信道分配的带宽可以不同，但总和不得超过信道的总带宽。为防止相邻子信道间相互干扰，实际应用中通常还需在它们之间设置"<strong>隔离频带</strong>"。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-18.png" alt="图3.18 频分复用的原理示意图" loading="lazy"><figcaption>图 3.18 频分复用的原理示意图（王道教材 P79）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-18.webp" alt="图3.18 频分复用的原理示意图" loading="lazy"><figcaption>图 3.18 频分复用的原理示意图（王道教材 P79）</figcaption></figure>
 <p>频分复用的优点在于能充分利用传输介质的带宽，系统效率较高，且实现相对简单。</p>
 
 <h3 class="sub">3．波分复用（WDM）</h3>
@@ -193,14 +193,14 @@
 <p>ALOHA 协议分为<strong>纯 ALOHA 协议</strong>和<strong>时隙 ALOHA 协议</strong>两种。</p>
 <h4 class="sub">（1）纯 ALOHA 协议</h4>
 <p>纯 ALOHA 协议的<strong>基本思想</strong>：当总线形网络中的任一站点需要发送数据时，可<strong>立即发送</strong>，无须事先检测信道状态。若在一段时间内未收到确认，则认为传输过程中发生了冲突。此时，该站点需等待一段随机时间后重传，直至发送成功。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-19.png" alt="图3.19 一个纯ALOHA协议的工作原理" loading="lazy"><figcaption>图 3.19 一个纯 ALOHA 协议的工作原理（王道教材 P81）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-19.webp" alt="图3.19 一个纯ALOHA协议的工作原理" loading="lazy"><figcaption>图 3.19 一个纯 ALOHA 协议的工作原理（王道教材 P81）</figcaption></figure>
 <p>图 3.19 展示了纯 ALOHA 协议的工作原理。假设所有帧长度固定，帧长不用比特数表示，而用发送该帧所需的时间表示，图中以 \(T_0\) 表示这一时间。在图 3.19 的示例中，站 1 发送帧 1 时，其他站点均未发送数据，因此帧 1 成功传输。但随后站 2 和站 N−1 发送的帧 2 与帧 3 在时间上部分重叠，发生冲突。发生冲突的各站必须重传，但<strong>不能立即重传</strong>（否则会再次冲突），而是等待一段随机时间后再尝试。若重传仍冲突，则重复此过程，直至成功。图中其他帧的发送情况为：帧 4 成功，帧 5 与帧 6 发生冲突。</p>
 <div class="box warn"><div class="box-title">⚠️ 纯 ALOHA 的吞吐量</div>
 <p>由于冲突概率较高，纯 ALOHA 协议的<strong>吞吐量很低</strong>。为克服这一缺点，提出了时隙 ALOHA 协议。</p>
 </div>
 <h4 class="sub">（2）时隙 ALOHA 协议</h4>
 <p><strong>时隙 ALOHA 协议</strong>将时间划分为等长的<strong>时隙</strong>（Slot），并要求所有站点<strong>同步时钟</strong>。站点只能在每个时隙的起始时刻发送帧，且一帧的发送时间必须小于或等于一个时隙长度。这种约束减少了发送的随意性，从而<strong>降低了冲突概率，提高了信道利用率</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-20.png" alt="图3.20 两个站的时隙ALOHA协议的工作原理" loading="lazy"><figcaption>图 3.20 两个站的时隙 ALOHA 协议的工作原理（王道教材 P81）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-20.webp" alt="图3.20 两个站的时隙ALOHA协议的工作原理" loading="lazy"><figcaption>图 3.20 两个站的时隙 ALOHA 协议的工作原理（王道教材 P81）</figcaption></figure>
 <p>图 3.20 展示了两个站点的时隙 ALOHA 协议工作原理。每个帧到达后，通常需在缓存中等待不足一个时隙的时间，才能在下一个时隙开始时发送。若在一个时隙内有两个或更多帧待发，则它们将在下一可用时隙同时发送，导致冲突。冲突后的重传策略与纯 ALOHA 协议类似（等待随机时间后重传）。</p>
 <div class="box warn"><span class="badge ext">课外拓展</span>
 <p><strong>ALOHA 协议的吞吐量定量分析（教材正文未给出公式，此处为经典结论，仅供理解）</strong>：设帧长时间为单位，网络负载（每个帧长时间内平均发送的帧数，含重传）为 \(G\)，吞吐量（每个帧长时间内成功发送的帧数）为 \(S\)。纯 ALOHA 的吞吐量为 \(S = G e^{-2G}\)（\(G=0.5\) 时取最大值 \(1/(2e)\approx 0.184\)）；时隙 ALOHA 的吞吐量为 \(S = G e^{-G}\)（\(G=1\) 时取最大值 \(1/e\approx 0.368\)），约为纯 ALOHA 的两倍。</p>

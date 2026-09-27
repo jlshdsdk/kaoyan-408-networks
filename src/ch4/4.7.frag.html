@@ -23,7 +23,7 @@
 <h2 class="sec" id="sec-4-7-2">4.7.2 路由器的组成和功能 <span class="badge kao">考点</span></h2>
 <p>路由器是一种具有多个输入/输出端口的<strong>专用计算机</strong>，其任务是<strong>互连不同的网络（异构网络）并转发分组</strong>。在多个逻辑网络（多个广播域）互连时必须使用路由器，可用于连接不同的 LAN、不同的 VLAN、不同的 WAN，或实现 LAN 与 WAN 的互连。</p>
 <p>从结构上看，路由器由<strong>路由选择（控制平面）</strong>和<strong>分组转发（数据平面）</strong>两部分构成，如图 4.27 所示。而从模型角度看，路由器是工作在网络层的设备，其转发决策基于 IP 地址；为完成此功能，其端口还要具备物理层和数据链路层的处理能力。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-27.png" alt="图4.27 路由器体系结构" loading="lazy"><figcaption>图 4.27 路由器体系结构（王道教材 P215）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-27.webp" alt="图4.27 路由器体系结构" loading="lazy"><figcaption>图 4.27 路由器体系结构（王道教材 P215）</figcaption></figure>
 <h3 class="sub">1．路由选择部分（控制平面）</h3>
 <p>路由选择部分的核心是<strong>路由选择处理机</strong>，其任务是根据所选路由选择协议（如 RIP、OSPF）构建路由表，并周期性地与相邻路由器交换路由信息，以更新和维护路由表。</p>
 <h3 class="sub">2．分组转发部分（数据平面）</h3>
@@ -38,7 +38,7 @@
 
 <h2 class="sec" id="sec-4-7-3">4.7.3 路由表与分组转发 <span class="badge kao">考点</span></h2>
 <p><strong>路由表</strong>是根据路由选择算法得出的，主要用于路由选择。根据历年统考真题可知，<strong>标准的路由表通常包含四个字段：目的网络 IP 地址、子网掩码、下一跳 IP 地址、接口</strong>。在图 4.28 所示的网络拓扑中，R1 的路由表如表 4.7 所示，其中包含一条指向互联网的默认路由。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-28.png" alt="图4.28 一个简单的网络拓扑" loading="lazy"><figcaption>图 4.28 一个简单的网络拓扑（王道教材 P215）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-28.webp" alt="图4.28 一个简单的网络拓扑" loading="lazy"><figcaption>图 4.28 一个简单的网络拓扑（王道教材 P215）</figcaption></figure>
 <table class="tbl">
   <caption>表 4.7 R1 的路由表（王道教材 P215）</caption>
   <tr><th>目的网络 IP 地址</th><th>子网掩码</th><th>下一跳 IP 地址</th><th>接口</th></tr>

@@ -140,7 +140,7 @@
 
 <h2 class="sec" id="sec-5-3-2">5.3.2 TCP 报文段 <span class="badge kao">考点</span></h2>
 <p>TCP 传送的数据单元称为<strong>报文段</strong>。一个 TCP 报文段分为<strong>首部和数据</strong>两部分，整个 TCP 报文段作为 IP 数据报的数据部分进行封装（图 5.5）。TCP 的全部功能都体现在其首部的各个字段中。TCP 首部的前 20 个字节是固定的，后面有 4N 字节是根据需要而增加的选项，因此 <strong>TCP 首部的最小长度为 20B，最大为 60B</strong>。</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-5.png" alt="图5.5 TCP 报文段（首部格式）" loading="lazy"><figcaption>图 5.5 TCP 报文段（王道教材 P237）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-5.webp" alt="图5.5 TCP 报文段（首部格式）" loading="lazy"><figcaption>图 5.5 TCP 报文段（王道教材 P237）</figcaption></figure>
 <p>各字段的意义如下（首部格式及字段含义为 2012 统考考点，序号与确认序号机制为 2009、2016 统考考点，首部最小长度为 2021 统考考点）：</p>
 <ol>
   <li><strong>源端口和目的端口</strong>。各占 2B，分别表示发送方和接收方所使用的端口号。</li>
@@ -171,7 +171,7 @@
 <p>TCP 连接的建立采用<strong>客户/服务器模式</strong>：主动发起连接建立的应用进程称为<strong>客户（Client）</strong>，被动等待连接请求的应用进程称为<strong>服务器（Server）</strong>。</p>
 <h3 class="sub">1．TCP 连接的建立——三次握手 <span class="badge kao">考点</span></h3>
 <p>连接建立需经历三个步骤，通常称为<strong>三次握手</strong>（图 5.6）。假设主机 A 和 B 分别运行 TCP 客户和服务器程序，最初两端的 TCP 进程均处于 CLOSED（关闭）状态。在连接建立前，服务器完成一些准备工作后进入 LISTEN（收听）状态，等待客户的连接请求。（三次握手的字段解析为 2011、2012、2016、2019、2023 统考考点）</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-6.png" alt="图5.6 用三次握手建立 TCP 连接" loading="lazy"><figcaption>图 5.6 用"三次握手"建立 TCP 连接（王道教材 P239）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-6.webp" alt="图5.6 用三次握手建立 TCP 连接" loading="lazy"><figcaption>图 5.6 用"三次握手"建立 TCP 连接（王道教材 P239）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 三次握手逐步分解</div>
 <ol>
   <li><strong>第一步</strong>：客户向服务器发送<strong>连接请求报文段</strong>。该报文段的 <strong>SYN=1</strong>，同时选择一个初始序号 <strong>seq=x</strong>。TCP 规定，SYN 报文段（SYN=1 的报文段）<strong>不能携带数据，但仍消耗一个序号</strong>，因此客户下一次发送的报文段序号 seq=x+1。此时，客户进入 <strong>SYN-SENT（同步已发送）</strong>状态。</li>
@@ -191,7 +191,7 @@
 </div>
 <h3 class="sub">2．TCP 连接的释放——四次挥手 <span class="badge kao">考点</span></h3>
 <p>通信双方中的任意一方均可主动终止连接。TCP 连接的释放过程通常称为<strong>四次挥手</strong>（图 5.7）。（四次挥手的字段解析为 2020、2023 统考考点，状态变化为 2021 统考考点，释放时间分析为 2016、2022、2024 统考考点）</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-7.png" alt="图5.7 用四次挥手释放 TCP 连接" loading="lazy"><figcaption>图 5.7 用"四次挥手"释放 TCP 连接（王道教材 P239）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-7.webp" alt="图5.7 用四次挥手释放 TCP 连接" loading="lazy"><figcaption>图 5.7 用"四次挥手"释放 TCP 连接（王道教材 P239）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 四次挥手逐步分解</div>
 <ol>
   <li><strong>第一步</strong>：客户决定关闭连接时，向服务器发送<strong>连接释放报文段</strong>，并停止发送数据（主动关闭）。该报文段的 <strong>FIN=1</strong>，序号 <strong>seq=u</strong>，其值等于此前已发送数据的最后一个字节序号加 1。TCP 规定，FIN 报文段即使不携带数据，<strong>也消耗一个序号</strong>。此时，客户进入 <strong>FIN-WAIT-1（终止等待 1）</strong>状态。由于 TCP 是全双工的，可视为连接包含两条独立的数据通路：发送 FIN 的一端关闭了其发送方向，但对方仍可继续发送数据。</li>
@@ -217,7 +217,7 @@
 <p>TCP 在不可靠的 IP 层之上提供可靠传输服务，确保接收方从缓存中读取的字节流与发送方发出的字节流完全一致。TCP 通过<strong>检验、序号、确认和重传</strong>等机制实现这一目的（其中检验机制与 UDP 类似）。（TCP 序号与确认机制为 2011、2012、2013、2025 统考考点）</p>
 <h3 class="sub">1．序号</h3>
 <p>TCP 首部的序号字段用于保证数据<strong>按序提交</strong>给应用层。TCP 将数据视为一个无结构但有序的字节流，其序号是对<strong>字节流中的每个字节依次编号</strong>，而非对报文段整体编号。如图 5.8 所示，假设 A 的发送缓存区中有 10B 的数据，序号从 0 开始编号：第一个报文段包含 0～2 号数据字节，则该报文段的序号是 0；第二个报文段的序号是 3；第三个报文段的序号是 6；第四个报文段的序号是 8。</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-8.png" alt="图5.8 A 的发送缓存区中的数据划分成 TCP 段" loading="lazy"><figcaption>图 5.8 A 的发送缓存区中的数据划分成 TCP 段（王道教材 P241）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-8.webp" alt="图5.8 A 的发送缓存区中的数据划分成 TCP 段" loading="lazy"><figcaption>图 5.8 A 的发送缓存区中的数据划分成 TCP 段（王道教材 P241）</figcaption></figure>
 <h3 class="sub">2．确认</h3>
 <p>TCP 首部的确认序号字段表示<strong>期望收到对方下一个报文段的第一个数据字节的序号</strong>。在图 5.8 中，若接收方 B 已收到第一个和第二个报文段，此时 B 希望收到的下一个报文段的数据是从 6 号字节开始的，因此 B 向 A 发送的下一个报文段中的确认序号字段应置为 6。</p>
 <p>发送方缓存区会继续存储那些<strong>已发送但未收到确认</strong>的报文段，以便在需要时重传。TCP 默认使用<strong>累积确认</strong>：确认按序到达的连续字节，确认序号为<strong>第一个未收到字节的序号</strong>。接收方可以在合适时机发送确认，也可以在有数据要发送时将确认信息顺便捎带上（<strong>捎带确认</strong>）。例如，在图 5.8 中，接收方 B 收到了 A 发送的第一个和第三个报文段，尚未收到第二个报文段，此时 B 仍在等待从 3 号字节开始的连续数据，因此 B 向 A 发送的下一个报文段将确认序号字段置为 3。</p>
@@ -243,7 +243,7 @@
 <h2 class="sec" id="sec-5-3-5">5.3.5 TCP 流量控制 <span class="badge kao">考点</span></h2>
 <p>流量控制的功能是确保发送方的发送速率不会太快，以便让接收方能够及时处理。因此，可以说流量控制是一种<strong>速度匹配服务</strong>，它匹配发送方的发送速率与接收方的读取速率。（基于滑动窗口的流量控制机制为 2016、2021 统考考点）</p>
 <p>TCP 利用<strong>滑动窗口机制</strong>来实现流量控制。TCP 要求接收方维持一个<strong>接收窗口（rwnd）</strong>，该窗口大小根据当前接收缓存的大小<strong>动态调整</strong>，反映了接收方的容量。接收方将此窗口值写入 TCP 首部的"窗口"字段，以通知发送方。发送方的发送窗口<strong>不能超过</strong>接收方给出的接收窗口值，从而限制发送方向网络注入报文的速率。</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-9.png" alt="图5.9 利用滑动窗口进行流量控制" loading="lazy"><figcaption>图 5.9 利用滑动窗口进行流量控制（王道教材 P242）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-9.webp" alt="图5.9 利用滑动窗口进行流量控制" loading="lazy"><figcaption>图 5.9 利用滑动窗口进行流量控制（王道教材 P242）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考法：rwnd 动态调整示例（图 5.9 逐步解读）</div>
 <p>假设数据仅从 A 发往 B，而 B 仅向 A 发送确认报文段，B 可通过设置确认报文段首部中的窗口字段来通知 A 当前的 rwnd 值。rwnd 表示接收方允许连续接收的最大字节数。发送方 A 总是根据最新收到的 rwnd 值来限制自己发送窗口的大小，从而将未确认的数据量控制在 rwnd 大小之内，确保 A 不会使 B 的接收缓存溢出。</p>
 <ol>
@@ -291,7 +291,7 @@
 <h4 class="sub">（3）网络拥塞的处理（乘法减小）</h4>
 <p>无论处于慢开始阶段还是拥塞避免阶段，只要发送方判断网络出现拥塞（如发生超时），就执行以下操作：<strong>① 将慢开始门限 ssthresh 调整为当前 cwnd 的一半（但不得小于 2）；② 将 cwnd 重置为 1；③ 重新执行慢开始算法</strong>。这样做的目的是迅速减少注入网络的分组数量，使发生拥塞的路由器有足够时间把队列中积压的分组处理完。</p>
 <div class="box exam"><div class="box-title">🎯 考法：慢开始与拥塞避免的窗口演化（图 5.10 逐步分析）</div>
-<figure class="fig"><img src="../assets/ch5/fig-5-10.png" alt="图5.10 慢开始和拥塞避免算法的实现过程" loading="lazy"><figcaption>图 5.10 慢开始和拥塞避免算法的实现过程（王道教材 P244）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-10.webp" alt="图5.10 慢开始和拥塞避免算法的实现过程" loading="lazy"><figcaption>图 5.10 慢开始和拥塞避免算法的实现过程（王道教材 P244）</figcaption></figure>
 <ol>
   <li><strong>初始时</strong>，拥塞窗口设为 1，即 cwnd=1；慢开始门限设为 16，即 ssthresh=16。</li>
   <li><strong>慢开始阶段</strong>：发送方每收到一个对新报文段的确认，就将 cwnd 加 1。cwnd 按指数规律增长（1→2→4→8→16）。当 cwnd 增长到 ssthresh（cwnd=16）时，停止慢开始算法，转而采用拥塞避免算法。</li>
@@ -316,11 +316,11 @@
 <h4 class="sub">（2）快恢复</h4>
 <p><strong>快恢复算法的思路</strong>：当发送方连续收到 3 个冗余 ACK 时，表明后续多个报文段已成功抵达接收方，说明<strong>网络很可能并未发生严重拥塞</strong>。此时，发送方执行"乘法减小"策略，将 ssthresh 调整为当前 cwnd 的一半，以预防潜在的拥塞。<strong>与慢开始算法的不同之处是：它不将 cwnd 重置为 1，而是将 cwnd 也调整为当前 cwnd 的一半（等于 ssthresh）</strong>，然后直接进入拥塞避免阶段，使 cwnd 缓慢线性增长。由于跳过了从 cwnd=1 开始的慢开始过程，因此称为快恢复。</p>
 <div class="box exam"><div class="box-title">🎯 考法：TCP 拥塞控制算法全流程（图 5.11 逐步分析）</div>
-<figure class="fig"><img src="../assets/ch5/fig-5-11.png" alt="图5.11 TCP 拥塞控制算法的实现过程" loading="lazy"><figcaption>图 5.11 TCP 拥塞控制算法的实现过程（王道教材 P245）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-11.webp" alt="图5.11 TCP 拥塞控制算法的实现过程" loading="lazy"><figcaption>图 5.11 TCP 拥塞控制算法的实现过程（王道教材 P245）</figcaption></figure>
 <p>TCP 拥塞控制算法的实现过程如图 5.11 所示，其中前 20 个轮次与图 5.10 中的相同（慢开始→ssthresh=16 转拥塞避免→cwnd=24 时超时，ssthresh 调为 12、cwnd 重置为 1，重新慢开始）。</p>
 <p><strong>关键差异在第 21 轮次</strong>：当 cwnd=16 时，发送方连续收到 3 个冗余 ACK，此时<strong>不启动慢开始算法</strong>，而执行快恢复算法：设置 ssthresh=cwnd/2=8，cwnd=ssthresh=8，并开始执行拥塞避免算法。</p>
 </div>
-<figure class="fig"><img src="../assets/ch5/fig-5-12.png" alt="图5.12 TCP 拥塞控制的流程图" loading="lazy"><figcaption>图 5.12 TCP 拥塞控制的流程图（王道教材 P246）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-12.webp" alt="图5.12 TCP 拥塞控制的流程图" loading="lazy"><figcaption>图 5.12 TCP 拥塞控制的流程图（王道教材 P246）</figcaption></figure>
 <div class="box tip"><div class="box-title">📌 四种算法的使用总结（背下来）</div>
 <p>当 TCP 连接建立或网络出现<strong>超时</strong>现象时，采用<strong>慢开始和拥塞避免</strong>算法（ssthresh=cwnd/2，cwnd=1）；当发送方收到 <strong>3 个冗余 ACK</strong> 时，采用<strong>快重传和快恢复</strong>算法（ssthresh=cwnd/2，cwnd=ssthresh）。</p>
 </div>

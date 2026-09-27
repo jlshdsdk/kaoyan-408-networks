@@ -147,7 +147,7 @@
 <p>每层的 PDU 都有其通俗的名称：物理层的 PDU 称为<strong>比特流</strong>，数据链路层的 PDU 称为<strong>帧</strong>，网络层的 PDU 称为 <strong>IP 分组</strong>（或分组），传输层的 PDU 称为 <strong>TCP 报文段</strong>或 <strong>UDP 数据报</strong>。</p>
 <p>当数据在各层之间传递时，将从第 <em>n+1</em> 层接收到的 PDU 作为第 <em>n</em> 层的 SDU，加上第 <em>n</em> 层的 PCI 后封装成第 <em>n</em> 层的 PDU，再交由第 <em>n−1</em> 层作为其 SDU 发送。接收方收到后做相反的处理。因此，三者的关系可表示为：</p>
 <div class="formula">$$n\text{-SDU}+n\text{-PCI}=n\text{-PDU}=(n-1)\text{-SDU}$$</div>
-<figure class="fig"><img src="../assets/ch1/fig-1-10.png" alt="图1.10 网络各层数据单元之间的关系" loading="lazy"><figcaption>图 1.10 网络各层数据单元之间的关系（王道教材 P16）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-10.webp" alt="图1.10 网络各层数据单元之间的关系" loading="lazy"><figcaption>图 1.10 网络各层数据单元之间的关系（王道教材 P16）</figcaption></figure>
 <h3 class="sub">分层结构的含义</h3>
 <ol>
   <li>第 <em>n</em> 层的实体不仅要利用第 <em>n−1</em> 层的服务来实现自身功能，还要向第 <em>n+1</em> 层提供本层的服务，该服务是第 <em>n</em> 层及其下面各层所提供服务的总和；</li>
@@ -180,7 +180,7 @@
   <li>并非某一层完成的全部功能都能称为服务，只有那些<strong>能被上层实体感知并调用的功能</strong>，才构成服务。</li>
 </ul>
 </div>
-<figure class="fig"><img src="../assets/ch1/fig-1-11.png" alt="图1.11 协议、接口、服务三者之间的关系" loading="lazy"><figcaption>图 1.11 协议、接口、服务三者之间的关系（王道教材 P17）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-11.webp" alt="图1.11 协议、接口、服务三者之间的关系" loading="lazy"><figcaption>图 1.11 协议、接口、服务三者之间的关系（王道教材 P17）</figcaption></figure>
 <h3 class="sub">服务的分类</h3>
 <p>计算机网络提供的服务可按以下三种方式分类：</p>
 <ol>
@@ -193,7 +193,7 @@
 <h3 class="sub">1．OSI 参考模型</h3>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：OSI 低三层的网络设备及其功能（2016 统考）</div></div>
 <p>国际标准化组织（ISO）提出的网络体系结构模型称为<strong>开放系统互连参考模型</strong>（OSI/RM），简称 OSI 参考模型。该模型包含 7 层，自下而上（第 1～7 层）依次为：<strong>物理层、数据链路层、网络层、传输层、会话层、表示层、应用层</strong>。</p>
-<figure class="fig"><img src="../assets/ch1/fig-1-12.png" alt="图1.12 OSI 参考模型的层次结构" loading="lazy"><figcaption>图 1.12 OSI 参考模型的层次结构（王道教材 P18）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-12.webp" alt="图1.12 OSI 参考模型的层次结构" loading="lazy"><figcaption>图 1.12 OSI 参考模型的层次结构（王道教材 P18）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：OSI 参考模型的层次结构（2013、2014、2017、2019 统考）</div></div>
 <p><strong>（1）物理层（Physical Layer）</strong>：传输单位是<strong>比特</strong>。功能是在物理介质上为数据端设备<strong>透明地</strong>传输原始比特流。主要研究：① 通信链路与节点的连接接口特性——物理层规定了接口的机械特性（如形状、尺寸等）和电气特性（如引脚数量与排列等），例如笔记本电脑上的网线接口；② 通信链路上的编码意义与电气特征，例如若约定信号 X 表示比特 0，则发送方发出 X 代表 0，接收方收到 X 即解读为 0。注意，传输所用的物理介质（如双绞线、光缆、无线信道等）<strong>不属于物理层协议范畴</strong>，而是位于其下方，因此有人将物理介质视为"第 0 层"。</p>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：OSI 参考模型中数据链路层的功能（2022 统考）</div></div>
@@ -213,6 +213,7 @@
   <li><strong>拥塞控制</strong>：当网络节点因过载而大量丢弃分组时，网络处于拥塞状态，需采取措施缓解；</li>
   <li><strong>差错控制</strong>：通过检错机制确保向上层提交的都是无差错的分组，无法纠正则丢弃。</li>
 </ul>
+<figure class="fig"><img src="../assets/ch1/fig-1-14.webp" alt="图1.14 某网络结构图" loading="lazy"><figcaption>图 1.14 某网络结构图（王道教材 P19）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：OSI 参考模型中传输层的功能（2009 统考）</div></div>
 <p><strong>（4）传输层（Transport Layer）</strong>：又称运输层，负责<strong>不同主机中进程之间</strong>的端到端通信，提供连接管理、可靠传输、流量控制、差错控制等服务。OSI 参考模型的传输层仅提供面向连接的可靠服务。</p>
 <div class="box concept"><div class="box-title">📌 核心概念：三种通信范围的区别</div>
@@ -238,7 +239,7 @@
 <h3 class="sub">2．TCP/IP 模型</h3>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：TCP/IP 模型的层次结构（2021 统考）</div></div>
 <p>TCP/IP 模型从低到高依次为：<strong>网络接口层</strong>（对应 OSI 参考模型的物理层和数据链路层）、<strong>网际层</strong>、<strong>传输层</strong>和<strong>应用层</strong>（对应 OSI 参考模型的会话层、表示层和应用层）。因其广泛应用，TCP/IP 模型已成为<strong>事实上的国际标准</strong>。</p>
-<figure class="fig"><img src="../assets/ch1/fig-1-15.png" alt="图1.15 TCP/IP 模型的层次结构及各层的主要协议" loading="lazy"><figcaption>图 1.15 TCP/IP 模型的层次结构及各层的主要协议（王道教材 P20）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-15.webp" alt="图1.15 TCP/IP 模型的层次结构及各层的主要协议" loading="lazy"><figcaption>图 1.15 TCP/IP 模型的层次结构及各层的主要协议（王道教材 P20）</figcaption></figure>
 <p><strong>网络接口层</strong>：功能类似于 OSI 参考模型的物理层和数据链路层，作用是从主机或节点接收 IP 分组，并将其发送到指定的物理网络上。<strong>TCP/IP 模型并未规定该层的具体功能或协议细节</strong>，仅要求主机能通过某种底层协议接入网络以传送 IP 分组。实际使用的物理网络可以是各类局域网（如以太网、无线局域网等），也可以是电话网、广域网等。</p>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：TCP/IP 模型中网际层的功能（2011、2021 统考）</div></div>
 <p><strong>网际层</strong>：TCP/IP 体系结构的核心部分，功能上与 OSI 参考模型的网络层非常相似。它负责将分组发往任意网络，并为<strong>每个分组独立选择路由</strong>，但不保证分组有序到达，分组的有序性和可靠性由高层（如传输层）负责。网际层的核心协议是<strong>网际协议（IP）</strong>，提供无连接、不可靠的服务，其传输单位为 IP 数据报。当前广泛使用的版本是 IPv4，其下一个版本是 IPv6。网际层还包括地址解析协议（ARP）、网际控制报文协议（ICMP）和网际组管理协议（IGMP）等辅助协议。</p>
@@ -251,7 +252,7 @@
 <p>由图 1.15 可见，<strong>IP 是互联网的核心协议</strong>。TCP/IP 体系体现了两大设计哲学：<strong>Everything over IP</strong>，即各种应用均可构建于 IP 之上；<strong>IP over Everything</strong>，即 IP 可运行于任意底层网络之上。正是这种高度的通用性与灵活性，推动了互联网发展至今日规模。</p>
 <h3 class="sub">3．TCP/IP 模型与 OSI 参考模型的比较</h3>
 <p>二者的相似之处：均采用分层体系结构，且各层功能大体相似；均基于独立协议栈的概念；均可解决异构网络互联问题，实现不同厂商生产的计算机之间的通信。</p>
-<figure class="fig"><img src="../assets/ch1/fig-1-16.png" alt="图1.16 TCP/IP 模型与 OSI 参考模型的层次对应关系" loading="lazy"><figcaption>图 1.16 TCP/IP 模型与 OSI 参考模型的层次对应关系（王道教材 P21）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-16.webp" alt="图1.16 TCP/IP 模型与 OSI 参考模型的层次对应关系" loading="lazy"><figcaption>图 1.16 TCP/IP 模型与 OSI 参考模型的层次对应关系（王道教材 P21）</figcaption></figure>
 <p>尽管有相似之处，两个模型在设计理念与结构上仍有显著差异：</p>
 <ol>
   <li>OSI 参考模型的最大贡献在于精确定义了"服务""协议""接口"这三个核心概念，其分层思想与现代面向对象程序设计高度契合；而 TCP/IP 模型对这三者未做明确区分。</li>
@@ -264,10 +265,10 @@
 </div>
 <h3 class="sub">4．五层协议体系结构与通信过程</h3>
 <p>为了兼顾理论与实践，学习计算机网络时通常采用一种 <strong>5 层协议体系结构</strong>，该结构融合了 OSI 参考模型和 TCP/IP 模型的优点（自上而下：应用层、传输层、网络层、数据链路层、物理层）。</p>
-<figure class="fig"><img src="../assets/ch1/fig-1-17.png" alt="图1.17 网络 5 层协议的体系结构模型" loading="lazy"><figcaption>图 1.17 网络 5 层协议的体系结构模型（王道教材 P21）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-17.webp" alt="图1.17 网络 5 层协议的体系结构模型" loading="lazy"><figcaption>图 1.17 网络 5 层协议的体系结构模型（王道教材 P21）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：应用层数据的逐层封装过程（2021 统考）</div></div>
 <p>使用协议栈进行通信的过程如图 1.18 所示：每个协议栈的顶端是一个面向用户的接口。用户首先将数据交给本主机的应用层，应用层加上必要的控制信息，组成应用层的 PDU；然后下放到传输层，作为传输层的 SDU，加上传输层的 PCI，组成传输层的 PDU；接着下放到网络层，组成网络层的 SDU，加上网络层的 PCI，再次组成网络层的 PDU；继续下放到数据链路层……如此<strong>层层下放、层层封装</strong>，最终形成的数据帧（或数据包）经过物理链路传输。到达接收方节点后，协议栈逆向<strong>逐层拆开"包裹"</strong>，并将收到的数据交给用户。</p>
-<figure class="fig"><img src="../assets/ch1/fig-1-18.png" alt="图1.18 协议栈的通信过程示例" loading="lazy"><figcaption>图 1.18 协议栈的通信过程示例（王道教材 P22）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch1/fig-1-18.webp" alt="图1.18 协议栈的通信过程示例" loading="lazy"><figcaption>图 1.18 协议栈的通信过程示例（王道教材 P22）</figcaption></figure>
 <div class="box sup"><div class="box-title"><span class="badge sup">深入浅出</span>补充：从"发一个请求"看各层各管什么事</div>
 <p>把封装过程落到每一层"加的那一坨控制信息"上，分层的目的就一目了然：应用层构建 HTTP 请求报文；传输层加 TCP 首部——为了<strong>区分应用进程并实现可靠传输</strong>；网络层加 IP 首部——为了<strong>让分组能在互联网上被路由器转发</strong>；数据链路层加帧头和帧尾——为了<strong>在一段链路上送达并检错</strong>；物理层还要加<strong>前导码</strong>——为了让接收方"听见铃声"、做好接收帧的准备。最有意思的是中间路由器：它只拆到网络层，读出目的网络地址查路由表转发，<strong>再把帧头帧尾拆掉重新封装成适配下一段网络的新帧</strong>——同一份数据在两段链路上"穿了两件不同的外衣"。理解了这一点，"每层只关心自己的首部"就不再是死记硬背。（高军教材 1.6.2、湖科大笔记 1.2 节）</p>
 </div>

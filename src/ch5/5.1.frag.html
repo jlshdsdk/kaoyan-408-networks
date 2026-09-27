@@ -4,7 +4,7 @@
 <h2 class="sec" id="sec-5-1-1">5.1.1 传输层的功能 <span class="badge kao">考点</span></h2>
 <p>数据链路层提供链路上相邻节点之间的逻辑通信，网络层提供<strong>主机之间</strong>的逻辑通信，而传输层位于网络层之上、应用层之下，为运行在<strong>不同主机上的进程之间</strong>提供逻辑通信<sup>①</sup>。传输层是<strong>面向通信部分的最高层</strong>，同时也是<strong>用户功能中的最低层</strong>。即使网络层协议不可靠（例如导致分组丢失、失序或重复），传输层仍能为应用程序提供可靠的服务。</p>
 <p class="muted" style="font-size:0.85em">① 逻辑通信是指对等层之间的通信看似沿水平方向传送，但实际上并不存在一条水平方向的物理连接。</p>
-<figure class="fig"><img src="../assets/ch5/fig-5-1.png" alt="图5.1 传输层为相互通信的进程提供逻辑通信" loading="lazy"><figcaption>图 5.1 传输层为相互通信的进程提供逻辑通信（王道教材 P225）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch5/fig-5-1.webp" alt="图5.1 传输层为相互通信的进程提供逻辑通信" loading="lazy"><figcaption>图 5.1 传输层为相互通信的进程提供逻辑通信（王道教材 P225）</figcaption></figure>
 <p>以图 5.1 为例：局域网 LAN1 上的主机 A 与局域网 LAN2 上的主机 B 通过互连的广域网 WAN 进行通信。一台主机中常有多个应用进程同时与另一台主机中的多个应用进程通信（图中 APx 表示参与通信的应用进程）。从网络层看，通信的两端是两台主机，IP 数据报首部指明了这两台主机的 IP 地址；但"主机之间的通信"的实质是主机中<strong>应用进程之间的通信</strong>，也称为<strong>端到端的逻辑通信</strong>。IP 虽能将分组送达目的主机，但该分组仅停留在主机的网络层，并未交付给具体的应用进程；而从传输层视角看，通信的真正端点并非主机，而是<strong>主机中的进程</strong>。</p>
 <p>传输层的主要功能如下：</p>
 <h3 class="sub">1．应用进程之间的逻辑通信</h3>

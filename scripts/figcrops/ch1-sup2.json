@@ -1,0 +1,54 @@
+[
+ {
+  "page": 14,
+  "rect": [
+   26,
+   32.8,
+   74,
+   50.8
+  ],
+  "out": "fig-1-1.webp",
+  "caption": "图1.1 互联网核心部分与边缘部分的示意图（王道教材 P2）",
+  "src": "教材P2",
+  "book": "textbook"
+ },
+ {
+  "page": 20,
+  "rect": [
+   22,
+   56.5,
+   80,
+   67
+  ],
+  "out": "fig-1-8.webp",
+  "caption": "图1.8 链路就像一条空心管道（王道教材 P8）",
+  "src": "教材P8",
+  "book": "textbook"
+ },
+ {
+  "page": 20,
+  "rect": [
+   24,
+   75.5,
+   80,
+   94
+  ],
+  "out": "fig-1-9.webp",
+  "caption": "图1.9 往返时延 RTT 的分析（王道教材 P8）",
+  "src": "教材P8",
+  "book": "textbook"
+ },
+ {
+  "page": 31,
+  "rect": [
+   24,
+   21,
+   74,
+   35.5
+  ],
+  "out": "fig-1-14.webp",
+  "caption": "图1.14 某网络结构图（王道教材 P19）",
+  "src": "教材P19",
+  "book": "textbook"
+ }
+]

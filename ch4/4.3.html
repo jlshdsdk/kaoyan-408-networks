@@ -152,7 +152,7 @@
 
 <h2 class="sec" id="sec-4-3-2">4.3.2 IPv6 数据报的基本首部 <span class="badge kao">考点</span></h2>
 <p>IPv6 数据报由两部分组成：<strong>基本首部</strong>和<strong>有效载荷</strong>（也称净负荷）。有效载荷由零个或多个扩展首部（扩展首部不属于基本首部）及其后面的数据部分构成，有效载荷最长不超过 65535 字节。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-12.png" alt="图4.12 具有多个可选扩展首部的IPv6数据报的一般形式" loading="lazy"><figcaption>图 4.12 具有多个可选扩展首部的 IPv6 数据报的一般形式（王道教材 P182）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-12.webp" alt="图4.12 具有多个可选扩展首部的IPv6数据报的一般形式" loading="lazy"><figcaption>图 4.12 具有多个可选扩展首部的 IPv6 数据报的一般形式（王道教材 P182）</figcaption></figure>
 <p>与 IPv4 相比，IPv6 对首部中的某些字段进行了如下调整：</p>
 <ul>
   <li>取消了<strong>首部长度</strong>字段，因为基本首部长度固定为 40B；</li>
@@ -168,7 +168,7 @@
 <p>尽管取消了 IPv4 首部中的多项冗余功能，使 IPv6 基本首部的字段数减少至仅 <strong>8 个</strong>，但由于地址长度从 32 位扩展到 128 位，其基本首部长度反而增至 <strong>40B</strong>。</p>
 </div>
 <p>IPv6 数据报的基本首部格式如图 4.13 所示。</p>
-<figure class="fig"><img src="../assets/ch4/fig-4-13.png" alt="图4.13 IPv6数据报的基本首部的格式" loading="lazy"><figcaption>图 4.13 IPv6 数据报的基本首部的格式（王道教材 P182）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-13.webp" alt="图4.13 IPv6数据报的基本首部的格式" loading="lazy"><figcaption>图 4.13 IPv6 数据报的基本首部的格式（王道教材 P182）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：IPv6 首部格式及字段含义（2023 统考）</div>
 <p>基本首部各字段的含义如下：</p>
 <ol>
@@ -227,7 +227,7 @@
   <li><strong>本地链路单播地址</strong>：仅用于本地链路内的通信，不能被路由器转发；</li>
   <li><strong>全球单播地址</strong>：使用得最多的地址。其划分方法非常灵活，如图 4.14 所示：可以把整个 128 位都作为一个节点的地址；也可用 \(n\) 位作为子网前缀，剩下的 \((128-n)\) 位作为接口标识符（相当于 IPv4 的主机号）；还可以划分为三级：用 \(n\) 位作为全球路由选择前缀，用 \(m\) 位作为子网前缀，而剩下的 \(128-n-m\) 位则作为接口标识符。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch4/fig-4-14.png" alt="图4.14 IPv6全球单播地址的几种划分方法" loading="lazy"><figcaption>图 4.14 IPv6 全球单播地址的几种划分方法（王道教材 P184）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch4/fig-4-14.webp" alt="图4.14 IPv6全球单播地址的几种划分方法" loading="lazy"><figcaption>图 4.14 IPv6 全球单播地址的几种划分方法（王道教材 P184）</figcaption></figure>
 
 <h2 class="sec" id="sec-4-3-4">4.3.4 从 IPv4 向 IPv6 过渡 <span class="badge kao">考点</span></h2>
 <p>IPv4 向 IPv6 的过渡只能采用<strong>逐步演进</strong>的办法，并确保新部署的 IPv6 系统具备向后兼容的能力：能够接收、转发 IPv4 数据报，并为其选择路由。</p>

@@ -132,7 +132,7 @@
 <h2 class="sec" id="sec-6-2-1">6.2.1 层次域名空间</h2>
 <p>互联网采用<strong>层次树状结构</strong>的命名方法。按照这种命名方法，任何连接到互联网的主机或路由器都有唯一的层次结构名称，即<strong>域名</strong>（Domain Name）。<strong>域</strong>（Domain）是名字空间中一个可被管理的划分。域可以进一步划分为子域，子域还可以继续细分，从而形成<strong>顶级域、二级域、三级域</strong>等层次结构。每个域名由一系列<strong>标号</strong>组成，各标号之间用点（"."）分隔。</p>
 <p>如图 6.3 所示是王道论坛提供 WWW 服务的服务器域名，它由三个标号组成，其中标号 com 是<strong>顶级域名</strong>，标号 cskaoyan 是<strong>二级域名</strong>，标号 www 是<strong>三级域名</strong>。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-3.png" alt="图6.3 一个域名的例子" loading="lazy"><figcaption>图 6.3 一个域名的例子（王道教材 P270）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-3.webp" alt="图6.3 一个域名的例子" loading="lazy"><figcaption>图 6.3 一个域名的例子（王道教材 P270）</figcaption></figure>
 <div class="box concept"><div class="box-title">📌 域名中标号的注意事项</div>
 <ol>
   <li>标号中的英文字母<strong>不区分大小写</strong>；</li>
@@ -147,7 +147,7 @@
   <li><strong>通用顶级域名（gTLD）</strong>：常见的包括 "com"（公司）、"net"（网络服务机构）、"org"（非营利性组织）、"edu"（教育机构）和 "gov"（国家或政府机构）等；</li>
   <li><strong>基础结构域名（arpa）</strong>：用于反向域名解析，即将 IP 地址转换为对应的域名。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch6/fig-6-4.png" alt="图6.4 域名空间的树状结构" loading="lazy"><figcaption>图 6.4 域名空间的树状结构（王道教材 P271）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-4.webp" alt="图6.4 域名空间的树状结构" loading="lazy"><figcaption>图 6.4 域名空间的树状结构（王道教材 P271）</figcaption></figure>
 <p>在域名系统中，各级域名由其上一级的域名管理机构管理。顶级域名由互联网名称与数字地址分配机构（ICANN）管理。国家顶级域名下的二级域名由相应国家自行规定和管理。每个组织还可以将其所辖的域名进一步划分为若干子域，并将这些子域委托给其他组织管理。例如，负责管理 cn 域的中国将 edu.cn 子域授权给中国教育和科研计算机网（CERNET）进行管理。</p>
 
 <h2 class="sec" id="sec-6-2-2">6.2.2 域名服务器 <span class="badge kao">考点</span></h2>
@@ -161,7 +161,7 @@
   <tr><td><strong>权限域名服务器</strong>（授权域名服务器）</td><td>管理特定区的域名信息</td><td>每台主机必须在所属区的权限服务器处登记，该服务器总能将其管辖的主机名解析为对应的 IP 地址。为提高可靠性，通常建议每个区配置至少两个权限域名服务器；许多本地域名服务器也同时承担权限域名服务器的角色</td></tr>
   <tr><td><strong>本地域名服务器</strong></td><td>域名系统的关键入口</td><td>每家 ISP、一所大学甚至大学的各个院系通常都会部署自己的本地域名服务器。主机发起 DNS 查询时，请求<strong>首先</strong>被发送给它配置的本地域名服务器（Windows 中配置"本地连接"时填写的 DNS 服务器地址）</td></tr>
 </table>
-<figure class="fig"><img src="../assets/ch6/fig-6-5.png" alt="图6.5 DNS的层次结构" loading="lazy"><figcaption>图 6.5 DNS 的层次结构（王道教材 P272）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-5.webp" alt="图6.5 DNS的层次结构" loading="lazy"><figcaption>图 6.5 DNS 的层次结构（王道教材 P272）</figcaption></figure>
 
 <h2 class="sec" id="sec-6-2-3">6.2.3 域名解析过程 <span class="badge kao">考点</span></h2>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：DNS 协议的功能与意义（2021）· DNS 递归查询机制（2010）· DNS 迭代查询机制（2016、2020）</div></div>
@@ -174,7 +174,7 @@
 </div>
 <p><strong>递归查询</strong>（图 6.6(a)）：本地域名服务器只需向根域名服务器发起一次查询，后续的查询过程由各级域名服务器之间递归完成。最终，根域名服务器将请求的 IP 地址返回给本地域名服务器，再由本地域名服务器将结果返回给原始主机。由于这种方式会给根域名服务器带来过重负载，<strong>实际中几乎不被采用</strong>。</p>
 <p><strong>迭代查询</strong>（图 6.6(b)）：本地域名服务器向根域名服务器的查询通常采用迭代查询。当根域名服务器收到本地域名服务器的迭代查询请求时，要么直接给出所查询的 IP 地址，要么告诉本地域名服务器"你下一步应向哪个顶级域名服务器查询"。随后，由本地域名服务器向该顶级域名服务器发起新的查询。同样，顶级域名服务器收到请求后，要么直接给出所查询的 IP 地址，要么告诉本地域名服务器下一步应当向哪个权限域名服务器查询。如此逐级查询，直到获得目标 IP 地址，最后由本地域名服务器将结果返回给发起查询的主机。</p>
-<figure class="fig"><img src="../assets/ch6/fig-6-6.png" alt="图6.6 两种域名解析方式工作原理" loading="lazy"><figcaption>图 6.6 两种域名解析方式工作原理（王道教材 P273）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch6/fig-6-6.webp" alt="图6.6 两种域名解析方式工作原理" loading="lazy"><figcaption>图 6.6 两种域名解析方式工作原理（王道教材 P273）</figcaption></figure>
 <div class="box sup"><div class="box-title"><span class="badge sup">深入浅出</span>补充：递归与迭代，谁替谁"跑腿"</div>
 <p>记忆口诀：<strong>递归是"你替我跑腿"，迭代是"你告诉我该找谁"</strong>。主机把查询委托给本地域名服务器后当"甩手掌柜"，剩下的事全由本地域名服务器代劳（对主机而言是递归）；而各级域名服务器（根、顶级、权限）都很"忙"，通常只指路不代跑——告诉本地域名服务器下一站找谁，由本地域名服务器自己一步步问下去（迭代）。所以典型模式是：<strong>主机→本地递归，本地→其他服务器迭代</strong>，负载大头压在本地域名服务器身上。</p>
 </div>

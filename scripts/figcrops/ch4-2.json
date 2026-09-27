@@ -7,7 +7,7 @@
    84,
    89
   ],
-  "out": "fig-4-5.png",
+  "out": "fig-4-5.webp",
   "caption": "图4.5 IP数据报的格式",
   "src": "教材P137",
   "book": "textbook"
@@ -20,7 +20,7 @@
    82,
    65.6
   ],
-  "out": "fig-4-6.png",
+  "out": "fig-4-6.webp",
   "caption": "图4.6 IP分片的例子",
   "src": "教材P139",
   "book": "textbook"
@@ -33,7 +33,7 @@
    84,
    28.5
   ],
-  "out": "fig-4-7.png",
+  "out": "fig-4-7.webp",
   "caption": "图4.7 分类的IP地址",
   "src": "教材P140",
   "book": "textbook"
@@ -46,7 +46,7 @@
    80,
    41
   ],
-  "out": "fig-4-8.png",
+  "out": "fig-4-8.webp",
   "caption": "图4.8 路由聚合的例子",
   "src": "教材P143",
   "book": "textbook"
@@ -59,7 +59,7 @@
    88,
    68
   ],
-  "out": "fig-4-9.png",
+  "out": "fig-4-9.webp",
   "caption": "图4.9 NAT路由器的工作原理",
   "src": "教材P145",
   "book": "textbook"
@@ -72,7 +72,7 @@
    92,
    44
   ],
-  "out": "fig-4-10.png",
+  "out": "fig-4-10.webp",
   "caption": "图4.10 ARP的工作原理",
   "src": "教材P148",
   "book": "textbook"
@@ -85,7 +85,7 @@
    90,
    91
   ],
-  "out": "fig-4-11.png",
+  "out": "fig-4-11.webp",
   "caption": "图4.11 使用ARP的4种典型情况",
   "src": "教材P148",
   "book": "textbook"

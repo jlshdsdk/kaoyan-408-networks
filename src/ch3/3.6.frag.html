@@ -19,7 +19,7 @@
 </ul>
 <p>IEEE 802 标准定义的局域网参考模型仅对应 OSI 参考模型的<strong>数据链路层和物理层</strong>，并将数据链路层进一步拆分为两个子层：<strong>逻辑链路控制（LLC）子层</strong>和<strong>介质访问控制（MAC）子层</strong>。与接入传输介质有关的内容都放在 MAC 子层，它向上层屏蔽对物理层访问的各种差异，主要功能包括：组帧和拆卸帧、比特传输差错检测、透明传输。LLC 子层与传输介质无关，它向网络层提供无确认无连接服务、面向连接服务、带确认无连接服务等多种服务类型。</p>
 <p>由于以太网在局域网市场中的主导地位，它几乎成为局域网的代名词。与此同时，IEEE 802 委员会定义的 LLC 子层在实际应用中的作用已显著弱化，因此现代许多网卡仅实现 MAC 协议，而不包含 LLC 协议。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-21.png" alt="图3.21 IEEE 802协议层与OSI参考模型的比较" loading="lazy"><figcaption>图 3.21 IEEE 802 协议层与 OSI 参考模型的比较（王道教材 P88）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-21.webp" alt="图3.21 IEEE 802协议层与OSI参考模型的比较" loading="lazy"><figcaption>图 3.21 IEEE 802 协议层与 OSI 参考模型的比较（王道教材 P88）</figcaption></figure>
 
 <h2 class="sec" id="sec-3-6-2">3.6.2 以太网与 IEEE 802.3 <span class="badge kao">考点</span></h2>
 <p>以太网是目前最流行的有线局域网技术。以太网规约的第一个版本是 DIX V1，由 DEC、Intel 和 Xerox 联合提出；随后修订为第二版规约 <strong>DIX Ethernet V2</strong>，成为世界上首个局域网产品的规范。在此基础上，IEEE 802 委员会的 802.3 工作组制定了第一个 IEEE 以太网标准——IEEE 802.3。严格来说，以太网指符合 DIX Ethernet V2 标准的局域网，但由于 DIX Ethernet V2 与 IEEE 802.3 标准差异极小，因此也将 IEEE 802.3 局域网简称为以太网。</p>
@@ -70,7 +70,7 @@
 <div class="box exam"><div class="box-title">🎯 考点跟踪：CSMA/CD 协议中的冲突时间分析（2010）</div>
 <p>电磁波在总线上的传播速率是有限的，因此某时刻发送站检测到信道空闲，并不意味着信道真正空闲。设 \(\tau\) 为单程传播时延。在 \(t=0\) 时，A 站开始发送数据；在 \(t=\tau-\delta\) 时，A 站的数据尚未到达 B 站，B 站因检测到信道空闲也开始发送。经过 \(\delta/2\) 时间（\(t=\tau-\delta/2\) 时），A 站和 B 站的数据在信道上发生冲突，但此时两个站点均未察觉。直到 \(t=\tau\) 时，B 站检测到冲突并停止发送；在 \(t=2\tau-\delta\) 时，A 站也检测到冲突并停止发送。至此，两个站点的发送均失败，都需推迟一段时间后重传。</p>
 </div>
-<figure class="fig"><img src="../assets/ch3/fig-3-22.png" alt="图3.22 传播时延对载波监听的影响" loading="lazy"><figcaption>图 3.22 传播时延对载波监听的影响（王道教材 P90）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-22.webp" alt="图3.22 传播时延对载波监听的影响" loading="lazy"><figcaption>图 3.22 传播时延对载波监听的影响（王道教材 P90）</figcaption></figure>
 <p>从图 3.22 可见，A 站在开始发送后<strong>最多经过 \(2\tau\)（端到端往返传播时延）</strong>即可确认是否发生冲突（当 \(\delta\to 0\) 时）。因此，将以太网的端到端往返传播时延 \(2\tau\) 称为<strong>争用期</strong>（也称<strong>冲突窗口</strong>）。每个站点在发送数据后的一小段时间内，存在冲突的可能；<strong>只有在争用期结束时仍未检测到冲突，才能确定本次发送成功</strong>。</p>
 <div class="box sup"><div class="box-title">💡 深入浅出补充：争用期为什么恰好是 2τ——最坏情况的故事</div>
 <p>想象最"倒霉"的时刻：A 发出的信号已传播了几乎整条总线、即将抵达最远端的 B 时，B 才开始发送——B 监听到的确实是空闲信道，碰撞在所难免。碰撞信号再传回 A 又要花接近 τ 的时间，所以 A 从开始发送到检测出碰撞，最坏要等 2τ。最小帧长的规定，本质上就是把"最坏情况"也撑进检测窗口：发送时长不足 2τ，就可能撞了还不知道。</p>
@@ -100,7 +100,7 @@
 
 <h3 class="sub">4．以太网的 MAC 帧 <span class="badge kao">考点</span></h3>
 <p>以太网 MAC 帧格式有两种标准：DIX Ethernet V2 标准（以太网 V2）和 IEEE 802.3 标准。此处仅介绍最常用的以太网 V2 标准的帧格式，如图 3.23 所示。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-23.png" alt="图3.23 以太网V2标准的MAC帧格式" loading="lazy"><figcaption>图 3.23 以太网 V2 标准的 MAC 帧格式（王道教材 P91）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-23.webp" alt="图3.23 以太网V2标准的MAC帧格式" loading="lazy"><figcaption>图 3.23 以太网 V2 标准的 MAC 帧格式（王道教材 P91）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：以太网 MAC 帧的格式（2010、2011、2018、2012）</div>
 <ol>
   <li><strong>前导码（8B，物理层插入）</strong>：帧前插入的 8B 前导码分为两个字段：第一个字段是 7B 的<strong>前同步码</strong>，用于实现比特同步；第二个字段是 1B 的<strong>帧开始定界符</strong>，标志 MAC 帧的开始。</li>
@@ -148,11 +148,11 @@
 <p>对于有固定基础设施的无线局域网，IEEE 制定了 <strong>802.11 系列协议标准</strong>，包括 802.11a/b/g/n 等。802.11 协议采用星形拓扑，其中心节点称为<strong>接入点</strong>（Access Point，AP），在 MAC 层使用 <strong>CSMA/CA 协议</strong>。采用 802.11 系列协议的局域网通常也称 <strong>Wi-Fi</strong>。</p>
 <p>802.11 协议规定，无线局域网的最小构件是<strong>基本服务集</strong>（Basic Service Set，BSS）。一个 BSS 包含一个 AP 和若干移动站。站内通信或与外部站点的通信都<strong>必须通过该 BSS 的 AP</strong>。此处的 AP 即为 BSS 中的基站（base station）。配置 AP 时，需要为其分配一个不超过 32B 的<strong>服务集标识符</strong>（SSID）和一个工作信道，SSID 即为该无线局域网的名称。BSS 覆盖的地理范围称为<strong>基本服务区</strong>（BSA），其直径一般不超过 100 米。</p>
 <p>一个 BSS 可以是孤立的，也可通过 AP 连接到<strong>分配系统</strong>（DS），再与其他 BSS 互连，从而构成<strong>扩展的服务集</strong>（ESS）。分配系统的作用是<strong>使整个 ESS 对上层呈现为一个单一的 BSS</strong>。ESS 还可通过一种称为 Portal（门户）的设备，为无线用户提供接入有线以太网的能力，Portal 的功能相当于网桥。在图 3.24 中，若移动站 A 要与另一 BSS 中的移动站 B 通信，则数据流动路径为 A→AP1→AP2→B，其中 AP1 与 AP2 的通信通过有线链路完成。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-24.png" alt="图3.24 基本服务集和扩展服务集" loading="lazy"><figcaption>图 3.24 基本服务集和扩展服务集（王道教材 P93）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-24.webp" alt="图3.24 基本服务集和扩展服务集" loading="lazy"><figcaption>图 3.24 基本服务集和扩展服务集（王道教材 P93）</figcaption></figure>
 <p>当移动站 A 从一个 BSS 漫游到另一个 BSS 时（图 3.24 中的 A′），仍可保持与 B 的通信，但所使用的 AP 会发生改变。</p>
 <p><strong>（2）无固定基础设施的移动自组织网络</strong></p>
 <p>另一种无线局域网是无固定基础设施的<strong>自组织网络</strong>（ad hoc network）。此类网络<strong>不包含 AP</strong>，而是由若干处于平等地位的移动站临时组成的对等网络（见图 3.25）。各节点地位平等，中间节点需转发其他节点的数据，因此<strong>兼具终端与路由器的功能</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-25.png" alt="图3.25 由若干处于平等地位的移动站临时组成的对等网络" loading="lazy"><figcaption>图 3.25 由若干处于平等地位的移动站临时组成的对等网络（王道教材 P94）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-25.webp" alt="图3.25 由若干处于平等地位的移动站临时组成的对等网络" loading="lazy"><figcaption>图 3.25 由若干处于平等地位的移动站临时组成的对等网络（王道教材 P94）</figcaption></figure>
 <p>自组织网络通常这样形成：若干可移动设备彼此邻近且存在通信需求时，会自发组建一个网络。在此类网络中，<strong>每个移动站都需主动参与路由的发现与维护</strong>。由于节点位置不断变化，网络拓扑可能频繁且快速地改变，因此传统在固定网络中有效的路由协议往往难以适用于自组网络，必须采用专门为其设计的路由机制。</p>
 <div class="box warn"><div class="box-title">⚠️ 辨析：自组网络与移动 IP 的本质区别</div>
 <p>移动 IP 旨在支持主机在不同网络间漫游并接入互联网，其底层仍依赖固定网络的路由基础设施；而自组网络是一种分布式的无线自治系统，不仅拥有专用的路由协议，还能<strong>独立于互联网运行</strong>，无须依赖任何预设的固定基础设施。</p>
@@ -168,7 +168,7 @@
   <li>在无线通信中，并非所有站点都能互相侦听到对方（却可能产生冲突），即存在<strong>隐蔽站问题</strong>，导致冲突检测机制无法发现所有冲突。</li>
 </ol>
 <p>在图 3.26 中，A 站和 B 站均在 AP 的覆盖范围内，但彼此距离较远，无法侦听到对方。当 A 站和 B 站同时检测到信道空闲时，都向 AP 发送数据，导致发生冲突，而双方均无法察觉，这就是隐蔽站问题。这里 A 站和 B 站互为隐蔽站，它们检测不到彼此的信号，却能产生冲突。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-26.png" alt="图3.26 A站和B站同时向AP发送数据，发生冲突" loading="lazy"><figcaption>图 3.26 A 站和 B 站同时向 AP 发送数据，发生冲突（王道教材 P94）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-26.webp" alt="图3.26 A站和B站同时向AP发送数据，发生冲突" loading="lazy"><figcaption>图 3.26 A 站和 B 站同时向 AP 发送数据，发生冲突（王道教材 P94）</figcaption></figure>
 <p>为此，802.11 协议定义了广泛应用于无线局域网的 <strong>CSMA/CA 协议</strong>。它对 CSMA/CD 协议进行改进，将"冲突检测"改为"冲突避免"（Collision Avoidance，CA）。"冲突避免"<strong>并不是指协议可以完全避免冲突，而是要尽量降低冲突发生的概率</strong>。由于 802.11 协议不支持冲突检测，一旦站点开始发送帧，就<strong>必须完整发送该帧</strong>；若在冲突存在时仍发送整个帧（尤其是长数据帧），将严重降低网络效率，因此必须采用冲突避免技术来降低冲突概率。</p>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：CSMA/CA 协议的确认机制（2011）</div>
 <p>鉴于无线信道的通信质量远不如有线信道，802.11 协议在数据链路层引入<strong>确认/重传（ARQ）</strong>机制：站点每发送完一帧后，<strong>必须收到接收方的确认帧（ACK）</strong>，才能继续发送下一帧。因此，802.11 无线局域网采用的是一种<strong>停止-等待式可靠传输协议</strong>。</p>
@@ -207,7 +207,7 @@
 </ol>
 <p><strong>NAV 的工作原理</strong>：任何站点只要收到 RTS 帧、CTS 帧或数据帧之一，就会根据其首部的持续期字段设置自己的 NAV。虽然 B 站收不到 A 站发送给 AP 的 RTS 帧，但能收到 AP 广播的 CTS 帧，B 站根据 CTS 帧首部的内容设置自己的 NAV，因此在这段时间内不会发送数据、干扰信道。因此，<strong>虚拟载波监听机制能够有效减少由隐蔽站引发的冲突问题</strong>。</p>
 </div>
-<figure class="fig"><img src="../assets/ch3/fig-3-27.png" alt="图3.27 使用RTS和CTS帧的冲突避免" loading="lazy"><figcaption>图 3.27 使用 RTS 和 CTS 帧的冲突避免（王道教材 P96）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-27.webp" alt="图3.27 使用RTS和CTS帧的冲突避免" loading="lazy"><figcaption>图 3.27 使用 RTS 和 CTS 帧的冲突避免（王道教材 P96）</figcaption></figure>
 <p>显然，使用 RTS/CTS 帧会使网络的通信效率有所下降，但这两种控制帧都很短，与数据帧相比开销不算大；相反，若不使用这种控制帧，则一旦发生冲突而导致数据帧重传，浪费的时间往往更多。信道预约并非强制要求，各站点可自行决定是否启用，或仅当待发送的数据帧长度超过某一阈值时才使用 RTS/CTS 帧，从而在可靠与效率之间取得平衡。</p>
 <h3 class="sub">3．CSMA/CD 协议与 CSMA/CA 协议的对比 <span class="badge kao">考点</span></h3>
 <table class="tbl">
@@ -225,7 +225,7 @@
   <li><strong>帧主体</strong>（数据部分），最大长度不超过 2312B，远大于以太网帧的数据载荷；</li>
   <li><strong>帧检验序列（FCS）</strong>，作为 MAC 尾部，共 4B。</li>
 </ol>
-<figure class="fig"><img src="../assets/ch3/fig-3-28.png" alt="图3.28 数据帧以及三种常用的控制帧的格式" loading="lazy"><figcaption>图 3.28 数据帧以及三种常用的控制帧（RTS 帧、CTS 帧和 ACK 帧）的格式（王道教材 P97）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-28.webp" alt="图3.28 数据帧以及三种常用的控制帧的格式" loading="lazy"><figcaption>图 3.28 数据帧以及三种常用的控制帧（RTS 帧、CTS 帧和 ACK 帧）的格式（王道教材 P97）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：802.11 帧前三地址字段的作用（2017、2022）</div>
 <p>802.11 帧首部中最关键的部分是<strong>四个地址字段</strong>（均为 MAC 地址），此处仅讨论前三个（地址 4 用于自组网络）。这三个地址的具体含义由帧控制字段中的两个标志位"去往 AP"和"来自 AP"共同决定，最常用的两种情况见表 3.4。其中，地址 1 是直接接收该帧的节点地址，地址 2 是实际发送该帧的节点地址。</p>
 <table class="tbl">
@@ -248,7 +248,7 @@
 </ol>
 <p>从网络层视角看，IP 数据报从子网 1 经路由器 R 转发至子网 2；而链路层则通过 802.11 帧中的地址 3 字段，在无线与有线介质转换过程中保留了原始源或目的 MAC 地址，确保了通信语义正确。</p>
 </div>
-<figure class="fig"><img src="../assets/ch3/fig-3-29.png" alt="图3.29 链路上的802.11帧和802.3帧" loading="lazy"><figcaption>图 3.29 链路上的 802.11 帧和 802.3 帧（王道教材 P98）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-29.webp" alt="图3.29 链路上的802.11帧和802.3帧" loading="lazy"><figcaption>图 3.29 链路上的 802.11 帧和 802.3 帧（王道教材 P98）</figcaption></figure>
 <p>802.11 帧中还有两个字段需要掌握：</p>
 <ol>
   <li><strong>持续期字段</strong>：发送站点可对信道预约一段时间，并将该时间写入持续期字段，用于虚拟载波监听；</li>
@@ -269,9 +269,9 @@
   <li><strong>基于 IP 地址</strong>：根据网络层地址或协议类型划分 VLAN。此类 VLAN 可跨越路由器进行扩展，将多个物理局域网中的主机纳入同一逻辑 VLAN。</li>
 </ol>
 <p>IEEE 802.1Q 标准定义了支持 VLAN 的以太网帧格式扩展：它在标准以太网帧的<strong>源地址字段与类型字段之间插入一个 4B 的 VLAN 标签</strong>，用于标识该帧所属的 VLAN。插入标签后的帧称为 802.1Q 帧，如图 3.30 所示。由于帧首部增加了 4B，为保持最小帧长 64B 不变，数据字段的最小长度由 46B 减少为 42B；最大长度仍为 1500B，因此<strong>最大帧长从 1518B 增至 1522B</strong>。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-30.png" alt="图3.30 插入VLAN标签后变成了802.1Q帧" loading="lazy"><figcaption>图 3.30 插入 VLAN 标签后变成了 802.1Q 帧（王道教材 P99）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-30.webp" alt="图3.30 插入VLAN标签后变成了802.1Q帧" loading="lazy"><figcaption>图 3.30 插入 VLAN 标签后变成了 802.1Q 帧（王道教材 P99）</figcaption></figure>
 <p>VLAN 标签的前两个字节固定为 0x8100，表示这是一个 802.1Q 帧。后两个字节中，前 4 位保留未用，后 12 位为 <strong>VLAN 标识符（VID）</strong>，用于唯一标识该帧所属的 VLAN，12 位 VID <strong>最多可支持 4096 个 VLAN</strong>。插入 VLAN 标签后，帧尾的 FCS 必须重新计算。</p>
-<figure class="fig"><img src="../assets/ch3/fig-3-31.png" alt="图3.31 利用以太网交换机构成虚拟局域网" loading="lazy"><figcaption>图 3.31 利用以太网交换机构成虚拟局域网（王道教材 P100）</figcaption></figure>
+<figure class="fig"><img src="../assets/ch3/fig-3-31.webp" alt="图3.31 利用以太网交换机构成虚拟局域网" loading="lazy"><figcaption>图 3.31 利用以太网交换机构成虚拟局域网（王道教材 P100）</figcaption></figure>
 <div class="box exam"><div class="box-title">🎯 考点跟踪：虚拟局域网的特性（2024）</div>
 <p>如图 3.31 所示，交换机 1 连接 7 台计算机，被划分为两个 VLAN：VLAN-10 和 VLAN-20（10 和 20 即 VID 值，由管理员配置）。各主机并不知道自身的 VID（但交换机必须知道），主机与交换机之间交互的仍是<strong>标准以太网帧</strong>。VLAN 的范围可跨越多个交换机，前提是这些交换机均支持 VLAN 功能。交换机 2 连接 5 台计算机，并与交换机 1 相连，其中 2 台属于 VLAN-10，3 台属于 VLAN-20。尽管这两个 VLAN 跨越了两台交换机，但各自仍保持为独立的广播域。连接两台交换机的链路称为<strong>汇聚链路</strong>（Trunk Link），也称干线链路。</p>
 <p>假定 A 站向 B 站发送帧，交换机 1 根据目的 MAC 地址，识别出 B 属于本交换机管理的 VLAN-10，于是将该帧当作普通以太网帧直接转发。若 A 站向 E 站发送帧，交换机 1 必须将帧转发到交换机 2，此时必须先插入 VLAN 标签，再通过干线链路传输，否则交换机 2 无法判断该帧应归属哪个 VLAN。因此，<strong>干线链路上传输的是 802.1Q 帧</strong>。交换机 2 在向 E 站转发前，会剥离 VLAN 标签，确保 E 站收到的是标准以太网帧。若 A 站向 C 站发送帧（虽同属交换机 1，但分属 VLAN-10 与 VLAN-20），则因二者处于不同的广播域，无法直接通信，此时需<strong>借助上层路由器实现跨 VLAN 通信</strong>，或通过支持三层功能的交换机完成第 3 层转发。</p>
